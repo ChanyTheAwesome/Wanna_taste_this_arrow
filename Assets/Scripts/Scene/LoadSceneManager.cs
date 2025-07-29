@@ -20,8 +20,20 @@ public class LoadSceneManager : MonoBehaviour
         }
     }
 
+    public void GoMainTitle()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainTitle");
+    }
     public void StartForestStage()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("ForestStage");
+        //GameManager.StageCount();  <- 대략 스테이지 수 세는 것
+
+    }
+    public void StartForestBossStage()
+    {
+        //SceneManager.LoadScene("ForestBossStage")
     }
 }
