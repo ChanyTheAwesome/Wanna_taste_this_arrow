@@ -123,6 +123,84 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &798279691
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3274515204784515214, guid: d09f522865fc0164c90cd6f4ec22228a,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1457726293}
+    - target: {fileID: 5566474411950153573, guid: d09f522865fc0164c90cd6f4ec22228a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5566474411950153573, guid: d09f522865fc0164c90cd6f4ec22228a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5566474411950153573, guid: d09f522865fc0164c90cd6f4ec22228a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5566474411950153573, guid: d09f522865fc0164c90cd6f4ec22228a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5566474411950153573, guid: d09f522865fc0164c90cd6f4ec22228a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5566474411950153573, guid: d09f522865fc0164c90cd6f4ec22228a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5566474411950153573, guid: d09f522865fc0164c90cd6f4ec22228a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5566474411950153573, guid: d09f522865fc0164c90cd6f4ec22228a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5566474411950153573, guid: d09f522865fc0164c90cd6f4ec22228a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5566474411950153573, guid: d09f522865fc0164c90cd6f4ec22228a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6523537641181908073, guid: d09f522865fc0164c90cd6f4ec22228a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889387185781039892, guid: d09f522865fc0164c90cd6f4ec22228a,
+        type: 3}
+      propertyPath: m_Name
+      value: ZombieWithShovel
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d09f522865fc0164c90cd6f4ec22228a, type: 3}
 --- !u!1 &1094945655
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,7 +322,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd4239ffd0f1d14b85f042644309572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefabs: []
+  projectilePrefabs:
+  - {fileID: 6267298681756501297, guid: ed0581948fc67954e9c61e04973c91b0, type: 3}
   impactParticleSystem: {fileID: 0}
 --- !u!4 &1245332780
 Transform:
@@ -261,90 +340,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1380423399
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5439961816188802616, guid: b6058bb8651b9f4468e7cdb4edde1e3a,
-        type: 3}
-      propertyPath: speed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7263277187695838396, guid: b6058bb8651b9f4468e7cdb4edde1e3a,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 1457726293}
-    - target: {fileID: 7263277187695838396, guid: b6058bb8651b9f4468e7cdb4edde1e3a,
-        type: 3}
-      propertyPath: WeaponPrefab
-      value: 
-      objectReference: {fileID: 6042950720369215609, guid: c5ef9faf17dd3634a8a0e9567732fc82,
-        type: 3}
-    - target: {fileID: 7573886762302142023, guid: b6058bb8651b9f4468e7cdb4edde1e3a,
-        type: 3}
-      propertyPath: m_Name
-      value: ZomebieWithGun
-      objectReference: {fileID: 0}
-    - target: {fileID: 8375578891765430524, guid: b6058bb8651b9f4468e7cdb4edde1e3a,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8375578891765430524, guid: b6058bb8651b9f4468e7cdb4edde1e3a,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8375578891765430524, guid: b6058bb8651b9f4468e7cdb4edde1e3a,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8375578891765430524, guid: b6058bb8651b9f4468e7cdb4edde1e3a,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8375578891765430524, guid: b6058bb8651b9f4468e7cdb4edde1e3a,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8375578891765430524, guid: b6058bb8651b9f4468e7cdb4edde1e3a,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8375578891765430524, guid: b6058bb8651b9f4468e7cdb4edde1e3a,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8375578891765430524, guid: b6058bb8651b9f4468e7cdb4edde1e3a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8375578891765430524, guid: b6058bb8651b9f4468e7cdb4edde1e3a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8375578891765430524, guid: b6058bb8651b9f4468e7cdb4edde1e3a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b6058bb8651b9f4468e7cdb4edde1e3a, type: 3}
 --- !u!1 &1457726291
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,7 +457,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.21867985}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -473,7 +468,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.5626403}
   m_EdgeRadius: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -482,4 +477,4 @@ SceneRoots:
   - {fileID: 1094945658}
   - {fileID: 1457726293}
   - {fileID: 1245332780}
-  - {fileID: 1380423399}
+  - {fileID: 798279691}

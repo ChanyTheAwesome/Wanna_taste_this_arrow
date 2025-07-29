@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MeleeWeaponHandler : WeaponHandler
 {
+    [SerializeField] SpriteRenderer spriteRenderer;
     [Header("Melee Attack Info")]
     public Vector2 CollideBoxSize = Vector2.one;
 
@@ -11,6 +12,7 @@ public class MeleeWeaponHandler : WeaponHandler
     {
         base.Start();
         CollideBoxSize = CollideBoxSize * WeaponSize;
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         //박스 크기(기존은 1, 1)에 무기의 크기를 곱해준다.
     }
 
