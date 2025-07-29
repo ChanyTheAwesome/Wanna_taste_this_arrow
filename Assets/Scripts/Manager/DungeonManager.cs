@@ -83,7 +83,9 @@ public class DungeonManager : MonoBehaviour
             else    // 보스전 아닐때
             {
                 // 맵 장애물 재배치
+
                 // 일반 몬스터 배치
+
             }
             //yield return stageCount;
             yield return new WaitUntil(() => isEnd);  // 코루틴 사용해서 대기하기, 다음 스테이지 넘어갈려면 isEnd true로 바꿔주기

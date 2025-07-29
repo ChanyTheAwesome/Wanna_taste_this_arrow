@@ -52,5 +52,6 @@ public class PlayerManager : MonoBehaviour
     {
         Level = 1;
         Exp = 0;
+        // 스킬도 초기화
     }
 }

@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
     //public PlayerController player { get; private set; }
     //private ResourceController _playerResourceController;
 
-    [SerializeField] private int currentWaveIndex = 0;
+    //[SerializeField] private int currentWaveIndex = 0;
+
     public int stageCount = 0;
 
     //private EnemyManager enemyManager;

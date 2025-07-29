@@ -6,13 +6,13 @@ public class EnemyManager : MonoBehaviour
 {
     //private Coroutine waveRoutine;
 
-    //[SerializeField] private List<GameObject> enemyPrefabs;
+    [SerializeField] private List<GameObject> enemyPrefabs;
 
-    //[SerializeField] List<Rect> spawnAreas;
-    //[SerializeField] private Color gizmoColor = new Color(1, 0, 0, 0.3f);
+    [SerializeField] List<Rect> spawnAreas;
+    [SerializeField] private Color gizmoColor = new Color(1, 0, 0, 0.3f);
     //private List<EnemyController> activeEnemies = new List<EnemyController>();
 
-    //private bool enemySpawnComplite;
+    private bool enemySpawnComplite;
 
     //[SerializeField] private float timeBetweenSpawns = 0.2f;
     //[SerializeField] private float timeBetweenWaves = 1f;
@@ -24,20 +24,30 @@ public class EnemyManager : MonoBehaviour
     //    this.gameManager = gameManager;
     //}
 
-    
 
-    private IEnumerator SpawnWave(int waveCount)
+
+    //private IEnumerator SpawnWave(int waveCount)
+    //{
+    //    enemySpawnComplite = false;
+    //    yield return new WaitForSeconds(timeBetweenWaves);
+
+    //    for (int i = 0; i < waveCount; i++)
+    //    {
+    //        yield return new WaitForSeconds(timeBetweenSpawns);
+    //        SpawnRandomEnemy();
+    //    }
+
+    //    enemySpawnComplite = true;
+    //}
+
+    public void SpawnMonster()  // 일반 몬스터 생성
     {
-        enemySpawnComplite = false;
-        yield return new WaitForSeconds(timeBetweenWaves);
 
-        for (int i = 0; i < waveCount; i++)
-        {
-            yield return new WaitForSeconds(timeBetweenSpawns);
-            SpawnRandomEnemy();
-        }
+    }
 
-        enemySpawnComplite = true;
+    public void SpawnBossMonster()  // 보스 몬스터 생성
+    {
+
     }
 
     private void SpawnRandomEnemy()
@@ -56,11 +66,11 @@ public class EnemyManager : MonoBehaviour
             Random.Range(randomArea.xMin, randomArea.xMax),
             Random.Range(randomArea.yMin, randomArea.yMax));
 
-        GameObject spawnEnemy = Instantiate(randomPrefab, new Vector3(randomPosition.x, randomPosition.y), Quaternion.identity);
-        EnemyController enemyController = spawnEnemy.GetComponent<EnemyController>();
-        enemyController.Init(this, gameManager.player.transform);
+        //GameObject spawnEnemy = Instantiate(randomPrefab, new Vector3(randomPosition.x, randomPosition.y), Quaternion.identity);
+        //EnemyController enemyController = spawnEnemy.GetComponent<EnemyController>();
+        //enemyController.Init(this, gameManager.player.transform);
 
-        activeEnemies.Add(enemyController);
+        //activeEnemies.Add(enemyController);
     }
 
     private void OnDrawGizmosSelected()
@@ -77,10 +87,10 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    public void RemoveEnemyOnDeath(EnemyController enemy)
-    {
-        activeEnemies.Remove(enemy);
-        if (enemySpawnComplite && activeEnemies.Count == 0)
-            gameManager.EndOfWave();
-    }
+    //public void RemoveEnemyOnDeath(EnemyController enemy)
+    //{
+    //    activeEnemies.Remove(enemy);
+    //    if (enemySpawnComplite && activeEnemies.Count == 0)
+    //        gameManager.EndOfWave();
+    //}
 }
