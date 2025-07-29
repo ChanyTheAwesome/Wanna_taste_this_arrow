@@ -39,9 +39,9 @@ public class BaseController : MonoBehaviour
         statHandler = GetComponent<StatHandler>();
         /*if(WeaponPrefab != null)
         {
-            weaponHandler = Instantiate(WeaponPrefab, weaponPivot);
+           // weaponHandler = Instantiate(WeaponPrefab, weaponPivot);
         }
-        else
+        //else
         {
             weaponHandler = GetComponentInChildren<WeaponHandler>(); // WeaponPrefab이 null이라면 찾아본다.
         }*/

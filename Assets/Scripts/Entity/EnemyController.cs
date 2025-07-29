@@ -40,11 +40,11 @@ public class EnemyController : BaseController
         float distance = DistanceToTarget();
         Vector2 direction = DirectionToTarget();
 
-        isAttacking = false;
+        //isAttacking = false;
 
-        if (distance <= followRange)//최대 쫓아가기 거리보다 가깝다면
-        {
-            lookDirection = direction;//바라보는 방향 정해줌
+        //if (distance <= followRange)//최대 쫓아가기 거리보다 가깝다면
+        //{
+        //    lookDirection = direction;//바라보는 방향 정해줌
 
             if (distance < weaponHandler.AttackRange)//공격 사거리에 들어왔으면
             {
