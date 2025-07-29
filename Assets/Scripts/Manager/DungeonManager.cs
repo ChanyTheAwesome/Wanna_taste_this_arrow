@@ -11,7 +11,7 @@ public class DungeonManager : MonoBehaviour
 
     public bool isClear = false;
 
-    public bool isEnd = false;
+    public bool isEnd = false;  // 몬스터 스폰한 거 다 잡았는지 여부, true로 바꾸면 바로 다음 스테이지 이동
 
     private void Awake()
     {
@@ -25,9 +25,9 @@ public class DungeonManager : MonoBehaviour
         }
 
         dungeonList.Clear();
-        dungeonList.Add(new Dungeon(1, "1단계 던전", 10, 3));
-        dungeonList.Add(new Dungeon(2, "2단계 던전", 10, 3));
-        dungeonList.Add(new Dungeon(3, "3단계 던전", 10, 3));
+        dungeonList.Add(new Dungeon(1, "1단계 던전", 10, 6));
+        dungeonList.Add(new Dungeon(2, "2단계 던전", 10, 6));
+        dungeonList.Add(new Dungeon(3, "3단계 던전", 10, 6));
     }
     // Start is called before the first frame update
     void Start()
@@ -77,9 +77,9 @@ public class DungeonManager : MonoBehaviour
             }
             else    // 보스전 아닐때
             {
-
+                // 일반 몬스터 배치
             }
-            yield return new WaitUntil(() => isEnd);  // 코루틴 사용해서 대기하기, 몬스터 다 잡았으면 isEnd true로 바꿔주기
+            yield return new WaitUntil(() => isEnd);  // 코루틴 사용해서 대기하기, 다음 스테이지 넘어갈려면 isEnd true로 바꿔주기
         }
         
         // 죽으면 나가기 << 계속 체크해야되니 update로? 아니면 피 깎일때 체크하는 메서드 만들고 추가?
