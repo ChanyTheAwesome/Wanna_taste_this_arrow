@@ -19,27 +19,27 @@ public class BaseController : MonoBehaviour
     private Vector2 knockback = Vector2.zero;
     private float knockbackDuration = 0.0f;
 
-    protected AnimationHandler animationhandler;
+    //protected AnimationHandler animationhandler;
 
     protected StatHandler statHandler;
 
-    [SerializeField] public WeaponHandler WeaponPrefab;
+    //[SerializeField] public WeaponHandler WeaponPrefab;
 
-    protected WeaponHandler weaponHandler;
+    //protected WeaponHandler weaponHandler;
     protected bool isAttacking;
     private float timeSincelastAttack = float.MaxValue;
     protected virtual void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        animationhandler = GetComponent<AnimationHandler>();
+        //animationhandler = GetComponent<AnimationHandler>();
         statHandler = GetComponent<StatHandler>();
-        if(WeaponPrefab != null)
+        //if(WeaponPrefab != null)
         {
-            weaponHandler = Instantiate(WeaponPrefab, weaponPivot);
+           // weaponHandler = Instantiate(WeaponPrefab, weaponPivot);
         }
-        else
+        //else
         {
-            weaponHandler = GetComponentInChildren<WeaponHandler>(); // WeaponPrefab이 null이라면 찾아본다.
+            //weaponHandler = GetComponentInChildren<WeaponHandler>(); // WeaponPrefab이 null이라면 찾아본다.
         }
     }
 
@@ -78,7 +78,7 @@ public class BaseController : MonoBehaviour
             direction += knockback;
         }//넉백 중이라면 넉백을 하도록 함, 이동의 전체 크기를 0.2만큼 낮추고, knockback 벡터를 direction에 더함
         _rigidbody.velocity = direction; // 물리 연산을 하는 rigidbody의 velocity에 direction을 넣어줌
-        animationhandler.Move(direction); // 이동 애니메이션 키세요 라는 뜻
+        //animationhandler.Move(direction); // 이동 애니메이션 키세요 라는 뜻
     }
 
     private void Rotate(Vector2 direction)
@@ -91,7 +91,7 @@ public class BaseController : MonoBehaviour
         {
             weaponPivot.rotation = Quaternion.Euler(0f, 0f, rotZ);//무기도 같이 돌려주세요
         }
-        weaponHandler?.Rotate(isLeft); //좌우 반대도 해주세요
+        //weaponHandler?.Rotate(isLeft); //좌우 반대도 해주세요
     }
 
     public void ApplyKnockback(Transform other, float power, float duration)
@@ -102,25 +102,25 @@ public class BaseController : MonoBehaviour
 
     private void HandleAttackDelay()
     {
-        if(weaponHandler == null)
-        {
-            return;
-        }
-        if (timeSincelastAttack <= weaponHandler.Delay)
-        {
-            timeSincelastAttack += Time.deltaTime;
-        }
-        if(isAttacking && timeSincelastAttack > weaponHandler.Delay)
-        {
-            timeSincelastAttack = 0.0f;
-            Attack();
-        }
+        //if(weaponHandler == null)
+        //{
+        //    return;
+        //}
+        //if (timeSincelastAttack <= weaponHandler.Delay)
+        //{
+        //    timeSincelastAttack += Time.deltaTime;
+        //}
+        //if(isAttacking && timeSincelastAttack > weaponHandler.Delay)
+        //{
+        //    timeSincelastAttack = 0.0f;
+        //    Attack();
+        //}
     }
     protected virtual void Attack()
     {
         if(lookDirection != Vector2.zero)
         {
-            weaponHandler?.Attack();//그냥 뭔가를 보고있지도 않다면 공격하지 마세요, 즉 lookDirection이 시작하기 전에는 공격하지 않는 코드?
+            //weaponHandler?.Attack();//그냥 뭔가를 보고있지도 않다면 공격하지 마세요, 즉 lookDirection이 시작하기 전에는 공격하지 않는 코드?
         }
     }
 
