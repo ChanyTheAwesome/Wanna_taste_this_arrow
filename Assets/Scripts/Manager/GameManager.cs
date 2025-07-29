@@ -10,12 +10,13 @@ public class GameManager : MonoBehaviour
     //private ResourceController _playerResourceController;
 
     [SerializeField] private int currentWaveIndex = 0;
+    public int stageCount = 0;
 
     //private EnemyManager enemyManager;
 
-    private UIManager uiManager;
-    private SceneController sceneController;
-    private PlayerManager playerManager;
+    //private UIManager uiManager;
+    //private SceneController sceneController;
+    //private PlayerManager playerManager;
 
     public static bool isFirstLoading = true;
 
@@ -34,9 +35,9 @@ public class GameManager : MonoBehaviour
         //player = FindObjectOfType<PlayerController>();
         //player.Init(this);
 
-        uiManager = FindObjectOfType<UIManager>();
-        sceneController = FindObjectOfType<SceneController>();
-        playerManager = FindObjectOfType<PlayerManager>();
+        //uiManager = FindObjectOfType<UIManager>();
+        //sceneController = FindObjectOfType<SceneController>();
+        //playerManager = FindObjectOfType<PlayerManager>();
 
         //enemyManager = GetComponentInChildren<EnemyManager>();
         //enemyManager.Init(this);
@@ -80,5 +81,11 @@ public class GameManager : MonoBehaviour
     {
         //enemyManager.StopWave();
         //uiManager.SetGameOver();
+    }
+
+    public void StartNextStage()
+    {
+        stageCount++;
+        DungeonManager.instance.isEnd = true;
     }
 }

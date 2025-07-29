@@ -48,6 +48,8 @@ public class UIManager : MonoBehaviour
         // PlayerManager.ResetLevel();
         // 홈 씬 불러오기
         // SceneManager.LoadScene("MainScene");
+        // stageCount 다시 0으로 맞추기
+        GameManager.instance.stageCount = 0;
     }
 
     public void OnClickOption() // 옵션 버튼 클릭

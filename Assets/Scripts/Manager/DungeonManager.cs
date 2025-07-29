@@ -13,6 +13,8 @@ public class DungeonManager : MonoBehaviour
 
     public bool isEnd = false;  // 몬스터 스폰한 거 다 잡았는지 여부, true로 바꾸면 바로 다음 스테이지 이동
 
+    //public int stageCount = 0;
+
     private void Awake()
     {
         if(instance == null)
@@ -58,19 +60,23 @@ public class DungeonManager : MonoBehaviour
 
     public void StartDungeon(Dungeon dungeon)
     {
-        StartStage(dungeon.StageCount);
+        GameManager.instance.stageCount = 1;
+        StartStage(dungeon.MaxStageCount);
     }
 
-    public IEnumerable StartStage(int stageCount)
+    public IEnumerable StartStage(int maxStageCount)
     {
+        //int stageCount = 0;
         // UIState 게임으로 설정하기
         // 스테이지 반복 > 반복문 해서 마지막 스테이지면 보스방
-        for(int i = 1; i <= stageCount; i++)    // 코루틴 써야겠다 yield return new WaitUntil(bool predicate) << 이용하면 될듯
+        for(int i = 1; i <= maxStageCount; i++)    // 코루틴 써야겠다 yield return new WaitUntil(bool predicate) << 이용하면 될듯
         {
+            //stageCount++;
+            isEnd = false;
             // 플레이어 위치 세팅
 
             // 몬스터 스폰
-            if(i == stageCount) // 마지막 스테이지일 때
+            if(i == maxStageCount) // 마지막 스테이지일 때
             {
                 // 보스 스테이지 시작
             }
@@ -79,6 +85,7 @@ public class DungeonManager : MonoBehaviour
                 // 맵 장애물 재배치
                 // 일반 몬스터 배치
             }
+            //yield return stageCount;
             yield return new WaitUntil(() => isEnd);  // 코루틴 사용해서 대기하기, 다음 스테이지 넘어갈려면 isEnd true로 바꿔주기
         }
         
