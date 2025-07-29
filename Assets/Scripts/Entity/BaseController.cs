@@ -32,6 +32,10 @@ public class BaseController : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         animationhandler = GetComponent<AnimationHandler>();
+        if(animationhandler == null)
+        {
+            Debug.Log("test");
+        }
         statHandler = GetComponent<StatHandler>();
         /*if(WeaponPrefab != null)
         {
@@ -57,10 +61,6 @@ public class BaseController : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        if(movementDirection == null)
-        {
-            Debug.Log("test");
-        }
         Movement(movementDirection);
         if (knockbackDuration > 0.0f)
         {
@@ -82,7 +82,7 @@ public class BaseController : MonoBehaviour
             direction += knockback;
         }//넉백 중이라면 넉백을 하도록 함, 이동의 전체 크기를 0.2만큼 낮추고, knockback 벡터를 direction에 더함
         _rigidbody.velocity = direction; // 물리 연산을 하는 rigidbody의 velocity에 direction을 넣어줌
-        //animationhandler.Move(direction); // 이동 애니메이션 키세요 라는 뜻
+        animationhandler.Move(direction); // 이동 애니메이션 키세요 라는 뜻
     }
 
     private void Rotate(Vector2 direction)
