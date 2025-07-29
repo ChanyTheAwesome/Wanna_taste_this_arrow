@@ -8,13 +8,13 @@ public class PlayerController : BaseController
 {
     private Camera camera;
 
-    private GameManager gameManager;
+    //private GameManager gameManager;
 
-    public void Init(GameManager gameManager)
+    /*public void Init(GameManager gameManager)
     {
         this.gameManager = gameManager;
         camera = Camera.main;
-    }
+    }*/
 
     protected override void HandleAction()
     {
@@ -29,8 +29,8 @@ public class PlayerController : BaseController
 
     public override void Death()
     {
-        base.Death();
-        gameManager.GameOver();
+        /*base.Death();
+        gameManager.GameOver();*/
     }
 
     void OnMove(InputValue inputValue)

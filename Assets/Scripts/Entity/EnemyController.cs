@@ -5,15 +5,15 @@ using UnityEngine.Experimental.GlobalIllumination;
 
 public class EnemyController : BaseController
 {
-    private EnemyManager enemyManager;
+    //private EnemyManager enemyManager;
     private Transform target;
     [SerializeField] private float followRange = 15.0f;
 
-    public void Init(EnemyManager enemyManager, Transform target)
+    /*public void Init(EnemyManager enemyManager, Transform target)
     {
         this.enemyManager = enemyManager;
         this.target = target; //타겟은 다른 코드에서 정해줬음, 얘는 플레이어가 타겟
-    }
+    }*/
 
     protected float DistanceToTarget()
     {
@@ -28,7 +28,7 @@ public class EnemyController : BaseController
     protected override void HandleAction()
     {
         base.HandleAction();
-        if (weaponHandler == null || target == null) //무기 없어요? 타겟 없어요?
+        /*if (weaponHandler == null || target == null) //무기 없어요? 타겟 없어요?
         {
             if (!movementDirection.Equals(Vector2.zero))
             {
@@ -57,11 +57,11 @@ public class EnemyController : BaseController
                 movementDirection = Vector2.zero;//움직임 방향을 0으로 만든 다음
             }
             movementDirection = direction;//다시 움직임 방향을 바라보는 방향으로 정해준다.
-        }
+        }*/
     }
     public override void Death()
     {
-        base.Death();
-        enemyManager.RemoveEnemyOnDeath(this);
+        /*base.Death();
+        enemyManager.RemoveEnemyOnDeath(this);*/
     }
 }

@@ -59,7 +59,7 @@ public class ResourceController : MonoBehaviour
             animationHandler.Damage();//맞았다는 애니메이션과
             if (damageClip != null)
             {
-                SoundManager.PlayClip(damageClip);//소리를 출력하고
+                //SoundManager.PlayClip(damageClip);//소리를 출력하고
             }
         }
 
