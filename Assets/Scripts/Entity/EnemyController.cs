@@ -6,14 +6,14 @@ using UnityEngine.Experimental.GlobalIllumination;
 public class EnemyController : BaseController
 {
     //private EnemyManager enemyManager;
-    private Transform target;
+    [SerializeField] private Transform target; // EnemyManager 제작 후 [SerializeField] 빼야됨
     [SerializeField] private float followRange = 15.0f;
 
-    /*public void Init(EnemyManager enemyManager, Transform target)
+    public void Init(/*EnemyManager enemyManager,*/Transform target)
     {
         //this.enemyManager = enemyManager;
         this.target = target; //타겟은 다른 코드에서 정해줬음, 얘는 플레이어가 타겟
-    }*/
+    }
 
     protected float DistanceToTarget()
     {
@@ -28,6 +28,7 @@ public class EnemyController : BaseController
     protected override void HandleAction()
     {
         base.HandleAction();
+        movementDirection = DirectionToTarget();
         /*if (weaponHandler == null || target == null) //무기 없어요? 타겟 없어요?
         {
             if (!movementDirection.Equals(Vector2.zero))
