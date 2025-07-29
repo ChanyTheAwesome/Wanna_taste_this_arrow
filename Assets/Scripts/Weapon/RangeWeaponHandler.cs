@@ -33,6 +33,7 @@ public class RangeWeaponHandler : WeaponHandler
 
     public override void Attack()
     {
+        Debug.Log("Trying Attack");
         base.Attack();//애니메이션 출력하고, 소리를 내는 것이다.
         float projectileAngleSpace = multipleProjectileAngle;
         int numberOfProjectilePerShot = NumberofProjectilesPerShot;
@@ -43,6 +44,7 @@ public class RangeWeaponHandler : WeaponHandler
             float angle = minAngle + projectileAngleSpace * i;//최소 각도에 정해진 각도 간격을 더하고
             float randomSpread = Random.Range(-spread, spread);//무작위 값을 또 정하고
             angle += randomSpread;//더해
+            Debug.Log(Controller.LookDirection == null);
             CreateProjectile(Controller.LookDirection, angle);//생성한다.
         }//이를 투사체 갯수만큼 반복한다.
     }

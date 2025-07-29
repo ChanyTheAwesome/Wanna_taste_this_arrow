@@ -9,6 +9,11 @@ public class EnemyController : BaseController
     [SerializeField] private Transform target; // EnemyManager 제작 후 [SerializeField] 빼야됨
     [SerializeField] private float followRange = 15.0f;
 
+    public void SetEnemyHealth(float multiplier)//적의 체력을 재설정한다.
+    {
+        statHandler.Health = (int)Mathf.Ceil(statHandler.Health * multiplier);
+    }
+
     public void Init(/*EnemyManager enemyManager,*/Transform target)
     {
         //this.enemyManager = enemyManager;
@@ -29,7 +34,7 @@ public class EnemyController : BaseController
     {
         base.HandleAction();
         movementDirection = DirectionToTarget();
-        /*if (weaponHandler == null || target == null) //무기 없어요? 타겟 없어요?
+        if (weaponHandler == null || target == null) //무기 없어요? 타겟 없어요?
         {
             if (!movementDirection.Equals(Vector2.zero))
             {
@@ -58,11 +63,12 @@ public class EnemyController : BaseController
                 movementDirection = Vector2.zero;//움직임 방향을 0으로 만든 다음
             }
             movementDirection = direction;//다시 움직임 방향을 바라보는 방향으로 정해준다.
-        }*/
+        }
     }
     public override void Death()
     {
         /*base.Death();
         enemyManager.RemoveEnemyOnDeath(this);*/
     }
+
 }
