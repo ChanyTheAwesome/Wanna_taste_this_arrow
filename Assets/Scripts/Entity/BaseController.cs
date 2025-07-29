@@ -23,9 +23,9 @@ public class BaseController : MonoBehaviour
 
     protected StatHandler statHandler;
 
-    //[SerializeField] public WeaponHandler WeaponPrefab;
+    [SerializeField] public WeaponHandler WeaponPrefab;
 
-    //protected WeaponHandler weaponHandler;
+    protected WeaponHandler weaponHandler;
     protected bool isAttacking;
     private float timeSincelastAttack = float.MaxValue;
     protected virtual void Awake()
@@ -37,14 +37,14 @@ public class BaseController : MonoBehaviour
             Debug.Log("test");
         }
         statHandler = GetComponent<StatHandler>();
-        /*if(WeaponPrefab != null)
+        if(WeaponPrefab != null)
         {
-           // weaponHandler = Instantiate(WeaponPrefab, weaponPivot);
+            weaponHandler = Instantiate(WeaponPrefab, weaponPivot);
         }
-        //else
+        else
         {
             weaponHandler = GetComponentInChildren<WeaponHandler>(); // WeaponPrefab이 null이라면 찾아본다.
-        }*/
+        }
     }
 
     protected virtual void Start()
@@ -106,7 +106,7 @@ public class BaseController : MonoBehaviour
 
     private void HandleAttackDelay()
     {
-        /*if(weaponHandler == null)
+        if(weaponHandler == null)
         {
             return;
         }
@@ -118,14 +118,14 @@ public class BaseController : MonoBehaviour
         {
             timeSincelastAttack = 0.0f;
             Attack();
-        }*/
+        }
     }
     protected virtual void Attack()
     {
-        /*if(lookDirection != Vector2.zero)
+        if(lookDirection != Vector2.zero)
         {
             weaponHandler?.Attack();//그냥 뭔가를 보고있지도 않다면 공격하지 마세요, 즉 lookDirection이 시작하기 전에는 공격하지 않는 코드?
-        }*/
+        }
     }
 
     public virtual void Death()
