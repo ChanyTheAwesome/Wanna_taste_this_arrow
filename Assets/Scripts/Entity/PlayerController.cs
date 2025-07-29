@@ -28,21 +28,21 @@ public class PlayerController : BaseController
     
     private List<GameObject> _enemies; // 에너미들 모아서 담는 List
     private GameObject _target;
-    private float maxFindRange = 10f;
+    private float _maxFindRange = 10f;
 
 
     protected override void HandleAction()
     {
-        // 키입력 방향키 or wasd
-        // 이동 - 노멀라이즈
+        
         OnMove();
         // 장애물에 안걸리는 에너미 찾아서 그쪽 방향으로 바라보기
-        FindNearestEnemy();
+        //FindNearestEnemy();
         OnLook();
 
         // 공격
-        isAttacking = Input.GetKey(KeyCode.Space);
-        Attack();
+        isAttacking = Input.GetMouseButton(0);
+
+        //if(isAttacking) Attack();
     }
 
     public override void Death()
@@ -53,7 +53,8 @@ public class PlayerController : BaseController
 
     void OnMove()//InputValue inputValue)
     {
-
+        // 키입력 방향키 or wasd
+        // 이동 - 노멀라이즈 -> 부모moveDirection값 전달
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         movementDirection = new Vector2(horizontal, vertical).normalized;
@@ -63,13 +64,13 @@ public class PlayerController : BaseController
 
     void OnLook()//InputValue inputValue)
     {
-        Vector2 targetPos = _target.transform.position;
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);//마우스의 위치 좌표를 받고
-        Vector2 worldPos = Camera.main.ScreenToWorldPoint(targetPos);//카메라의 월드 좌표를 받아
+        //Vector2 targetPos = _target.transform.position;
+        Vector2 mousePosition = Input.mousePosition;//마우스의 위치 좌표를 받고
+        Vector2 worldPos = Camera.main.ScreenToWorldPoint(mousePosition);//카메라의 월드 좌표를 받아
 
         lookDirection = (worldPos - (Vector2)transform.position);//빼본다
 
-        //Debug.Log(Mathf.Abs(Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg));
+        Debug.Log(lookDirection.normalized);
 
         if (lookDirection.magnitude < 0.9f)
         {
@@ -103,10 +104,15 @@ public class PlayerController : BaseController
 
                 Debug.Log(distance);
 
-            if(distance <= maxFindRange)
+            if(distance <= _maxFindRange)
             {
                 _target = enemy;
                 shortDis = distance;
+                isAttacking = true;
+            }
+            else
+            {
+                isAttacking = false;
             }
         }
 
