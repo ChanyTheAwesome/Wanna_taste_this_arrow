@@ -50,6 +50,7 @@ public class RangeWeaponHandler : WeaponHandler
     }
     private void CreateProjectile(Vector2 _lookDirection, float angle)
     {//총알 발사, projectileManager에게 있는 ShootBullet을 호출한다.
+        Debug.Log("this");
         projectileManager.ShootBullet(this, projectileSpawnPosition.position, RotateVector2(_lookDirection, angle));
     }//보내주는 값은 자신과, spawnPosition, 보고있는 방향에서 angle만큼 값을 보정한 vector를 보낸다.
     private static Vector2 RotateVector2(Vector2 v, float degree)
