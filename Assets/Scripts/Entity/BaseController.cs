@@ -33,14 +33,14 @@ public class BaseController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         //animationhandler = GetComponent<AnimationHandler>();
         statHandler = GetComponent<StatHandler>();
-        //if(WeaponPrefab != null)
+        /*if(WeaponPrefab != null)
         {
            // weaponHandler = Instantiate(WeaponPrefab, weaponPivot);
         }
         //else
         {
-            //weaponHandler = GetComponentInChildren<WeaponHandler>(); // WeaponPrefab이 null이라면 찾아본다.
-        }
+            weaponHandler = GetComponentInChildren<WeaponHandler>(); // WeaponPrefab이 null이라면 찾아본다.
+        }*/
     }
 
     protected virtual void Start()
@@ -102,26 +102,26 @@ public class BaseController : MonoBehaviour
 
     private void HandleAttackDelay()
     {
-        //if(weaponHandler == null)
-        //{
-        //    return;
-        //}
-        //if (timeSincelastAttack <= weaponHandler.Delay)
-        //{
-        //    timeSincelastAttack += Time.deltaTime;
-        //}
-        //if(isAttacking && timeSincelastAttack > weaponHandler.Delay)
-        //{
-        //    timeSincelastAttack = 0.0f;
-        //    Attack();
-        //}
+        /*if(weaponHandler == null)
+        {
+            return;
+        }
+        if (timeSincelastAttack <= weaponHandler.Delay)
+        {
+            timeSincelastAttack += Time.deltaTime;
+        }
+        if(isAttacking && timeSincelastAttack > weaponHandler.Delay)
+        {
+            timeSincelastAttack = 0.0f;
+            Attack();
+        }*/
     }
     protected virtual void Attack()
     {
-        if(lookDirection != Vector2.zero)
+        /*if(lookDirection != Vector2.zero)
         {
-            //weaponHandler?.Attack();//그냥 뭔가를 보고있지도 않다면 공격하지 마세요, 즉 lookDirection이 시작하기 전에는 공격하지 않는 코드?
-        }
+            weaponHandler?.Attack();//그냥 뭔가를 보고있지도 않다면 공격하지 마세요, 즉 lookDirection이 시작하기 전에는 공격하지 않는 코드?
+        }*/
     }
 
     public virtual void Death()
