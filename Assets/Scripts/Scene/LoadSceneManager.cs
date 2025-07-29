@@ -1,18 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class LoadSceneManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    static LoadSceneManager instance;
+    public static LoadSceneManager Instance
+        { get { return instance; } }
+
+    private void Awake()
     {
-        
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StartForestStage()
     {
-        
+        SceneManager.LoadScene("ForestStage");
     }
 }
