@@ -68,7 +68,6 @@ public class DungeonManager : MonoBehaviour
         for(int i = 1; i <= stageCount; i++)    // 코루틴 써야겠다 yield return new WaitUntil(bool predicate) << 이용하면 될듯
         {
             // 플레이어 위치 세팅
-            // 맵 장애물 재배치
 
             // 몬스터 스폰
             if(i == stageCount) // 마지막 스테이지일 때
@@ -77,6 +76,7 @@ public class DungeonManager : MonoBehaviour
             }
             else    // 보스전 아닐때
             {
+                // 맵 장애물 재배치
                 // 일반 몬스터 배치
             }
             yield return new WaitUntil(() => isEnd);  // 코루틴 사용해서 대기하기, 다음 스테이지 넘어갈려면 isEnd true로 바꿔주기
