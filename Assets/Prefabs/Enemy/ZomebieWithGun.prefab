@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  speed: 3
+  speed: 1
 --- !u!114 &7263277187695838396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,7 +187,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterRenderer: {fileID: 2180885920297948452}
   weaponPivot: {fileID: 1329604934884760878}
-  WeaponPrefab: {fileID: 0}
+  WeaponPrefab: {fileID: 6042950720369215609, guid: c5ef9faf17dd3634a8a0e9567732fc82,
+    type: 3}
   target: {fileID: 0}
   followRange: 15
 --- !u!50 &1985055331344318097
