@@ -17,9 +17,9 @@ public class RangeWeaponHandler : WeaponHandler
     [SerializeField] private float spread;
     public float Spread { get { return spread; } }
     [SerializeField] private int numberofProjectilesPerShot;
-    public int NumberofProjectilesPerShot { get { return numberofProjectilesPerShot; } }
+    public int NumberofProjectilesPerShot { get { return numberofProjectilesPerShot; } set { numberofProjectilesPerShot = value; } }
     [SerializeField] private float multipleProjectileAngle;
-    public float MultipleProjectileAngle { get { return multipleProjectileAngle; } }
+    public float MultipleProjectileAngle { get { return multipleProjectileAngle; } set { multipleProjectileAngle = value; } }
     [SerializeField] private Color projectileColor;
     public Color ProjectileColor { get { return projectileColor; } }
 

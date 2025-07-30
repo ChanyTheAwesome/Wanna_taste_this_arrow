@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 //using UnityEngine.InputSystem;
 
 public class PlayerController : BaseController
@@ -29,19 +30,49 @@ public class PlayerController : BaseController
         //this.gameManager = gameManager;
         camera = Camera.main;
     }*/
-
     [SerializeField] private float findRadius = 5f;  // 감지범위
     [SerializeField] private LayerMask enemyLayer;   // 에너미 레이어
     private GameObject _target;                      // 공격할 타겟
+    private bool _isDebug;
 
+    [SerializeField] private Slider hpSlider;
+
+    int maxHp;
+    int currentHp;
 
     protected override void HandleAction()
     {
+        maxHp = statHandler.Health;
+        currentHp = maxHp;
+        hpSlider.value = currentHp;
+
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            if (_isDebug == false) _isDebug = true;
+            else _isDebug = false;
+
+            Debug.Log(_isDebug);
+        }
+
         OnMove();
         // 장애물에 안걸리는 에너미 찾아서 그쪽 방향으로 바라보기
-        FindNearestEnemy();
+        //FindNearestEnemy();
         OnLook();
         // 공격
+        // 디버그용 발사체 발사
+        if (_isDebug == true)
+        {
+            if (Input.GetMouseButton(0))
+            {
+                //isAttacking = true;
+                //statHandler.Health -= 1;
+                PenetrationShot();
+            }
+            if(Input.GetMouseButton(1))
+            {
+                isAttacking = true;
+            }
+        }
     }
 
     public override void Death()
@@ -57,31 +88,50 @@ public class PlayerController : BaseController
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         movementDirection = new Vector2(horizontal, vertical).normalized;
-
+        
         // 멈춰 있을 때 공격한다.
-        if (movementDirection.x == 0 && movementDirection.y == 0) isAttacking = _target != null ? true : false;
-        else isAttacking = false;
-        
-        
+        if (_isDebug == false)
+        {
+            if (movementDirection.x == 0 && movementDirection.y == 0) isAttacking = _target != null ? true : false;
+            else isAttacking = false;
+        }
     }
 
     void OnLook()
     {
         // 지금 공격중이 아니거나 타겟이 없다면 리턴
-        if (!isAttacking) return;
-        if (!_target ) return;
-
-        Vector2 targetPos = _target.transform.position;
-
-        lookDirection = (targetPos - (Vector2)transform.position);//빼본다
-
-        if (lookDirection.magnitude < 0.9f)
+        Vector2 targetPos;
+        if (_isDebug == true)
         {
-            lookDirection = Vector2.zero;
+
+            Vector2 mousePos = Input.mousePosition;
+            targetPos = Camera.main.ScreenToWorldPoint(mousePos);
         }
         else
         {
-            lookDirection = lookDirection.normalized;//이것으로 바라보는 방향의 벡터를 지정한다.
+            if (!isAttacking) return;
+            if (!_target ) return;
+
+            targetPos = _target.transform.position;
+        }
+
+        if (movementDirection.magnitude > 0)
+        {
+            lookDirection = movementDirection;
+        }
+        else
+        {
+
+            lookDirection = (targetPos - (Vector2)transform.position);//빼본다
+
+            if (lookDirection.magnitude < 0.9f)
+            {
+                lookDirection = Vector2.zero;
+            }
+            else
+            {
+                lookDirection = lookDirection.normalized;//이것으로 바라보는 방향의 벡터를 지정한다.
+            }
         }
     }
 
@@ -130,5 +180,33 @@ public class PlayerController : BaseController
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, 5f);
+    }
+
+    // 능력 구현?
+    public void AttackSpeedUp()
+    {
+        if (weaponHandler == null) return;
+        weaponHandler.Delay -= 0.15f;
+    }
+
+    public void DoubleShot()
+    {
+        if (weaponHandler == null) return;
+        weaponHandler.Power += 2f;
+        
+    }
+
+    public void PenetrationShot()
+    {
+        // 발사체 가져와서 isTrigge = true로
+        ProjectileManager.Instance.IsTriggerOn((RangeWeaponHandler)WeaponPrefab);
+
+    }
+
+    public void ReflectShot()
+    {
+        // 반사 on -> ProjectijleController 에 벽이랑 부딪혔을 시 반사되게끔 구현
+
+
     }
 }
