@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 //using UnityEngine.InputSystem;
 
 public class PlayerController : BaseController
@@ -29,14 +30,22 @@ public class PlayerController : BaseController
         //this.gameManager = gameManager;
         camera = Camera.main;
     }*/
-
     [SerializeField] private float findRadius = 5f;  // 감지범위
     [SerializeField] private LayerMask enemyLayer;   // 에너미 레이어
     private GameObject _target;                      // 공격할 타겟
     private bool _isDebug;
 
+    [SerializeField] private Slider hpSlider;
+
+    int maxHp;
+    int currentHp;
+
     protected override void HandleAction()
     {
+        maxHp = statHandler.Health;
+        currentHp = maxHp;
+        hpSlider.value = currentHp;
+
         if (Input.GetKeyDown(KeyCode.F1))
         {
             if (_isDebug == false) _isDebug = true;
@@ -54,7 +63,10 @@ public class PlayerController : BaseController
         if (_isDebug == true)
         {
             if (Input.GetMouseButton(0))
-                isAttacking = true;
+            {
+                //isAttacking = true;
+                statHandler.Health -= 1;
+            }
         }
     }
 
@@ -71,17 +83,13 @@ public class PlayerController : BaseController
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         movementDirection = new Vector2(horizontal, vertical).normalized;
-
+        
         // 멈춰 있을 때 공격한다.
         if (_isDebug == false)
         {
-
             if (movementDirection.x == 0 && movementDirection.y == 0) isAttacking = _target != null ? true : false;
             else isAttacking = false;
         }
-
-
-        
     }
 
     void OnLook()
@@ -97,8 +105,8 @@ public class PlayerController : BaseController
         }
         else
         {
-        if (!isAttacking) return;
-        if (!_target ) return;
+            if (!isAttacking) return;
+            if (!_target ) return;
 
             targetPos = _target.transform.position;
         }
