@@ -65,7 +65,12 @@ public class PlayerController : BaseController
             if (Input.GetMouseButton(0))
             {
                 //isAttacking = true;
-                statHandler.Health -= 1;
+                //statHandler.Health -= 1;
+                PenetrationShot();
+            }
+            if(Input.GetMouseButton(1))
+            {
+                isAttacking = true;
             }
         }
     }
@@ -101,7 +106,6 @@ public class PlayerController : BaseController
 
             Vector2 mousePos = Input.mousePosition;
             targetPos = Camera.main.ScreenToWorldPoint(mousePos);
-            Debug.Log("mouse");
         }
         else
         {
@@ -195,10 +199,14 @@ public class PlayerController : BaseController
     public void PenetrationShot()
     {
         // 발사체 가져와서 isTrigge = true로
+        ProjectileManager.Instance.IsTriggerOn((RangeWeaponHandler)WeaponPrefab);
+
     }
 
     public void ReflectShot()
     {
         // 반사 on -> ProjectijleController 에 벽이랑 부딪혔을 시 반사되게끔 구현
+
+
     }
 }
