@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 8206069414997453826}
   - component: {fileID: 9031818409637953494}
   m_Layer: 0
-  m_Name: Weapon_Sharvel
+  m_Name: Weapon_Shorvel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -190,7 +190,7 @@ MonoBehaviour:
   attackRange: 10
   target:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   isOnKnockback: 0
   knockbackPower: 0.1
   knockbackTime: 0.5
@@ -199,7 +199,7 @@ MonoBehaviour:
   bulletIndex: 0
   bulletSize: 1
   duration: 1
-  spread: 0
-  numberofProjectilesPerShot: 1
-  multipleProjectileAngle: 0
+  spread: 10
+  numberofProjectilesPerShot: 2
+  multipleProjectileAngle: 20
   projectileColor: {r: 1, g: 1, b: 1, a: 1}
