@@ -64,7 +64,7 @@ public class PlayerController : BaseController
             {
                 //isAttacking = true;
                 //statHandler.Health -= 1;
-                ReflectShot();
+                PenetrationShot();
             }
             if(Input.GetMouseButton(1))
             {
@@ -215,16 +215,27 @@ public class PlayerController : BaseController
     }
 
     // 후방화살
+    public void BackShot()
+    {
+
+    }
+
     // 양옆화살
+    public void SideShot()
+    {
+
+    }
 
     public void PenetrationShot()
     {
         // 여기서 관통을 On 해주자
+        ProjectileManager.Instance.Penetrate = true;
     }
 
     public void ReflectShot()
     {
         // 반사 on -> ProjectijleController 에 벽이랑 부딪혔을 시 반사되게끔 구현
-        //ProjectileManager.Instance.ReflectOn(weaponHandler.GetComponent<RangeWeaponHandler>());
+
+        ProjectileManager.Instance.Reflect = true;
     }
 }
