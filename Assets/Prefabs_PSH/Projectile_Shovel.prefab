@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 6896830051037497947}
   - component: {fileID: 9190814683635571573}
   m_Layer: 0
-  m_Name: Projectile_Shavel
+  m_Name: Projectile_Shovel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
