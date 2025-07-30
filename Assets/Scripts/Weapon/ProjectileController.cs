@@ -23,6 +23,11 @@ public class ProjectileController : MonoBehaviour
     private bool _reflect = false;
     private bool _penetrate = false;
 
+    [Header("Fields for explosive bullets")]
+    [SerializeField] private bool _isExplosive = false;
+    [SerializeField] private GameObject explosionRange;
+    private bool _explosionStart = false;
+
     private void Awake()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -40,7 +45,10 @@ public class ProjectileController : MonoBehaviour
         {
             DestroyProjectile(transform.position, false);//최대 사거리 느낌. 최대 사거리가 넘어가면 파괴한다.
         }
-        _rigidbody.velocity = direction * rangeWeaponHandler.Speed;//그렇지 않다면 계속 정해진 방향과 정해진 속도로 나아간다.
+        if (!_explosionStart)
+        {
+            _rigidbody.velocity = direction * rangeWeaponHandler.Speed;//그렇지 않다면 계속 정해진 방향과 정해진 속도로 나아간다.
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)//뭔가 맞았다!
@@ -104,18 +112,34 @@ public class ProjectileController : MonoBehaviour
         {
             pivot.localRotation = Quaternion.Euler(0, 0, 0);//아니라면 그대로 둔다.
         }
+        if (_isExplosive)
+        {
+            explosionRange.gameObject.SetActive(false);
+        }
         isReady = true;//준비 됐다.
     }
 
     private void DestroyProjectile(Vector3 position, bool createFx)
     {
+        if (_isExplosive)
+        {
+            ExplosiveProjectileControl(rangeWeaponHandler);
+            return;
+        }
         if (createFx)
         {
             projectileManager.CreateImpactParticlesAtPosition(position, rangeWeaponHandler);//projeectileManager의 파티클 생성 메서드로 보낸다.
         }
         Destroy(this.gameObject);
     }
+    private void ExplosiveProjectileControl(RangeWeaponHandler rangeWeaponHander)
+    {
+        _explosionStart = true;
+        _rigidbody.velocity = Vector2.zero;
 
+        ExplosiveAftermathController explosiveAftermathController = explosionRange.GetComponent<ExplosiveAftermathController>();
+        explosiveAftermathController.Init(rangeWeaponHandler);
+    }
     public void ReflectOn()
     {
         if (!_reflect) _reflect = true;

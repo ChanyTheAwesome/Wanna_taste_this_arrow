@@ -24,7 +24,6 @@ public class EnemyFSM : MonoBehaviour
     {
         if(target == null)
         {
-            Debug.Log("test");
             return;
         }
         if(_isCloseToPlayer)
@@ -35,7 +34,6 @@ public class EnemyFSM : MonoBehaviour
         {
             _navMeshAgent.SetDestination(target.transform.position);
         }
-        Debug.Log(_isCloseToPlayer + "," + this.gameObject.name);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
