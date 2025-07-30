@@ -26,6 +26,7 @@ public class BaseController : MonoBehaviour
     protected WeaponHandler weaponHandler;
 
     protected bool isAttacking;
+    protected bool isLeft;
 
     private float timeSincelastAttack = float.MaxValue;
 
@@ -85,7 +86,7 @@ public class BaseController : MonoBehaviour
     protected virtual void Rotate(Vector2 direction)
     {
         float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; //각도 구하기, 뒤의 것은 라디안 값에서 우리가 잘 아는 각도로 변환해주는 것.
-        bool isLeft = Mathf.Abs(rotZ) > 90; 
+        isLeft = Mathf.Abs(rotZ) > 90; 
         
 
         if (weaponPivot != null)

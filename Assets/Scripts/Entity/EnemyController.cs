@@ -33,8 +33,6 @@ public class EnemyController : BaseController
     protected override void Rotate(Vector2 direction)
     {
         base.Rotate(direction);
-        float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; //각도 구하기, 뒤의 것은 라디안 값에서 우리가 잘 아는 각도로 변환해주는 것.
-        bool isLeft = Mathf.Abs(rotZ) > 90;
         characterRenderer.flipX = isLeft;//90도 넘나요? 예-> 왼쪽 보셈 아니오-> 오른쪽 보셈
     }
     protected Vector2 DirectionToTarget()
