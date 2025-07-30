@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 8206069414997453826}
   - component: {fileID: 9031818409637953494}
   m_Layer: 0
-  m_Name: Weapon_Shorvel
+  m_Name: Weapon_Shovel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
