@@ -33,6 +33,7 @@ public class BaseController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         animationhandler = GetComponent<AnimationHandler>();
         statHandler = GetComponent<StatHandler>();
+
         if(WeaponPrefab != null)
         {
             weaponHandler = Instantiate(WeaponPrefab, weaponPivot);
