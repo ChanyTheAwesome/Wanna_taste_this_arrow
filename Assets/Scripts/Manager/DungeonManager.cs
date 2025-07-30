@@ -18,7 +18,6 @@ public class DungeonManager : MonoBehaviour
         get { return _currentDungeonID; }
         set { _currentDungeonID = value; }
     }
-
     
     private bool _isFirstStage;
 
@@ -55,8 +54,9 @@ public class DungeonManager : MonoBehaviour
     {
         AddDungeonList();
 
-        _enemyManager = FindObjectOfType<EnemyManager>();//<- This is TOO DANGEROUS!!!
-        _enemyController = FindObjectOfType<EnemyController>();//<- This is TOO DANGEROUS!!!
+        _enemyManager = FindObjectOfType<EnemyManager>();
+        _enemyController = FindObjectOfType<EnemyController>();
+        //These are too heavy to deal with, and some minor potential errors
     }
     private void AddDungeonList()
     {

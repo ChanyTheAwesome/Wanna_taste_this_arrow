@@ -10,9 +10,16 @@ public class StageLightControl : MonoBehaviour
     public Light directionalLight;
     public Light playerLight; //Too Much public Variants?
     private void Awake()
-    {//It is Really dangerous to use GetComponent() in Awake()!!!
-        directionalLight = GameObject.Find("DirectionalLight").GetComponent<Light>();
-        playerLight = GameObject.Find("PlayerLight").GetComponent<Light>();
+    {
+        directionalLight = GameObject.Find("DirectionalLight").GetComponent<Light>();//This might cause potential nullexception errors.
+        //Instead, consider this.
+        //GameObject directionalLightGameObject = GameObject.Find("DirectionalLight");
+        //if (directionalLightGameObject != null)
+        //{
+        //    directionalLight = directionalLightGameObject.GetComponent<Light>();
+        //}
+
+        playerLight = GameObject.Find("PlayerLight").GetComponent<Light>();//This also.
     }
     void Start()
     {

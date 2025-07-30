@@ -17,14 +17,7 @@ public class ExplosiveAftermathController : MonoBehaviour
         transform.localScale = new Vector3(_size, _size);
 
         gameObject.SetActive(true);
-
-        StartCoroutine(ActivateExplosionGO());
-    }
-
-    private IEnumerator ActivateExplosionGO()
-    {
-        yield return new WaitForSeconds(0.5f);
-        Destroy(this.transform.root.gameObject);
+        Destroy(this.transform.root.gameObject, 0.5f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
