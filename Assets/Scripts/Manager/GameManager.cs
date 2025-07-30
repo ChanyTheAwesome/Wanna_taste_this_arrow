@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("적 없음");
         }
         DungeonManager.instance.CheckClearStage();
+
     }
 
     public void StartGame() // 처음에 게임 실행했을 때 실행할 것들, 스테이지나 던전 시작 아님, 최초 1회만 실행됨 다시 돌아와도 실행안됨
@@ -61,5 +62,17 @@ public class GameManager : MonoBehaviour
             }
         }
         return objectCount;
+    }
+
+    public void UpStageCount()
+    {
+        stageCount++;
+        Debug.Log(stageCount);
+    }
+
+    public void DownStageCount()
+    {
+        stageCount--;
+        Debug.Log(stageCount);
     }
 }

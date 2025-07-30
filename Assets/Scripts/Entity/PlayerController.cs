@@ -44,7 +44,7 @@ public class PlayerController : BaseController
     {
         maxHp = statHandler.Health;
         currentHp = maxHp;
-        hpSlider.value = currentHp;
+        //hpSlider.value = currentHp;
 
         if (Input.GetKeyDown(KeyCode.F1))
         {
