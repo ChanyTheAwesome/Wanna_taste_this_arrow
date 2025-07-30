@@ -10,6 +10,7 @@ public class ProjectileManager : MonoBehaviour
     [SerializeField] private GameObject[] projectilePrefabs;
     public GameObject[] ProjectilePrefabs => projectilePrefabs;
     [SerializeField] private ParticleSystem impactParticleSystem;
+
     private void Awake()
     {
         instance = this;
