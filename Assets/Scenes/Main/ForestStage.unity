@@ -22115,7 +22115,7 @@ PrefabInstance:
     - target: {fileID: 5679662816851273868, guid: 98c267eaee685754e89416bed7e57d12,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5679662816851273868, guid: 98c267eaee685754e89416bed7e57d12,
         type: 3}
@@ -22283,7 +22283,7 @@ MonoBehaviour:
   maxX: 7.6
   minX: -7.6
   yMultiplier: 0.5
-  xMultiflier: 0.8
+  xMultiplier: 0.8
   stageCount: 1
 --- !u!4 &512954026
 Transform:

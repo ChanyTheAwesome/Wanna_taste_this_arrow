@@ -12,7 +12,7 @@ public class MakeObstacle : MonoBehaviour
     [SerializeField]
     private float maxY = 22f;
     [SerializeField]
-    private float minY = -3f;
+    private float minY = 0f;
     [SerializeField]
     private float maxX = 7.6f;
     [SerializeField]
@@ -35,14 +35,14 @@ public class MakeObstacle : MonoBehaviour
 
     public void SpawnObstacle() //
     {
-        float countX = (Mathf.Abs(maxX) + Mathf.Abs(minX)) / xMultiplier;
-        float countY = (Mathf.Abs(maxY) + Mathf.Abs(minY)) / yMultiplier;
+        int countX = (int)((Mathf.Abs(maxX) + Mathf.Abs(minX)) / xMultiplier);
+        int countY = (int)((Mathf.Abs(maxY) + Mathf.Abs(minY)) / yMultiplier);
 
 
-        int xPosMult = (int)(Random.Range(0, countX));
-        int yPosMult = (int)Random.Range(0, countY);
+        int xPosMult = Random.Range(0, countX);
+        int yPosMult = Random.Range(0, countY);
 
-        float xPos = xPosMult * xMultiplier;
+        float xPos = xPosMult * xMultiplier - 7.6f;
         float yPos = yPosMult * yMultiplier;
 
         Vector3 obstaclePos = new Vector3(xPos, yPos, 0);
