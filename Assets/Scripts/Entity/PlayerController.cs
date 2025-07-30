@@ -50,8 +50,6 @@ public class PlayerController : BaseController
         {
             if (_isDebug == false) _isDebug = true;
             else _isDebug = false;
-
-            Debug.Log(_isDebug);
         }
 
         OnMove();
@@ -66,7 +64,7 @@ public class PlayerController : BaseController
             {
                 //isAttacking = true;
                 //statHandler.Health -= 1;
-                PenetrationShot();
+                ReflectShot();
             }
             if(Input.GetMouseButton(1))
             {
@@ -198,15 +196,12 @@ public class PlayerController : BaseController
 
     public void PenetrationShot()
     {
-        // 발사체 가져와서 isTrigge = true로
-        ProjectileManager.Instance.IsTriggerOn((RangeWeaponHandler)WeaponPrefab);
-
+        // 여기서 관통을 On 해주자
     }
 
     public void ReflectShot()
     {
         // 반사 on -> ProjectijleController 에 벽이랑 부딪혔을 시 반사되게끔 구현
-
-
+        
     }
 }

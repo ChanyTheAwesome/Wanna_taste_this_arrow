@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 594957533211224533}
   - component: {fileID: 4996507893933645540}
   - component: {fileID: 2846885309146973800}
-  m_Layer: 20
+  m_Layer: 7
   m_Name: ForestObstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

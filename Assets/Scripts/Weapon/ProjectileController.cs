@@ -20,6 +20,8 @@ public class ProjectileController : MonoBehaviour
 
     ProjectileManager projectileManager;
 
+    private bool _reflect = false;
+
     private void Awake()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -44,7 +46,19 @@ public class ProjectileController : MonoBehaviour
     {
         if(levelCollisionLayer.value == (levelCollisionLayer.value | (1 << collision.gameObject.layer)))//Level레이어는 Level-Grid-Collision에 붙어있다.
         {
+            if(_reflect)
+            {
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 1f, levelCollisionLayer);
+
+                if (hit.collider != null)
+                {
+                    Vector2 normal = hit.normal;
+                    direction = Vector2.Reflect(direction, normal);
+                    transform.right = direction;
+                }
+            }
             DestroyProjectile(collision.ClosestPoint(transform.position) - direction * 0.2f, fxOnDestroy);
+
         }
         else if(rangeWeaponHandler.target.value == (rangeWeaponHandler.target.value | (1 << collision.gameObject.layer)))
         {//타겟과 같다면,
@@ -94,5 +108,10 @@ public class ProjectileController : MonoBehaviour
             projectileManager.CreateImpactParticlesAtPosition(position, rangeWeaponHandler);//projeectileManager의 파티클 생성 메서드로 보낸다.
         }
         Destroy(this.gameObject);
+    }
+
+    public void ReflectOn()
+    {
+        if (!_reflect) _reflect = true;
     }
 }
