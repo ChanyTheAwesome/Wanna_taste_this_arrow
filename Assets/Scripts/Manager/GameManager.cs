@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        _enemyManager = FindObjectOfType<EnemyManager>();//<- This is TOO DANGEROUS!
+        _enemyManager = FindObjectOfType<EnemyManager>();
         DungeonManager.Instance.CurrentDungeonID = 1;
     }
 
