@@ -57,10 +57,12 @@ public class EnemyManager : MonoBehaviour
     {
         if(GameManager.instance.CheckLayerObjectCount(enemyLayerMask) == 0)
         {
+            Debug.Log(GameManager.instance.CheckLayerObjectCount(enemyLayerMask));
             return false;
         }
         else
         {
+            Debug.Log(GameManager.instance.CheckLayerObjectCount(enemyLayerMask));
             return true;
         }
     }
