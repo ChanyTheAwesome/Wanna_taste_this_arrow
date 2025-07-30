@@ -7,6 +7,7 @@ public class SceneController : MonoBehaviour
 {
     public static SceneController instance;
 
+    // 오타 방지
     private string mainSceneName = "MainScene";
     private string gameSceneName = "GameScene";
 
@@ -15,22 +16,12 @@ public class SceneController : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void LoadMainScene()
