@@ -22,11 +22,12 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         enemyManager = FindObjectOfType<EnemyManager>();
+        DungeonManager.instance.currentDungeonID = 1;
     }
     // Start is called before the first frame update
     private void Start()
     {
-        StartGame();    // 게임 매니저를 파괴되지 않게 했는데 씬을 다시 불러와도 Start가 실행하나?
+        
     }
 
     private void Update()
