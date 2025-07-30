@@ -9,12 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5566474411950153573}
-  - component: {fileID: 620803603319085138}
-  - component: {fileID: 5055229265860402093}
-  - component: {fileID: 3274515204784515214}
   - component: {fileID: 3518867926945987576}
   - component: {fileID: 8874319825334170286}
-  - component: {fileID: 8127696547810065320}
+  - component: {fileID: 8325933168234682038}
+  - component: {fileID: -5055538353451951912}
+  - component: {fileID: 3324218539916768937}
+  - component: {fileID: -7946074386575038095}
+  - component: {fileID: 5459869726668747255}
+  - component: {fileID: -244007367820654769}
   m_Layer: 0
   m_Name: ZombieWithShovel
   m_TagString: Untagged
@@ -39,52 +41,6 @@ Transform:
   - {fileID: 5388903157187318908}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &620803603319085138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6889387185781039892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9399e61853f6b5d45abf3f2295bc350e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthChangeDelay: 0.5
-  damageClip: {fileID: 0}
---- !u!114 &5055229265860402093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6889387185781039892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19f85e27f8618014c89d1f689d50af18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 10
-  speed: 1.5
---- !u!114 &3274515204784515214
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6889387185781039892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 187b721b526e2214e8b6df4d052a7116, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterRenderer: {fileID: 3831058799859963935}
-  weaponPivot: {fileID: 5388903157187318908}
-  WeaponPrefab: {fileID: 3801632503471262595, guid: d368c2250834e8a4a88abd230b024c22,
-    type: 3}
-  target: {fileID: 0}
-  followRange: 15
 --- !u!50 &3518867926945987576
 Rigidbody2D:
   serializedVersion: 4
@@ -157,7 +113,53 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &8127696547810065320
+--- !u!114 &8325933168234682038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6889387185781039892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9399e61853f6b5d45abf3f2295bc350e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthChangeDelay: 0.5
+  damageClip: {fileID: 0}
+--- !u!114 &-5055538353451951912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6889387185781039892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19f85e27f8618014c89d1f689d50af18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  speed: 1.5
+--- !u!114 &3324218539916768937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6889387185781039892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 187b721b526e2214e8b6df4d052a7116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterRenderer: {fileID: 3831058799859963935}
+  weaponPivot: {fileID: 5388903157187318908}
+  WeaponPrefab: {fileID: 3801632503471262595, guid: d368c2250834e8a4a88abd230b024c22,
+    type: 3}
+  target: {fileID: 0}
+  followRange: 15
+--- !u!114 &-7946074386575038095
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,6 +171,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a67d1259959e7734aa2df99b6b60c8ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!195 &5459869726668747255
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6889387185781039892}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 1.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 0
+--- !u!114 &-244007367820654769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6889387185781039892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 082349d5818c70449890823c9d59adff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  _navMeshAgent: {fileID: 0}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  _isCloseToPlayer: 0
 --- !u!1 &7085944191253962964
 GameObject:
   m_ObjectHideFlags: 0
