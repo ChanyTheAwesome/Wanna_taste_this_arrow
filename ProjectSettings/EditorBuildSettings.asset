@@ -4,5 +4,20 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Main/MainTitle.unity
+    guid: b8f46a943524995409fe500d124975c8
+  - enabled: 1
+    path: Assets/Scenes/Main/ForestStage.unity
+    guid: 40eb3ad1822e7024b8575bc09ac23e2b
+  - enabled: 1
+    path: Assets/Scenes/Main/ForestBossStage.unity
+    guid: 5b59802bb6303324f89819e1ee212b76
+  - enabled: 1
+    path: Assets/Scenes/Main/CaveStage.unity
+    guid: fe2a342cc9c2e2c458b25605f7f4f67f
+  - enabled: 1
+    path: Assets/Scenes/Main/CaveBossStage.unity
+    guid: c4c2e14badbe8a74194c8ab2979a4a25
   m_configObjects: {}
