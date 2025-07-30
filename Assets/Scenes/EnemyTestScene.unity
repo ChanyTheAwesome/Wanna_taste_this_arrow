@@ -142,6 +142,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1457726291}
+  _navMeshAgent: {fileID: 0}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  _isCloseToPlayer: 0
 --- !u!195 &6636172
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -259,7 +264,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -244007367820654769, guid: d09f522865fc0164c90cd6f4ec22228a,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1457726291}
     - target: {fileID: 3274515204784515214, guid: d09f522865fc0164c90cd6f4ec22228a,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1457726293}
+    - target: {fileID: 3324218539916768937, guid: d09f522865fc0164c90cd6f4ec22228a,
         type: 3}
       propertyPath: target
       value: 
@@ -319,11 +334,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZombieWithShovel
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 620803603319085138, guid: d09f522865fc0164c90cd6f4ec22228a, type: 3}
-    - {fileID: 5055229265860402093, guid: d09f522865fc0164c90cd6f4ec22228a, type: 3}
-    - {fileID: 3274515204784515214, guid: d09f522865fc0164c90cd6f4ec22228a, type: 3}
-    - {fileID: 8127696547810065320, guid: d09f522865fc0164c90cd6f4ec22228a, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -1139,6 +1150,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1457726291}
+  _navMeshAgent: {fileID: 0}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  _isCloseToPlayer: 0
 --- !u!195 &257944080
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1160,7 +1176,7 @@ NavMeshAgent:
   m_Height: 1
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!1 &259252222 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2075808908058400892, guid: 98c267eaee685754e89416bed7e57d12,
@@ -9576,6 +9592,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -9153390296475690079, guid: b6058bb8651b9f4468e7cdb4edde1e3a,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1457726291}
     - target: {fileID: 7263277187695838396, guid: b6058bb8651b9f4468e7cdb4edde1e3a,
         type: 3}
       propertyPath: target

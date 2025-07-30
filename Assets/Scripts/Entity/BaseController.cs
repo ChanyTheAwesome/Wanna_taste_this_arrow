@@ -24,7 +24,7 @@ public class BaseController : MonoBehaviour
     protected StatHandler statHandler;
 
     [SerializeField] public WeaponHandler WeaponPrefab;
-
+    [SerializeField] public ProjectileManager projectileManager;
     protected WeaponHandler weaponHandler;
     protected bool isAttacking;
     private float timeSincelastAttack = float.MaxValue;
@@ -33,7 +33,7 @@ public class BaseController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         animationhandler = GetComponent<AnimationHandler>();
         statHandler = GetComponent<StatHandler>();
-
+        
         if(WeaponPrefab != null)
         {
             weaponHandler = Instantiate(WeaponPrefab, weaponPivot);

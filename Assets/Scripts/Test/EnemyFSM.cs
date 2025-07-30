@@ -6,9 +6,10 @@ using UnityEngine.AI;
 public class EnemyFSM : MonoBehaviour
 {
     [SerializeField] private GameObject target;
-    private NavMeshAgent _navMeshAgent;
+    [SerializeField] private NavMeshAgent _navMeshAgent;
+    [SerializeField] public LayerMask targetLayer;
 
-    private bool _isCloseToPlayer;
+    public bool _isCloseToPlayer;
     private void Start()
     {
         _isCloseToPlayer = false;
@@ -34,15 +35,23 @@ public class EnemyFSM : MonoBehaviour
         {
             _navMeshAgent.SetDestination(target.transform.position);
         }
+        Debug.Log(_isCloseToPlayer + "," + this.gameObject.name);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        _isCloseToPlayer = true;
+        if(targetLayer.value == (targetLayer.value | (1 << collision.gameObject.layer)))
+        {
+            _isCloseToPlayer = true;
+        }
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        _isCloseToPlayer = false;
+        if (targetLayer.value == (targetLayer.value | (1 << collision.gameObject.layer)))
+        {
+            _isCloseToPlayer = false;
+        }
     }
 }

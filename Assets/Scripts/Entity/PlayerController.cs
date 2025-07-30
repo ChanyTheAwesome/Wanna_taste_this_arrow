@@ -50,13 +50,11 @@ public class PlayerController : BaseController
         {
             if (_isDebug == false) _isDebug = true;
             else _isDebug = false;
-
-            Debug.Log(_isDebug);
         }
 
         OnMove();
         // 장애물에 안걸리는 에너미 찾아서 그쪽 방향으로 바라보기
-        //FindNearestEnemy();
+        FindNearestEnemy();
         OnLook();
         // 공격
         // 디버그용 발사체 발사
@@ -66,7 +64,7 @@ public class PlayerController : BaseController
             {
                 //isAttacking = true;
                 //statHandler.Health -= 1;
-                PenetrationShot();
+                ReflectShot();
             }
             if(Input.GetMouseButton(1))
             {
@@ -183,30 +181,50 @@ public class PlayerController : BaseController
     }
 
     // 능력 구현?
+    public void MaxHpUp()
+    {
+        if (statHandler == null) return;
+        statHandler.Health += 20;
+    }
+
+    public void MoveSpeedUp()
+    {
+        if (statHandler == null) return;
+        statHandler.Speed += 1f;
+    }
+
     public void AttackSpeedUp()
     {
         if (weaponHandler == null) return;
         weaponHandler.Delay -= 0.15f;
     }
 
-    public void DoubleShot()
+    public void AttackPowerUp()
     {
         if (weaponHandler == null) return;
         weaponHandler.Power += 2f;
         
     }
 
+    public void TripleShot()
+    {
+        if (weaponHandler == null) return;
+        RangeWeaponHandler weapon = weaponHandler.GetComponent<RangeWeaponHandler>();
+        weapon.NumberofProjectilesPerShot = 3;
+        weapon.MultipleProjectileAngle = 30f;
+    }
+
+    // 후방화살
+    // 양옆화살
+
     public void PenetrationShot()
     {
-        // 발사체 가져와서 isTrigge = true로
-        ProjectileManager.Instance.IsTriggerOn((RangeWeaponHandler)WeaponPrefab);
-
+        // 여기서 관통을 On 해주자
     }
 
     public void ReflectShot()
     {
         // 반사 on -> ProjectijleController 에 벽이랑 부딪혔을 시 반사되게끔 구현
-
-
+        //ProjectileManager.Instance.ReflectOn(weaponHandler.GetComponent<RangeWeaponHandler>());
     }
 }

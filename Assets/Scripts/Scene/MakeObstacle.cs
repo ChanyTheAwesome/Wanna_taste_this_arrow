@@ -21,12 +21,14 @@ public class MakeObstacle : MonoBehaviour
     private float yMultiplier = 0.5f;
     [SerializeField]
     private float xMultiplier = 0.8f;
+    public int objCount = 100;
+    
 
     public int stageCount = 1;
 
     void Start()
     {
-        for(int i = 0; i < 100; i++)
+        for(int i = 0; i < objCount; i++)
         {
 
             SpawnObstacle();
@@ -35,15 +37,15 @@ public class MakeObstacle : MonoBehaviour
 
     public void SpawnObstacle() //
     {
-        int countX = (int)((Mathf.Abs(maxX) + Mathf.Abs(minX)) / xMultiplier);
-        int countY = (int)((Mathf.Abs(maxY) + Mathf.Abs(minY)) / yMultiplier);
+        int countX = (int)((maxX - minX) / xMultiplier);
+        int countY = (int)((maxY - minY) / yMultiplier);
 
 
         int xPosMult = Random.Range(0, countX);
         int yPosMult = Random.Range(0, countY);
 
-        float xPos = xPosMult * xMultiplier - 7.6f;
-        float yPos = yPosMult * yMultiplier;
+        float xPos = xPosMult * xMultiplier + minX;
+        float yPos = yPosMult * yMultiplier + minY;
 
         Vector3 obstaclePos = new Vector3(xPos, yPos, 0);
         Instantiate(obstacle, obstaclePos, Quaternion.identity, obstacles.transform);
