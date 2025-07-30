@@ -6,10 +6,13 @@ public class EnemyManager : MonoBehaviour
 {
     //private Coroutine waveRoutine;
 
+    [SerializeField] private LayerMask enemyLayerMask;  // Enemy 존재여부 확인용 레이어
+
     [SerializeField] private List<GameObject> enemyPrefabs;
 
     [SerializeField] List<Rect> spawnAreas;
     [SerializeField] private Color gizmoColor = new Color(1, 0, 0, 0.3f);
+
     //private List<EnemyController> activeEnemies = new List<EnemyController>();
 
     private bool enemySpawnComplite;
@@ -50,22 +53,16 @@ public class EnemyManager : MonoBehaviour
 
     }
 
-    public int CheckLayerObjectCount(string targetLayerName)    // 특정 레이어를 가진 게임오브젝트의 개수를 카운팅
+    public bool CheckEnemyExist()   // Enemy 레이어를 가진 오브젝트가 존재하는지 체크, 없으면 false 있으면 true
     {
-        GameObject[] allGameObjects = FindObjectsOfType<GameObject>();  // 모든 게임오브젝트를 가져옴, 비활성화된 것 제외
-
-        int targetLayerIndex = LayerMask.NameToLayer(targetLayerName);  // 레이어 인덱스 값 저장
-
-        int prefabCount = 0;
-
-        foreach(GameObject gameObject in allGameObjects)    // 게임오브젝트 순회
+        if(GameManager.instance.CheckLayerObjectCount(enemyLayerMask) == 0)
         {
-            if(gameObject.layer == targetLayerIndex)    // 레이어를 비교
-            {
-                prefabCount++;  // 맞으면 카운트 증가
-            }
+            return false;
         }
-        return prefabCount;
+        else
+        {
+            return true;
+        }
     }
 
     private void SpawnRandomEnemy()

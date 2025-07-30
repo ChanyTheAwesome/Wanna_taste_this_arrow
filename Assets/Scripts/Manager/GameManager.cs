@@ -30,4 +30,20 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+    public int CheckLayerObjectCount(LayerMask targetLayer)    // 특정 레이어를 가진 오브젝트의 개수를 카운팅
+    {
+        GameObject[] allGameObjects = FindObjectsOfType<GameObject>();  // 모든 게임오브젝트를 가져옴, 비활성화된 것 제외
+
+        int objectCount = 0;
+
+        foreach (GameObject gameObject in allGameObjects)    // 게임오브젝트 순회
+        {
+            if (gameObject.layer == targetLayer)    // 레이어를 비교
+            {
+                objectCount++;  // 맞으면 카운트 증가
+            }
+        }
+        return objectCount;
+    }
 }
