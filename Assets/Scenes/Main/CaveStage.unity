@@ -573,6 +573,7 @@ MonoBehaviour:
   weaponPivot: {fileID: 1536349194}
   WeaponPrefab: {fileID: 9031818409637953494, guid: e893839a59bb65148948f29c48252869,
     type: 3}
+  projectileManager: {fileID: 0}
   findRadius: 5
   enemyLayer:
     serializedVersion: 2
@@ -659,7 +660,7 @@ Transform:
   m_GameObject: {fileID: 337190569}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 13.69, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14810,21 +14811,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 512954024}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 661c6c637c21e154186533bc863e6e81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   obstacles: {fileID: 512954024}
-  obstacle: {fileID: 5094311886530971435, guid: 59e1338480ff9d4458fd1aaf22f6df47,
+  obstacle: {fileID: 8500988319644289081, guid: 59e1338480ff9d4458fd1aaf22f6df47,
     type: 3}
-  maxY: 35
-  minY: -4
+  maxY: -5
+  minY: -5
   maxX: 12
-  minX: -12
+  minX: 0
   yMultiplier: 1.2
   xMultiplier: 1.8
-  objCount: 100
+  objCount: 5
   stageCount: 1
 --- !u!4 &512954026
 Transform:
@@ -18578,6 +18579,74 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &1064115258
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3859721748584889232, guid: 59e1338480ff9d4458fd1aaf22f6df47,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859721748584889232, guid: 59e1338480ff9d4458fd1aaf22f6df47,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859721748584889232, guid: 59e1338480ff9d4458fd1aaf22f6df47,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859721748584889232, guid: 59e1338480ff9d4458fd1aaf22f6df47,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859721748584889232, guid: 59e1338480ff9d4458fd1aaf22f6df47,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859721748584889232, guid: 59e1338480ff9d4458fd1aaf22f6df47,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859721748584889232, guid: 59e1338480ff9d4458fd1aaf22f6df47,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859721748584889232, guid: 59e1338480ff9d4458fd1aaf22f6df47,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859721748584889232, guid: 59e1338480ff9d4458fd1aaf22f6df47,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859721748584889232, guid: 59e1338480ff9d4458fd1aaf22f6df47,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500988319644289081, guid: 59e1338480ff9d4458fd1aaf22f6df47,
+        type: 3}
+      propertyPath: m_Name
+      value: CaveObstacle02 (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 59e1338480ff9d4458fd1aaf22f6df47, type: 3}
 --- !u!1 &1086625429 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7947911505737750455, guid: 41ea6afb203377e42995d7d016ea5907,
@@ -18722,12 +18791,12 @@ GameObject:
   - component: {fileID: 1111857639}
   - component: {fileID: 1111857638}
   m_Layer: 0
-  m_Name: Directional Light
+  m_Name: DirectionalLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &1111857638
 Light:
   m_ObjectHideFlags: 0
@@ -18916,7 +18985,7 @@ GameObject:
   - component: {fileID: 1203742217}
   - component: {fileID: 1203742218}
   m_Layer: 0
-  m_Name: Point Light
+  m_Name: PlayerLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22186,6 +22255,79 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: 102
+--- !u!1001 &1901693123
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3009568452990283346, guid: 59e1338480ff9d4458fd1aaf22f6df47,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859721748584889232, guid: 59e1338480ff9d4458fd1aaf22f6df47,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859721748584889232, guid: 59e1338480ff9d4458fd1aaf22f6df47,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 21.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859721748584889232, guid: 59e1338480ff9d4458fd1aaf22f6df47,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859721748584889232, guid: 59e1338480ff9d4458fd1aaf22f6df47,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859721748584889232, guid: 59e1338480ff9d4458fd1aaf22f6df47,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859721748584889232, guid: 59e1338480ff9d4458fd1aaf22f6df47,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859721748584889232, guid: 59e1338480ff9d4458fd1aaf22f6df47,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859721748584889232, guid: 59e1338480ff9d4458fd1aaf22f6df47,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859721748584889232, guid: 59e1338480ff9d4458fd1aaf22f6df47,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859721748584889232, guid: 59e1338480ff9d4458fd1aaf22f6df47,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500988319644289081, guid: 59e1338480ff9d4458fd1aaf22f6df47,
+        type: 3}
+      propertyPath: m_Name
+      value: CaveObstacle02 (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 59e1338480ff9d4458fd1aaf22f6df47, type: 3}
 --- !u!1 &1941804547 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7947911505737750455, guid: 41ea6afb203377e42995d7d016ea5907,
@@ -22262,6 +22404,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3009568452990283346, guid: 59e1338480ff9d4458fd1aaf22f6df47,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3859721748584889232, guid: 59e1338480ff9d4458fd1aaf22f6df47,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22331,8 +22478,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2049596796}
+  - component: {fileID: 2049596797}
   m_Layer: 0
-  m_Name: CaveLightControl
+  m_Name: StageLightControl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22347,12 +22495,27 @@ Transform:
   m_GameObject: {fileID: 2049596795}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.918301, y: 8.933242, z: -0.3155971}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2049596797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049596795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ad7324c46c08c0489f08d30e9eeb4d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageCount: 10
+  directionalLight: {fileID: 0}
+  playerLight: {fileID: 0}
 --- !u!1 &2096279445
 GameObject:
   m_ObjectHideFlags: 0
@@ -22509,74 +22672,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1833739440901526254}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &8389406344140582945
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3859721748584889232, guid: 59e1338480ff9d4458fd1aaf22f6df47,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3859721748584889232, guid: 59e1338480ff9d4458fd1aaf22f6df47,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3859721748584889232, guid: 59e1338480ff9d4458fd1aaf22f6df47,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3859721748584889232, guid: 59e1338480ff9d4458fd1aaf22f6df47,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3859721748584889232, guid: 59e1338480ff9d4458fd1aaf22f6df47,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3859721748584889232, guid: 59e1338480ff9d4458fd1aaf22f6df47,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3859721748584889232, guid: 59e1338480ff9d4458fd1aaf22f6df47,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3859721748584889232, guid: 59e1338480ff9d4458fd1aaf22f6df47,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3859721748584889232, guid: 59e1338480ff9d4458fd1aaf22f6df47,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3859721748584889232, guid: 59e1338480ff9d4458fd1aaf22f6df47,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8500988319644289081, guid: 59e1338480ff9d4458fd1aaf22f6df47,
-        type: 3}
-      propertyPath: m_Name
-      value: CaveObstacle02
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 59e1338480ff9d4458fd1aaf22f6df47, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -22587,7 +22682,8 @@ SceneRoots:
   - {fileID: 2096279447}
   - {fileID: 512954026}
   - {fileID: 337190576}
-  - {fileID: 8389406344140582945}
   - {fileID: 2005087250}
+  - {fileID: 1064115258}
+  - {fileID: 1901693123}
   - {fileID: 1111857639}
   - {fileID: 2049596796}
