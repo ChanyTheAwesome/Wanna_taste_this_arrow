@@ -50,6 +50,24 @@ public class EnemyManager : MonoBehaviour
 
     }
 
+    public int CheckLayerObjectCount(string targetLayerName)    // 특정 레이어를 가진 게임오브젝트의 개수를 카운팅
+    {
+        GameObject[] allGameObjects = FindObjectsOfType<GameObject>();  // 모든 게임오브젝트를 가져옴, 비활성화된 것 제외
+
+        int targetLayerIndex = LayerMask.NameToLayer(targetLayerName);  // 레이어 인덱스 값 저장
+
+        int prefabCount = 0;
+
+        foreach(GameObject gameObject in allGameObjects)    // 게임오브젝트 순회
+        {
+            if(gameObject.layer == targetLayerIndex)    // 레이어를 비교
+            {
+                prefabCount++;  // 맞으면 카운트 증가
+            }
+        }
+        return prefabCount;
+    }
+
     private void SpawnRandomEnemy()
     {
         if (enemyPrefabs.Count == 0 || spawnAreas.Count == 0)
