@@ -121,6 +121,8 @@ GameObject:
   - component: {fileID: 1985055331344318097}
   - component: {fileID: 8849386003584533678}
   - component: {fileID: 6784465282422644505}
+  - component: {fileID: -9208536099592119825}
+  - component: {fileID: -9153390296475690079}
   m_Layer: 0
   m_Name: ZomebieWithGun
   m_TagString: Untagged
@@ -275,6 +277,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a67d1259959e7734aa2df99b6b60c8ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!195 &-9208536099592119825
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7573886762302142023}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 1.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 0
+--- !u!114 &-9153390296475690079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7573886762302142023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 082349d5818c70449890823c9d59adff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  _navMeshAgent: {fileID: 0}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  _isCloseToPlayer: 0
 --- !u!1 &8356926349445289170
 GameObject:
   m_ObjectHideFlags: 0
