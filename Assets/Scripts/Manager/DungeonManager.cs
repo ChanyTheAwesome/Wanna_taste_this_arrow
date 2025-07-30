@@ -7,7 +7,7 @@ public class DungeonManager : MonoBehaviour
 {
     public static DungeonManager instance;
 
-    public List<Dungeon> dungeonList;
+    public List<Dungeon> dungeonList = new List<Dungeon>();
 
     public bool isClear = false;    // 스테이지 클리어 했는지
 
@@ -29,7 +29,6 @@ public class DungeonManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        dungeonList.Clear();
         dungeonList.Add(new Dungeon(1, "1단계 던전", 10, 6, 3, 1.05f));
         dungeonList.Add(new Dungeon(2, "2단계 던전", 10, 6, 3, 1.05f));
         dungeonList.Add(new Dungeon(3, "3단계 던전", 10, 6, 3, 1.05f));
@@ -46,10 +45,10 @@ public class DungeonManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckClearStage();
+        
     }
 
-    public void CheckClearStage()    // 스테이지 클리어
+    public void CheckClearStage()    // 스테이지 클리어 확인, 몬스터 죽을 때마다 사용하면 될듯
     {
         // 에너미 있는지 확인
         if (enemyManager.CheckEnemyExist()) // 적이 남아있다면
@@ -84,6 +83,7 @@ public class DungeonManager : MonoBehaviour
 
     public void ClearStage()    // 스테이지 클리어시 실행할 것들
     {
+        Debug.Log("스테이지 클리어");
         isClear = true;
         UIManager.instance.SetClearStage();
     }

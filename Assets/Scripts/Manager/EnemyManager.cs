@@ -55,14 +55,13 @@ public class EnemyManager : MonoBehaviour
 
     public bool CheckEnemyExist()   // Enemy 레이어를 가진 오브젝트가 존재하는지 체크, 없으면 false 있으면 true
     {
+        Debug.Log(GameManager.instance.CheckLayerObjectCount(enemyLayerMask));
         if(GameManager.instance.CheckLayerObjectCount(enemyLayerMask) == 0)
         {
-            Debug.Log(GameManager.instance.CheckLayerObjectCount(enemyLayerMask));
             return false;
         }
         else
         {
-            Debug.Log(GameManager.instance.CheckLayerObjectCount(enemyLayerMask));
             return true;
         }
     }

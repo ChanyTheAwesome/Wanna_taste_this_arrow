@@ -26,8 +26,13 @@ public class Gate : MonoBehaviour   // 스테이지 다 깨고 게이트로 이동 시 다음 스
             {
                 // 다음 스테이지 이동
                 // 씬 다시 불러오기로 결정
-                SceneController.instance.LoadGameScene();
+                //SceneController.instance.LoadGameScene();
+                Debug.Log("다음 스테이지 이동");
             }
+        }
+        else     // 테스트용 
+        {
+            Debug.Log("아직 클리어 안됨");
         }
     }
 }
