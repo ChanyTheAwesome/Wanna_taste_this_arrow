@@ -48,10 +48,11 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public void ResetLevel()    // 레벨이랑 경험치 초기화, 던전에서 나갈 때 실행하기
+    public void ResetPlayer()    // 레벨, 경험치, 능력 초기화, 던전에서 나갈 때 실행하기
     {
         Level = 1;
         Exp = 0;
-        // 스킬도 초기화
+        // 능력 초기화
+        // 능력 초기화는 능력이 어떻게 적용되는지에 따라 맞춰서 설정
     }
 }

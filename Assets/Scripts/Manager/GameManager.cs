@@ -6,87 +6,28 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    //public PlayerController player { get; private set; }
-    //private ResourceController _playerResourceController;
-
-    //[SerializeField] private int currentWaveIndex = 0;
-
-    public int stageCount = 0;
-
-    //private EnemyManager enemyManager;
-
-    //private UIManager uiManager;
-    //private SceneController sceneController;
-    //private PlayerManager playerManager;
-
-    public static bool isFirstLoading = true;
+    public int stageCount = 0;  // 현재 진행중인 스테이지 넘버, 스테이지 시작시에 올라가게 설정
 
     private void Awake()
     {
         if(instance == null)
         {
             instance = this;
-            //DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
-
-        //player = FindObjectOfType<PlayerController>();
-        //player.Init(this);
-
-        //uiManager = FindObjectOfType<UIManager>();
-        //sceneController = FindObjectOfType<SceneController>();
-        //playerManager = FindObjectOfType<PlayerManager>();
-
-        //enemyManager = GetComponentInChildren<EnemyManager>();
-        //enemyManager.Init(this);
-
-        //_playerResourceController = player.GetComponent<ResourceController>();
-        //_playerResourceController.RemoveHealthChangeEvent(uiManager.ChangePlayerHP);
-        //_playerResourceController.AddHealthChangeEvent(uiManager.ChangePlayerHP);
     }
     // Start is called before the first frame update
     private void Start()
     {
-        //if (!isFirstLoading)
-        //{
-        //    StartGame();
-        //}
-        //else
-        //{
-        //    isFirstLoading = false;
-        //}
+        StartGame();    // 게임 매니저를 파괴되지 않게 했는데 씬을 다시 불러와도 Start가 실행하나?
     }
 
-    public void StartGame()
+    public void StartGame() // 처음에 게임 실행했을 때 실행할 것들, 스테이지나 던전 시작 아님, 최초 1회만 실행됨 다시 돌아와도 실행안됨
     {
-        //uiManager.SetPlayGame();
-        //StartNextWave();
-    }
-
-    void StartNextWave()
-    {
-        //currentWaveIndex += 1;
-        //enemyManager.StartWave(1 + currentWaveIndex / 5);
-        //uiManager.ChangeWave(currentWaveIndex);
-    }
-
-    public void EndOfStage()
-    {
-        //StartNextWave();
-    }
-
-    public void GameOver()
-    {
-        //enemyManager.StopWave();
-        //uiManager.SetGameOver();
-    }
-
-    public void StartNextStage()
-    {
-        stageCount++;
-        DungeonManager.instance.isEnd = true;
+        
     }
 }

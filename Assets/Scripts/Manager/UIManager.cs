@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public enum UIState // UI 상태 enum, 홈, 게임중, 게임종료 등으로 나눌 예정 < 필요한가 모르겠음
 {
@@ -10,6 +9,19 @@ public enum UIState // UI 상태 enum, 홈, 게임중, 게임종료 등으로 나눌 예정 < 필�
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager instance;
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -37,19 +49,14 @@ public class UIManager : MonoBehaviour
     public void OnClickStart()  // 시작 버튼 클릭
     {
         // 게임 씬 불러오기
-        //SceneManager.LoadScene("GameScene");
+        SceneController.instance.LoadGameScene();
     }
 
     public void OnClickExitDungeon()
     {
         Time.timeScale = 1; // 멈춰놨던 시간 다시 세팅
-        // 플레이어 레벨 1로 만들기
-        // 플레이어 경험치 0으로 만들기
-        // PlayerManager.ResetLevel();
         // 홈 씬 불러오기
-        // SceneManager.LoadScene("MainScene");
-        // stageCount 다시 0으로 맞추기
-        GameManager.instance.stageCount = 0;
+        DungeonManager.instance.ExitDungeon();
     }
 
     public void OnClickOption() // 옵션 버튼 클릭
@@ -82,9 +89,9 @@ public class UIManager : MonoBehaviour
 
     public void SetGameOver()   // 게임 오버시 UI 설정
     {
-        // 실패했다는 UI 출력(진행결과 등 포함?)
-        // 메인 화면으로 돌아가는 버튼
-        // OnClickExitDungeon();
+        // 일시정지 후 게임오버 UI 띄우기
+        StopGame();
+        // 실패했다는 UI 출력(진행결과 등 포함?, 홈으로 돌아가기 버튼)
     }
 
     public void SetClearStage() // 스테이지 클리어 시 UI 설정

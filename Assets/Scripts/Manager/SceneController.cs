@@ -5,6 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
+    public static SceneController instance;
+
+    private string mainSceneName = "MainScene";
+    private string gameSceneName = "GameScene";
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -15,5 +31,15 @@ public class SceneController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void LoadMainScene()
+    {
+        SceneManager.LoadScene(mainSceneName);
+    }
+
+    public void LoadGameScene()
+    {
+        SceneManager.LoadScene(gameSceneName);
     }
 }

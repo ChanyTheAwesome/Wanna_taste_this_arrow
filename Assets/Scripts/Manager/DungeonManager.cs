@@ -9,7 +9,7 @@ public class DungeonManager : MonoBehaviour
 
     public List<Dungeon> dungeonList;
 
-    public bool isClear = false;
+    public bool isClear = false;    // 이거 쓸데 있나?
 
     public bool isEnd = false;  // 몬스터 스폰한 거 다 잡았는지 여부, true로 바꾸면 바로 다음 스테이지 이동
 
@@ -52,46 +52,67 @@ public class DungeonManager : MonoBehaviour
         ClearStage();
     }
 
-    public void ClearStage()
+    public void StartDungeon()  // 던전 시작시 실행할 것들
     {
-        isClear = true;
-        // 다 처리했다는 UI 띄우기?
+        StartStage();
     }
 
-    public void StartDungeon(Dungeon dungeon)
+    public void StartStage()    // 스테이지 시작시 실행할 것들
     {
-        GameManager.instance.stageCount = 1;
-        StartStage(dungeon.MaxStageCount);
+        GameManager.instance.stageCount++;
+        UIManager.instance.SetGame();
     }
 
-    public IEnumerable StartStage(int maxStageCount)
+    public void ClearStage()    // 스테이지 클리어시 실행할 것들
     {
-        //int stageCount = 0;
-        // UIState 게임으로 설정하기
-        // 스테이지 반복 > 반복문 해서 마지막 스테이지면 보스방
-        for(int i = 1; i <= maxStageCount; i++)    // 코루틴 써야겠다 yield return new WaitUntil(bool predicate) << 이용하면 될듯
-        {
-            //stageCount++;
-            isEnd = false;
-            // 플레이어 위치 세팅
-
-            // 몬스터 스폰
-            if(i == maxStageCount) // 마지막 스테이지일 때
-            {
-                // 보스 스테이지 시작
-            }
-            else    // 보스전 아닐때
-            {
-                // 맵 장애물 재배치
-
-                // 일반 몬스터 배치
-
-            }
-            //yield return stageCount;
-            yield return new WaitUntil(() => isEnd);  // 코루틴 사용해서 대기하기, 다음 스테이지 넘어갈려면 isEnd true로 바꿔주기
-        }
-        
-        // 죽으면 나가기 << 계속 체크해야되니 update로? 아니면 피 깎일때 체크하는 메서드 만들고 추가?
-        // 에너미 쪽에서 만든 공격을 받았을 때 체력이 감소하는 로직에서 죽는지 확인
+        UIManager.instance.SetClearStage();
     }
+
+    public void GameOver()  // 게임오버시 실행할 것들
+    {
+        UIManager.instance.SetGameOver();
+    }
+
+    public void ExitDungeon()   // 던전에서 나갈 때 실행할 것들
+    {
+        // 플레이어 레벨 1로 만들기
+        // 플레이어 경험치 0으로 만들기
+        PlayerManager.instance.ResetPlayer();
+        // stageCount 0으로 맞추기
+        GameManager.instance.stageCount = 0;
+        // 홈 화면 불러오기
+        SceneController.instance.LoadMainScene();
+    }
+
+    // 스테이지 이동시 씬을 다시 불러오기로 해서 폐기
+    //public IEnumerable StartStage(int maxStageCount)
+    //{
+    //    int stageCount = 0;
+    //    UIState 게임으로 설정하기
+    //    스테이지 반복 > 반복문 해서 마지막 스테이지면 보스방
+    //    for (int i = 1; i <= maxStageCount; i++)    // 코루틴 써야겠다 yield return new WaitUntil(bool predicate) << 이용하면 될듯
+    //    {
+    //        stageCount++;
+    //        isEnd = false;
+    //        플레이어 위치 세팅
+
+    //        몬스터 스폰
+    //        if (i == maxStageCount) // 마지막 스테이지일 때
+    //        {
+    //            보스 스테이지 시작
+    //        }
+    //        else    // 보스전 아닐때
+    //        {
+    //            맵 장애물 재배치
+
+    //            일반 몬스터 배치
+
+    //        }
+    //        yield return stageCount;
+    //        yield return new WaitUntil(() => isEnd);  // 코루틴 사용해서 대기하기, 다음 스테이지 넘어갈려면 isEnd true로 바꿔주기
+    //    }
+
+    //    죽으면 나가기 << 계속 체크해야되니 update로? 아니면 피 깎일때 체크하는 메서드 만들고 추가?
+    //    에너미 쪽에서 만든 공격을 받았을 때 체력이 감소하는 로직에서 죽는지 확인
+    //}
 }
