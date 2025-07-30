@@ -93,8 +93,15 @@ public class ProjectileController : MonoBehaviour
         }
     }
 
-    public void Init(Vector2 direction, RangeWeaponHandler weaponHandler, ProjectileManager projectileManager)
+    public void Init(Vector2 direction, RangeWeaponHandler weaponHandler, ProjectileManager projectileManager, bool reflect, bool penetrate)
     {//이 Init은 ProjectileManager에서 총알을 쐈을 때 호출된다.
+
+        Debug.Log(weaponHandler.target.ToString());
+
+
+            if (reflect) _reflect = reflect;
+            if (penetrate) _penetrate = penetrate;
+
         this.projectileManager = projectileManager;
         rangeWeaponHandler = weaponHandler;
         this.direction = direction;
@@ -117,6 +124,7 @@ public class ProjectileController : MonoBehaviour
             explosionRange.gameObject.SetActive(false);
         }
         isReady = true;//준비 됐다.
+        
     }
 
     private void DestroyProjectile(Vector3 position, bool createFx)

@@ -105,4 +105,11 @@ public class DungeonManager : MonoBehaviour
         // 홈 화면 불러오기
         SceneController.instance.LoadMainScene();
     }
+
+    public void ChangeStat()
+    {
+        currentDungeonID = 1;
+        enemyController.SetEnemyHealth(dungeonList.Find(d => d.ID == currentDungeonID).IncreaseStat);
+        currentDungeonID = 0;
+    }
 }

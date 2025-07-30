@@ -11,6 +11,12 @@ public class ProjectileManager : MonoBehaviour
     public GameObject[] ProjectilePrefabs => projectilePrefabs;
     [SerializeField] private ParticleSystem impactParticleSystem;
 
+    private bool _reflect;
+    public bool Reflect { set { _reflect = value; } }
+
+    private bool _penetrate;
+    public bool Penetrate { set { _penetrate = value; } }
+
     private void Awake()
     {
         instance = this;
@@ -22,7 +28,7 @@ public class ProjectileManager : MonoBehaviour
         GameObject obj = Instantiate(origin, startPosition, Quaternion.identity);//생성한다.
 
         ProjectileController projectileController = obj.GetComponent<ProjectileController>();//총알에 붙은 ProjectileController를 가져와
-        projectileController.Init(direction, rangeWeaponHandler, this);//방향과, 원거리 무기 핸들러와, 매니저를 보내준다.
+        projectileController.Init(direction, rangeWeaponHandler, this, _reflect, _penetrate);//방향과, 원거리 무기 핸들러와, 매니저를 보내준다.
     }
 
     public void CreateImpactParticlesAtPosition(Vector3 position, RangeWeaponHandler weaponHandler)

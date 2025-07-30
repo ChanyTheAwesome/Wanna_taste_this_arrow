@@ -79,14 +79,14 @@ public class BaseController : MonoBehaviour
             direction += knockback;
         }//넉백 중이라면 넉백을 하도록 함, 이동의 전체 크기를 0.2만큼 낮추고, knockback 벡터를 direction에 더함
         _rigidbody.velocity = direction; // 물리 연산을 하는 rigidbody의 velocity에 direction을 넣어줌
-        animationhandler.Move(direction); // 이동 애니메이션 키세요 라는 뜻
+        //animationhandler.Move(direction); // 이동 애니메이션 키세요 라는 뜻
     }
 
     private void Rotate(Vector2 direction)
     {
         float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; //각도 구하기, 뒤의 것은 라디안 값에서 우리가 잘 아는 각도로 변환해주는 것.
         bool isLeft = Mathf.Abs(rotZ) > 90; 
-        characterRenderer.flipX = isLeft;//90도 넘나요? 예-> 왼쪽 보셈 아니오-> 오른쪽 보셈
+        //characterRenderer.flipX = isLeft;//90도 넘나요? 예-> 왼쪽 보셈 아니오-> 오른쪽 보셈
 
         if (weaponPivot != null)
         {
