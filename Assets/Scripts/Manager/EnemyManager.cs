@@ -13,7 +13,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] List<Rect> spawnAreas;
     [SerializeField] private Color gizmoColor = new Color(1, 0, 0, 0.3f);
 
-    //private List<EnemyController> activeEnemies = new List<EnemyController>();
+    private List<EnemyController> activeEnemies = new List<EnemyController>();
 
     private bool enemySpawnComplite;
 
@@ -42,10 +42,17 @@ public class EnemyManager : MonoBehaviour
 
     //    enemySpawnComplite = true;
     //}
-
-    public void SpawnMonster()  // 일반 몬스터 생성
+    private void Start()
     {
+        //SpawnMonster(DungeonManager.instance.dungeonList.Find(d => d.ID == GameManager.instance.stageCount);
+    }
 
+    public void SpawnMonster(int enemyCount)  // 일반 몬스터 생성
+    {
+        for(int i = 0; i < enemyCount; i++)
+        {
+            SpawnRandomMonster();
+        }
     }
 
     public void SpawnBossMonster()  // 보스 몬스터 생성
@@ -66,7 +73,7 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    private void SpawnRandomEnemy()
+    private void SpawnRandomMonster()
     {
         if (enemyPrefabs.Count == 0 || spawnAreas.Count == 0)
         {
@@ -82,11 +89,11 @@ public class EnemyManager : MonoBehaviour
             Random.Range(randomArea.xMin, randomArea.xMax),
             Random.Range(randomArea.yMin, randomArea.yMax));
 
-        //GameObject spawnEnemy = Instantiate(randomPrefab, new Vector3(randomPosition.x, randomPosition.y), Quaternion.identity);
-        //EnemyController enemyController = spawnEnemy.GetComponent<EnemyController>();
-        //enemyController.Init(this, gameManager.player.transform);
+        GameObject spawnEnemy = Instantiate(randomPrefab, new Vector3(randomPosition.x, randomPosition.y), Quaternion.identity);
+        EnemyController enemyController = spawnEnemy.GetComponent<EnemyController>();
+        //enemyController.Init(this, gameManager.player.transform); << 얘 뭔지 확인해야됨
 
-        //activeEnemies.Add(enemyController);
+        activeEnemies.Add(enemyController);
     }
 
     private void OnDrawGizmosSelected()
