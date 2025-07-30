@@ -21,6 +21,7 @@ public class MakeObstacle : MonoBehaviour
     private float yMultiplier = 0.5f;
     [SerializeField]
     private float xMultiplier = 0.8f;
+    [SerializeField]
     public int objCount = 100;
     
 
