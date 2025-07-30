@@ -37,11 +37,4 @@ public class ProjectileManager : MonoBehaviour
         mainModule.startSpeedMultiplier = weaponHandler.BulletSize * 10f;//시작 스피드를 결정하고
         impactParticleSystem.Play();//파티클을 재생한다.
     }
-
-    public void IsTriggerOn(RangeWeaponHandler rangeWeaponHandler)
-    {
-        GameObject origin = projectilePrefabs[rangeWeaponHandler.BulletIndex];
-        Collider2D coll = origin.GetComponent<Collider2D>();
-        coll.isTrigger = true;
-    }
 }

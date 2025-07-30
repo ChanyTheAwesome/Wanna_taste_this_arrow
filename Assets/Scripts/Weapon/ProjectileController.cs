@@ -21,6 +21,7 @@ public class ProjectileController : MonoBehaviour
     ProjectileManager projectileManager;
 
     private bool _reflect = false;
+    private bool _penetrate = false;
 
     private void Awake()
     {
@@ -57,7 +58,11 @@ public class ProjectileController : MonoBehaviour
                     transform.right = direction;
                 }
             }
-            DestroyProjectile(collision.ClosestPoint(transform.position) - direction * 0.2f, fxOnDestroy);
+            else
+            {
+                DestroyProjectile(collision.ClosestPoint(transform.position) - direction * 0.2f, fxOnDestroy);
+
+            }
 
         }
         else if(rangeWeaponHandler.target.value == (rangeWeaponHandler.target.value | (1 << collision.gameObject.layer)))
@@ -75,6 +80,7 @@ public class ProjectileController : MonoBehaviour
                     }
                 }
             }
+            if (_penetrate) return;
             DestroyProjectile(collision.ClosestPoint(transform.position), fxOnDestroy);//이후 투사체 파괴
         }
     }
@@ -113,5 +119,10 @@ public class ProjectileController : MonoBehaviour
     public void ReflectOn()
     {
         if (!_reflect) _reflect = true;
+    }
+
+    public void PenetrateOn()
+    {
+        if(!_penetrate) _penetrate = true;
     }
 }
