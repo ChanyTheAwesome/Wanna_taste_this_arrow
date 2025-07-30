@@ -14,31 +14,28 @@ public class ExplosiveAftermathController : MonoBehaviour
         _power = rangeWeaponHandler.Power;
         _target = rangeWeaponHandler.target;
         spriteRenderer.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
-        this.gameObject.transform.localScale = new Vector3(_size, _size);
-        this.gameObject.SetActive(true);
+        transform.localScale = new Vector3(_size, _size);
+
+        gameObject.SetActive(true);
+
         StartCoroutine(ActivateExplosionGO());
     }
+
     private IEnumerator ActivateExplosionGO()
     {
         yield return new WaitForSeconds(0.5f);
         Destroy(this.transform.root.gameObject);
-
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (PlayerLayerCheck(collision.gameObject))
+        if (_target.value == (_target.value | (1 << collision.gameObject.layer)))
         {
-            Debug.Log("Hit!");
             ResourceController resourceController = collision.GetComponent<ResourceController>();
             if(resourceController != null)
             {
                 resourceController.ChangeHealth(_power);
             }
         }
-    }
-
-    private bool PlayerLayerCheck(GameObject go)
-    {
-        return _target.value == (_target.value | (1 << go.layer));
     }
 }

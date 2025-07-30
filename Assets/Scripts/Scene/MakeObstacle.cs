@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class MakeObstacle : MonoBehaviour
 {
-    public GameObject obstacles;
-    public GameObject obstacle;
+    public GameObject Obstacles;
+    public GameObject Obstacle;
 
     [SerializeField]
     private float maxY = 22f;
@@ -22,16 +22,14 @@ public class MakeObstacle : MonoBehaviour
     [SerializeField]
     private float xMultiplier = 0.8f;
     [SerializeField]
-    public int objCount = 100;
+    public int ObjCount = 100;
     
-
-    public int stageCount = 1;
+    public int StageCount = 1;
 
     void Start()
     {
-        for(int i = 0; i < objCount; i++)
+        for(int i = 0; i < ObjCount; i++)
         {
-
             SpawnObstacle();
         }
     }
@@ -49,7 +47,6 @@ public class MakeObstacle : MonoBehaviour
         float yPos = yPosMult * yMultiplier + minY;
 
         Vector3 obstaclePos = new Vector3(xPos, yPos, 0);
-        Instantiate(obstacle, obstaclePos, Quaternion.identity, obstacles.transform);
+        Instantiate(Obstacle, obstaclePos, Quaternion.identity, Obstacles.transform);
     }
-
 }

@@ -5,18 +5,38 @@ using UnityEngine;
 
 public class DungeonManager : MonoBehaviour
 {
-    public static DungeonManager instance;
+    private static DungeonManager instance;
+    public static DungeonManager Instance => instance;
 
-    public List<Dungeon> dungeonList = new List<Dungeon>();
+    public List<Dungeon> DungeonList = new List<Dungeon>();
 
-    public bool isClear = false;    // 스테이지 클리어 했는지
+    private bool _isClear = false;
+    public bool IsClear => _isClear;    // 스테이지 클리어 했는지
 
-    public int currentDungeonID = 0;
+    private int _currentDungeonID = 0;
+    public int CurrentDungeonID {
+        get { return _currentDungeonID; }
+        set { _currentDungeonID = value; }
+    }
 
-    bool isFirstStage;
+    
+    private bool _isFirstStage;
 
-    EnemyManager enemyManager;
-    EnemyController enemyController;
+    private EnemyManager _enemyManager;
+    private EnemyController _enemyController;
+
+    /*Suggestion
+     * 
+     * public Dictionary<int, Dungeon> DungeonDict = new Dictionary<int, Dungeon>;
+     * 
+     * private void AddDungeonDict(){
+     * DungeonDict.Add(1, new Dungeon(1, "1단계 던전", 10, 6, 3, 1.05f));
+        DungeonDict.Add(2, new Dungeon(2, "2단계 던전", 10, 6, 3, 1.05f));
+        DungeonDict.Add(3, new Dungeon(3, "3단계 던전", 10, 6, 3, 1.05f));
+     * }
+     * 
+     * //Or try to use Json/newtonJson to read json data.
+     */
 
     private void Awake()
     {
@@ -29,29 +49,26 @@ public class DungeonManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        dungeonList.Add(new Dungeon(1, "1단계 던전", 10, 6, 3, 1.05f));
-        dungeonList.Add(new Dungeon(2, "2단계 던전", 10, 6, 3, 1.05f));
-        dungeonList.Add(new Dungeon(3, "3단계 던전", 10, 6, 3, 1.05f));
-
-        enemyManager = FindObjectOfType<EnemyManager>();
-        enemyController = FindObjectOfType<EnemyController>();
+        Init();
     }
-    // Start is called before the first frame update
-    void Start()
+    private void Init()
     {
-        
-    }
+        AddDungeonList();
 
-    // Update is called once per frame
-    void Update()
+        _enemyManager = FindObjectOfType<EnemyManager>();//<- This is TOO DANGEROUS!!!
+        _enemyController = FindObjectOfType<EnemyController>();//<- This is TOO DANGEROUS!!!
+    }
+    private void AddDungeonList()
     {
-        
+        DungeonList.Add(new Dungeon(1, "1단계 던전", 10, 6, 3, 1.05f));
+        DungeonList.Add(new Dungeon(2, "2단계 던전", 10, 6, 3, 1.05f));
+        DungeonList.Add(new Dungeon(3, "3단계 던전", 10, 6, 3, 1.05f));
     }
 
     public void CheckClearStage()    // 스테이지 클리어 확인, 몬스터 죽을 때마다 사용하면 될듯
     {
         // 에너미 있는지 확인
-        if (enemyManager.CheckEnemyExist()) // 적이 남아있다면
+        if (_enemyManager.CheckEnemyExist()) // 적이 남아있다면
         {
             return;
         }
@@ -63,34 +80,34 @@ public class DungeonManager : MonoBehaviour
 
     public void StartDungeon(int dungeonID)  // 던전 시작시 실행할 것들
     {
-        isFirstStage = true;
-        currentDungeonID = dungeonID;   // dungeonID를 어떻게 가져와야될까
+        _isFirstStage = true;
+        _currentDungeonID = dungeonID;   // dungeonID를 어떻게 가져와야될까
         StartStage();
     }
 
     public void StartStage()    // 스테이지 시작시 실행할 것들
     {
-        isClear = false;
+        _isClear = false;
         // 몬스터 스탯 올리기
-        if (!isFirstStage)  // 첫 스테이지가 아니라면 = 첫 스테이지는 기본 체력만 가지기
+        if (!_isFirstStage)  // 첫 스테이지가 아니라면 = 첫 스테이지는 기본 체력만 가지기
         {
-            enemyController.SetEnemyHealth(dungeonList.Find(d => d.ID == currentDungeonID).IncreaseStat);   // ID로 던전 찾아서 그 던전의 IncreaseStat값 가져와서 SetEnemyHealth 실행하기
+            _enemyController.SetEnemyHealth(DungeonList.Find(d => d.ID == _currentDungeonID).IncreaseStat);   // ID로 던전 찾아서 그 던전의 IncreaseStat값 가져와서 SetEnemyHealth 실행하기
         }
-        GameManager.instance.stageCount++;
-        UIManager.instance.SetGame();
-        isFirstStage = false;
+        GameManager.Instance.StageCount++;
+        UIManager.Instance.SetGame();
+        _isFirstStage = false; //<- Does this variable need to be here? If not, consider moving it to the top. 
     }
 
     public void ClearStage()    // 스테이지 클리어시 실행할 것들
     {
         Debug.Log("스테이지 클리어");
-        isClear = true;
-        UIManager.instance.SetClearStage();
+        _isClear = true;
+        UIManager.Instance.SetClearStage();
     }
 
     public void GameOver()  // 게임오버시 실행할 것들
     {
-        UIManager.instance.SetGameOver();
+        UIManager.Instance.SetGameOver();
     }
 
     public void ExitDungeon()   // 던전에서 나갈 때 실행할 것들
@@ -99,17 +116,17 @@ public class DungeonManager : MonoBehaviour
         // 플레이어 경험치 0으로 만들기
         PlayerManager.instance.ResetPlayer();
         // stageCount 0으로 맞추기
-        GameManager.instance.stageCount = 0;
+        GameManager.Instance.StageCount = 0;
         // currentDungeonID 0으로 맞추기
-        currentDungeonID = 0;
+        _currentDungeonID = 0;
         // 홈 화면 불러오기
-        SceneController.instance.LoadMainScene();
+        SceneController.Instance.LoadMainScene();
     }
 
     public void ChangeStat()
     {
-        currentDungeonID = 1;
-        enemyController.SetEnemyHealth(dungeonList.Find(d => d.ID == currentDungeonID).IncreaseStat);
-        currentDungeonID = 0;
+        _currentDungeonID = 1;//Meaning?
+        _enemyController.SetEnemyHealth(DungeonList.Find(d => d.ID == _currentDungeonID).IncreaseStat);
+        _currentDungeonID = 0;
     }
 }

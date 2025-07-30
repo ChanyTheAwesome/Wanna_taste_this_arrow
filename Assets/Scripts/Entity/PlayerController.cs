@@ -31,25 +31,24 @@ public class PlayerController : BaseController
         camera = Camera.main;
     }*/
     [SerializeField] private float findRadius = 5f;  // 감지범위
-    [SerializeField] private LayerMask enemyLayer;   // 에너미 레이어
+    [SerializeField] private LayerMask enemyLayer; // 에너미 레이어
+    [SerializeField] private Slider hpSlider;
+
     private GameObject _target;                      // 공격할 타겟
     private bool _isDebug;
 
-    [SerializeField] private Slider hpSlider;
-
-    int maxHp;
-    int currentHp;
+    private int _maxHp;
+    private int _currentHp;
 
     protected override void HandleAction()
     {
-        maxHp = statHandler.Health;
-        currentHp = maxHp;
+        _maxHp = statHandler.Health;
+        _currentHp = _maxHp;
         //hpSlider.value = currentHp;
 
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            if (_isDebug == false) _isDebug = true;
-            else _isDebug = false;
+            _isDebug = !_isDebug;
         }
 
         OnMove();
@@ -58,7 +57,7 @@ public class PlayerController : BaseController
         OnLook();
         // 공격
         // 디버그용 발사체 발사
-        if (_isDebug == true)
+        if (_isDebug)
         {
             if (Input.GetMouseButton(0))
             {
@@ -88,9 +87,9 @@ public class PlayerController : BaseController
         movementDirection = new Vector2(horizontal, vertical).normalized;
         
         // 멈춰 있을 때 공격한다.
-        if (_isDebug == false)
+        if (!_isDebug)
         {
-            if (movementDirection.x == 0 && movementDirection.y == 0) isAttacking = _target != null ? true : false;
+            if (movementDirection.x == 0 && movementDirection.y == 0) isAttacking = _target != null;
             else isAttacking = false;
         }
     }
@@ -99,9 +98,8 @@ public class PlayerController : BaseController
     {
         // 지금 공격중이 아니거나 타겟이 없다면 리턴
         Vector2 targetPos;
-        if (_isDebug == true)
+        if (_isDebug)
         {
-
             Vector2 mousePos = Input.mousePosition;
             targetPos = Camera.main.ScreenToWorldPoint(mousePos);
         }
@@ -119,7 +117,6 @@ public class PlayerController : BaseController
         }
         else
         {
-
             lookDirection = (targetPos - (Vector2)transform.position);//빼본다
 
             if (lookDirection.magnitude < 0.9f)
@@ -155,7 +152,7 @@ public class PlayerController : BaseController
             return;
         }
 
-        GameObject nearest = null;
+        GameObject nearest = null; //<- Unused GameObject variant!!
         float minDistance = Mathf.Infinity;
 
         // 반복으로 배열안에 에너미의 거리 계산 후 가장 가까운 것을 타겟으로 설정

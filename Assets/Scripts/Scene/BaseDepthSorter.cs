@@ -8,7 +8,7 @@ public abstract class BaseDepthSorter : MonoBehaviour
 
     protected virtual void Awake()
     {
-        sr = GetComponentInChildren<SpriteRenderer>();
+        sr = GetComponentInChildren<SpriteRenderer>(); //It is REALLY Dangerous to use GetComponent() in Awake()!!!
     }
 
     protected void UpdateSortingOrder()

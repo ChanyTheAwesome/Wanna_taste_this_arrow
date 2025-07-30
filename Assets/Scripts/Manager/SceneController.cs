@@ -5,11 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    public static SceneController instance;
+    private static SceneController instance;
+    public static SceneController Instance => instance;
 
     // 오타 방지
     private string mainSceneName = "MainScene";
     private string gameSceneName = "GameScene";
+    //Declaring the field in advance to avoid typos is a great practice. However, consider using a constant instead!
+    //Examples:
+    //private const string MAIN_SCENE_NAME = "MainScene";
+    //private const string GAME_SCENE_NAME = "GameScene";
 
     private void Awake()
     {

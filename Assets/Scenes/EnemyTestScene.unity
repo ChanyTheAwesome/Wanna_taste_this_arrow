@@ -272,7 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1457726291}
-  _navMeshAgent: {fileID: 0}
+  navMeshAgent: {fileID: 0}
   targetLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -7346,11 +7346,22 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1457726291}
+    - target: {fileID: 3398719439951267884, guid: b6058bb8651b9f4468e7cdb4edde1e3a,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 050556270436d4f4288557291a1a99c0,
+        type: 2}
     - target: {fileID: 7263277187695838396, guid: b6058bb8651b9f4468e7cdb4edde1e3a,
         type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1457726293}
+    - target: {fileID: 7263277187695838396, guid: b6058bb8651b9f4468e7cdb4edde1e3a,
+        type: 3}
+      propertyPath: ProjectileManager
+      value: 
+      objectReference: {fileID: 1245332779}
     - target: {fileID: 7573886762302142023, guid: b6058bb8651b9f4468e7cdb4edde1e3a,
         type: 3}
       propertyPath: m_Name
