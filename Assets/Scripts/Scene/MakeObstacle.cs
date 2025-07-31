@@ -36,8 +36,8 @@ public class MakeObstacle : MonoBehaviour
 
     public void SpawnObstacle() //
     {
-        int countX = (int)((maxX - minX) / xMultiplier);
-        int countY = (int)((maxY - minY) / yMultiplier);
+        int countX = (int)((maxX - minX) / xMultiplier)+1;
+        int countY = (int)((maxY - minY) / yMultiplier)+1;
 
 
         int xPosMult = Random.Range(0, countX);
