@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -22,8 +23,13 @@ public class ProjectileController : MonoBehaviour
     ProjectileManager _projectileManager;
 
     [Header("Fields for Player Abilities")]
+    [SerializeField] private LayerMask enemyLayer;
+    private List<Transform> _hitEnemies = new List<Transform>();
     private bool _reflect = false;
     private bool _penetrate = false;
+    private bool _ricochet = false;
+    [SerializeField] private int MaxRicochetCount;
+    private int _ricochetCount = 0;
 
     [Header("Fields for explosive bullets")]
     [SerializeField] private bool _isExplosive = false;
@@ -39,23 +45,23 @@ public class ProjectileController : MonoBehaviour
 
     private void Update()
     {
-        if (!_isReady) return;//ÁØºñµÇÁö ¾ÊÀ¸¸é update¸¦ µ¹Áö ¾Ê´Â´Ù.
+        if (!_isReady) return;//ï¿½Øºï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ updateï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´Â´ï¿½.
 
         _currentDuration += Time.deltaTime;
 
         if (_currentDuration > rangeWeaponHandler.Duration)
         {
-            DestroyProjectile(transform.position, false);//ÃÖ´ë »ç°Å¸® ´À³¦. ÃÖ´ë »ç°Å¸®°¡ ³Ñ¾î°¡¸é ÆÄ±«ÇÑ´Ù.
+            DestroyProjectile(transform.position, false);//ï¿½Ö´ï¿½ ï¿½ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½ï¿½. ï¿½Ö´ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ ï¿½Ñ¾î°¡ï¿½ï¿½ ï¿½Ä±ï¿½ï¿½Ñ´ï¿½.
         }
         if (!_explosionStart)
         {
-            _rigidbody.velocity = _direction * rangeWeaponHandler.Speed;//±×·¸Áö ¾Ê´Ù¸é °è¼Ó Á¤ÇØÁø ¹æÇâ°ú Á¤ÇØÁø ¼Óµµ·Î ³ª¾Æ°£´Ù.
+            _rigidbody.velocity = _direction * rangeWeaponHandler.Speed;//ï¿½×·ï¿½ï¿½ï¿½ ï¿½Ê´Ù¸ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½.
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)//¹º°¡ ¸Â¾Ò´Ù!
+    private void OnTriggerEnter2D(Collider2D collision)//ï¿½ï¿½ï¿½ï¿½ ï¿½Â¾Ò´ï¿½!
     {
-        if (levelCollisionLayer.value == (levelCollisionLayer.value | (1 << collision.gameObject.layer)))//Level·¹ÀÌ¾î´Â Level-Grid-Collision¿¡ ºÙ¾îÀÖ´Ù.
+        if (levelCollisionLayer.value == (levelCollisionLayer.value | (1 << collision.gameObject.layer)))//Levelï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ Level-Grid-Collisionï¿½ï¿½ ï¿½Ù¾ï¿½ï¿½Ö´ï¿½.
         {
             if (_reflect)
             {
@@ -67,20 +73,26 @@ public class ProjectileController : MonoBehaviour
             }
         }
         else if (rangeWeaponHandler.target.value == (rangeWeaponHandler.target.value | (1 << collision.gameObject.layer)))
-        {//Å¸°Ù°ú °°´Ù¸é,
+        {//Å¸ï¿½Ù°ï¿½ ï¿½ï¿½ï¿½Ù¸ï¿½,
             PlayerHitByProjectile(collision);
-            if (_penetrate) return;
-            DestroyProjectile(collision.ClosestPoint(transform.position), fxOnDestroy);//ÀÌÈÄ Åõ»çÃ¼ ÆÄ±«
+            if(!_hitEnemies.Contains(collision.transform)) _hitEnemies.Add(collision.transform);
+            if(_ricochet)
+            {
+                bool ricocheted = RicochetProjectileControl(collision.transform);
+                if (ricocheted) return;
+            }
+            if (!_penetrate && !_ricochet)
+            {
+                DestroyProjectile(collision.ClosestPoint(transform.position), fxOnDestroy);//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã¼ ï¿½Ä±ï¿½
+            }
         }
     }
 
-    public void Init(Vector2 direction, RangeWeaponHandler weaponHandler, ProjectileManager projectileManager, bool reflect, bool penetrate)
-    {//ÀÌ InitÀº ProjectileManager¿¡¼­ ÃÑ¾ËÀ» ½úÀ» ¶§ È£ÃâµÈ´Ù.
+    public void Init(Vector2 direction, RangeWeaponHandler weaponHandler, ProjectileManager projectileManager)
+    {//ï¿½ï¿½ Initï¿½ï¿½ ProjectileManagerï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ È£ï¿½ï¿½È´ï¿½.
 
         Debug.Log(weaponHandler.target.ToString());
 
-        if (reflect) _reflect = reflect;
-        if (penetrate) _penetrate = penetrate;
 
         this._projectileManager = projectileManager;
         rangeWeaponHandler = weaponHandler;
@@ -93,11 +105,11 @@ public class ProjectileController : MonoBehaviour
 
         if (direction.x < 0)
         {
-            _pivot.localRotation = Quaternion.Euler(180, 0, 0);//¹æÇâÀÌ ¿ÞÂÊÀÌ¶ó¸é 180µµ Æ²¾îÁÖ°í
+            _pivot.localRotation = Quaternion.Euler(180, 0, 0);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ï¿½ 180ï¿½ï¿½ Æ²ï¿½ï¿½ï¿½Ö°ï¿½
         }
         else
         {
-            _pivot.localRotation = Quaternion.Euler(0, 0, 0);//¾Æ´Ï¶ó¸é ±×´ë·Î µÐ´Ù.
+            _pivot.localRotation = Quaternion.Euler(0, 0, 0);//ï¿½Æ´Ï¶ï¿½ï¿½ ï¿½×´ï¿½ï¿½ ï¿½Ð´ï¿½.
         }
 
         if (_isExplosive)
@@ -105,7 +117,37 @@ public class ProjectileController : MonoBehaviour
             explosionRange.gameObject.SetActive(false);
         }
 
-        _isReady = true;//ÁØºñ µÆ´Ù.
+        _isReady = true;//ï¿½Øºï¿½ ï¿½Æ´ï¿½.
+    }
+
+    public void Init(Vector2 direction, RangeWeaponHandler weaponHandler, ProjectileManager projectileManager, bool reflect, bool penetarte, bool recochet)
+    {//ï¿½ï¿½ Initï¿½ï¿½ ProjectileManagerï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ È£ï¿½ï¿½È´ï¿½.
+
+        this._projectileManager = projectileManager;
+        rangeWeaponHandler = weaponHandler;
+        this._direction = direction;
+        _currentDuration = 0;
+        transform.localScale = Vector3.one * weaponHandler.BulletSize;
+        _spriteRenderer.color = weaponHandler.ProjectileColor;
+        transform.right = this._direction;
+        _reflect = reflect;
+        _penetrate = penetarte;
+        _ricochet = recochet;
+        if (direction.x < 0)
+        {
+            _pivot.localRotation = Quaternion.Euler(180, 0, 0);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ï¿½ 180ï¿½ï¿½ Æ²ï¿½ï¿½ï¿½Ö°ï¿½
+        }
+        else
+        {
+            _pivot.localRotation = Quaternion.Euler(0, 0, 0);//ï¿½Æ´Ï¶ï¿½ï¿½ ï¿½×´ï¿½ï¿½ ï¿½Ð´ï¿½.
+        }
+
+        if (_isExplosive)
+        {
+            explosionRange.gameObject.SetActive(false);
+        }
+
+        _isReady = true;//ï¿½Øºï¿½ ï¿½Æ´ï¿½.
     }
 
     private void DestroyProjectile(Vector3 position, bool createFx)
@@ -118,7 +160,7 @@ public class ProjectileController : MonoBehaviour
 
         if (createFx)
         {
-            _projectileManager.CreateImpactParticlesAtPosition(position, rangeWeaponHandler);//projeectileManagerÀÇ ÆÄÆ¼Å¬ »ý¼º ¸Þ¼­µå·Î º¸³½´Ù.
+            _projectileManager.CreateImpactParticlesAtPosition(position, rangeWeaponHandler);//projeectileManagerï¿½ï¿½ ï¿½ï¿½Æ¼Å¬ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
         }
 
         Destroy(this.gameObject);
@@ -126,15 +168,16 @@ public class ProjectileController : MonoBehaviour
     private void PlayerHitByProjectile(Collider2D collision)
     {
         ResourceController resourceController = collision.GetComponent<ResourceController>();
+
         if (resourceController != null)
         {
-            resourceController.ChangeHealth(-rangeWeaponHandler.Power);//¹«±âÀÇ ÆÄ¿ö¸¸Å­ Ã¼·ÂÀ» ±ð°í
-            if (rangeWeaponHandler.IsOnKnockback)//³Ë¹éÀÌ µÇ´Â ¹«±â¶ó¸é
+            resourceController.ChangeHealth(-rangeWeaponHandler.Power);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¿ï¿½ï¿½ï¿½Å­ Ã¼ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+            if (rangeWeaponHandler.IsOnKnockback)//ï¿½Ë¹ï¿½ï¿½ï¿½ ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             {
                 BaseController controller = collision.GetComponent<BaseController>();
                 if (controller != null)
                 {
-                    controller.ApplyKnockback(transform, rangeWeaponHandler.KnockbackPower, rangeWeaponHandler.KnockbackTime);//³Ë¹éÀ» ÁØ´Ù.
+                    controller.ApplyKnockback(transform, rangeWeaponHandler.KnockbackPower, rangeWeaponHandler.KnockbackTime);//ï¿½Ë¹ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½.
                 }
             }
         }
@@ -161,6 +204,67 @@ public class ProjectileController : MonoBehaviour
         explosiveAftermathController.Init(rangeWeaponHandler);
     }
 
+    private bool RicochetProjectileControl(Transform hitEnemy)
+    {
+        if (_ricochetCount >= MaxRicochetCount)
+        {
+            DestroyProjectile(transform.position, fxOnDestroy);
+            return false;
+        }
+
+        Transform nearestEnemy = FindNearestEnemy(transform.position, hitEnemy);
+
+        if (nearestEnemy != null)
+        {
+            RedirectTo(nearestEnemy);
+            _ricochetCount++;
+            return true;
+        }
+
+        return false;
+    }
+
+    private Transform FindNearestEnemy(Vector2 from, Transform exclude)
+    {
+        float radius = 5f;
+        float minDist = float.MaxValue;
+        Transform nearest = null;
+
+        Collider2D[] allhits = Physics2D.OverlapCircleAll(from, radius, enemyLayer);
+        List<Collider2D> hits = new List<Collider2D>(allhits);
+        
+
+        hits.RemoveAll(hit => _hitEnemies.Contains(hit.transform));
+
+        foreach (Collider2D hit in hits)
+        {
+            if (hit.transform == exclude) continue; 
+
+            float dist = Vector2.Distance(from, hit.transform.position);
+            if (dist < minDist)
+            {
+                minDist = dist;
+                nearest = hit.transform;
+            }
+        }
+
+        return nearest;
+    }
+
+    private void RedirectTo(Transform target)
+    {
+        Vector2 dir = (target.position - transform.position).normalized;
+        _direction = dir;
+        _rigidbody.velocity = _direction * rangeWeaponHandler.Speed;
+
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, 3f);
+    }
     public void ReflectOn()
     {
         if (!_reflect) _reflect = true;

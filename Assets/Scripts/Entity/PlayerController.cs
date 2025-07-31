@@ -30,8 +30,9 @@ public class PlayerController : BaseController
         //this.gameManager = gameManager;
         camera = Camera.main;
     }*/
-    [SerializeField] private float findRadius = 5f;  // 감지범위
+    [SerializeField] private float findRadius = 10f;  // 감지범위
     [SerializeField] private LayerMask enemyLayer; // 에너미 레이어
+    [SerializeField] private LayerMask levelLayer;
     [SerializeField] private Slider hpSlider;
 
     private GameObject _target;                      // 공격할 타겟
@@ -63,7 +64,8 @@ public class PlayerController : BaseController
             {
                 //isAttacking = true;
                 //statHandler.Health -= 1;
-                PenetrationShot();
+                BackShot();
+                Ricochet();
             }
             if(Input.GetMouseButton(1))
             {
@@ -74,8 +76,8 @@ public class PlayerController : BaseController
 
     public override void Death()
     {
-        /*base.Death();
-        gameManager.GameOver();*/
+        base.Death();
+        //gameManager.GameOver();
     }
 
     void OnMove()
@@ -85,7 +87,7 @@ public class PlayerController : BaseController
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         movementDirection = new Vector2(horizontal, vertical).normalized;
-        
+        animationhandler.Move(movementDirection);
         // 멈춰 있을 때 공격한다.
         if (!_isDebug)
         {
@@ -152,7 +154,6 @@ public class PlayerController : BaseController
             return;
         }
 
-        GameObject nearest = null; //<- Unused GameObject variant!!
         float minDistance = Mathf.Infinity;
 
         // 반복으로 배열안에 에너미의 거리 계산 후 가장 가까운 것을 타겟으로 설정
@@ -162,6 +163,11 @@ public class PlayerController : BaseController
 
             float distance = Vector2.Distance(transform.position, collider.transform.position);
 
+            RaycastHit2D hit = Physics2D.Linecast(transform.position, collider.transform.position, levelLayer);
+
+            if (hit.collider != null) continue;
+
+
             if (distance < minDistance && distance < findRadius)
             {
                 minDistance = distance;
@@ -170,69 +176,89 @@ public class PlayerController : BaseController
         }
     }
 
-    // 감지 범위 그리기
+    // 감지 범위 그리기 - 나중에 지워도 되는 부분
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, 5f);
+        Gizmos.DrawWireSphere(transform.position, findRadius);
     }
 
-    // 능력 구현?
+    // 최대 체력 증가
     public void MaxHpUp()
     {
         if (statHandler == null) return;
         statHandler.Health += 20;
     }
 
+    // 이동 속도 증가
     public void MoveSpeedUp()
     {
         if (statHandler == null) return;
         statHandler.Speed += 1f;
     }
 
+    // 공격 속도
     public void AttackSpeedUp()
     {
         if (weaponHandler == null) return;
         weaponHandler.Delay -= 0.15f;
     }
 
+    // 발사체 속도 증가
+    public void ProjectileSpeedUp()
+    {
+        if (weaponHandler == null) return;
+        weaponHandler.Speed += 1f;
+    }
+
+    // 공격력 증가
     public void AttackPowerUp()
     {
         if (weaponHandler == null) return;
         weaponHandler.Power += 2f;
-        
     }
 
+    // 한번에 세개
     public void TripleShot()
     {
         if (weaponHandler == null) return;
         RangeWeaponHandler weapon = weaponHandler.GetComponent<RangeWeaponHandler>();
-        weapon.NumberofProjectilesPerShot = 3;
+        weapon.NumberofProjectilesPerShot = 10;
         weapon.MultipleProjectileAngle = 30f;
     }
 
-    // 후방화살
-    public void BackShot()
-    {
-
-    }
-
-    // 양옆화살
-    public void SideShot()
-    {
-
-    }
-
+    //관통
     public void PenetrationShot()
     {
         // 여기서 관통을 On 해주자
         ProjectileManager.Instance.Penetrate = true;
     }
 
+    // 튕기기
     public void ReflectShot()
     {
         // 반사 on -> ProjectijleController 에 벽이랑 부딪혔을 시 반사되게끔 구현
 
         ProjectileManager.Instance.Reflect = true;
+    }
+
+    // 후방화살
+    public void BackShot()
+    {
+        if (weaponHandler == null) return;
+        RangeWeaponHandler weapon = weaponHandler.GetComponent<RangeWeaponHandler>();
+        weapon.Reverse = true;
+    }
+
+    // 도탄
+    public void Ricochet()
+    {
+        ProjectileManager.Instance.Ricochet = true;
+    }
+
+    // 회복?
+    public void RecoveryHp()
+    {
+
     }
 }

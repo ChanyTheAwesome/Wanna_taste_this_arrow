@@ -48,7 +48,11 @@ public class WeaponHandler : MonoBehaviour
         _animator = GetComponentInChildren<Animator>();
         _weaponRenderer = GetComponentInChildren<SpriteRenderer>();
 
-        _animator.speed = 1.0f / delay;//속도는 1.0f에 delay를 나눈 값만큼으로 결정된다. 즉 delay가 적으면 적을수록 속도는 빨라진다.
+        if(_animator != null)
+        {
+            _animator.speed = 1.0f / delay;//속도는 1.0f에 delay를 나눈 값만큼으로 결정된다. 즉 delay가 적으면 적을수록 속도는 빨라진다.
+        }
+        
         transform.localScale = Vector3.one * weaponSize;
     }
 

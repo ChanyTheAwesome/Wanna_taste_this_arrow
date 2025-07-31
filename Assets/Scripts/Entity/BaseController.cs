@@ -6,6 +6,11 @@ using UnityEngine;
 public class BaseController : MonoBehaviour
 {
     protected Rigidbody2D _rigidbody;
+    public Rigidbody2D Rigidbody
+    {
+        get { return _rigidbody; }
+        set { _rigidbody = value; }
+    }
     
     [SerializeField] protected SpriteRenderer characterRenderer;
     [SerializeField] private Transform weaponPivot;
@@ -30,6 +35,8 @@ public class BaseController : MonoBehaviour
 
     private float timeSincelastAttack = float.MaxValue;
 
+    public bool IsCharging = false;
+    public bool GotChargeWeapon = false;
     protected virtual void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -60,7 +67,11 @@ public class BaseController : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        Movement(movementDirection);
+        if (!IsCharging)
+        {
+            Movement(movementDirection);
+            
+        }
         if (_knockbackDuration > 0.0f)
         {
             _knockbackDuration -= Time.fixedDeltaTime; // knockbackDuration을 매 프레임마다 빼준다.
@@ -79,7 +90,7 @@ public class BaseController : MonoBehaviour
         {
             direction *= 0.2f;
             direction += _knockback;
-        }//넉백 중이라면 넉백을 하도록 함, 이동의 전체 크기를 0.2만큼 낮추고, knockback 벡터를 direction에 더함
+        }//넉백 중이라면 넉백을 하도록 함, 이동의 전체 크기를 0.2만큼 낮추고, knockback 벡터를 direction에 더함)
         _rigidbody.velocity = direction; // 물리 연산을 하는 rigidbody의 velocity에 direction을 넣어줌
     }
 
@@ -108,7 +119,7 @@ public class BaseController : MonoBehaviour
         {
             return;
         }
-        if (timeSincelastAttack <= weaponHandler.Delay)
+        if (timeSincelastAttack <= weaponHandler.Delay && !IsCharging)
         {
             timeSincelastAttack += Time.deltaTime;
         }
@@ -120,7 +131,7 @@ public class BaseController : MonoBehaviour
     }
     protected virtual void Attack()
     {
-        if(lookDirection != Vector2.zero)
+        if(lookDirection != Vector2.zero && !IsCharging)
         {
             weaponHandler?.Attack();//그냥 뭔가를 보고있지도 않다면 공격하지 마세요, 즉 lookDirection이 시작하기 전에는 공격하지 않는 코드?
         }
@@ -130,6 +141,34 @@ public class BaseController : MonoBehaviour
     {
         _rigidbody.velocity = Vector3.zero; //이동을 멈추고
 
+        if (animationhandler.gameObject.layer == 6)
+        {
+            animationhandler.Dead();
+            Behaviour[] components = transform.GetComponentsInChildren<Behaviour>();
+            foreach (Behaviour component in components)
+            {
+                if(component.GetType() == typeof(BoxCollider2D))
+                {
+                    component.enabled = false;
+                }
+                if(component.GetType() == typeof(PlayerController))
+                {
+                    component.enabled = false;
+                }
+                if(component.GetType() == typeof(RangeWeaponHandler))
+                {
+                    RangeWeaponHandler weapon = component.GetComponent<RangeWeaponHandler>();
+                    weapon.gameObject.SetActive(false);
+                    component.enabled = false;
+                }
+                if(component.GetType() == typeof(Canvas))
+                {
+                    component.enabled = false;
+                }
+            }
+
+            return;
+        }
         foreach (SpriteRenderer renderer in transform.GetComponentsInChildren<SpriteRenderer>())
         {
             Color color = renderer.color;
@@ -141,7 +180,6 @@ public class BaseController : MonoBehaviour
         {
             component.enabled = false; //컴포넌트도 다 꺼버리겠습니다~
         }
-
         Destroy(gameObject, 2.0f); //2초 뒤에 삭제해버리겠습니다~
     }
 }

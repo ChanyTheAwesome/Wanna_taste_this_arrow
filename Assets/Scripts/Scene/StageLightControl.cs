@@ -7,19 +7,18 @@ public class StageLightControl : MonoBehaviour
 {
     public int StageCount = 1;
 
-    public Light directionalLight;
-    public Light playerLight; //Too Much public Variants?
+    [SerializeField]
+    private Light directionalLight;
+    private Light playerLight;
     private void Awake()
     {
-        directionalLight = GameObject.Find("DirectionalLight").GetComponent<Light>();//This might cause potential nullexception errors.
-        //Instead, consider this.
-        //GameObject directionalLightGameObject = GameObject.Find("DirectionalLight");
-        //if (directionalLightGameObject != null)
-        //{
-        //    directionalLight = directionalLightGameObject.GetComponent<Light>();
-        //}
+        GameObject playerLightGameObject = GameObject.Find("PlayerLight");
+        if (playerLightGameObject != null)
+        {
+            playerLight = playerLightGameObject.GetComponent<Light>();
+        }
 
-        playerLight = GameObject.Find("PlayerLight").GetComponent<Light>();//This also.
+        directionalLight = GameObject.Find("DirectionalLight").GetComponent<Light>();
     }
     void Start()
     {
