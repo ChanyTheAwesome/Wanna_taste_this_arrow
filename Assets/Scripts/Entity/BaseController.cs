@@ -11,17 +11,17 @@ public class BaseController : MonoBehaviour
         get { return _rigidbody; }
         set { _rigidbody = value; }
     }
-    
+
     [SerializeField] protected SpriteRenderer characterRenderer;
     [SerializeField] private Transform weaponPivot;
     [SerializeField] public WeaponHandler WeaponPrefab;
     [SerializeField] public ProjectileManager ProjectileManager;
 
     protected Vector2 movementDirection = Vector2.zero;
-    public Vector2 MovementDirection {  get { return movementDirection; }}
+    public Vector2 MovementDirection { get { return movementDirection; } }
 
     protected Vector2 lookDirection = Vector2.zero;
-    public Vector2 LookDirection { get { return lookDirection; }}
+    public Vector2 LookDirection { get { return lookDirection; } }
 
     private Vector2 _knockback = Vector2.zero;
     private float _knockbackDuration = 0.0f;
@@ -37,13 +37,14 @@ public class BaseController : MonoBehaviour
 
     public bool IsCharging = false;
     public bool GotChargeWeapon = false;
+    public Vector3 LatestDirection;
     protected virtual void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         animationhandler = GetComponent<AnimationHandler>();
         statHandler = GetComponent<StatHandler>();
-        
-        if(WeaponPrefab != null)
+
+        if (WeaponPrefab != null)
         {
             weaponHandler = Instantiate(WeaponPrefab, weaponPivot);
         }
@@ -67,16 +68,11 @@ public class BaseController : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        if (!IsCharging)
-        {
-            Movement(movementDirection);
-            
-        }
+        Movement(movementDirection);
         if (_knockbackDuration > 0.0f)
         {
             _knockbackDuration -= Time.fixedDeltaTime; // knockbackDuration을 매 프레임마다 빼준다.
         }
-        Debug.Log(Rigidbody.velocity);
     }
 
     protected virtual void HandleAction()
@@ -87,19 +83,27 @@ public class BaseController : MonoBehaviour
     protected virtual void Movement(Vector2 direction)
     {
         direction = direction * statHandler.Speed; // 받아온 direction에 speed만큼 이동, 적은 EnemyController의 handleAction에, Player는 OnMove에 지정되어있음.
-        if(_knockbackDuration > 0.0f)
+        if (_knockbackDuration > 0.0f)
         {
             direction *= 0.2f;
             direction += _knockback;
         }//넉백 중이라면 넉백을 하도록 함, 이동의 전체 크기를 0.2만큼 낮추고, knockback 벡터를 direction에 더함)
-        _rigidbody.velocity = direction; // 물리 연산을 하는 rigidbody의 velocity에 direction을 넣어줌
+        if (!IsCharging)
+        {
+            _rigidbody.velocity = direction; // 물리 연산을 하는 rigidbody의 velocity에 direction을 넣어줌
+        }
+        
+        if (direction != Vector2.zero)
+        {
+            LatestDirection = (Vector3)direction;
+        }
     }
 
     protected virtual void Rotate(Vector2 direction)
     {
         float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; //각도 구하기, 뒤의 것은 라디안 값에서 우리가 잘 아는 각도로 변환해주는 것.
-        isLeft = Mathf.Abs(rotZ) > 90; 
-        
+        isLeft = Mathf.Abs(rotZ) > 90;
+
 
         if (weaponPivot != null)
         {
@@ -124,7 +128,7 @@ public class BaseController : MonoBehaviour
         {
             timeSincelastAttack += Time.deltaTime;
         }
-        if(isAttacking && timeSincelastAttack > weaponHandler.Delay)
+        if (isAttacking && timeSincelastAttack > weaponHandler.Delay)
         {
             timeSincelastAttack = 0.0f;
             Attack();
@@ -132,7 +136,7 @@ public class BaseController : MonoBehaviour
     }
     protected virtual void Attack()
     {
-        if(lookDirection != Vector2.zero && !IsCharging)
+        if (lookDirection != Vector2.zero && !IsCharging)
         {
             weaponHandler?.Attack();//그냥 뭔가를 보고있지도 않다면 공격하지 마세요, 즉 lookDirection이 시작하기 전에는 공격하지 않는 코드?
         }
@@ -149,7 +153,7 @@ public class BaseController : MonoBehaviour
             renderer.color = color; //알파값을 0.3으로 다 정하겠습니다~
         }
 
-        foreach(Behaviour component in transform.GetComponentsInChildren<Behaviour>())
+        foreach (Behaviour component in transform.GetComponentsInChildren<Behaviour>())
         {
             component.enabled = false; //컴포넌트도 다 꺼버리겠습니다~
         }

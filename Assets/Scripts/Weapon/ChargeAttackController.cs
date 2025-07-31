@@ -11,12 +11,14 @@ public class ChargeAttackController : MonoBehaviour
     private LayerMask _target;
     public void Init(EnemyController enemy, MeleeWeaponHandler melee)
     {
-        this.transform.gameObject.SetActive(true);
+        Debug.Log("Test");
         _enemyController = enemy;
         _weaponHandler = melee;
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("Hit!");
         if (_target.value == (_target.value | (1 << collision.gameObject.layer)))
         {
             StartCoroutine(StruckToPlayer(collision));
@@ -26,7 +28,6 @@ public class ChargeAttackController : MonoBehaviour
             StartCoroutine(StruckToNotPlayer());
         }
     }
-
     private IEnumerator StruckToNotPlayer()
     {
         _enemyController.Rigidbody.velocity = Vector3.zero;

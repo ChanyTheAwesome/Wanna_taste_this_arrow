@@ -59,8 +59,6 @@ public class MeleeWeaponHandler : WeaponHandler
         BaseController controller = rootObject.GetComponent<BaseController>();
         AnimationHandler animator = controller.GetComponent<AnimationHandler>();
 
-        Vector3 rbVelocityHolder = controller.Rigidbody.velocity;
-        Debug.Log(rbVelocityHolder);
         controller.IsCharging = true;
         controller.Rigidbody.velocity = Vector3.zero;
         float navMeshSpeedHolder = Controller.gameObject.GetComponent<NavMeshAgent>().speed;
@@ -69,14 +67,16 @@ public class MeleeWeaponHandler : WeaponHandler
         animator.TrueChargeAnimation();
         yield return new WaitForSeconds(1.5f);
         animator.FalseChargeAnimation();
-        controller.Rigidbody.velocity = rbVelocityHolder * 1.5f;
-        if(rootObject.GetComponent<EnemyController>() == null)
-        {
-            Debug.Log("test");
-        }
-
+        controller.Rigidbody.velocity = controller.LatestDirection * 3.0f;
+        Controller.gameObject.GetComponent<NavMeshAgent>().speed = navMeshSpeedHolder;
+        ChargeCollider.gameObject.SetActive(true);
         transform.gameObject.GetComponent<ChargeAttackController>().Init(controller.GetComponent<EnemyController>(), this);
-        
+        yield return new WaitForSeconds(8);
+        if (controller.IsCharging)
+        {
+            controller.IsCharging = false;
+
+        }
     }
     public override void Rotate(bool isLeft)
     {
