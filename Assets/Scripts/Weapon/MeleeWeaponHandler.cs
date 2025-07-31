@@ -17,7 +17,10 @@ public class MeleeWeaponHandler : WeaponHandler
         base.Start();
         CollideBoxSize = CollideBoxSize * WeaponSize;
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        ChargeCollider.SetActive(false);
+        if (isCharge)
+        {
+            ChargeCollider.SetActive(false);
+        }
         //박스 크기(기존은 1, 1)에 무기의 크기를 곱해준다.
     }
 
@@ -70,7 +73,7 @@ public class MeleeWeaponHandler : WeaponHandler
         controller.Rigidbody.velocity = controller.LatestDirection * 3.0f;
         Controller.gameObject.GetComponent<NavMeshAgent>().speed = navMeshSpeedHolder;
         ChargeCollider.gameObject.SetActive(true);
-        transform.gameObject.GetComponent<ChargeAttackController>().Init(controller.GetComponent<EnemyController>(), this);
+        ChargeCollider.GetComponent<ChargeAttackController>().Init(controller.GetComponent<EnemyController>(), this);
         yield return new WaitForSeconds(8);
         if (controller.IsCharging)
         {

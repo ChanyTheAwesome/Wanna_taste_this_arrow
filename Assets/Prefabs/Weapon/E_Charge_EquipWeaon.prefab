@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8956229199254230185}
   - component: {fileID: 3977701011274213266}
+  - component: {fileID: 423378156885037208}
   m_Layer: 0
   m_Name: Pivot
   m_TagString: Untagged
@@ -77,6 +78,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0021694, y: 0.94429135}
   m_EdgeRadius: 0
+--- !u!114 &423378156885037208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3554852316465986831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb22e7f45c6271b438ba290bb5f3364f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8505622009315772103
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,7 +100,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2583870033016334895}
   - component: {fileID: 4740706890977349068}
-  - component: {fileID: 1211228173493837715}
   m_Layer: 0
   m_Name: E_Charge_EquipWeaon
   m_TagString: Untagged
@@ -139,15 +151,3 @@ MonoBehaviour:
   CollideBoxSize: {x: 5, y: 3}
   isCharge: 1
   ChargeCollider: {fileID: 3554852316465986831}
---- !u!114 &1211228173493837715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8505622009315772103}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb22e7f45c6271b438ba290bb5f3364f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

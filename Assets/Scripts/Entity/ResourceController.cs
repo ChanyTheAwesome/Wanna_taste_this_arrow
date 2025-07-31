@@ -68,7 +68,7 @@ public class ResourceController : MonoBehaviour
         {
             Death();//체력이 0이되면 사망 메서드를 호출한다.
         }
-
+        
         return true;
     }
     private void Death()

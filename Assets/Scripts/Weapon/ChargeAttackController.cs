@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Reflection;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.InputSystem.XR;
 
 public class ChargeAttackController : MonoBehaviour
 {
@@ -31,6 +33,10 @@ public class ChargeAttackController : MonoBehaviour
     private IEnumerator StruckToNotPlayer()
     {
         _enemyController.Rigidbody.velocity = Vector3.zero;
+        //float navMeshSpeedHolder = Controller.gameObject.GetComponent<NavMeshAgent>().speed;
+        
+        //Controller.gameObject.GetComponent<NavMeshAgent>().speed = 0;
+        //For Later
         yield return new WaitForSeconds(3);
         _enemyController.IsCharging = false;
     }
