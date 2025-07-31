@@ -77,8 +77,6 @@ public class ProjectileController : MonoBehaviour
     public void Init(Vector2 direction, RangeWeaponHandler weaponHandler, ProjectileManager projectileManager)
     {//이 Init은 ProjectileManager에서 총알을 쐈을 때 호출된다.
 
-        Debug.Log(weaponHandler.target.ToString());
-
         this._projectileManager = projectileManager;
         rangeWeaponHandler = weaponHandler;
         this._direction = direction;
@@ -86,6 +84,36 @@ public class ProjectileController : MonoBehaviour
         transform.localScale = Vector3.one * weaponHandler.BulletSize;
         _spriteRenderer.color = weaponHandler.ProjectileColor;
 
+        transform.right = this._direction;
+
+        if (direction.x < 0)
+        {
+            _pivot.localRotation = Quaternion.Euler(180, 0, 0);//방향이 왼쪽이라면 180도 틀어주고
+        }
+        else
+        {
+            _pivot.localRotation = Quaternion.Euler(0, 0, 0);//아니라면 그대로 둔다.
+        }
+
+        if (_isExplosive)
+        {
+            explosionRange.gameObject.SetActive(false);
+        }
+
+        _isReady = true;//준비 됐다.
+    }
+
+    public void Init(Vector2 direction, RangeWeaponHandler weaponHandler, ProjectileManager projectileManager, bool reflect, bool penetarte)
+    {//이 Init은 ProjectileManager에서 총알을 쐈을 때 호출된다.
+
+        this._projectileManager = projectileManager;
+        rangeWeaponHandler = weaponHandler;
+        this._direction = direction;
+        _currentDuration = 0;
+        transform.localScale = Vector3.one * weaponHandler.BulletSize;
+        _spriteRenderer.color = weaponHandler.ProjectileColor;
+        _reflect = reflect;
+        _penetrate = penetarte;
         transform.right = this._direction;
 
         if (direction.x < 0)
