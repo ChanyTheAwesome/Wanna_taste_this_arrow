@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -229,8 +230,8 @@ public class ProjectileController : MonoBehaviour
         Transform nearest = null;
 
         Collider2D[] allhits = Physics2D.OverlapCircleAll(from, radius, enemyLayer);
-
         List<Collider2D> hits = new List<Collider2D>(allhits);
+        
 
         hits.RemoveAll(hit => _hitEnemies.Contains(hit.transform));
 
