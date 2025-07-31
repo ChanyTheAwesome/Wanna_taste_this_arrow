@@ -8,9 +8,9 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance => instance;
 
     private EnemyManager _enemyManager;
-    private PlayerController _playerController;
+    //private PlayerController _playerController;
 
-    public PlayerController PlayerController { get { return _playerController; } }
+    //public PlayerController PlayerController { get { return _playerController; } }
 
     private int stageCount = 0;
     public int StageCount
@@ -19,6 +19,10 @@ public class GameManager : MonoBehaviour
         set { stageCount = value; }
     }
     // 현재 진행중인 스테이지 넘버, 스테이지 시작시에 올라가게 설정
+
+    private UIState _currentState;
+
+    public UIState CurrentState { get { return _currentState; } set { _currentState = value; } }
 
     private void Awake()
     {
@@ -34,6 +38,8 @@ public class GameManager : MonoBehaviour
         _enemyManager = FindObjectOfType<EnemyManager>();
         //_playerController = FindObjectOfType<PlayerController>();
         //DungeonManager.Instance.CurrentDungeonID = 1;
+
+        CurrentState = UIState.Home;
     }
     private void Start()
     {
@@ -67,8 +73,8 @@ public class GameManager : MonoBehaviour
         DungeonManager.Instance.CheckClearStage();
     }
 
-    public void SetPlayer() // 테스트용
-    {
-        _playerController = FindObjectOfType<PlayerController>();
-    }
+    //public void SetPlayer() // 테스트용
+    //{
+    //    _playerController = FindObjectOfType<PlayerController>();
+    //}
 }

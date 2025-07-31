@@ -9,12 +9,12 @@ public class SceneController : MonoBehaviour
     public static SceneController Instance => instance;
 
     // 오타 방지
-    private string mainSceneName = "MainScene";
-    private string gameSceneName = "GameScene";
+    //private string mainSceneName = "ManagerTestScene";
+    //private string gameSceneName = "DungeonTestScene";
     //Declaring the field in advance to avoid typos is a great practice. However, consider using a constant instead!
     //Examples:
-    //private const string MAIN_SCENE_NAME = "MainScene";
-    //private const string GAME_SCENE_NAME = "GameScene";
+    private const string MAIN_SCENE_NAME = "ManagerTestScene";
+    private const string GAME_SCENE_NAME = "DungeonTestScene";
 
     private void Awake()
     {
@@ -31,11 +31,11 @@ public class SceneController : MonoBehaviour
 
     public void LoadMainScene()
     {
-        SceneManager.LoadScene(mainSceneName);
+        SceneManager.LoadScene(MAIN_SCENE_NAME);
     }
 
     public void LoadGameScene()
     {
-        SceneManager.LoadScene(gameSceneName);
+        SceneManager.LoadScene(GAME_SCENE_NAME);
     }
 }

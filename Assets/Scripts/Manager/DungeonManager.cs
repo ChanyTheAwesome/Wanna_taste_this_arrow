@@ -13,7 +13,7 @@ public class DungeonManager : MonoBehaviour
     private bool _isClear = false;
     public bool IsClear => _isClear;    // 스테이지 클리어 했는지
 
-    private int _currentDungeonID = 0;
+    private int _currentDungeonID = 1;
     public int CurrentDungeonID {
         get { return _currentDungeonID; }
         set { _currentDungeonID = value; }
@@ -75,11 +75,11 @@ public class DungeonManager : MonoBehaviour
         }   
     }
 
-    public void StartDungeon(int dungeonID)  // 던전 시작시 실행할 것들
+    public void StartDungeon(/*int dungeonID*/)  // 던전 시작시 실행할 것들
     {
-        Debug.Log(dungeonID);   // 테스트용
+        Debug.Log($"{CurrentDungeonID} 던전 입장");   // 테스트용
         _isFirstStage = true;
-        _currentDungeonID = dungeonID;   // dungeonID를 어떻게 가져와야될까
+        //_currentDungeonID = dungeonID;   // dungeonID를 어떻게 가져와야될까
         StartStage();
     }
 
@@ -117,16 +117,16 @@ public class DungeonManager : MonoBehaviour
         // stageCount 0으로 맞추기
         GameManager.Instance.StageCount = 0;
         // currentDungeonID 0으로 맞추기
-        _currentDungeonID = 0;
+        _currentDungeonID = 1;
         // 홈 화면 불러오기
         SceneController.Instance.LoadMainScene();
     }
 
     public void ChangeStat()    // 테스트용 메서드
     {
-        _currentDungeonID = 1;//Meaning?
+        //_currentDungeonID = 1;//Meaning?
         //_enemyController.SetEnemyHealth(DungeonList.Find(d => d.ID == _currentDungeonID).IncreaseStat);
         _enemyController.SetEnemyHealth(DungeonDict[_currentDungeonID].IncreaseStat);
-        _currentDungeonID = 0;
+        //_currentDungeonID = 0;
     }
 }

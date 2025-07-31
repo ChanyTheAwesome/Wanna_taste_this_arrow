@@ -15,6 +15,8 @@ public class EnemyManager : MonoBehaviour
 
     private bool _enemySpawnComplete;
 
+    [SerializeField] private PlayerController _playerController;
+
     //[SerializeField] private float timeBetweenSpawns = 0.2f;
     //[SerializeField] private float timeBetweenWaves = 1f;
 
@@ -43,9 +45,10 @@ public class EnemyManager : MonoBehaviour
     private void Start()
     {
         //SpawnMonster(DungeonManager.Instance.DungeonList.Find(d => d.ID == DungeonManager.Instance.CurrentDungeonID).EnemyCount);
-        //SpawnMonster(DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].EnemyCount);
+        SpawnMonster(DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].EnemyCount);
         // 지금 위에 괄호안에 있는 부분이 잘못됨 아래에 그냥 숫자 넣으면 작동함
         //SpawnMonster(5);
+        //_playerController = FindObjectOfType<PlayerController>();
     }
 
     public void OnClickSpawnMonster()
@@ -92,7 +95,7 @@ public class EnemyManager : MonoBehaviour
 
         GameObject spawnEnemy = Instantiate(randomPrefab, new Vector3(randomPosition.x, randomPosition.y), Quaternion.identity);
         EnemyController enemyController = spawnEnemy.GetComponent<EnemyController>();
-        enemyController.Init(this, GameManager.Instance.PlayerController.transform); // 에너미컨트롤러의 타겟을 플레이어로 지정하는 코드, 나중에 게임매니저에 플레이어 객체 만들면 다시 넣기
+        enemyController.Init(this, _playerController.transform); // 에너미컨트롤러의 타겟을 플레이어로 지정하는 코드, 나중에 게임매니저에 플레이어 객체 만들면 다시 넣기
 
         if (enemyController != null)
         {

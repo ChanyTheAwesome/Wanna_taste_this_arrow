@@ -11,6 +11,6 @@ public class DungeonEnterButton : MonoBehaviour
 
     private void Start()
     {
-        dungeonEnterButton.onClick.AddListener(() => DungeonManager.Instance.StartDungeon(_dungeonID));
+        //dungeonEnterButton.onClick.AddListener(() => DungeonManager.Instance.StartDungeon(_dungeonID));
     }
 }

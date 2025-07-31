@@ -10,20 +10,24 @@ public class HomeUI : BaseUI
     [SerializeField] private Button _enterDungeonButton;
     [SerializeField] private Text _currentDungeonIDText;
 
-    private void Update()
+    private void Awake()
     {
-        _currentDungeonIDText.text = DungeonManager.Instance.CurrentDungeonID.ToString();
-        Debug.Log(DungeonManager.Instance.CurrentDungeonID);
-    }
-
-    public override void Init(/*UIManager uiManager*/)
-    {
-        //base.Init(uiManager);
-
         _shiftLeftButton.onClick.AddListener(OnClickShiftLeftButton);
         _shiftRightButton.onClick.AddListener(OnClickShiftRightButton);
         _enterDungeonButton.onClick.AddListener(OnClickEnterDungeonButton);
     }
+    private void Start()
+    {
+        _currentDungeonIDText.text = DungeonManager.Instance.CurrentDungeonID.ToString();
+    }
+    //public override void Init(/*UIManager uiManager*/)
+    //{
+    //    //base.Init(uiManager);
+
+    //    _shiftLeftButton.onClick.AddListener(OnClickShiftLeftButton);
+    //    _shiftRightButton.onClick.AddListener(OnClickShiftRightButton);
+    //    _enterDungeonButton.onClick.AddListener(OnClickEnterDungeonButton);
+    //}
 
     public void OnClickShiftLeftButton()
     {
@@ -31,6 +35,7 @@ public class HomeUI : BaseUI
         {
             DungeonManager.Instance.CurrentDungeonID--;
             // 던전 이미지나 이름도 바꾸기
+            _currentDungeonIDText.text = DungeonManager.Instance.CurrentDungeonID.ToString();
         }
         else return;
     }
@@ -41,13 +46,14 @@ public class HomeUI : BaseUI
         {
             DungeonManager.Instance.CurrentDungeonID++;
             // 던전 이미지나 이름도 바꾸기
+            _currentDungeonIDText.text = DungeonManager.Instance.CurrentDungeonID.ToString();
         }
         else return;
     }
 
     public void OnClickEnterDungeonButton()
     {
-        DungeonManager.Instance.StartDungeon(DungeonManager.Instance.CurrentDungeonID);
+        DungeonManager.Instance.StartDungeon(/*DungeonManager.Instance.CurrentDungeonID*/);
     }
 
     protected override UIState GetUIState()
