@@ -65,6 +65,7 @@ public class PlayerController : BaseController
                 //statHandler.Health -= 1;
                 ReflectShot();
                 TripleShot();
+                PenetrationShot();
             }
             if(Input.GetMouseButton(1))
             {
