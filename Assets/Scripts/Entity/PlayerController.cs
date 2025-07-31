@@ -64,7 +64,6 @@ public class PlayerController : BaseController
                 //isAttacking = true;
                 //statHandler.Health -= 1;
                 BackShot();
-                ReflectShot();
             }
             if(Input.GetMouseButton(1))
             {
