@@ -4,13 +4,21 @@ using UnityEngine;
 
 public enum UIState // UI 상태 enum, 홈, 게임중, 게임종료 등으로 나눌 예정 < 필요한가 모르겠음
 {
-
+    Home,
+    Game,
+    GameOver
 }
 
 public class UIManager : MonoBehaviour
 {
     private static UIManager instance;
-    public static UIManager Instance;
+    public static UIManager Instance {  get { return instance; } }
+
+    public UIState currentState;
+
+    HomeUI _homeUI;
+    GameUI _gameUI;
+    GameOverUI _gameOverUI;
 
     private void Awake()
     {
@@ -22,6 +30,15 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        _homeUI = GetComponentInChildren<HomeUI>(true);
+        _homeUI.Init(/*this*/);
+        _gameUI = GetComponentInChildren<GameUI>(true);
+        //gameUI.Init(this);
+        _gameOverUI = GetComponentInChildren<GameOverUI>(true);
+        //gameOverUI.Init(this);
+
+        //ChangeState(UIState.Home);
     }
 
     public void OnClickMenu()   // 메뉴 버튼 클릭
