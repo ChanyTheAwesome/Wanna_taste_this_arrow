@@ -199,7 +199,7 @@ MonoBehaviour:
   bulletIndex: 0
   bulletSize: 1
   duration: 1
-  spread: 10
+  spread: 1
   numberofProjectilesPerShot: 1
-  multipleProjectileAngle: 20
+  multipleProjectileAngle: 1
   projectileColor: {r: 1, g: 1, b: 1, a: 1}

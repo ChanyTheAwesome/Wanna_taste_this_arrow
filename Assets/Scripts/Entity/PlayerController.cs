@@ -63,7 +63,8 @@ public class PlayerController : BaseController
             {
                 //isAttacking = true;
                 //statHandler.Health -= 1;
-                PenetrationShot();
+                ReflectShot();
+                TripleShot();
             }
             if(Input.GetMouseButton(1))
             {
@@ -200,7 +201,6 @@ public class PlayerController : BaseController
     {
         if (weaponHandler == null) return;
         weaponHandler.Power += 2f;
-        
     }
 
     public void TripleShot()
