@@ -85,14 +85,8 @@ public class ProjectileController : MonoBehaviour
         }
     }
 
-    public void Init(Vector2 direction, RangeWeaponHandler weaponHandler, ProjectileManager projectileManager, bool reflect, bool penetrate)
+    public void Init(Vector2 direction, RangeWeaponHandler weaponHandler, ProjectileManager projectileManager)
     {//이 Init은 ProjectileManager에서 총알을 쐈을 때 호출된다.
-
-        Debug.Log(weaponHandler.target.ToString());
-
-
-            if (reflect) _reflect = reflect;
-            if (penetrate) _penetrate = penetrate;
 
         this.projectileManager = projectileManager;
         rangeWeaponHandler = weaponHandler;
