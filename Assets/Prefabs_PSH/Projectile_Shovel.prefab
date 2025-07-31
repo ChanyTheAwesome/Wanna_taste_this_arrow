@@ -82,7 +82,12 @@ MonoBehaviour:
   levelCollisionLayer:
     serializedVersion: 2
     m_Bits: 128
-  fxOnDestroy: 1
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  MaxRicochetCount: 2
+  _isExplosive: 0
+  explosionRange: {fileID: 0}
 --- !u!50 &6896830051037497947
 Rigidbody2D:
   serializedVersion: 4

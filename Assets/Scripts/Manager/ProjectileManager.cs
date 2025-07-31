@@ -16,7 +16,11 @@ public class ProjectileManager : MonoBehaviour
 
     private bool _penetrate;
     public bool Penetrate { set { _penetrate = value; } }
+    private bool _reverse;
+    public bool Reverse { set { _reverse = value; } }
 
+    private bool _ricochet;
+    public bool Ricochet { set { _ricochet = value; } }
     private void Awake()
     {
         instance = this;
@@ -30,7 +34,7 @@ public class ProjectileManager : MonoBehaviour
         ProjectileController projectileController = obj.GetComponent<ProjectileController>();//총알에 붙은 ProjectileController를 가져와
         if (_penetrate || _reflect)
         {
-            projectileController.Init(direction, rangeWeaponHandler, this, _reflect, _penetrate);//방향과, 원거리 무기 핸들러와, 매니저를 보내준다.
+            projectileController.Init(direction, rangeWeaponHandler, this, _reflect, _penetrate, _ricochet);//방향과, 원거리 무기 핸들러와, 매니저를 보내준다.
         }
         else projectileController.Init(direction, rangeWeaponHandler, this);
     }
