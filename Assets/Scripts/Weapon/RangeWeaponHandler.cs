@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class RangeWeaponHandler : WeaponHandler
 {
     [Header("Ranged Attack Data")]
     [SerializeField] private Transform projectileSpawnPosition;
+    [SerializeField] private Transform projectileSpawnBackPosition;
 
     [SerializeField] private int bulletIndex;
     public int BulletIndex { get { return bulletIndex; } }
@@ -27,6 +29,9 @@ public class RangeWeaponHandler : WeaponHandler
 
     [SerializeField] private Color projectileColor;
     public Color ProjectileColor { get { return projectileColor; } }
+
+    private bool _reverse;
+    public bool Reverse { set { _reverse = value; } }
 
     private ProjectileManager _projectileManager;
 
@@ -54,6 +59,11 @@ public class RangeWeaponHandler : WeaponHandler
     private void CreateProjectile(Vector2 _lookDirection, float angle)
     {//총알 발사, projectileManager에게 있는 ShootBullet을 호출한다.
         _projectileManager.ShootBullet(this, projectileSpawnPosition.position, RotateVector2(_lookDirection, angle));
+        if(_reverse)
+        {
+            _projectileManager.ShootBullet(this, projectileSpawnBackPosition.position, RotateVector2(_lookDirection * -1, angle));
+        }
+
     }//보내주는 값은 자신과, spawnPosition, 보고있는 방향에서 angle만큼 값을 보정한 vector를 보낸다.
 
     private static Vector2 RotateVector2(Vector2 v, float degree)

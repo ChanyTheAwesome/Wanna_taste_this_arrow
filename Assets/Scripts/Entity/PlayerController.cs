@@ -63,9 +63,8 @@ public class PlayerController : BaseController
             {
                 //isAttacking = true;
                 //statHandler.Health -= 1;
+                BackShot();
                 ReflectShot();
-                TripleShot();
-                Ricochet();
             }
             if(Input.GetMouseButton(1))
             {
@@ -76,8 +75,8 @@ public class PlayerController : BaseController
 
     public override void Death()
     {
-        /*base.Death();
-        gameManager.GameOver();*/
+        base.Death();
+        //gameManager.GameOver();
     }
 
     void OnMove()
@@ -200,6 +199,13 @@ public class PlayerController : BaseController
         weaponHandler.Delay -= 0.15f;
     }
 
+    // 발사체 속도 증가
+    public void ProjectileSpeedUp()
+    {
+        if (weaponHandler == null) return;
+        weaponHandler.Speed += 1f;
+    }
+
     // 공격력 증가
     public void AttackPowerUp()
     {
@@ -212,7 +218,7 @@ public class PlayerController : BaseController
     {
         if (weaponHandler == null) return;
         RangeWeaponHandler weapon = weaponHandler.GetComponent<RangeWeaponHandler>();
-        weapon.NumberofProjectilesPerShot = 3;
+        weapon.NumberofProjectilesPerShot = 10;
         weapon.MultipleProjectileAngle = 30f;
     }
 
@@ -234,25 +240,15 @@ public class PlayerController : BaseController
     // 후방화살
     public void BackShot()
     {
-        ProjectileManager.Instance.Reverse = true;
+        if (weaponHandler == null) return;
+        RangeWeaponHandler weapon = weaponHandler.GetComponent<RangeWeaponHandler>();
+        weapon.Reverse = true;
     }
 
     // 도탄
     public void Ricochet()
     {
         ProjectileManager.Instance.Ricochet = true;
-    }
-
-    // 양옆화살
-    public void SideShot()
-    {
-
-    }
-
-    // 한번에 두개
-    public void DoubleShot()
-    {
-
     }
 
     // 회복?
