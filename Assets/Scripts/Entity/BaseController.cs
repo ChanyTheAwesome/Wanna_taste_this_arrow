@@ -76,7 +76,6 @@ public class BaseController : MonoBehaviour
         {
             _knockbackDuration -= Time.fixedDeltaTime; // knockbackDuration을 매 프레임마다 빼준다.
         }
-        Debug.Log(Rigidbody.velocity);
     }
 
     protected virtual void HandleAction()
@@ -142,6 +141,12 @@ public class BaseController : MonoBehaviour
     {
         _rigidbody.velocity = Vector3.zero; //이동을 멈추고
 
+        if (animationhandler.gameObject.layer == 6)
+        {
+            animationhandler.Dead();
+
+            return;
+        }
         foreach (SpriteRenderer renderer in transform.GetComponentsInChildren<SpriteRenderer>())
         {
             Color color = renderer.color;
@@ -153,7 +158,6 @@ public class BaseController : MonoBehaviour
         {
             component.enabled = false; //컴포넌트도 다 꺼버리겠습니다~
         }
-
         Destroy(gameObject, 2.0f); //2초 뒤에 삭제해버리겠습니다~
     }
 }
