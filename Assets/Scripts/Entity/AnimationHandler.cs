@@ -6,6 +6,7 @@ public class AnimationHandler : MonoBehaviour
 {
     private static readonly int IsMoving = Animator.StringToHash("IsMove");
     private static readonly int IsDamage = Animator.StringToHash("IsDamage");
+    private static readonly int IsCharge = Animator.StringToHash("IsCharge");
 
     protected Animator animator;
 
@@ -28,5 +29,14 @@ public class AnimationHandler : MonoBehaviour
     {
         animator.SetBool(IsDamage, false);
         Debug.Log("this");
+    }
+
+    public void TrueChargeAnimation()
+    {
+        animator.SetBool(IsCharge, true);
+    }
+    public void FalseChargeAnimation()
+    {
+        animator.SetBool(IsCharge, false);
     }
 }

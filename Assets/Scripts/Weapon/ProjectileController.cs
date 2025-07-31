@@ -77,6 +77,8 @@ public class ProjectileController : MonoBehaviour
     public void Init(Vector2 direction, RangeWeaponHandler weaponHandler, ProjectileManager projectileManager)
     {//이 Init은 ProjectileManager에서 총알을 쐈을 때 호출된다.
 
+        Debug.Log(weaponHandler.target.ToString());
+
         this._projectileManager = projectileManager;
         rangeWeaponHandler = weaponHandler;
         this._direction = direction;
