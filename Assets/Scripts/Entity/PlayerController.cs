@@ -65,7 +65,7 @@ public class PlayerController : BaseController
                 //statHandler.Health -= 1;
                 ReflectShot();
                 TripleShot();
-                PenetrationShot();
+                Ricochet();
             }
             if(Input.GetMouseButton(1))
             {
@@ -87,7 +87,7 @@ public class PlayerController : BaseController
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         movementDirection = new Vector2(horizontal, vertical).normalized;
-        
+        animationhandler.Move(movementDirection);
         // 멈춰 있을 때 공격한다.
         if (!_isDebug)
         {
@@ -172,38 +172,42 @@ public class PlayerController : BaseController
         }
     }
 
-    // 감지 범위 그리기
+    // 감지 범위 그리기 - 나중에 지워도 되는 부분
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, 5f);
     }
 
-    // 능력 구현?
+    // 최대 체력 증가
     public void MaxHpUp()
     {
         if (statHandler == null) return;
         statHandler.Health += 20;
     }
 
+    // 이동 속도 증가
     public void MoveSpeedUp()
     {
         if (statHandler == null) return;
         statHandler.Speed += 1f;
     }
 
+    // 공격 속도
     public void AttackSpeedUp()
     {
         if (weaponHandler == null) return;
         weaponHandler.Delay -= 0.15f;
     }
 
+    // 공격력 증가
     public void AttackPowerUp()
     {
         if (weaponHandler == null) return;
         weaponHandler.Power += 2f;
     }
 
+    // 한번에 세개
     public void TripleShot()
     {
         if (weaponHandler == null) return;
@@ -212,10 +216,31 @@ public class PlayerController : BaseController
         weapon.MultipleProjectileAngle = 30f;
     }
 
+    //관통
+    public void PenetrationShot()
+    {
+        // 여기서 관통을 On 해주자
+        ProjectileManager.Instance.Penetrate = true;
+    }
+
+    // 튕기기
+    public void ReflectShot()
+    {
+        // 반사 on -> ProjectijleController 에 벽이랑 부딪혔을 시 반사되게끔 구현
+
+        ProjectileManager.Instance.Reflect = true;
+    }
+
     // 후방화살
     public void BackShot()
     {
+        ProjectileManager.Instance.Reverse = true;
+    }
 
+    // 도탄
+    public void Ricochet()
+    {
+        ProjectileManager.Instance.Ricochet = true;
     }
 
     // 양옆화살
@@ -224,16 +249,15 @@ public class PlayerController : BaseController
 
     }
 
-    public void PenetrationShot()
+    // 한번에 두개
+    public void DoubleShot()
     {
-        // 여기서 관통을 On 해주자
-        ProjectileManager.Instance.Penetrate = true;
+
     }
 
-    public void ReflectShot()
+    // 회복?
+    public void RecoveryHp()
     {
-        // 반사 on -> ProjectijleController 에 벽이랑 부딪혔을 시 반사되게끔 구현
 
-        ProjectileManager.Instance.Reflect = true;
     }
 }
