@@ -32,10 +32,13 @@ public class ProjectileManager : MonoBehaviour
         GameObject obj = Instantiate(origin, startPosition, Quaternion.identity);//생성한다.
 
         ProjectileController projectileController = obj.GetComponent<ProjectileController>();//총알에 붙은 ProjectileController를 가져와
-        if (_penetrate || _reflect)
+        if (_penetrate || _reflect || _ricochet)
         {
             projectileController.Init(direction, rangeWeaponHandler, this, _reflect, _penetrate, _ricochet);//방향과, 원거리 무기 핸들러와, 매니저를 보내준다.
+            return;
         }
+        //if (_reverse)
+
         else projectileController.Init(direction, rangeWeaponHandler, this);
     }
 
