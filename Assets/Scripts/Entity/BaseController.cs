@@ -6,9 +6,11 @@ using UnityEngine;
 public class BaseController : MonoBehaviour
 {
     protected Rigidbody2D _rigidbody;
-
-    [SerializeField] private SpriteRenderer characterRenderer;
+    
+    [SerializeField] protected SpriteRenderer characterRenderer;
     [SerializeField] private Transform weaponPivot;
+    [SerializeField] public WeaponHandler WeaponPrefab;
+    [SerializeField] public ProjectileManager ProjectileManager;
 
     protected Vector2 movementDirection = Vector2.zero;
     public Vector2 MovementDirection {  get { return movementDirection; }}
@@ -16,18 +18,18 @@ public class BaseController : MonoBehaviour
     protected Vector2 lookDirection = Vector2.zero;
     public Vector2 LookDirection { get { return lookDirection; }}
 
-    private Vector2 knockback = Vector2.zero;
-    private float knockbackDuration = 0.0f;
+    private Vector2 _knockback = Vector2.zero;
+    private float _knockbackDuration = 0.0f;
 
     protected AnimationHandler animationhandler;
-
     protected StatHandler statHandler;
-
-    [SerializeField] public WeaponHandler WeaponPrefab;
-    [SerializeField] public ProjectileManager projectileManager;
     protected WeaponHandler weaponHandler;
+
     protected bool isAttacking;
+    protected bool isLeft;
+
     private float timeSincelastAttack = float.MaxValue;
+
     protected virtual void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -59,9 +61,9 @@ public class BaseController : MonoBehaviour
     protected virtual void FixedUpdate()
     {
         Movement(movementDirection);
-        if (knockbackDuration > 0.0f)
+        if (_knockbackDuration > 0.0f)
         {
-            knockbackDuration -= Time.fixedDeltaTime; // knockbackDuration을 매 프레임마다 빼준다.
+            _knockbackDuration -= Time.fixedDeltaTime; // knockbackDuration을 매 프레임마다 빼준다.
         }
     }
 
@@ -70,23 +72,22 @@ public class BaseController : MonoBehaviour
 
     }
 
-    private void Movement(Vector2 direction)
+    protected virtual void Movement(Vector2 direction)
     {
         direction = direction * statHandler.Speed; // 받아온 direction에 speed만큼 이동, 적은 EnemyController의 handleAction에, Player는 OnMove에 지정되어있음.
-        if(knockbackDuration > 0.0f)
+        if(_knockbackDuration > 0.0f)
         {
             direction *= 0.2f;
-            direction += knockback;
+            direction += _knockback;
         }//넉백 중이라면 넉백을 하도록 함, 이동의 전체 크기를 0.2만큼 낮추고, knockback 벡터를 direction에 더함
         _rigidbody.velocity = direction; // 물리 연산을 하는 rigidbody의 velocity에 direction을 넣어줌
-        //animationhandler.Move(direction); // 이동 애니메이션 키세요 라는 뜻
     }
 
-    private void Rotate(Vector2 direction)
+    protected virtual void Rotate(Vector2 direction)
     {
         float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; //각도 구하기, 뒤의 것은 라디안 값에서 우리가 잘 아는 각도로 변환해주는 것.
-        bool isLeft = Mathf.Abs(rotZ) > 90; 
-        //characterRenderer.flipX = isLeft;//90도 넘나요? 예-> 왼쪽 보셈 아니오-> 오른쪽 보셈
+        isLeft = Mathf.Abs(rotZ) > 90; 
+        
 
         if (weaponPivot != null)
         {
@@ -97,8 +98,8 @@ public class BaseController : MonoBehaviour
 
     public void ApplyKnockback(Transform other, float power, float duration)
     {
-        knockbackDuration = duration;
-        knockback = -(other.position - transform.position).normalized * power; //각 무기의 위치 - 맞은 놈의 위치의 벡터를 power만큼 knockback시킨다.
+        _knockbackDuration = duration;
+        _knockback = -(other.position - transform.position).normalized * power; //각 무기의 위치 - 맞은 놈의 위치의 벡터를 power만큼 knockback시킨다.
     }
 
     private void HandleAttackDelay()

@@ -9,7 +9,7 @@ public class Dungeon
     public int MaxStageCount { get; private set; }
     public int BaseEnemyCount { get; private set; }
     public int EnemyIncreaseInterval { get; private set; }    // 몇 스테이지마다 적 수를 늘릴건지
-    public int EnemyCount => BaseEnemyCount + GameManager.instance.stageCount / EnemyIncreaseInterval;  // 스테이지당 증가하는 적 카운트
+    public int EnemyCount => BaseEnemyCount + GameManager.Instance.StageCount / EnemyIncreaseInterval;  // 스테이지당 증가하는 적 카운트
 
     public float IncreaseStat { get; private set; }   // 스테이지당 스탯 증가율
 

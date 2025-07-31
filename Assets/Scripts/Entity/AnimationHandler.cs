@@ -17,12 +17,11 @@ public class AnimationHandler : MonoBehaviour
     public void Move(Vector2 obj)
     {
         animator.SetBool(IsMoving, obj.magnitude > 0.5f);
-        
     }
+
     public void Damage()
     {
         animator.SetBool(IsDamage, true);
-        
     }
 
     public void InvincibilityEnd()

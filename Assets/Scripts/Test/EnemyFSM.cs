@@ -6,52 +6,52 @@ using UnityEngine.AI;
 public class EnemyFSM : MonoBehaviour
 {
     [SerializeField] private GameObject target;
-    [SerializeField] private NavMeshAgent _navMeshAgent;
+    [SerializeField] private NavMeshAgent navMeshAgent;
     [SerializeField] public LayerMask targetLayer;
 
     public bool _isCloseToPlayer;
     private void Start()
     {
         _isCloseToPlayer = false;
-        _navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
 
-        _navMeshAgent.updateRotation = false;
-        _navMeshAgent.updateUpAxis = false;
-        _navMeshAgent.SetDestination(target.transform.position);
+        navMeshAgent.updateRotation = false;
+        navMeshAgent.updateUpAxis = false;
+        navMeshAgent.SetDestination(target.transform.position);
     }
 
     private void Update()
     {
         if(target == null)
         {
-            Debug.Log("test");
             return;
         }
-        if(_isCloseToPlayer)
+        if(!_isCloseToPlayer)
         {
-
+            navMeshAgent.SetDestination(target.transform.position);
         }
-        else
-        {
-            _navMeshAgent.SetDestination(target.transform.position);
-        }
-        Debug.Log(_isCloseToPlayer + "," + this.gameObject.name);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(targetLayer.value == (targetLayer.value | (1 << collision.gameObject.layer)))
+        GameObject go = collision.gameObject;
+        if(TargetLayerCheck(go))
         {
             _isCloseToPlayer = true;
         }
-
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (targetLayer.value == (targetLayer.value | (1 << collision.gameObject.layer)))
+        GameObject go = collision.gameObject;
+        if (TargetLayerCheck(go))
         {
             _isCloseToPlayer = false;
         }
+    }
+
+    private bool TargetLayerCheck(GameObject go)
+    {
+        return targetLayer.value == (targetLayer.value | (1 << go.layer));
     }
 }

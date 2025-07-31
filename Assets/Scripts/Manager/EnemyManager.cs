@@ -7,15 +7,13 @@ public class EnemyManager : MonoBehaviour
     //private Coroutine waveRoutine;
 
     [SerializeField] private LayerMask enemyLayerMask;  // Enemy 존재여부 확인용 레이어
-
     [SerializeField] private List<GameObject> enemyPrefabs;
-
     [SerializeField] List<Rect> spawnAreas;
     [SerializeField] private Color gizmoColor = new Color(1, 0, 0, 0.3f);
 
-    private List<EnemyController> activeEnemies = new List<EnemyController>();
+    private List<EnemyController> _activeEnemies = new List<EnemyController>();
 
-    private bool enemySpawnComplite;
+    private bool _enemySpawnComplete;
 
     //[SerializeField] private float timeBetweenSpawns = 0.2f;
     //[SerializeField] private float timeBetweenWaves = 1f;
@@ -44,14 +42,14 @@ public class EnemyManager : MonoBehaviour
     //}
     private void Start()
     {
-        SpawnMonster(DungeonManager.instance.dungeonList.Find(d => d.ID == DungeonManager.instance.currentDungeonID).EnemyCount);
+        SpawnMonster(DungeonManager.Instance.DungeonList.Find(d => d.ID == DungeonManager.Instance.CurrentDungeonID).EnemyCount);
         // 지금 위에 괄호안에 있는 부분이 잘못됨 아래에 그냥 숫자 넣으면 작동함
         //SpawnMonster(5);
     }
 
     public void OnClickSpawnMonster()
     {
-        SpawnMonster(DungeonManager.instance.dungeonList.Find(d => d.ID == DungeonManager.instance.currentDungeonID).EnemyCount);
+        SpawnMonster(DungeonManager.Instance.DungeonList.Find(d => d.ID == DungeonManager.Instance.CurrentDungeonID).EnemyCount);
     }
 
     public void SpawnMonster(int enemyCount)  // 일반 몬스터 생성
@@ -69,8 +67,8 @@ public class EnemyManager : MonoBehaviour
 
     public bool CheckEnemyExist()   // Enemy 레이어를 가진 오브젝트가 존재하는지 체크, 없으면 false 있으면 true
     {
-        Debug.Log(GameManager.instance.CheckLayerObjectCount(enemyLayerMask));
-        if(GameManager.instance.CheckLayerObjectCount(enemyLayerMask) == 0)
+        Debug.Log(GameManager.Instance.CheckLayerObjectCount(enemyLayerMask));
+        if(GameManager.Instance.CheckLayerObjectCount(enemyLayerMask) == 0)
         {
             return false;
         }
@@ -100,7 +98,10 @@ public class EnemyManager : MonoBehaviour
         EnemyController enemyController = spawnEnemy.GetComponent<EnemyController>();
         //enemyController.Init(this, gameManager.player.transform); << 얘 뭔지 확인해야됨
 
-        activeEnemies.Add(enemyController);
+        if (enemyController != null)
+        {
+            _activeEnemies.Add(enemyController);
+        }
     }
 
     private void OnDrawGizmosSelected()

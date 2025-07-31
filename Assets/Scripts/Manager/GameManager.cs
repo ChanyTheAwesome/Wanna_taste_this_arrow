@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    private static GameManager instance;
+    public static GameManager Instance => instance;
 
-    EnemyManager enemyManager;
+    private EnemyManager _enemyManager;
 
-    public int stageCount = 0;  // 현재 진행중인 스테이지 넘버, 스테이지 시작시에 올라가게 설정
+    private int stageCount = 0;
+    public int StageCount
+    {
+        get { return stageCount; }
+        set { stageCount = value; }
+    }
+    // 현재 진행중인 스테이지 넘버, 스테이지 시작시에 올라가게 설정
 
     private void Awake()
     {
@@ -21,18 +28,13 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        enemyManager = FindObjectOfType<EnemyManager>();
-        DungeonManager.instance.currentDungeonID = 1;
-    }
-    // Start is called before the first frame update
-    private void Start()
-    {
-        
+        _enemyManager = FindObjectOfType<EnemyManager>();
+        DungeonManager.Instance.CurrentDungeonID = 1;
     }
 
     private void Update()
     {
-        if (enemyManager.CheckEnemyExist())
+        if (_enemyManager.CheckEnemyExist())
         {
             Debug.Log("적 있음");
         }
@@ -40,7 +42,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("적 없음");
         }
-        DungeonManager.instance.CheckClearStage();
+        DungeonManager.Instance.CheckClearStage();
 
     }
 
@@ -50,7 +52,7 @@ public class GameManager : MonoBehaviour
     }
 
     public int CheckLayerObjectCount(LayerMask targetLayer)    // 특정 레이어를 가진 오브젝트의 개수를 카운팅
-    {
+    {//Too Inefficient to find Enemies! EnemyManager already has "activeEnemies" List, please consider to use activeEnemies.Count
         GameObject[] allGameObjects = FindObjectsOfType<GameObject>();  // 모든 게임오브젝트를 가져옴, 비활성화된 것 제외
 
         int objectCount = 0;

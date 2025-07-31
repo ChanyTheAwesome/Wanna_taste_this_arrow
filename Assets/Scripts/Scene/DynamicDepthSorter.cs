@@ -2,21 +2,21 @@ using UnityEngine;
 
 public class DynamicDepthSorter : BaseDepthSorter
 {
-    private float lastY;
+    private float _lastY;
 
     protected override void Awake()
     {
         base.Awake();
-        lastY = transform.position.y;
+        _lastY = transform.position.y;
         UpdateSortingOrder(); // 초기 정렬
     }
 
     private void Update()
     {
         float currentY = transform.position.y;
-        if (!Mathf.Approximately(currentY, lastY))
+        if (!Mathf.Approximately(currentY, _lastY))
         {
-            lastY = currentY;
+            _lastY = currentY;
             UpdateSortingOrder();
         }
     }

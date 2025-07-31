@@ -9,7 +9,8 @@ public enum UIState // UI 상태 enum, 홈, 게임중, 게임종료 등으로 나눌 예정 < 필�
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager instance;
+    private static UIManager instance;
+    public static UIManager Instance;
 
     private void Awake()
     {
@@ -21,17 +22,6 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void OnClickMenu()   // 메뉴 버튼 클릭
@@ -49,14 +39,14 @@ public class UIManager : MonoBehaviour
     public void OnClickStart()  // 시작 버튼 클릭
     {
         // 게임 씬 불러오기
-        SceneController.instance.LoadGameScene();
+        SceneController.Instance.LoadGameScene();
     }
 
     public void OnClickExitDungeon()
     {
         Time.timeScale = 1; // 멈춰놨던 시간 다시 세팅
         // 홈 씬 불러오기
-        DungeonManager.instance.ExitDungeon();
+        DungeonManager.Instance.ExitDungeon();
     }
 
     public void OnClickOption() // 옵션 버튼 클릭
@@ -72,12 +62,12 @@ public class UIManager : MonoBehaviour
         ResumeGame();
     }
 
-    void StopGame() // 게임 일시정지, 게임중 UI 활성화했을 때 사용
+    private void StopGame() // 게임 일시정지, 게임중 UI 활성화했을 때 사용
     {
         Time.timeScale = 0;
     }
 
-    void ResumeGame()   // 게임 재개, 게임중 UI 닫았을 때 사용
+    private void ResumeGame()   // 게임 재개, 게임중 UI 닫았을 때 사용
     {
         Time.timeScale = 1;
     }

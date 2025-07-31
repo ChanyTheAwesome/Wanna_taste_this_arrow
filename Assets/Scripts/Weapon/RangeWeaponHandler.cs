@@ -8,27 +8,32 @@ public class RangeWeaponHandler : WeaponHandler
     [SerializeField] private Transform projectileSpawnPosition;
 
     [SerializeField] private int bulletIndex;
-
     public int BulletIndex { get { return bulletIndex; } }
+
     [SerializeField] private float bulletSize = 1.0f;
     public float BulletSize { get { return bulletSize; } }
+
     [SerializeField] private float duration;
     public float Duration { get { return duration; } }
+
     [SerializeField] private float spread;
     public float Spread { get { return spread; } }
+
     [SerializeField] private int numberofProjectilesPerShot;
     public int NumberofProjectilesPerShot { get { return numberofProjectilesPerShot; } set { numberofProjectilesPerShot = value; } }
+
     [SerializeField] private float multipleProjectileAngle;
     public float MultipleProjectileAngle { get { return multipleProjectileAngle; } set { multipleProjectileAngle = value; } }
+
     [SerializeField] private Color projectileColor;
     public Color ProjectileColor { get { return projectileColor; } }
 
-    private ProjectileManager projectileManager;
+    private ProjectileManager _projectileManager;
 
     protected override void Start()
     {
         base.Start();
-        projectileManager = ProjectileManager.Instance;
+        _projectileManager = ProjectileManager.Instance;
     }
 
     public override void Attack()
@@ -48,8 +53,9 @@ public class RangeWeaponHandler : WeaponHandler
     }
     private void CreateProjectile(Vector2 _lookDirection, float angle)
     {//총알 발사, projectileManager에게 있는 ShootBullet을 호출한다.
-        projectileManager.ShootBullet(this, projectileSpawnPosition.position, RotateVector2(_lookDirection, angle));
+        _projectileManager.ShootBullet(this, projectileSpawnPosition.position, RotateVector2(_lookDirection, angle));
     }//보내주는 값은 자신과, spawnPosition, 보고있는 방향에서 angle만큼 값을 보정한 vector를 보낸다.
+
     private static Vector2 RotateVector2(Vector2 v, float degree)
     {
         return Quaternion.Euler(0, 0, degree) * v;
