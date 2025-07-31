@@ -79,9 +79,6 @@ public class ProjectileController : MonoBehaviour
 
         Debug.Log(weaponHandler.target.ToString());
 
-        if (reflect) _reflect = reflect;
-        if (penetrate) _penetrate = penetrate;
-
         this._projectileManager = projectileManager;
         rangeWeaponHandler = weaponHandler;
         this._direction = direction;
