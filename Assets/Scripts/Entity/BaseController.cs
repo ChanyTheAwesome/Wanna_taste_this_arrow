@@ -144,6 +144,28 @@ public class BaseController : MonoBehaviour
         if (animationhandler.gameObject.layer == 6)
         {
             animationhandler.Dead();
+            Behaviour[] components = transform.GetComponentsInChildren<Behaviour>();
+            foreach (Behaviour component in components)
+            {
+                if(component.GetType() == typeof(BoxCollider2D))
+                {
+                    component.enabled = false;
+                }
+                if(component.GetType() == typeof(PlayerController))
+                {
+                    component.enabled = false;
+                }
+                if(component.GetType() == typeof(RangeWeaponHandler))
+                {
+                    RangeWeaponHandler weapon = component.GetComponent<RangeWeaponHandler>();
+                    weapon.gameObject.SetActive(false);
+                    component.enabled = false;
+                }
+                if(component.GetType() == typeof(Canvas))
+                {
+                    component.enabled = false;
+                }
+            }
 
             return;
         }

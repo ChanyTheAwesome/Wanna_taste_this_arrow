@@ -30,8 +30,9 @@ public class PlayerController : BaseController
         //this.gameManager = gameManager;
         camera = Camera.main;
     }*/
-    [SerializeField] private float findRadius = 5f;  // 감지범위
+    [SerializeField] private float findRadius = 10f;  // 감지범위
     [SerializeField] private LayerMask enemyLayer; // 에너미 레이어
+    [SerializeField] private LayerMask levelLayer;
     [SerializeField] private Slider hpSlider;
 
     private GameObject _target;                      // 공격할 타겟
@@ -64,6 +65,7 @@ public class PlayerController : BaseController
                 //isAttacking = true;
                 //statHandler.Health -= 1;
                 BackShot();
+                Ricochet();
             }
             if(Input.GetMouseButton(1))
             {
@@ -152,7 +154,6 @@ public class PlayerController : BaseController
             return;
         }
 
-        GameObject nearest = null; //<- Unused GameObject variant!!
         float minDistance = Mathf.Infinity;
 
         // 반복으로 배열안에 에너미의 거리 계산 후 가장 가까운 것을 타겟으로 설정
@@ -161,6 +162,11 @@ public class PlayerController : BaseController
             if (collider.gameObject.layer == gameObject.layer) continue;
 
             float distance = Vector2.Distance(transform.position, collider.transform.position);
+
+            RaycastHit2D hit = Physics2D.Linecast(transform.position, collider.transform.position, levelLayer);
+
+            if (hit.collider != null) continue;
+
 
             if (distance < minDistance && distance < findRadius)
             {
@@ -174,7 +180,7 @@ public class PlayerController : BaseController
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, 5f);
+        Gizmos.DrawWireSphere(transform.position, findRadius);
     }
 
     // 최대 체력 증가
