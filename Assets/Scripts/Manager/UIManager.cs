@@ -38,9 +38,11 @@ public class UIManager : MonoBehaviour
         //_gameUI.Init(/*this*/);
         _gameOverUI = GetComponentInChildren<GameOverUI>(true);
         //_gameOverUI.Init(/*this*/);
+    }
 
+    private void Start()
+    {
         SetHome();
-        ChangeState(GameManager.Instance.CurrentState);
     }
 
     public void SetHome()

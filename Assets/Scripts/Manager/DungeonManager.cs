@@ -75,11 +75,10 @@ public class DungeonManager : MonoBehaviour
         }   
     }
 
-    public void StartDungeon(/*int dungeonID*/)  // 던전 시작시 실행할 것들
+    public void StartDungeon()  // 던전 시작시 실행할 것들
     {
         Debug.Log($"{CurrentDungeonID} 던전 입장");   // 테스트용
         _isFirstStage = true;
-        //_currentDungeonID = dungeonID;   // dungeonID를 어떻게 가져와야될까
         StartStage();
     }
 
@@ -94,7 +93,14 @@ public class DungeonManager : MonoBehaviour
         GameManager.Instance.StageCount++;
         //UIManager.Instance.SetGame();   // 어차피 씬을 로드하는 식으로 넘어가면 UI는 초기화 될거임 씬 불러오고 설정해야될듯
         _isFirstStage = false; //<- Does this variable need to be here? If not, consider moving it to the top. 
-        SceneController.Instance.LoadGameScene();
+        if(GameManager.Instance.StageCount < DungeonDict[CurrentDungeonID].MaxStageCount)   // 마지막 스테이지가 아니면 일반 씬 불러오기
+        {
+            SceneController.Instance.LoadDungeonScene();
+        }
+        else    // 마지막 스테이지면 보스 씬 불러오기
+        {
+            SceneController.Instance.LoadBossScene();
+        }
     }
 
     public void ClearStage()    // 스테이지 클리어시 실행할 것들
