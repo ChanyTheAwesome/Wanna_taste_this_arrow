@@ -13,7 +13,7 @@ public class BaseController : MonoBehaviour
     }
 
     [SerializeField] protected SpriteRenderer characterRenderer;
-    [SerializeField] private Transform weaponPivot;
+    [SerializeField] protected Transform weaponPivot;
     [SerializeField] public WeaponHandler WeaponPrefab;
     [SerializeField] public ProjectileManager ProjectileManager;
 
@@ -28,12 +28,12 @@ public class BaseController : MonoBehaviour
 
     protected AnimationHandler animationhandler;
     protected StatHandler statHandler;
-    protected WeaponHandler weaponHandler;
+    public WeaponHandler weaponHandler;
 
     protected bool isAttacking;
     protected bool isLeft;
 
-    private float timeSincelastAttack = float.MaxValue;
+    protected float timeSincelastAttack = float.MaxValue;
 
     public bool IsCharging = false;
     public bool GotChargeWeapon = false;
@@ -109,7 +109,6 @@ public class BaseController : MonoBehaviour
         {
             weaponPivot.rotation = Quaternion.Euler(0f, 0f, rotZ);//무기도 같이 돌려주세요
         }
-        Debug.Log("test");
         weaponHandler?.Rotate(isLeft); //좌우 반대도 해주세요
     }
 
@@ -119,7 +118,7 @@ public class BaseController : MonoBehaviour
         _knockback = -(other.position - transform.position).normalized * power; //각 무기의 위치 - 맞은 놈의 위치의 벡터를 power만큼 knockback시킨다.
     }
 
-    private void HandleAttackDelay()
+    protected virtual void HandleAttackDelay()
     {
         if (weaponHandler == null)
         {

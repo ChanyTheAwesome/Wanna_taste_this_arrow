@@ -37,7 +37,7 @@ public class WeaponHandler : MonoBehaviour
 
     public BaseController Controller { get; private set; }
     public AudioClip attackSoundClip;
-    private Animator _animator;
+    public Animator _animator;
     public SpriteRenderer _weaponRenderer;
 
     
@@ -53,7 +53,6 @@ public class WeaponHandler : MonoBehaviour
         }
         
         transform.localScale = Vector3.one * weaponSize;
-        Debug.Log(_weaponRenderer.name);
     }
 
     protected virtual void Start()
@@ -73,6 +72,11 @@ public class WeaponHandler : MonoBehaviour
 
     public void AttackAnimation()
     {
+        if(_animator == null)
+        {
+            _animator = GetComponentInChildren<Animator>();
+            Debug.Log("Animator is null, trying to find it in children.");
+        }
         _animator.SetTrigger(IsAttack);//공격시 트리거 활성화
     }
 
@@ -80,8 +84,8 @@ public class WeaponHandler : MonoBehaviour
     {
         if(_weaponRenderer == null)
         {
-            Debug.LogError("WeaponHandler: No SpriteRenderer found to flip.");
-            return;
+            _weaponRenderer = GetComponentInChildren<SpriteRenderer>();
+            Debug.Log("WeaponRenderer is null, trying to find it in children.");
         }
         _weaponRenderer.flipY = isLeft;//왼쪽볼까요? 오른쪽 볼까요?
     }

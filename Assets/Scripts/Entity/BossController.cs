@@ -9,14 +9,20 @@ public class BossController : BaseController
     [SerializeField] private Transform target; // EnemyManager 제작 후 [SerializeField] 빼야됨
     [SerializeField] private float followRange = 15.0f;
     [SerializeField] private WeaponHandler[] weaponHandlers; // 여러 개의 무기를 가질 수 있음
+    private int weaponIndex = 0; // 현재 무기의 인덱스
 
     protected override void Awake()
     {
         if(WeaponPrefab == null)
         {
-            WeaponPrefab = GetRangomWeapon();
+            WeaponPrefab = GetRandomWeapon();
         }
         base.Awake();
+    }
+    public void ChangeWeapon()
+    {
+        Destroy(weaponHandler.gameObject); // 현재 무기를 파괴하고
+        weaponHandler = Instantiate(GetRandomWeapon(), weaponPivot); // 새로 지정된 무기를 생성한다.
     }
     public void SetEnemyHealth(float multiplier)//적의 체력을 재설정한다.
     {
@@ -28,6 +34,10 @@ public class BossController : BaseController
         //this.enemyManager = enemyManager;
         this.target = target; //타겟은 다른 코드에서 정해줬음, 얘는 플레이어가 타겟
     }
+    protected override void Update()
+    {
+        base.Update();
+    }
 
     protected float DistanceToTarget()
     {
@@ -38,7 +48,26 @@ public class BossController : BaseController
         base.Movement(direction);
         animationhandler.Move(direction); // 이동 애니메이션 키세요 라는 뜻
     }
-
+    protected override void HandleAttackDelay()
+    {
+        if (weaponHandler == null)
+        {
+            return;
+        }
+        if (timeSincelastAttack <= weaponHandler.Delay && !IsCharging)
+        {
+            timeSincelastAttack += Time.deltaTime;
+        }
+        if (isAttacking && timeSincelastAttack > weaponHandler.Delay && !IsCharging)
+        {
+            timeSincelastAttack = 0.0f;
+            Attack();
+            if(weaponIndex != 0)
+            {
+                ChangeWeapon();
+            }
+        }
+    }
     protected override void Rotate(Vector2 direction)
     {
         base.Rotate(direction);
@@ -48,9 +77,10 @@ public class BossController : BaseController
     {
         return (target.position - transform.position).normalized; //플레이어와 얘 사이의 방향 반환
     }
-    private WeaponHandler GetRangomWeapon()
+    private WeaponHandler GetRandomWeapon()
     {
-        return weaponHandlers[Random.Range(0, weaponHandlers.Length)];
+        weaponIndex = Random.Range(0, weaponHandlers.Length); // 무기 핸들러 배열에서 랜덤으로 인덱스 선택
+        return weaponHandlers[weaponIndex];
     }
     protected override void HandleAction()
     {
@@ -69,7 +99,7 @@ public class BossController : BaseController
 
         isAttacking = false;
 
-        weaponHandler = GetRangomWeapon(); // 무기를 랜덤으로 선택
+        //weaponHandler = GetRangomWeapon(); // 무기를 랜덤으로 선택
 
         if (distance <= followRange)//최대 쫓아가기 거리보다 가깝다면
         {

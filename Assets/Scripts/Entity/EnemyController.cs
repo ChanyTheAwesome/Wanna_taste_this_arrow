@@ -39,7 +39,6 @@ public class EnemyController : BaseController
     {
         return (target.position - transform.position).normalized; //플레이어와 얘 사이의 방향 반환
     }
-
     protected override void HandleAction()
     {
         base.HandleAction();

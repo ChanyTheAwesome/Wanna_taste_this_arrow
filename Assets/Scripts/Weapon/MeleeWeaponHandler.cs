@@ -70,15 +70,25 @@ public class MeleeWeaponHandler : WeaponHandler
         animator.TrueChargeAnimation();
         yield return new WaitForSeconds(1.5f);
         animator.FalseChargeAnimation();
-        controller.Rigidbody.velocity = controller.LatestDirection * 3.0f;
+        if (controller is BossController bossController1)
+        {
+            bossController1.Rigidbody.velocity = controller.LatestDirection * 50.0f;
+        }
+        else
+        {
+            controller.Rigidbody.velocity = controller.LatestDirection * 3.0f;
+        }
         Controller.gameObject.GetComponent<NavMeshAgent>().speed = navMeshSpeedHolder;
         ChargeCollider.gameObject.SetActive(true);
-        ChargeCollider.GetComponent<ChargeAttackController>().Init(controller.GetComponent<EnemyController>(), this);
+        ChargeCollider.GetComponent<ChargeAttackController>().Init(controller.GetComponent<BaseController>(), this);
         yield return new WaitForSeconds(8);
         if (controller.IsCharging)
         {
             controller.IsCharging = false;
-
+            if (controller is BossController bossController2)
+            {
+                bossController2.ChangeWeapon();
+            }
         }
     }
     public override void Rotate(bool isLeft)

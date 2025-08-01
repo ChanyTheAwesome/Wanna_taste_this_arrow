@@ -25,7 +25,7 @@ public class ProjectileController : MonoBehaviour
     [Header("Fields for Player Abilities")]
     [SerializeField] private LayerMask enemyLayer;
     private List<Transform> _hitEnemies = new List<Transform>();
-    private bool _reflect = false;
+    [SerializeField] private bool _reflect = false;
     private bool _penetrate = false;
     private bool _ricochet = false;
     [SerializeField] private int MaxRicochetCount;

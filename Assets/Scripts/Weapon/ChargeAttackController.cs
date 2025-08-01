@@ -8,19 +8,18 @@ using UnityEngine.InputSystem.XR;
 
 public class ChargeAttackController : MonoBehaviour
 {
-    EnemyController _enemyController;
+    BaseController _baseController;
     MeleeWeaponHandler _weaponHandler;
     private LayerMask _target;
-    public void Init(EnemyController enemy, MeleeWeaponHandler melee)
+    public void Init(BaseController controller, MeleeWeaponHandler melee)
     {
-        Debug.Log("Test");
-        _enemyController = enemy;
+        _baseController = controller;
         _weaponHandler = melee;
+        _target = _weaponHandler.target;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Hit!");
         if (_target.value == (_target.value | (1 << collision.gameObject.layer)))
         {
             StartCoroutine(StruckToPlayer(collision));
@@ -32,17 +31,26 @@ public class ChargeAttackController : MonoBehaviour
     }
     private IEnumerator StruckToNotPlayer()
     {
-        _enemyController.Rigidbody.velocity = Vector3.zero;
-        //float navMeshSpeedHolder = Controller.gameObject.GetComponent<NavMeshAgent>().speed;
-        
-        //Controller.gameObject.GetComponent<NavMeshAgent>().speed = 0;
-        //For Later
+        _baseController.Rigidbody.velocity = Vector3.zero;
+        float navMeshSpeedHolder = _baseController.gameObject.GetComponent<NavMeshAgent>().speed;
+
+        _baseController.gameObject.GetComponent<NavMeshAgent>().speed = 0;
         yield return new WaitForSeconds(3);
-        _enemyController.IsCharging = false;
+        if (_baseController.IsCharging)
+        {
+            _baseController.IsCharging = false;
+            _baseController.gameObject.GetComponent<NavMeshAgent>().speed = navMeshSpeedHolder;
+        }
+        if(_baseController is BossController bossController)
+        {
+            bossController.ChangeWeapon();
+        }
     }
     private IEnumerator StruckToPlayer(Collider2D collision)
     {
-        _enemyController.Rigidbody.velocity = Vector3.zero;
+        _baseController.Rigidbody.velocity = Vector3.zero;
+        float navMeshSpeedHolder = _baseController.gameObject.GetComponent<NavMeshAgent>().speed;
+        _baseController.gameObject.GetComponent<NavMeshAgent>().speed = 0;
         ResourceController resourceController = collision.GetComponent<ResourceController>();
         if (resourceController != null)
         {
@@ -57,6 +65,11 @@ public class ChargeAttackController : MonoBehaviour
             }
         }
         yield return new WaitForSeconds(1.5f);
-        _enemyController.IsCharging = false;
+        _baseController.IsCharging = false;
+        _baseController.gameObject.GetComponent<NavMeshAgent>().speed = navMeshSpeedHolder;
+        if (_baseController is BossController bossController)
+        {
+            bossController.ChangeWeapon();
+        }
     }
 }
