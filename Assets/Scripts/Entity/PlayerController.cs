@@ -20,15 +20,11 @@ public class PlayerController : BaseController
 
     // 그 후에 투사체 개수, 등등 능력 구현
 
-
-    private Camera camera;
-
     private GameManager gameManager;
 
     public void Init(GameManager gameManager)
     {
         this.gameManager = gameManager;
-        camera = Camera.main;
     }
 
     [SerializeField] private float findRadius = 10f;  // 감지범위

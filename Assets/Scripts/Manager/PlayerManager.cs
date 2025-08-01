@@ -5,6 +5,10 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
+
+    [SerializeField] private GameObject[] characterPrefabs;
+    private int selectedIndex = 0;
+
     public int Exp { get; private set; }   // ?? 플레이어에서 그냥 시작할 때 경험치 0으로 초기화하면 되는 거 아님?
     public int Level { get; private set; }
     public int RequiredExp => Level * 10 + 50;  // 일단 기본 50 + 레벨당 10으로 설정
