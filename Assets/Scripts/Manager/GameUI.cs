@@ -7,21 +7,24 @@ public class GameUI : BaseUI
 {
     [SerializeField] private Button _menuButton;    // 메뉴 버튼
     [SerializeField] private Button _exitDungeonButton; // 던전 나가기 버튼
-    [SerializeField] private Button _exitUIButton;  // UI 닫기 버튼
-    [SerializeField] private Image _dummyImage; // 메뉴 눌렀을 때 띄울 UI의 테스트용 더미
+    [SerializeField] private Button _closeMenuButton;  // UI 닫기 버튼
+    [SerializeField] private Image _menuImage; // 메뉴 눌렀을 때 띄울 UI 이미지
     // 메뉴 버튼 눌렀을 때
 
     private void Awake()
     {
-        Init();
+        //Init();
+        _menuButton.onClick.AddListener(OnClickMenuButton);
+        _exitDungeonButton.onClick.AddListener(OnClickExitDungeonButton);
+        _closeMenuButton.onClick.AddListener(OnClickCloseMenuButton);
     }
 
-    public override void Init()
-    {
-        _menuButton.onClick.AddListener(OnClickMenuButton);
-        _exitDungeonButton.onClick.AddListener(OnClickExitDungeon);
-        _exitUIButton.onClick.AddListener(OnClickExitUI);
-    }
+    //public override void Init()
+    //{
+    //    _menuButton.onClick.AddListener(OnClickMenuButton);
+    //    _exitDungeonButton.onClick.AddListener(OnClickExitDungeon);
+    //    _closeUIButton.onClick.AddListener(OnClickExitUI);
+    //}
 
     protected override UIState GetUIState()
     {
@@ -34,7 +37,7 @@ public class GameUI : BaseUI
         SetMenu();  // 메뉴창 띄우기
     }
 
-    public void OnClickExitDungeon()
+    public void OnClickExitDungeonButton()
     {
         Time.timeScale = 1; // 멈춰놨던 시간 다시 세팅
         // 홈 씬 불러오기
@@ -47,7 +50,7 @@ public class GameUI : BaseUI
     //    // 옵션 UI 띄우기
     //}
 
-    public void OnClickExitUI() // UI 닫기 버튼 클릭
+    public void OnClickCloseMenuButton() // UI 닫기 버튼 클릭
     {
         // UI 비활성화
         SetGame();
@@ -57,13 +60,13 @@ public class GameUI : BaseUI
     public void SetGame()   // 게임중 UI 설정
     {
         // 메뉴 UI 띄우기
-        _menuButton.gameObject.SetActive(true);
-        _dummyImage.gameObject.SetActive(false);
+        _menuButton.interactable = true;
+        _menuImage.gameObject.SetActive(false);
     }
 
     public void SetMenu()
     {
-        _menuButton.gameObject.SetActive(false);
-        _dummyImage.gameObject.SetActive(true);
+        _menuButton.interactable = false;
+        _menuImage.gameObject.SetActive(true);
     }
 }

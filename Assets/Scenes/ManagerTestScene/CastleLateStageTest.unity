@@ -22470,6 +22470,9 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256
+  levelLayer:
+    serializedVersion: 2
+    m_Bits: 0
   hpSlider: {fileID: 463330140}
 --- !u!61 &592377816
 BoxCollider2D:
