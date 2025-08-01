@@ -20,16 +20,13 @@ public class PlayerController : BaseController
 
     // 그 후에 투사체 개수, 등등 능력 구현
 
+    private GameManager gameManager;
 
-    //private Camera camera;
-
-    //private GameManager gameManager;
-
-    /*public void Init(GameManager gameManager)
+    public void Init(GameManager gameManager)
     {
-        //this.gameManager = gameManager;
-        camera = Camera.main;
-    }*/
+        this.gameManager = gameManager;
+    }
+
     [SerializeField] private float findRadius = 10f;  // 감지범위
     [SerializeField] private LayerMask enemyLayer; // 에너미 레이어
     [SerializeField] private LayerMask levelLayer;
@@ -47,31 +44,12 @@ public class PlayerController : BaseController
         _currentHp = _maxHp;
         //hpSlider.value = currentHp;
 
-        if (Input.GetKeyDown(KeyCode.F1))
-        {
-            _isDebug = !_isDebug;
-        }
-
         OnMove();
         // 장애물에 안걸리는 에너미 찾아서 그쪽 방향으로 바라보기
         FindNearestEnemy();
         OnLook();
         // 공격
         // 디버그용 발사체 발사
-        if (_isDebug)
-        {
-            if (Input.GetMouseButton(0))
-            {
-                //isAttacking = true;
-                //statHandler.Health -= 1;
-                BackShot();
-                Ricochet();
-            }
-            if(Input.GetMouseButton(1))
-            {
-                isAttacking = true;
-            }
-        }
     }
 
     public override void Death()
@@ -100,18 +78,11 @@ public class PlayerController : BaseController
     {
         // 지금 공격중이 아니거나 타겟이 없다면 리턴
         Vector2 targetPos;
-        if (_isDebug)
-        {
-            Vector2 mousePos = Input.mousePosition;
-            targetPos = Camera.main.ScreenToWorldPoint(mousePos);
-        }
-        else
-        {
-            if (!isAttacking) return;
-            if (!_target ) return;
 
-            targetPos = _target.transform.position;
-        }
+        if (!isAttacking) return;
+        if (!_target ) return;
+
+        targetPos = _target.transform.position;
 
         if (movementDirection.magnitude > 0)
         {
@@ -130,15 +101,6 @@ public class PlayerController : BaseController
                 lookDirection = lookDirection.normalized;//이것으로 바라보는 방향의 벡터를 지정한다.
             }
         }
-    }
-
-    void OnFire()//InputValue inputValue)
-    {
-        if (EventSystem.current.IsPointerOverGameObject())
-        {
-            return;//요건 캔버스가 그린 것에 마우스를 올린 뒤에 마우스를 누르면 리턴해버리겠다는 뜻
-        }
-        //isAttacking = inputValue.isPressed;//isAttacking에 마우스가 눌렸는지 보내준다.
     }
 
     // 범위 내에 가까운적 찾기 -> 타겟 설정
