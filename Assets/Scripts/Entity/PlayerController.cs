@@ -30,19 +30,17 @@ public class PlayerController : BaseController
     [SerializeField] private float findRadius = 10f;  // 감지범위
     [SerializeField] private LayerMask enemyLayer; // 에너미 레이어
     [SerializeField] private LayerMask levelLayer;
-    [SerializeField] private Slider hpSlider;
-
+    
     private GameObject _target;                      // 공격할 타겟
     private bool _isDebug;
 
-    private int _maxHp;
-    private int _currentHp;
+    private int _maxHp = 100;
+    private float _currentHp;
 
     protected override void HandleAction()
     {
-        _maxHp = statHandler.Health;
-        _currentHp = _maxHp;
-        //hpSlider.value = currentHp;
+        _currentHp = resource.CurrentHealth;
+        UpdateHpBar();
 
         OnMove();
         // 장애물에 안걸리는 에너미 찾아서 그쪽 방향으로 바라보기
@@ -136,6 +134,16 @@ public class PlayerController : BaseController
                 _target = collider.gameObject;
             }
         }
+    }
+
+    public void UpdateHpBar()
+    {
+        if (hpSlider != null) hpSlider.fillAmount = _currentHp / _maxHp;
+    }
+
+    void ChangeHealthBarAmount(float amount)
+    {
+        //hpSlider.fillAmount
     }
 
     // 감지 범위 그리기 - 나중에 지워도 되는 부분

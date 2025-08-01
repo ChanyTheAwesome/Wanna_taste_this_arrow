@@ -55,7 +55,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   isOnKnockback: 1
-  knockbackPower: 0.1
+  knockbackPower: 0.5
   knockbackTime: 0.5
   attackSoundClip: {fileID: 0}
   _animator: {fileID: 689060592681335631}
