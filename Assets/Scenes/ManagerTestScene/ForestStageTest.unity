@@ -22238,8 +22238,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 661c6c637c21e154186533bc863e6e81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Obstacles: {fileID: 0}
-  Obstacle: {fileID: 0}
+  Obstacles: {fileID: 512954024}
+  Obstacle: {fileID: 2075808908058400892, guid: 98c267eaee685754e89416bed7e57d12,
+    type: 3}
   maxY: 22
   minY: -3
   maxX: 7.6
@@ -22491,6 +22492,50 @@ Transform:
   - {fileID: 1844306141}
   - {fileID: 98244207}
   - {fileID: 1432739731}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &626225045
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 626225047}
+  - component: {fileID: 626225046}
+  m_Layer: 0
+  m_Name: DungeonManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &626225046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626225045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e868abf6e3c619e42a213c8ff9834256, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &626225047
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626225045}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &650495728
@@ -27288,3 +27333,4 @@ SceneRoots:
   - {fileID: 512954026}
   - {fileID: 592377818}
   - {fileID: 1106642141}
+  - {fileID: 626225047}

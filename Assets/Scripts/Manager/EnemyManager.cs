@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    //private Coroutine waveRoutine;
-
     //[SerializeField] private LayerMask enemyLayerMask;  // Enemy 존재여부 확인용 레이어
     [SerializeField] private List<GameObject> enemyPrefabs;
     [SerializeField] List<Rect> spawnAreas;
@@ -17,43 +15,8 @@ public class EnemyManager : MonoBehaviour
 
     [SerializeField] private PlayerController _playerController;
 
-    //[SerializeField] private float timeBetweenSpawns = 0.2f;
-    //[SerializeField] private float timeBetweenWaves = 1f;
-
-    //GameManager gameManager;
-
-    //public void Init(GameManager gameManager)
-    //{
-    //    this.gameManager = gameManager;
-    //}
-
-
-
-    //private IEnumerator SpawnWave(int waveCount)
-    //{
-    //    enemySpawnComplite = false;
-    //    yield return new WaitForSeconds(timeBetweenWaves);
-
-    //    for (int i = 0; i < waveCount; i++)
-    //    {
-    //        yield return new WaitForSeconds(timeBetweenSpawns);
-    //        SpawnRandomEnemy();
-    //    }
-
-    //    enemySpawnComplite = true;
-    //}
     private void Start()
     {
-        //SpawnMonster(DungeonManager.Instance.DungeonList.Find(d => d.ID == DungeonManager.Instance.CurrentDungeonID).EnemyCount);
-        SpawnMonster(DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].EnemyCount);
-        // 지금 위에 괄호안에 있는 부분이 잘못됨 아래에 그냥 숫자 넣으면 작동함
-        //SpawnMonster(5);
-        //_playerController = FindObjectOfType<PlayerController>();
-    }
-
-    public void OnClickSpawnMonster()
-    {
-        //SpawnMonster(DungeonManager.Instance.DungeonList.Find(d => d.ID == DungeonManager.Instance.CurrentDungeonID).EnemyCount);
         SpawnMonster(DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].EnemyCount);
     }
 
