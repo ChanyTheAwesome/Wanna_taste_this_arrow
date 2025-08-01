@@ -95,7 +95,7 @@ public class EnemyManager : MonoBehaviour
 
         GameObject spawnEnemy = Instantiate(randomPrefab, new Vector3(randomPosition.x, randomPosition.y), Quaternion.identity);
         EnemyController enemyController = spawnEnemy.GetComponent<EnemyController>();
-        enemyController.Init(this, _playerController.transform); // 에너미컨트롤러의 타겟을 플레이어로 지정하는 코드, 나중에 게임매니저에 플레이어 객체 만들면 다시 넣기
+        enemyController.Init(/*this, */_playerController.transform); // 에너미컨트롤러의 타겟을 플레이어로 지정하는 코드, 나중에 게임매니저에 플레이어 객체 만들면 다시 넣기
 
         if (enemyController != null)
         {
