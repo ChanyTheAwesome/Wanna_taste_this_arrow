@@ -26,4 +26,25 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ManagerTestScene.unity
     guid: 581a68259c81ba34d956e2b637bf1566
+  - enabled: 1
+    path: Assets/Scenes/ManagerTestScene/MainTitleTest.unity
+    guid: 03540143eca91ca42ac42e6306f584b3
+  - enabled: 1
+    path: Assets/Scenes/ManagerTestScene/ForestStageTest.unity
+    guid: 5566f97c244a1f94b89f5a201489bf6d
+  - enabled: 1
+    path: Assets/Scenes/ManagerTestScene/ForestBossStageTest.unity
+    guid: 0c2f27b9e7a13294a9b73531adc58a0c
+  - enabled: 1
+    path: Assets/Scenes/ManagerTestScene/CaveStageTest.unity
+    guid: 167fb8c60967fa54388b9d8001e11edf
+  - enabled: 1
+    path: Assets/Scenes/ManagerTestScene/CaveBossStageTest.unity
+    guid: aee3b2fb401b27d419e65c11f7f355e6
+  - enabled: 1
+    path: Assets/Scenes/ManagerTestScene/CastleStartStageTest.unity
+    guid: 8e9262772a54e8c4d95d83f8174da21d
+  - enabled: 1
+    path: Assets/Scenes/ManagerTestScene/CastleLateStageTest.unity
+    guid: eef7cd715eebd4e42a157043ce6444e9
   m_configObjects: {}
