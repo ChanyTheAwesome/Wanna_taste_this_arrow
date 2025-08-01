@@ -224,15 +224,15 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   isOnKnockback: 0
-  knockbackPower: 0.1
-  knockbackTime: 0.5
+  knockbackPower: 0
+  knockbackTime: 0
   attackSoundClip: {fileID: 0}
   projectileSpawnPosition: {fileID: 3979541154748039941}
   projectileSpawnBackPosition: {fileID: 6811810748994026710}
   bulletIndex: 0
   bulletSize: 1
   duration: 1
-  spread: 1
-  numberofProjectilesPerShot: 1
-  multipleProjectileAngle: 1
+  spread: 0
+  numberofProjectilesPerShot: 12
+  multipleProjectileAngle: 30
   projectileColor: {r: 1, g: 1, b: 1, a: 1}

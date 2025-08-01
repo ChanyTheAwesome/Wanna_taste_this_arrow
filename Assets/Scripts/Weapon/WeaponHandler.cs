@@ -37,8 +37,8 @@ public class WeaponHandler : MonoBehaviour
 
     public BaseController Controller { get; private set; }
     public AudioClip attackSoundClip;
-    private Animator _animator;
-    private SpriteRenderer _weaponRenderer;
+    public Animator _animator;
+    public SpriteRenderer _weaponRenderer;
 
     
 
@@ -47,8 +47,7 @@ public class WeaponHandler : MonoBehaviour
         Controller = GetComponentInParent<BaseController>();
         _animator = GetComponentInChildren<Animator>();
         _weaponRenderer = GetComponentInChildren<SpriteRenderer>();
-
-        if(_animator != null)
+        if (_animator != null)
         {
             _animator.speed = 1.0f / delay;//속도는 1.0f에 delay를 나눈 값만큼으로 결정된다. 즉 delay가 적으면 적을수록 속도는 빨라진다.
         }
@@ -73,11 +72,21 @@ public class WeaponHandler : MonoBehaviour
 
     public void AttackAnimation()
     {
+        if(_animator == null)
+        {
+            _animator = GetComponentInChildren<Animator>();
+            Debug.Log("Animator is null, trying to find it in children.");
+        }
         _animator.SetTrigger(IsAttack);//공격시 트리거 활성화
     }
 
     public virtual void Rotate(bool isLeft)
     {
+        if(_weaponRenderer == null)
+        {
+            _weaponRenderer = GetComponentInChildren<SpriteRenderer>();
+            Debug.Log("WeaponRenderer is null, trying to find it in children.");
+        }
         _weaponRenderer.flipY = isLeft;//왼쪽볼까요? 오른쪽 볼까요?
     }
 }

@@ -17,7 +17,10 @@ public class MeleeWeaponHandler : WeaponHandler
         base.Start();
         CollideBoxSize = CollideBoxSize * WeaponSize;
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        ChargeCollider.SetActive(false);
+        if (isCharge)
+        {
+            ChargeCollider.SetActive(false);
+        }
         //박스 크기(기존은 1, 1)에 무기의 크기를 곱해준다.
     }
 
@@ -59,8 +62,6 @@ public class MeleeWeaponHandler : WeaponHandler
         BaseController controller = rootObject.GetComponent<BaseController>();
         AnimationHandler animator = controller.GetComponent<AnimationHandler>();
 
-        Vector3 rbVelocityHolder = controller.Rigidbody.velocity;
-        Debug.Log(rbVelocityHolder);
         controller.IsCharging = true;
         controller.Rigidbody.velocity = Vector3.zero;
         float navMeshSpeedHolder = Controller.gameObject.GetComponent<NavMeshAgent>().speed;
@@ -69,14 +70,26 @@ public class MeleeWeaponHandler : WeaponHandler
         animator.TrueChargeAnimation();
         yield return new WaitForSeconds(1.5f);
         animator.FalseChargeAnimation();
-        controller.Rigidbody.velocity = rbVelocityHolder * 1.5f;
-        if(rootObject.GetComponent<EnemyController>() == null)
+        if (controller is BossController bossController1)
         {
-            Debug.Log("test");
+            bossController1.Rigidbody.velocity = controller.LatestDirection * 50.0f;
         }
-
-        transform.gameObject.GetComponent<ChargeAttackController>().Init(controller.GetComponent<EnemyController>(), this);
-        
+        else
+        {
+            controller.Rigidbody.velocity = controller.LatestDirection * 3.0f;
+        }
+        Controller.gameObject.GetComponent<NavMeshAgent>().speed = navMeshSpeedHolder;
+        ChargeCollider.gameObject.SetActive(true);
+        ChargeCollider.GetComponent<ChargeAttackController>().Init(controller.GetComponent<BaseController>(), this);
+        yield return new WaitForSeconds(8);
+        if (controller.IsCharging)
+        {
+            controller.IsCharging = false;
+            if (controller is BossController bossController2)
+            {
+                bossController2.ChangeWeapon();
+            }
+        }
     }
     public override void Rotate(bool isLeft)
     {
