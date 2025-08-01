@@ -1,14 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
 
-public class EnemyController : BaseController
+public class BossController : BaseController
 {
     //private EnemyManager enemyManager;
     [SerializeField] private Transform target; // EnemyManager 제작 후 [SerializeField] 빼야됨
     [SerializeField] private float followRange = 15.0f;
+    [SerializeField] private WeaponHandler[] weaponHandlers; // 여러 개의 무기를 가질 수 있음
 
+    protected override void Awake()
+    {
+        if(WeaponPrefab == null)
+        {
+            WeaponPrefab = GetRangomWeapon();
+        }
+        base.Awake();
+    }
     public void SetEnemyHealth(float multiplier)//적의 체력을 재설정한다.
     {
         statHandler.Health = (int)Mathf.Ceil(statHandler.Health * multiplier);
@@ -39,7 +48,10 @@ public class EnemyController : BaseController
     {
         return (target.position - transform.position).normalized; //플레이어와 얘 사이의 방향 반환
     }
-
+    private WeaponHandler GetRangomWeapon()
+    {
+        return weaponHandlers[Random.Range(0, weaponHandlers.Length)];
+    }
     protected override void HandleAction()
     {
         base.HandleAction();
@@ -56,6 +68,8 @@ public class EnemyController : BaseController
         Vector2 direction = DirectionToTarget();
 
         isAttacking = false;
+
+        weaponHandler = GetRangomWeapon(); // 무기를 랜덤으로 선택
 
         if (distance <= followRange)//최대 쫓아가기 거리보다 가깝다면
         {
@@ -79,5 +93,4 @@ public class EnemyController : BaseController
         /*base.Death();
         enemyManager.RemoveEnemyOnDeath(this);*/
     }
-
 }

@@ -109,6 +109,7 @@ public class BaseController : MonoBehaviour
         {
             weaponPivot.rotation = Quaternion.Euler(0f, 0f, rotZ);//무기도 같이 돌려주세요
         }
+        Debug.Log("test");
         weaponHandler?.Rotate(isLeft); //좌우 반대도 해주세요
     }
 
