@@ -5,7 +5,7 @@ using UnityEngine.Experimental.GlobalIllumination;
 
 public class EnemyController : BaseController
 {
-    //private EnemyManager enemyManager;
+    private EnemyManager enemyManager;
     [SerializeField] private Transform target; // EnemyManager Á¦ÀÛ ÈÄ [SerializeField] »©¾ßµÊ
     [SerializeField] private float followRange = 15.0f;
 
@@ -14,9 +14,9 @@ public class EnemyController : BaseController
         statHandler.Health = (int)Mathf.Ceil(statHandler.Health * multiplier);
     }
 
-    public void Init(/*EnemyManager enemyManager,*/Transform target)
+    public void Init(EnemyManager enemyManager,Transform target)
     {
-        //this.enemyManager = enemyManager;
+        this.enemyManager = enemyManager;
         this.target = target; //Å¸°ÙÀº ´Ù¸¥ ÄÚµå¿¡¼­ Á¤ÇØÁáÀ½, ¾ê´Â ÇÃ·¹ÀÌ¾î°¡ Å¸°Ù
     }
 
@@ -88,8 +88,8 @@ public class EnemyController : BaseController
     }
     public override void Death()
     {
-        /*base.Death();
-        enemyManager.RemoveEnemyOnDeath(this);*/
+        base.Death();
+        enemyManager.RemoveEnemyOnDeath(this);
     }
 
 }
