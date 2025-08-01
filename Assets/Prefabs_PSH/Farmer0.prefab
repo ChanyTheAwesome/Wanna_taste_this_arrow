@@ -129,10 +129,15 @@ MonoBehaviour:
   WeaponPrefab: {fileID: 9031818409637953494, guid: e893839a59bb65148948f29c48252869,
     type: 3}
   ProjectileManager: {fileID: 0}
+  IsCharging: 0
+  GotChargeWeapon: 0
   findRadius: 5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256
+  levelLayer:
+    serializedVersion: 2
+    m_Bits: 0
   hpSlider: {fileID: 6360230452920667645}
 --- !u!114 &9186185660391647755
 MonoBehaviour:

@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     //[SerializeField] private LayerMask enemyLayerMask;  // Enemy 존재여부 확인용 레이어
-    [SerializeField] private List<GameObject> enemyPrefabs;
+    [SerializeField] private List<GameObject> enemyPrefabs; // 보스몬스터 리스트 추가
     [SerializeField] List<Rect> spawnAreas;
     [SerializeField] private Color gizmoColor = new Color(1, 0, 0, 0.3f);
 

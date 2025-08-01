@@ -4,12 +4,29 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public static PlayerManager instance;
+    private static PlayerManager instance;
 
-    [SerializeField] private GameObject[] characterPrefabs;
-    private int selectedIndex = 0;
+    public static PlayerManager Instance => instance;
 
-    public int Exp { get; private set; }   // ?? 플레이어에서 그냥 시작할 때 경험치 0으로 초기화하면 되는 거 아님?
+    [SerializeField] private GameObject[] _characterPrefabs;
+
+    private PlayerController _playerController;
+
+    public PlayerController PlayerController { get { return _playerController; } set { _playerController = value; } }
+
+    //private int selectedIndex = 0;
+
+    [SerializeField] private Sprite[] characterSprites;
+    [SerializeField] private RuntimeAnimatorController[] characterAnimators;
+    [SerializeField] private AnimationClip[] idleAnimationClips;
+    [SerializeField] private AnimationClip[] moveAnimationClips;
+    [SerializeField] private AnimationClip[] damageAnimationClips;
+
+    public Animator nowAnim;
+    private int _selectedIndex;
+    public int SelectedIndex { get { return _selectedIndex; } set { _selectedIndex = value; } }
+
+    public int Exp { get; private set; }
     public int Level { get; private set; }
     public int RequiredExp => Level * 10 + 50;  // 일단 기본 50 + 레벨당 10으로 설정
 
@@ -47,5 +64,19 @@ public class PlayerManager : MonoBehaviour
         Exp = 0;
         // 능력 초기화
         // 능력 초기화는 능력이 어떻게 적용되는지에 따라 맞춰서 설정
+    }
+
+    public void SetCharacter()
+    {
+        Debug.Log(_selectedIndex);
+        _playerController.GetComponentInChildren<SpriteRenderer>().sprite = characterSprites[_selectedIndex];
+        //AnimatorOverrideController animatorOverrideController = new();
+        //animatorOverrideController.runtimeAnimatorController = characterAnimators[_selectedIndex];
+        //animatorOverrideController["Idle"] = idleAnimationClips[_selectedIndex];
+        //animatorOverrideController["Move"] = moveAnimationClips[_selectedIndex];
+        //animatorOverrideController["Damage"] = damageAnimationClips[_selectedIndex];
+        //nowAnim.runtimeAnimatorController = animatorOverrideController;
+        //_playerController.GetComponentInChildren<Animator>(). = animatorOverrideController;
+        nowAnim.runtimeAnimatorController = characterAnimators[_selectedIndex];
     }
 }

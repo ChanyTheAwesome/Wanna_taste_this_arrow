@@ -36,9 +36,9 @@ public class DungeonManager : MonoBehaviour
     
     private void AddDungeonDict()   // 테스트용으로 스테이지 3개로 설정, 이후에 다시 변경 필요
     {
-        DungeonDict.Add(1, new Dungeon(1, "잠자는 숲속의 던전", 3, 6, 3, 1.05f));
-        DungeonDict.Add(2, new Dungeon(2, "동굴", 3, 6, 3, 1.05f));
-        DungeonDict.Add(3, new Dungeon(3, "성", 3, 6, 3, 1.05f));
+        DungeonDict.Add(1, new Dungeon(1, "잠자는 숲속의 좀비^^", 3, 6, 3, 1.05f));
+        DungeonDict.Add(2, new Dungeon(2, "번호따고 싶은 석상^^", 3, 6, 3, 1.05f));
+        DungeonDict.Add(3, new Dungeon(3, "야 묘비 삽 넣을게^^", 3, 6, 3, 1.05f));
     }
      
     //Or try to use Json/newtonJson to read json data.
@@ -100,7 +100,7 @@ public class DungeonManager : MonoBehaviour
         //}
         GameManager.Instance.StageCount++;
         //UIManager.Instance.SetGame();   // 어차피 씬을 로드하는 식으로 넘어가면 UI는 초기화 될거임 씬 불러오고 설정해야될듯
-        _isFirstStage = false; //<- Does this variable need to be here? If not, consider moving it to the top. 
+        //_isFirstStage = false;
         if(GameManager.Instance.StageCount < DungeonDict[CurrentDungeonID].MaxStageCount)   // 마지막 스테이지가 아니면 일반 씬 불러오기
         {
             SceneController.Instance.LoadDungeonScene();
@@ -128,11 +128,14 @@ public class DungeonManager : MonoBehaviour
     {
         // 플레이어 레벨 1로 만들기
         // 플레이어 경험치 0으로 만들기
-        PlayerManager.instance.ResetPlayer();
+        PlayerManager.Instance.ResetPlayer();
         // stageCount 0으로 맞추기
         GameManager.Instance.StageCount = 0;
         // currentDungeonID 0으로 맞추기
         _currentDungeonID = 1;
+        // 플레이어 외형 초기화하기
+        PlayerManager.Instance.SelectedIndex = 0;
+        PlayerManager.Instance.SetCharacter();
         // 홈 화면 불러오기
         SceneController.Instance.LoadMainScene();
     }
