@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
 
     //public PlayerController PlayerController { get { return _playerController; } }
 
+    [SerializeField] private GameObject[] characterPrefabs;
+    private int selectedIndex = 0;
+
     private int stageCount = 0;
     public int StageCount
     {
