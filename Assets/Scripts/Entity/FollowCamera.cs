@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FollowCamera : MonoBehaviour
 {
-    [SerializeField] private Transform target;
-
+    public Transform target;
+    [SerializeField]
     private float _camMoveDelay = 5f;
     private Vector3 _currentPos;
 
