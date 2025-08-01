@@ -25,13 +25,14 @@ public class PlayerController : BaseController
     protected override void Awake()
     {
         base.Awake();
-        PlayerManager.Instance.PlayerController = this;
-        PlayerManager.Instance.nowAnim = this.GetComponentInChildren<Animator>();
+        //PlayerManager.Instance.PlayerController = this;
+        //PlayerManager.Instance.nowAnim = this.GetComponentInChildren<Animator>();
     }
 
     public void Init(GameManager gameManager)
     {
         this.gameManager = gameManager;
+        
     }
 
     [SerializeField] private float findRadius = 10f;  // 감지범위
@@ -48,6 +49,13 @@ public class PlayerController : BaseController
     {
         _currentHp = resource.CurrentHealth;
         UpdateHpBar();
+
+        if(Input.GetMouseButtonDown(0))
+        {
+            ReflectShot();
+            PenetrationShot();
+            Ricochet();
+        }
 
         OnMove();
         // 장애물에 안걸리는 에너미 찾아서 그쪽 방향으로 바라보기
