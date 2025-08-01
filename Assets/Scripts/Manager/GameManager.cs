@@ -56,22 +56,22 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void UpStageCount()  // 테스트용
-    {
-        stageCount++;
-        Debug.Log(stageCount);
-    }
+    //public void UpStageCount()  // 테스트용
+    //{
+    //    stageCount++;
+    //    Debug.Log(stageCount);
+    //}
 
-    public void DownStageCount()    // 테스트용
-    {
-        stageCount--;
-        Debug.Log(stageCount);
-    }
+    //public void DownStageCount()    // 테스트용
+    //{
+    //    stageCount--;
+    //    Debug.Log(stageCount);
+    //}
 
-    public void CheckEnemy()    // 테스트용
-    {
-        DungeonManager.Instance.CheckClearStage();
-    }
+    //public void CheckEnemy()    // 테스트용
+    //{
+    //    DungeonManager.Instance.CheckClearStage();
+    //}
 
     //public void SetPlayer() // 테스트용
     //{

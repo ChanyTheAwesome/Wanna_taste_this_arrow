@@ -10,6 +10,11 @@ public class HomeUI : BaseUI
     [SerializeField] private Button _previousDungeonButton;
     [SerializeField] private Button _nextDungeonButton;
     [SerializeField] private Button _startButton;
+
+    //테스트용
+    [SerializeField] private Button _bossButton;
+    //테스트용
+
     [SerializeField] private Text _currentDungeonNameText;
     [SerializeField] List<Image> _dungeonImages;
     [SerializeField] private Image _menuImage;
@@ -26,6 +31,10 @@ public class HomeUI : BaseUI
         _previousDungeonButton.onClick.AddListener(OnClickPreviousDungeonButton);
         _nextDungeonButton.onClick.AddListener(OnClickNextDungeonButton);
         _startButton.onClick.AddListener(OnClickStartButton);
+
+        //테스트용
+        _bossButton.onClick.AddListener(StartBoss);
+        //테스트용
 
         AddOtherButtons();
     }
@@ -113,5 +122,13 @@ public class HomeUI : BaseUI
         {
             _dungeonImages[i].gameObject.SetActive(DungeonManager.Instance.CurrentDungeonID == (i + 1));
         }
+    }
+
+    // 보스 테스트용
+
+    public void StartBoss()
+    {
+        GameManager.Instance.StageCount = 10;
+        OnClickStartButton();
     }
 }

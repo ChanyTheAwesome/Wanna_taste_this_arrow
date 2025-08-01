@@ -11,9 +11,17 @@ public class EnemyManager : MonoBehaviour
 
     private List<EnemyController> _activeEnemies = new List<EnemyController>();
 
-    private bool _enemySpawnComplete;
+    //private bool _enemySpawnComplete;
 
     [SerializeField] private PlayerController _playerController;
+
+    private void Awake()
+    {
+        if(DungeonManager.Instance.EnemyManager == null)
+        {
+            DungeonManager.Instance.EnemyManager = this;
+        }
+    }
 
     private void Start()
     {
@@ -60,6 +68,13 @@ public class EnemyManager : MonoBehaviour
         EnemyController enemyController = spawnEnemy.GetComponent<EnemyController>();
         enemyController.Init(this, _playerController.transform); // 에너미컨트롤러의 타겟을 플레이어로 지정하는 코드, 나중에 게임매니저에 플레이어 객체 만들면 다시 넣기
 
+        if (!DungeonManager.Instance.IsFirstStage && GameManager.Instance.StageCount != DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].MaxStageCount) //마지막스테이지 인지
+        {
+            for(int i = 0; i < GameManager.Instance.StageCount; i++)
+            {
+                enemyController.SetEnemyHealth(DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].IncreaseStat);
+            }
+        }
         if (enemyController != null)
         {
             _activeEnemies.Add(enemyController);

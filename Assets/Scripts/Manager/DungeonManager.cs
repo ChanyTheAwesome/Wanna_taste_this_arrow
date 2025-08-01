@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DungeonManager : MonoBehaviour
 {
@@ -21,11 +22,16 @@ public class DungeonManager : MonoBehaviour
     
     private bool _isFirstStage;
 
+    public bool IsFirstStage { get { return _isFirstStage; } set { _isFirstStage = value; } }
+
     private EnemyManager _enemyManager;
+    public EnemyManager EnemyManager { get { return _enemyManager; } set { _enemyManager = value; } }
     private EnemyController _enemyController;
 
+    public Gate gate;
+
     //Suggestion
-    
+
     public Dictionary<int, Dungeon> DungeonDict = new Dictionary<int, Dungeon>();
     
     private void AddDungeonDict()
@@ -85,12 +91,13 @@ public class DungeonManager : MonoBehaviour
 
     public void StartStage()    // 스테이지 시작시 실행할 것들
     {
+        Debug.Log("스테이지 시작");   // 테스트용
         _isClear = false;
         // 몬스터 스탯 올리기
-        if (!_isFirstStage)  // 첫 스테이지가 아니라면 = 첫 스테이지는 기본 체력만 가지기
-        {
-            _enemyController.SetEnemyHealth(DungeonDict[_currentDungeonID].IncreaseStat);   // ID로 던전 찾아서 그 던전의 IncreaseStat값 가져와서 SetEnemyHealth 실행하기
-        }
+        //if (!_isFirstStage)  // 첫 스테이지가 아니라면 = 첫 스테이지는 기본 체력만 가지기
+        //{
+        //    _enemyController.SetEnemyHealth(DungeonDict[_currentDungeonID].IncreaseStat);   // ID로 던전 찾아서 그 던전의 IncreaseStat값 가져와서 SetEnemyHealth 실행하기
+        //}
         GameManager.Instance.StageCount++;
         //UIManager.Instance.SetGame();   // 어차피 씬을 로드하는 식으로 넘어가면 UI는 초기화 될거임 씬 불러오고 설정해야될듯
         _isFirstStage = false; //<- Does this variable need to be here? If not, consider moving it to the top. 
@@ -108,6 +115,7 @@ public class DungeonManager : MonoBehaviour
     {
         Debug.Log("스테이지 클리어");
         _isClear = true;
+        //_gate.OpenGate();
         UIManager.Instance.SetClearStage();
     }
 

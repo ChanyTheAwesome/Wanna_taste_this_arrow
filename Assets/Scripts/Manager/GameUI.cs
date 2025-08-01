@@ -9,6 +9,10 @@ public class GameUI : BaseUI
     [SerializeField] private Button _exitDungeonButton; // 던전 나가기 버튼
     [SerializeField] private Button _closeMenuButton;  // UI 닫기 버튼
     [SerializeField] private Image _menuImage; // 메뉴 눌렀을 때 띄울 UI 이미지
+
+    //테스트용
+    [SerializeField] private Button _clearButton;
+    //테스트용
     // 메뉴 버튼 눌렀을 때
 
     private void Awake()
@@ -17,6 +21,7 @@ public class GameUI : BaseUI
         _menuButton.onClick.AddListener(OnClickMenuButton);
         _exitDungeonButton.onClick.AddListener(OnClickExitDungeonButton);
         _closeMenuButton.onClick.AddListener(OnClickCloseMenuButton);
+        _clearButton.onClick.AddListener(OnClickClearStage);
     }
 
     //public override void Init()
@@ -68,5 +73,12 @@ public class GameUI : BaseUI
     {
         _menuButton.interactable = false;
         _menuImage.gameObject.SetActive(true);
+    }
+
+    public void OnClickClearStage()    // 테스트용 메서드
+    {
+        Debug.Log("클리어 누름");
+        DungeonManager.Instance.ClearStage();
+        DungeonManager.Instance.gate.OpenGate();
     }
 }
