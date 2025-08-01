@@ -299,6 +299,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6058bb8651b9f4468e7cdb4edde1e3a, type: 3}
+--- !u!224 &214320849 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2294565923181908141, guid: c7b74c29bc9e0d7489c43c2174fa506d,
+    type: 3}
+  m_PrefabInstance: {fileID: 7333559520245944730}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &245482584
 GameObject:
   m_ObjectHideFlags: 0
@@ -23190,7 +23196,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1134525013}
   - component: {fileID: 1134525012}
-  - component: {fileID: 1134525014}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -23229,21 +23234,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1134525014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1134525011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19307ca6e1a72df4193a77d230a35295, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterSprites: []
-  characterAnimators: []
-  nowAnim: {fileID: 0}
 --- !u!1 &1226562379
 GameObject:
   m_ObjectHideFlags: 0
@@ -27243,6 +27233,7 @@ Transform:
   - {fileID: 2083168268}
   - {fileID: 1268569151}
   - {fileID: 1645163303}
+  - {fileID: 214320849}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1645163303 stripped
@@ -32865,7 +32856,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1618500809}
     m_Modifications:
     - target: {fileID: 2294565923181908141, guid: c7b74c29bc9e0d7489c43c2174fa506d,
         type: 3}
@@ -32972,6 +32963,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3058406020419706235, guid: c7b74c29bc9e0d7489c43c2174fa506d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -32990,36 +32986,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 728720649614666835, guid: 4bf4650570a17d549990a0e28da72008,
-        type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 728720649614666835, guid: 4bf4650570a17d549990a0e28da72008,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2134930165403766013, guid: 4bf4650570a17d549990a0e28da72008,
-        type: 3}
-      propertyPath: findRadius
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 2134930165403766013, guid: 4bf4650570a17d549990a0e28da72008,
         type: 3}
       propertyPath: ProjectileManager
       value: 
       objectReference: {fileID: 1134525012}
-    - target: {fileID: 2532807673894450695, guid: 4bf4650570a17d549990a0e28da72008,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2532807673894450695, guid: 4bf4650570a17d549990a0e28da72008,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2541532378963092037, guid: 4bf4650570a17d549990a0e28da72008,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33070,26 +33041,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5070288327048774496, guid: 4bf4650570a17d549990a0e28da72008,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 5070288327048774496, guid: 4bf4650570a17d549990a0e28da72008,
-        type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 5754087035566208978, guid: 4bf4650570a17d549990a0e28da72008,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9186185660391647755, guid: 4bf4650570a17d549990a0e28da72008,
-        type: 3}
-      propertyPath: health
-      value: 100
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -33118,4 +33069,3 @@ SceneRoots:
   - {fileID: 1875395990}
   - {fileID: 521622253}
   - {fileID: 1618500809}
-  - {fileID: 7333559520245944730}
