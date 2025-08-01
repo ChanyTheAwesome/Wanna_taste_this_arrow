@@ -10,8 +10,14 @@ public class HomeUI : BaseUI
     [SerializeField] private Button _previousDungeonButton;
     [SerializeField] private Button _nextDungeonButton;
     [SerializeField] private Button _startButton;
+    [SerializeField] private Button _exitGameButton;
+
+    //테스트용
+    [SerializeField] private Button _bossButton;
+    //테스트용
+
     [SerializeField] private Text _currentDungeonNameText;
-    [SerializeField] private Image _currentDungeonImage;
+    [SerializeField] List<Image> _dungeonImages;
     [SerializeField] private Image _menuImage;
     //[SerializeField] private Slider _bgmVolumeSlider;
     //[SerializeField] private Slider _sfxVolumeSlider;
@@ -19,18 +25,26 @@ public class HomeUI : BaseUI
     private List<Button> _otherButtons = new(); // 메뉴 열었을 때 비활성화시킬 버튼 리스트
 
     private void Awake()
-    {
+    {  
+        // 버튼 클릭 메서드 연결
         _menuButton.onClick.AddListener(OnClickMenuButton);
         _menuCloseButton.onClick.AddListener(OnClickCloseMenuButton);
         _previousDungeonButton.onClick.AddListener(OnClickPreviousDungeonButton);
         _nextDungeonButton.onClick.AddListener(OnClickNextDungeonButton);
         _startButton.onClick.AddListener(OnClickStartButton);
+        _exitGameButton.onClick.AddListener(OnClickExitGameButton);
+
+        //테스트용
+        _bossButton.onClick.AddListener(StartBoss);
+        //테스트용
 
         AddOtherButtons();
     }
     private void Start()
     {
         //_currentDungeonIDText.text = DungeonManager.Instance.CurrentDungeonID.ToString();
+        _currentDungeonNameText.text = DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].Name;
+        SetDungeonImageActive();
     }
     //public override void Init(/*UIManager uiManager*/)
     //{
@@ -61,6 +75,7 @@ public class HomeUI : BaseUI
             // 던전 이미지나 이름도 바꾸기
             //_currentDungeonNameText.text = DungeonManager.Instance.CurrentDungeonID.ToString();
             _currentDungeonNameText.text = DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].Name;
+            SetDungeonImageActive();
         }
         else return;
     }
@@ -73,6 +88,7 @@ public class HomeUI : BaseUI
             // 던전 이미지나 이름도 바꾸기
             //_currentDungeonNameText.text = DungeonManager.Instance.CurrentDungeonID.ToString();
             _currentDungeonNameText.text = DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].Name;
+            SetDungeonImageActive();
         }
         else return;
     }
@@ -80,6 +96,15 @@ public class HomeUI : BaseUI
     public void OnClickStartButton()
     {
         DungeonManager.Instance.StartDungeon();
+    }
+
+    public void OnClickExitGameButton()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 
     protected override UIState GetUIState()
@@ -100,5 +125,21 @@ public class HomeUI : BaseUI
         {
             button.interactable = isInteractable;
         }
+    }
+
+    private void SetDungeonImageActive()
+    {
+        for(int i = 0; i < _dungeonImages.Count; i++)
+        {
+            _dungeonImages[i].gameObject.SetActive(DungeonManager.Instance.CurrentDungeonID == (i + 1));
+        }
+    }
+
+    // 보스 테스트용
+
+    public void StartBoss()
+    {
+        GameManager.Instance.StageCount = 10;
+        OnClickStartButton();
     }
 }

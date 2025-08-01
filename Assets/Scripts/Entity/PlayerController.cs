@@ -22,6 +22,13 @@ public class PlayerController : BaseController
 
     private GameManager gameManager;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        PlayerManager.Instance.PlayerController = this;
+        PlayerManager.Instance.nowAnim = this.GetComponentInChildren<Animator>();
+    }
+
     public void Init(GameManager gameManager)
     {
         this.gameManager = gameManager;

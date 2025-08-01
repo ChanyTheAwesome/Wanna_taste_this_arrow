@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
+//using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 
@@ -11,16 +11,16 @@ public class GameManager : MonoBehaviour
 
     private EnemyManager _enemyManager;
 
-#region 캐릭터 선택 만들기 임시 구역
-    private PlayerController _playerController;
-    public PlayerController PlayerController { get { return _playerController; } }
+//#region 캐릭터 선택 만들기 임시 구역
+//    private PlayerController _playerController;
+//    public PlayerController PlayerController { get { return _playerController; } }
 
-    [SerializeField] private Sprite[] characterSprites;
-    [SerializeField] private RuntimeAnimatorController[] characterAnimators;
-    public Animator nowAnim;
-    private int _selectedIndex;
-    public int SelectedIndex { get { return _selectedIndex; } set { _selectedIndex = value; } }
-#endregion
+//    [SerializeField] private Sprite[] characterSprites;
+//    [SerializeField] private RuntimeAnimatorController[] characterAnimators;
+//    public Animator nowAnim;
+//    private int _selectedIndex;
+//    public int SelectedIndex { get { return _selectedIndex; } set { _selectedIndex = value; } }
+//#endregion
     
     private int stageCount = 0;
     public int StageCount
@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        SetPlayer();
+        //SetPlayer();
         DungeonManager.Instance.CurrentDungeonID = 1;
     }
 
@@ -67,38 +67,38 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void UpStageCount()  // 테스트용
-    {
-        stageCount++;
-        Debug.Log(stageCount);
-    }
+    //public void UpStageCount()  // 테스트용
+    //{
+    //    stageCount++;
+    //    Debug.Log(stageCount);
+    //}
 
-    public void DownStageCount()    // 테스트용
-    {
-        stageCount--;
-        Debug.Log(stageCount);
-    }
+    //public void DownStageCount()    // 테스트용
+    //{
+    //    stageCount--;
+    //    Debug.Log(stageCount);
+    //}
 
-    public void CheckEnemy()    // 테스트용
-    {
-        DungeonManager.Instance.CheckClearStage();
-    }
+    //public void CheckEnemy()    // 테스트용
+    //{
+    //    DungeonManager.Instance.CheckClearStage();
+    //}
 
-    public void SetPlayer() // 테스트용
-    {
-        Debug.Log("SetPlayer");
-        _playerController = FindObjectOfType<PlayerController>();
-        nowAnim = _playerController.GetComponentInChildren<Animator>();
-        if(_playerController == null)
-        {
-            Debug.Log("PlayerController not found in the scene.");
-            return;
-        }
-    }
+    //public void SetPlayer() // 테스트용
+    //{
+    //    Debug.Log("SetPlayer");
+    //    _playerController = FindObjectOfType<PlayerController>();
+    //    nowAnim = _playerController.GetComponentInChildren<Animator>();
+    //    if(_playerController == null)
+    //    {
+    //        Debug.Log("PlayerController not found in the scene.");
+    //        return;
+    //    }
+    //}
 
-    public void SetCharacter()
-    {
-        _playerController.GetComponentInChildren<SpriteRenderer>().sprite = characterSprites[_selectedIndex];
-        nowAnim.runtimeAnimatorController = characterAnimators[_selectedIndex];
-    }
+    //public void SetCharacter()
+    //{
+    //    _playerController.GetComponentInChildren<SpriteRenderer>().sprite = characterSprites[_selectedIndex];
+    //    nowAnim.runtimeAnimatorController = characterAnimators[_selectedIndex];
+    //}
 }

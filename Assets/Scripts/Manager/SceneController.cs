@@ -14,8 +14,11 @@ public class SceneController : MonoBehaviour
     private const string FIRST_BOSS_SCENE_NAME = "ForestBossStageTest";
     private const string SECOND_DUNGEON_SCENE_NAME = "CaveStageTest";
     private const string SECOND_BOSS_SCENE_NAME = "CaveBossStageTest";
-    private const string THIRD_DUNGEON_SCENE_NAME = "None";
+    private const string THIRD_DUNGEON_START_SCENE_NAME = "CastleStartStageTest";
+    private const string THIRD_DUNGEON_LATE_SCENE_NAME = "CastleLateStageTest";
     private const string THIRD_BOSS_SCENE_NAME = "None";
+
+    private int _thirdDungeonStageCount = 5;    // 세번째 던전 전반부, 후반부 나누는 스테이지 수
 
     private void Awake()
     {
@@ -46,7 +49,17 @@ public class SceneController : MonoBehaviour
                 SceneManager.LoadScene(SECOND_DUNGEON_SCENE_NAME);
                 break;
             case 3:
-                SceneManager.LoadScene(THIRD_DUNGEON_SCENE_NAME);
+                if(GameManager.Instance.StageCount < _thirdDungeonStageCount)
+                {
+                    SceneManager.LoadScene(THIRD_DUNGEON_START_SCENE_NAME);
+                }
+                else
+                {
+                    SceneManager.LoadScene(THIRD_DUNGEON_LATE_SCENE_NAME);
+                }
+                break;
+            default:
+                Debug.LogError("던전 ID를 찾지 못했습니다.");
                 break;
         }
     }
