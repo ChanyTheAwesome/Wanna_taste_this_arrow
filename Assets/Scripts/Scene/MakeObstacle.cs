@@ -23,7 +23,6 @@ public class MakeObstacle : MonoBehaviour
     private float xMultiplier = 0.8f;
     [SerializeField]
     public int ObjCount = 100;
-    
     public int StageCount = 1;
 
     void Start()
@@ -48,5 +47,14 @@ public class MakeObstacle : MonoBehaviour
 
         Vector3 obstaclePos = new Vector3(xPos, yPos, 0);
         Instantiate(Obstacle, obstaclePos, Quaternion.identity, Obstacles.transform);
+    }
+
+    private void OnDrawGizmos()
+    {
+        
+        Gizmos.color = Color.green;
+        Vector3 size = new Vector3(maxX - minX, maxY - minY, 0);
+        Vector3 center = new Vector3((maxX + minX)/2, (maxY + minY)/2, 0);
+        Gizmos.DrawWireCube(center, size);
     }
 }
