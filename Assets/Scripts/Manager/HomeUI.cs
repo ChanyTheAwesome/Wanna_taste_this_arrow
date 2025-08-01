@@ -11,7 +11,7 @@ public class HomeUI : BaseUI
     [SerializeField] private Button _nextDungeonButton;
     [SerializeField] private Button _startButton;
     [SerializeField] private Text _currentDungeonNameText;
-    [SerializeField] private Image _currentDungeonImage;
+    [SerializeField] List<Image> _dungeonImages;
     [SerializeField] private Image _menuImage;
     //[SerializeField] private Slider _bgmVolumeSlider;
     //[SerializeField] private Slider _sfxVolumeSlider;
@@ -19,7 +19,8 @@ public class HomeUI : BaseUI
     private List<Button> _otherButtons = new(); // 메뉴 열었을 때 비활성화시킬 버튼 리스트
 
     private void Awake()
-    {
+    {  
+        // 버튼 클릭 메서드 연결
         _menuButton.onClick.AddListener(OnClickMenuButton);
         _menuCloseButton.onClick.AddListener(OnClickCloseMenuButton);
         _previousDungeonButton.onClick.AddListener(OnClickPreviousDungeonButton);
@@ -31,6 +32,8 @@ public class HomeUI : BaseUI
     private void Start()
     {
         //_currentDungeonIDText.text = DungeonManager.Instance.CurrentDungeonID.ToString();
+        _currentDungeonNameText.text = DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].Name;
+        SetDungeonImageActive();
     }
     //public override void Init(/*UIManager uiManager*/)
     //{
@@ -61,6 +64,7 @@ public class HomeUI : BaseUI
             // 던전 이미지나 이름도 바꾸기
             //_currentDungeonNameText.text = DungeonManager.Instance.CurrentDungeonID.ToString();
             _currentDungeonNameText.text = DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].Name;
+            SetDungeonImageActive();
         }
         else return;
     }
@@ -73,6 +77,7 @@ public class HomeUI : BaseUI
             // 던전 이미지나 이름도 바꾸기
             //_currentDungeonNameText.text = DungeonManager.Instance.CurrentDungeonID.ToString();
             _currentDungeonNameText.text = DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].Name;
+            SetDungeonImageActive();
         }
         else return;
     }
@@ -99,6 +104,14 @@ public class HomeUI : BaseUI
         foreach(var button in _otherButtons)
         {
             button.interactable = isInteractable;
+        }
+    }
+
+    private void SetDungeonImageActive()
+    {
+        for(int i = 0; i < _dungeonImages.Count; i++)
+        {
+            _dungeonImages[i].gameObject.SetActive(DungeonManager.Instance.CurrentDungeonID == (i + 1));
         }
     }
 }

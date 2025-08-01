@@ -31,8 +31,8 @@ public class DungeonManager : MonoBehaviour
     private void AddDungeonDict()
     {
         DungeonDict.Add(1, new Dungeon(1, "잠자는 숲속의 던전", 10, 6, 3, 1.05f));
-        DungeonDict.Add(2, new Dungeon(2, "2단계 던전", 10, 6, 3, 1.05f));
-        DungeonDict.Add(3, new Dungeon(3, "3단계 던전", 10, 6, 3, 1.05f));
+        DungeonDict.Add(2, new Dungeon(2, "동굴", 10, 6, 3, 1.05f));
+        DungeonDict.Add(3, new Dungeon(3, "성", 10, 6, 3, 1.05f));
     }
      
     //Or try to use Json/newtonJson to read json data.
@@ -43,6 +43,7 @@ public class DungeonManager : MonoBehaviour
         if(instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
