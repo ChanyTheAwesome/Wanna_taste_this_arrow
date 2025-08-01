@@ -9,12 +9,13 @@ public class SceneController : MonoBehaviour
     public static SceneController Instance => instance;
 
     // 오타 방지
-    private string mainSceneName = "MainScene";
-    private string gameSceneName = "GameScene";
-    //Declaring the field in advance to avoid typos is a great practice. However, consider using a constant instead!
-    //Examples:
-    //private const string MAIN_SCENE_NAME = "MainScene";
-    //private const string GAME_SCENE_NAME = "GameScene";
+    private const string MAIN_SCENE_NAME = "MainTitleTest";
+    private const string FIRST_DUNGEON_SCENE_NAME = "ForestStageTest";
+    private const string FIRST_BOSS_SCENE_NAME = "ForestBossStageTest";
+    private const string SECOND_DUNGEON_SCENE_NAME = "CaveStageTest";
+    private const string SECOND_BOSS_SCENE_NAME = "CaveBossStageTest";
+    private const string THIRD_DUNGEON_SCENE_NAME = "None";
+    private const string THIRD_BOSS_SCENE_NAME = "None";
 
     private void Awake()
     {
@@ -31,11 +32,38 @@ public class SceneController : MonoBehaviour
 
     public void LoadMainScene()
     {
-        SceneManager.LoadScene(mainSceneName);
+        SceneManager.LoadScene(MAIN_SCENE_NAME);
     }
 
-    public void LoadGameScene()
+    public void LoadDungeonScene()
     {
-        SceneManager.LoadScene(gameSceneName);
+        switch (DungeonManager.Instance.CurrentDungeonID)
+        {
+            case 1:
+                SceneManager.LoadScene(FIRST_DUNGEON_SCENE_NAME);
+                break;
+            case 2:
+                SceneManager.LoadScene(SECOND_DUNGEON_SCENE_NAME);
+                break;
+            case 3:
+                SceneManager.LoadScene(THIRD_DUNGEON_SCENE_NAME);
+                break;
+        }
+    }
+
+    public void LoadBossScene()
+    {
+        switch (DungeonManager.Instance.CurrentDungeonID)
+        {
+            case 1:
+                SceneManager.LoadScene(FIRST_BOSS_SCENE_NAME);
+                break;
+            case 2:
+                SceneManager.LoadScene(SECOND_BOSS_SCENE_NAME);
+                break;
+            case 3:
+                SceneManager.LoadScene(THIRD_BOSS_SCENE_NAME);
+                break;
+        }
     }
 }

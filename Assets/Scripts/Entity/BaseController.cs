@@ -146,6 +146,34 @@ public class BaseController : MonoBehaviour
     {
         _rigidbody.velocity = Vector3.zero; //이동을 멈추고
 
+        if (animationhandler.gameObject.layer == 6)
+        {
+            animationhandler.Dead();
+            Behaviour[] components = transform.GetComponentsInChildren<Behaviour>();
+            foreach (Behaviour component in components)
+            {
+                if(component.GetType() == typeof(BoxCollider2D))
+                {
+                    component.enabled = false;
+                }
+                if(component.GetType() == typeof(PlayerController))
+                {
+                    component.enabled = false;
+                }
+                if(component.GetType() == typeof(RangeWeaponHandler))
+                {
+                    RangeWeaponHandler weapon = component.GetComponent<RangeWeaponHandler>();
+                    weapon.gameObject.SetActive(false);
+                    component.enabled = false;
+                }
+                if(component.GetType() == typeof(Canvas))
+                {
+                    component.enabled = false;
+                }
+            }
+
+            return;
+        }
         foreach (SpriteRenderer renderer in transform.GetComponentsInChildren<SpriteRenderer>())
         {
             Color color = renderer.color;
@@ -157,7 +185,6 @@ public class BaseController : MonoBehaviour
         {
             component.enabled = false; //컴포넌트도 다 꺼버리겠습니다~
         }
-
         Destroy(gameObject, 2.0f); //2초 뒤에 삭제해버리겠습니다~
     }
 }

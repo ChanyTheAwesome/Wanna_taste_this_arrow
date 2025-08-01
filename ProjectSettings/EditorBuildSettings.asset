@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main/CaveBossStage.unity
     guid: c4c2e14badbe8a74194c8ab2979a4a25
+  - enabled: 1
+    path: Assets/Scenes/DungeonTestScene.unity
+    guid: ccad976fe1081be45806a0b0f307059f
+  - enabled: 1
+    path: Assets/Scenes/ManagerTestScene.unity
+    guid: 581a68259c81ba34d956e2b637bf1566
   m_configObjects: {}

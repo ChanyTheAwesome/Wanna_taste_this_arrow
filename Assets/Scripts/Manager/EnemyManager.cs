@@ -6,7 +6,7 @@ public class EnemyManager : MonoBehaviour
 {
     //private Coroutine waveRoutine;
 
-    [SerializeField] private LayerMask enemyLayerMask;  // Enemy 존재여부 확인용 레이어
+    //[SerializeField] private LayerMask enemyLayerMask;  // Enemy 존재여부 확인용 레이어
     [SerializeField] private List<GameObject> enemyPrefabs;
     [SerializeField] List<Rect> spawnAreas;
     [SerializeField] private Color gizmoColor = new Color(1, 0, 0, 0.3f);
@@ -14,6 +14,8 @@ public class EnemyManager : MonoBehaviour
     private List<EnemyController> _activeEnemies = new List<EnemyController>();
 
     private bool _enemySpawnComplete;
+
+    [SerializeField] private PlayerController _playerController;
 
     //[SerializeField] private float timeBetweenSpawns = 0.2f;
     //[SerializeField] private float timeBetweenWaves = 1f;
@@ -42,14 +44,17 @@ public class EnemyManager : MonoBehaviour
     //}
     private void Start()
     {
-        SpawnMonster(DungeonManager.Instance.DungeonList.Find(d => d.ID == DungeonManager.Instance.CurrentDungeonID).EnemyCount);
+        //SpawnMonster(DungeonManager.Instance.DungeonList.Find(d => d.ID == DungeonManager.Instance.CurrentDungeonID).EnemyCount);
+        SpawnMonster(DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].EnemyCount);
         // 지금 위에 괄호안에 있는 부분이 잘못됨 아래에 그냥 숫자 넣으면 작동함
         //SpawnMonster(5);
+        //_playerController = FindObjectOfType<PlayerController>();
     }
 
     public void OnClickSpawnMonster()
     {
-        SpawnMonster(DungeonManager.Instance.DungeonList.Find(d => d.ID == DungeonManager.Instance.CurrentDungeonID).EnemyCount);
+        //SpawnMonster(DungeonManager.Instance.DungeonList.Find(d => d.ID == DungeonManager.Instance.CurrentDungeonID).EnemyCount);
+        SpawnMonster(DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].EnemyCount);
     }
 
     public void SpawnMonster(int enemyCount)  // 일반 몬스터 생성
@@ -67,15 +72,9 @@ public class EnemyManager : MonoBehaviour
 
     public bool CheckEnemyExist()   // Enemy 레이어를 가진 오브젝트가 존재하는지 체크, 없으면 false 있으면 true
     {
-        Debug.Log(GameManager.Instance.CheckLayerObjectCount(enemyLayerMask));
-        if(GameManager.Instance.CheckLayerObjectCount(enemyLayerMask) == 0)
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
+        Debug.Log(_activeEnemies.Count.ToString()); // 테스트용
+        if (_activeEnemies.Count == 0) return false;
+        else return true;
     }
 
     private void SpawnRandomMonster()
@@ -96,7 +95,7 @@ public class EnemyManager : MonoBehaviour
 
         GameObject spawnEnemy = Instantiate(randomPrefab, new Vector3(randomPosition.x, randomPosition.y), Quaternion.identity);
         EnemyController enemyController = spawnEnemy.GetComponent<EnemyController>();
-        //enemyController.Init(this, gameManager.player.transform); << 얘 뭔지 확인해야됨
+        enemyController.Init(this, _playerController.transform); // 에너미컨트롤러의 타겟을 플레이어로 지정하는 코드, 나중에 게임매니저에 플레이어 객체 만들면 다시 넣기
 
         if (enemyController != null)
         {
@@ -118,10 +117,12 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    //public void RemoveEnemyOnDeath(EnemyController enemy)
-    //{
-    //    activeEnemies.Remove(enemy);
-    //    if (enemySpawnComplite && activeEnemies.Count == 0)
-    //        gameManager.EndOfWave();
-    //}
+    public void RemoveEnemyOnDeath(EnemyController enemy)   // _activeEnemies 리스트에서 enemy 없애기, 몬스터 죽는 시점에 실행하기
+    {
+        _activeEnemies.Remove(enemy);
+        //if (/*enemySpawnComplite && */_activeEnemies.Count == 0)
+            //gameManager.EndOfWave();
+            // 적이 없다면 클리어 세팅하기
+
+    }
 }
