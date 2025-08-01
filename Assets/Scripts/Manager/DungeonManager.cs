@@ -34,11 +34,11 @@ public class DungeonManager : MonoBehaviour
 
     public Dictionary<int, Dungeon> DungeonDict = new Dictionary<int, Dungeon>();
     
-    private void AddDungeonDict()
+    private void AddDungeonDict()   // 테스트용으로 스테이지 3개로 설정, 이후에 다시 변경 필요
     {
-        DungeonDict.Add(1, new Dungeon(1, "잠자는 숲속의 던전", 10, 6, 3, 1.05f));
-        DungeonDict.Add(2, new Dungeon(2, "동굴", 10, 6, 3, 1.05f));
-        DungeonDict.Add(3, new Dungeon(3, "성", 10, 6, 3, 1.05f));
+        DungeonDict.Add(1, new Dungeon(1, "잠자는 숲속의 던전", 3, 6, 3, 1.05f));
+        DungeonDict.Add(2, new Dungeon(2, "동굴", 3, 6, 3, 1.05f));
+        DungeonDict.Add(3, new Dungeon(3, "성", 3, 6, 3, 1.05f));
     }
      
     //Or try to use Json/newtonJson to read json data.
@@ -113,7 +113,7 @@ public class DungeonManager : MonoBehaviour
 
     public void ClearStage()    // 스테이지 클리어시 실행할 것들
     {
-        Debug.Log("스테이지 클리어");
+        Debug.Log("스테이지 클리어");  // 테스트용
         _isClear = true;
         //_gate.OpenGate();
         UIManager.Instance.SetClearStage();
