@@ -159,9 +159,11 @@ MonoBehaviour:
   target:
     serializedVersion: 2
     m_Bits: 64
-  isOnKnockback: 1
-  knockbackPower: 0.1
-  knockbackTime: 0.5
+  isOnKnockback: 0
+  knockbackPower: 0
+  knockbackTime: 0
   attackSoundClip: {fileID: 0}
   spriteRenderer: {fileID: 0}
   CollideBoxSize: {x: 2, y: 0.5}
+  isCharge: 0
+  ChargeCollider: {fileID: 0}

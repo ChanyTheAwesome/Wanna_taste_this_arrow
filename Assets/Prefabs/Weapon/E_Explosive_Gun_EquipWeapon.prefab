@@ -55,10 +55,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   isOnKnockback: 1
-  knockbackPower: 0.1
+  knockbackPower: 0.5
   knockbackTime: 0.5
   attackSoundClip: {fileID: 0}
   projectileSpawnPosition: {fileID: 718527681951292589}
+  projectileSpawnBackPosition: {fileID: 0}
   bulletIndex: 1
   bulletSize: 1
   duration: 10

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BaseController : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class BaseController : MonoBehaviour
     [SerializeField] private Transform weaponPivot;
     [SerializeField] public WeaponHandler WeaponPrefab;
     [SerializeField] public ProjectileManager ProjectileManager;
+    [SerializeField] public Image hpSlider;
 
     protected Vector2 movementDirection = Vector2.zero;
     public Vector2 MovementDirection {  get { return movementDirection; }}
@@ -29,6 +31,7 @@ public class BaseController : MonoBehaviour
     protected AnimationHandler animationhandler;
     protected StatHandler statHandler;
     protected WeaponHandler weaponHandler;
+    protected ResourceController resource;
 
     protected bool isAttacking;
     protected bool isLeft;
@@ -42,7 +45,8 @@ public class BaseController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         animationhandler = GetComponent<AnimationHandler>();
         statHandler = GetComponent<StatHandler>();
-        
+        resource = GetComponent<ResourceController>();
+
         if(WeaponPrefab != null)
         {
             weaponHandler = Instantiate(WeaponPrefab, weaponPivot);
