@@ -10,6 +10,7 @@ public class HomeUI : BaseUI
     [SerializeField] private Button _previousDungeonButton;
     [SerializeField] private Button _nextDungeonButton;
     [SerializeField] private Button _startButton;
+    [SerializeField] private Button _exitGameButton;
 
     //테스트용
     [SerializeField] private Button _bossButton;
@@ -31,6 +32,7 @@ public class HomeUI : BaseUI
         _previousDungeonButton.onClick.AddListener(OnClickPreviousDungeonButton);
         _nextDungeonButton.onClick.AddListener(OnClickNextDungeonButton);
         _startButton.onClick.AddListener(OnClickStartButton);
+        _exitGameButton.onClick.AddListener(OnClickExitGameButton);
 
         //테스트용
         _bossButton.onClick.AddListener(StartBoss);
@@ -94,6 +96,15 @@ public class HomeUI : BaseUI
     public void OnClickStartButton()
     {
         DungeonManager.Instance.StartDungeon();
+    }
+
+    public void OnClickExitGameButton()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 
     protected override UIState GetUIState()
