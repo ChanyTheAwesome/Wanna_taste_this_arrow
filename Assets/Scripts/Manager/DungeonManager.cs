@@ -30,6 +30,9 @@ public class DungeonManager : MonoBehaviour
 
     public Gate gate;
 
+    [SerializeField] private Material caveMaterial;
+    public Material CaveMaterial { get { return caveMaterial; } }
+
     //Suggestion
 
     public Dictionary<int, Dungeon> DungeonDict = new Dictionary<int, Dungeon>();

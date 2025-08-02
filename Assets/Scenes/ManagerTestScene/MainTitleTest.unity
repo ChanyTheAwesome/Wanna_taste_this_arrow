@@ -307,11 +307,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a9ddd8c1d5f67f4c95a52a9225c43ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterPrefabs:
-  - {fileID: 728720649614666835, guid: 4bf4650570a17d549990a0e28da72008, type: 3}
-  - {fileID: 2848237714714802615, guid: 05dc871cc22c6f741be8f78a0df94770, type: 3}
-  - {fileID: 1163378632253179906, guid: 5811c77e766db8546afe6687c68b99f0, type: 3}
-  - {fileID: 2993925299557647837, guid: 931474bcead0bf54a81dc6023387f721, type: 3}
   characterSprites:
   - {fileID: 978012912, guid: 99a24620d31e5ce4e823c32d11e17c2c, type: 3}
   - {fileID: -150523396, guid: 0c187a32c5bde4747be8d00770b07403, type: 3}
@@ -322,22 +317,6 @@ MonoBehaviour:
   - {fileID: 9100000, guid: 9547b67e329cc604999251a3e87a2815, type: 2}
   - {fileID: 9100000, guid: cc74fede9c6368b429bde94bca493f33, type: 2}
   - {fileID: 9100000, guid: ea052c9b555cdb147bbe4439ac02ff20, type: 2}
-  idleAnimationClips:
-  - {fileID: 7400000, guid: 5be263368b3333e4cb32e01340e99cdf, type: 2}
-  - {fileID: 7400000, guid: 630b2cc1f8cca26468765e32ef2ce572, type: 2}
-  - {fileID: 7400000, guid: 37d3efae984401f4d87fac3d52005911, type: 2}
-  - {fileID: 7400000, guid: 1c9803d7cfec2a449916ab2da42b7a24, type: 2}
-  moveAnimationClips:
-  - {fileID: 7400000, guid: 89d31c40b0f3adc4faddc88d11eaf1bf, type: 2}
-  - {fileID: 7400000, guid: ea1c855e78487de448395180eed0ff49, type: 2}
-  - {fileID: 7400000, guid: 4447df1b515e5f446b2a1450b135d87c, type: 2}
-  - {fileID: 7400000, guid: c02835473ca76f94fa77743aa9899d1d, type: 2}
-  damageAnimationClips:
-  - {fileID: 7400000, guid: eae7318d188da0b4c9937c6cc1bc58cc, type: 2}
-  - {fileID: 7400000, guid: c3f6f105895b0344a830b0b22f1f7561, type: 2}
-  - {fileID: 7400000, guid: 45bc505b60d1f0b4ab488da81eabad5c, type: 2}
-  - {fileID: 7400000, guid: b0f1d6adc37f0724ead0861d0defe0e0, type: 2}
-  nowAnim: {fileID: 0}
 --- !u!4 &572070666
 Transform:
   m_ObjectHideFlags: 0
@@ -1997,6 +1976,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gate: {fileID: 0}
+  caveMaterial: {fileID: 2100000, guid: 61a696070ae534b469b226d5a3ca83fa, type: 2}
 --- !u!4 &1906044331
 Transform:
   m_ObjectHideFlags: 0

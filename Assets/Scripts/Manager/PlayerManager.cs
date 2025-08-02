@@ -8,7 +8,7 @@ public class PlayerManager : MonoBehaviour
 
     public static PlayerManager Instance => instance;
 
-    [SerializeField] private GameObject[] _characterPrefabs;
+    //[SerializeField] private GameObject[] _characterPrefabs;
 
     private PlayerController _playerController;
 
@@ -18,11 +18,11 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] private Sprite[] characterSprites;
     [SerializeField] private RuntimeAnimatorController[] characterAnimators;
-    [SerializeField] private AnimationClip[] idleAnimationClips;
-    [SerializeField] private AnimationClip[] moveAnimationClips;
-    [SerializeField] private AnimationClip[] damageAnimationClips;
+    //[SerializeField] private AnimationClip[] idleAnimationClips;
+    //[SerializeField] private AnimationClip[] moveAnimationClips;
+    //[SerializeField] private AnimationClip[] damageAnimationClips;
 
-    public Animator nowAnim;
+    //public Animator nowAnim;
     private int _selectedIndex;
     public int SelectedIndex { get { return _selectedIndex; } set { _selectedIndex = value; } }
 
@@ -77,6 +77,7 @@ public class PlayerManager : MonoBehaviour
         //animatorOverrideController["Damage"] = damageAnimationClips[_selectedIndex];
         //nowAnim.runtimeAnimatorController = animatorOverrideController;
         //_playerController.GetComponentInChildren<Animator>(). = animatorOverrideController;
-        nowAnim.runtimeAnimatorController = characterAnimators[_selectedIndex];
+        //nowAnim.runtimeAnimatorController = characterAnimators[_selectedIndex];
+        _playerController.GetComponentInChildren<Animator>().runtimeAnimatorController = characterAnimators[_selectedIndex];
     }
 }

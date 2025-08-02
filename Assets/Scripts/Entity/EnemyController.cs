@@ -18,6 +18,8 @@ public class EnemyController : BaseController
     {
         this.enemyManager = enemyManager;
         this.target = target; //타겟은 다른 코드에서 정해줬음, 얘는 플레이어가 타겟
+        if (DungeonManager.Instance.CurrentDungeonID == 2)   // 동굴 던전이면
+            this.GetComponentInChildren<SpriteRenderer>().material = DungeonManager.Instance.CaveMaterial;  // Material 속성 변경
     }
 
     protected float DistanceToTarget()

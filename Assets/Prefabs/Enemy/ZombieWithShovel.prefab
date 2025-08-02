@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -7946074386575038095}
   - component: {fileID: 5459869726668747255}
   - component: {fileID: -244007367820654769}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ZombieWithShovel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,8 +158,10 @@ MonoBehaviour:
   WeaponPrefab: {fileID: 3801632503471262595, guid: d368c2250834e8a4a88abd230b024c22,
     type: 3}
   ProjectileManager: {fileID: 0}
+  hpSlider: {fileID: 0}
   IsCharging: 0
   GotChargeWeapon: 0
+  LatestDirection: {x: 0, y: 0, z: 0}
   target: {fileID: 0}
   followRange: 15
 --- !u!114 &-7946074386575038095
@@ -225,7 +227,7 @@ GameObject:
   - component: {fileID: 6523537641181908073}
   - component: {fileID: 3831058799859963935}
   - component: {fileID: 2868258632440295507}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,7 +269,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 61a696070ae534b469b226d5a3ca83fa, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -329,7 +331,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5388903157187318908}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

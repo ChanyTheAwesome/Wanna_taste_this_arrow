@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7527325071549885887}
   - component: {fileID: 2663729336628121394}
   - component: {fileID: 3197225614334603616}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1116260942393105239}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 6527693497018001769}
   - component: {fileID: 7256290428434989389}
   - component: {fileID: 2283266051761176861}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ZombieWithSpear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,6 +295,10 @@ MonoBehaviour:
   WeaponPrefab: {fileID: 3661919668440961451, guid: 43594240a0b4bce48910767a5b819e57,
     type: 3}
   ProjectileManager: {fileID: 0}
+  hpSlider: {fileID: 0}
+  IsCharging: 0
+  GotChargeWeapon: 0
+  LatestDirection: {x: 0, y: 0, z: 0}
   target: {fileID: 0}
   followRange: 15
 --- !u!114 &6527693497018001769

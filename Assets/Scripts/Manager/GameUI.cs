@@ -5,32 +5,31 @@ using UnityEngine.UI;
 
 public class GameUI : BaseUI
 {
-    [SerializeField] private Button _menuButton;    // 메뉴 버튼
-    [SerializeField] private Button _exitDungeonButton; // 던전 나가기 버튼
-    [SerializeField] private Button _closeMenuButton;  // UI 닫기 버튼
-    [SerializeField] private Image _menuImage; // 메뉴 눌렀을 때 띄울 UI 이미지
-    [SerializeField] private GameObject _characterSelectUI;
-    [SerializeField] private Button _firstCharacterIndex;
-    [SerializeField] private Button _secondCharacterIndex;
-    [SerializeField] private Button _thirdCharacterIndex;
-    [SerializeField] private Button _fourthCharacterIndex;
+    [SerializeField] private Button exitDungeonButton; // 던전 나가기 버튼
+    [SerializeField] private Button closeMenuButton;  // UI 닫기 버튼
+    [SerializeField] private Image menuImage; // 메뉴 눌렀을 때 띄울 UI 이미지
+    [SerializeField] private GameObject characterSelectUI;
+    [SerializeField] private Button firstCharacterIndex;
+    [SerializeField] private Button secondCharacterIndex;
+    [SerializeField] private Button thirdCharacterIndex;
+    [SerializeField] private Button fourthCharacterIndex;
 
     //테스트용
-    [SerializeField] private Button _clearButton;
+    [SerializeField] private Button clearButton;
+    private bool _isMenuOn = false;
     //테스트용
     // 메뉴 버튼 눌렀을 때
 
     private void Awake()
     {
         //Init();
-        _menuButton.onClick.AddListener(OnClickMenuButton);
-        _exitDungeonButton.onClick.AddListener(OnClickExitDungeonButton);
-        _closeMenuButton.onClick.AddListener(OnClickCloseMenuButton);
-        _clearButton.onClick.AddListener(OnClickClearStage);
-        _firstCharacterIndex.onClick.AddListener(OnClickFirstButton);
-        _secondCharacterIndex.onClick.AddListener(OnClickSecondButton);
-        _thirdCharacterIndex.onClick.AddListener(OnClickThirdButton);
-        _fourthCharacterIndex.onClick.AddListener(OnClickFourthButton);
+        exitDungeonButton.onClick.AddListener(OnClickExitDungeonButton);
+        closeMenuButton.onClick.AddListener(OnClickCloseMenuButton);
+        clearButton.onClick.AddListener(OnClickClearStage);
+        firstCharacterIndex.onClick.AddListener(OnClickFirstButton);
+        secondCharacterIndex.onClick.AddListener(OnClickSecondButton);
+        thirdCharacterIndex.onClick.AddListener(OnClickThirdButton);
+        fourthCharacterIndex.onClick.AddListener(OnClickFourthButton);
     }
 
     private void Start()
@@ -49,6 +48,14 @@ public class GameUI : BaseUI
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            CheckMenu();
+        }
+    }
+
     //public override void Init()
     //{
     //    _menuButton.onClick.AddListener(OnClickMenuButton);
@@ -61,8 +68,9 @@ public class GameUI : BaseUI
         return UIState.Game;
     }
 
-    public void OnClickMenuButton()   // 메뉴 버튼 클릭
+    public void OpenMenu()   // 메뉴 버튼 클릭
     {
+        _isMenuOn = true;
         StopGame(); // 게임 정지
         SetMenu();  // 메뉴창 띄우기
     }
@@ -87,65 +95,70 @@ public class GameUI : BaseUI
         ResumeGame();
     }
 
+    public void CheckMenu()
+    {
+        if (!_isMenuOn)
+        {
+            OpenMenu();
+        }
+        else if (_isMenuOn)
+        {
+            OnClickCloseMenuButton();
+        }
+    }
+
     public void OnClickFirstButton()
     {
         ResumeGame();
-        _characterSelectUI.SetActive(false);
+        characterSelectUI.SetActive(false);
         PlayerManager.Instance.SelectedIndex = 0;
         PlayerManager.Instance.SetCharacter();
-        _menuButton.gameObject.SetActive(true);
-        _menuImage.gameObject.SetActive(false);
+        menuImage.gameObject.SetActive(false);
 
     }
     public void OnClickSecondButton()
     {
         ResumeGame();
-        _characterSelectUI.SetActive(false);
+        characterSelectUI.SetActive(false);
         PlayerManager.Instance.SelectedIndex = 1;
         PlayerManager.Instance.SetCharacter();
-        _menuButton.gameObject.SetActive(true);
-        _menuImage.gameObject.SetActive(false);
+        menuImage.gameObject.SetActive(false);
     }
     public void OnClickThirdButton()
     {
         ResumeGame();
-        _characterSelectUI.SetActive(false);
+        characterSelectUI.SetActive(false);
         PlayerManager.Instance.SelectedIndex = 2;
         PlayerManager.Instance.SetCharacter();
-        _menuButton.gameObject.SetActive(true);
-        _menuImage.gameObject.SetActive(false);
+        menuImage.gameObject.SetActive(false);
     }
     public void OnClickFourthButton()
     {
         ResumeGame();
-        _characterSelectUI.SetActive(false);
+        characterSelectUI.SetActive(false);
         PlayerManager.Instance.SelectedIndex = 3;
         PlayerManager.Instance.SetCharacter();
-        _menuButton.gameObject.SetActive(true);
-        _menuImage.gameObject.SetActive(false);
+        menuImage.gameObject.SetActive(false);
     }
 
     public void SetCharacterSelect()
     {
         StopGame();
-        _characterSelectUI.SetActive(true);
-        _menuButton.gameObject.SetActive(false);
-        _menuImage.gameObject.SetActive(false);
+        characterSelectUI.SetActive(true);
+        menuImage.gameObject.SetActive(false);
     }
 
     public void SetGame()   // 게임중 UI 설정
     {
         // 메뉴 UI 띄우기
-        _menuButton.interactable = true;
-        _menuImage.gameObject.SetActive(false);
-        _characterSelectUI.SetActive(false);
+        menuImage.gameObject.SetActive(false);
+        characterSelectUI.SetActive(false);
     }
 
     public void SetMenu()
     {
-        _menuButton.interactable = false;
-        _menuImage.gameObject.SetActive(true);
-        _characterSelectUI.SetActive(false);
+        menuImage.gameObject.SetActive(true);
+        characterSelectUI.SetActive(false);
     }
 
     public void OnClickClearStage()    // 테스트용 메서드
