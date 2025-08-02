@@ -15,8 +15,9 @@ public class SceneController : MonoBehaviour
     private const string SECOND_DUNGEON_SCENE_NAME = "CaveStageTest";
     private const string SECOND_BOSS_SCENE_NAME = "CaveBossStageTest";
     private const string THIRD_DUNGEON_START_SCENE_NAME = "CastleStartStageTest";
-    private const string THIRD_DUNGEON_LATE_SCENE_NAME = "CastleLateStageTest";
-    private const string THIRD_BOSS_SCENE_NAME = "None";
+    private const string THIRD_DUNGEON_BRIDGE_SCENE_NAME = "CastleLateStageTest";
+    private const string THIRD_DUNGEON_CASTLE_SCENE_NAME = "CastleStageTest";
+    private const string THIRD_BOSS_SCENE_NAME = "CastleBossStageTest";
 
     private int _thirdDungeonStageCount = 5;    // 세번째 던전 전반부, 후반부 나누는 스테이지 수
 
@@ -53,9 +54,13 @@ public class SceneController : MonoBehaviour
                 {
                     SceneManager.LoadScene(THIRD_DUNGEON_START_SCENE_NAME);
                 }
+                else if(GameManager.Instance.StageCount == _thirdDungeonStageCount)
+                {
+                    SceneManager.LoadScene(THIRD_DUNGEON_BRIDGE_SCENE_NAME);
+                }
                 else
                 {
-                    SceneManager.LoadScene(THIRD_DUNGEON_LATE_SCENE_NAME);
+                    SceneManager.LoadScene(THIRD_DUNGEON_CASTLE_SCENE_NAME);
                 }
                 break;
             default:

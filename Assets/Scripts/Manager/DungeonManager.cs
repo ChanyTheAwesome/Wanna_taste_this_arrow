@@ -39,9 +39,9 @@ public class DungeonManager : MonoBehaviour
     
     private void AddDungeonDict()   // 테스트용으로 스테이지 3개로 설정, 이후에 다시 변경 필요
     {
-        DungeonDict.Add(1, new Dungeon(1, "잠자는 숲속의 좀비^^", 3, 6, 3, 1.05f));
-        DungeonDict.Add(2, new Dungeon(2, "번호따고 싶은 석상^^", 3, 6, 3, 1.05f));
-        DungeonDict.Add(3, new Dungeon(3, "야 묘비 삽 넣을게^^", 3, 6, 3, 1.05f));
+        DungeonDict.Add(1, new Dungeon(1, "잠자는 숲속의 좀비^^", 10, 6, 3, 1.05f));
+        DungeonDict.Add(2, new Dungeon(2, "번호따고 싶은 석상^^", 10, 6, 3, 1.05f));
+        DungeonDict.Add(3, new Dungeon(3, "야 묘비 삽 넣을게^^", 10, 6, 3, 1.05f));
     }
      
     //Or try to use Json/newtonJson to read json data.
