@@ -13,6 +13,8 @@ public class GameUI : BaseUI
     [SerializeField] private Button secondCharacterIndex;
     [SerializeField] private Button thirdCharacterIndex;
     [SerializeField] private Button fourthCharacterIndex;
+    [SerializeField] private Text stageClearTxt;
+    [SerializeField] private Text dungeonClearTxt;
 
     //테스트용
     [SerializeField] private Button clearButton;
@@ -166,6 +168,18 @@ public class GameUI : BaseUI
     {
         menuImage.gameObject.SetActive(true);
         characterSelectUI.SetActive(false);
+    }
+
+    public void SetClear()
+    {
+        if(GameManager.Instance.StageCount == DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].MaxStageCount)
+        {
+            stageClearTxt.gameObject.SetActive(true);
+        }
+        else
+        {
+            dungeonClearTxt.gameObject.SetActive(true);
+        }
     }
 
     public void OnClickClearStage()    // 테스트용 메서드
