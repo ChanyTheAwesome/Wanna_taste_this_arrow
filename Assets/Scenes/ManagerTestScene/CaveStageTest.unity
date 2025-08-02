@@ -483,7 +483,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 61a696070ae534b469b226d5a3ca83fa, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -733,8 +733,10 @@ MonoBehaviour:
   WeaponPrefab: {fileID: 9031818409637953494, guid: e893839a59bb65148948f29c48252869,
     type: 3}
   ProjectileManager: {fileID: 0}
+  hpSlider: {fileID: 0}
   IsCharging: 0
   GotChargeWeapon: 0
+  LatestDirection: {x: 0, y: 0, z: 0}
   findRadius: 5
   enemyLayer:
     serializedVersion: 2
@@ -742,7 +744,6 @@ MonoBehaviour:
   levelLayer:
     serializedVersion: 2
     m_Bits: 0
-  hpSlider: {fileID: 551514280}
 --- !u!61 &337190574
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15437,6 +15438,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e868abf6e3c619e42a213c8ff9834256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gate: {fileID: 0}
+  caveMaterial: {fileID: 0}
 --- !u!4 &610650697
 Transform:
   m_ObjectHideFlags: 0
@@ -15620,6 +15623,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a9ddd8c1d5f67f4c95a52a9225c43ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterSprites: []
+  characterAnimators: []
 --- !u!4 &834417600
 Transform:
   m_ObjectHideFlags: 0
@@ -19349,6 +19354,12 @@ MonoBehaviour:
   _exitDungeonButton: {fileID: 2025021954}
   _closeMenuButton: {fileID: 1401424097}
   _menuImage: {fileID: 521096854}
+  _characterSelectUI: {fileID: 0}
+  _firstCharacterIndex: {fileID: 0}
+  _secondCharacterIndex: {fileID: 0}
+  _thirdCharacterIndex: {fileID: 0}
+  _fourthCharacterIndex: {fileID: 0}
+  _clearButton: {fileID: 0}
 --- !u!1 &1195871779
 GameObject:
   m_ObjectHideFlags: 0

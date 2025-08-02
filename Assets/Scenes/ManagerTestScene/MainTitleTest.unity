@@ -317,7 +317,6 @@ MonoBehaviour:
   - {fileID: 9100000, guid: 9547b67e329cc604999251a3e87a2815, type: 2}
   - {fileID: 9100000, guid: cc74fede9c6368b429bde94bca493f33, type: 2}
   - {fileID: 9100000, guid: ea052c9b555cdb147bbe4439ac02ff20, type: 2}
-  nowAnim: {fileID: 0}
 --- !u!4 &572070666
 Transform:
   m_ObjectHideFlags: 0
@@ -1977,6 +1976,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gate: {fileID: 0}
+  caveMaterial: {fileID: 2100000, guid: 61a696070ae534b469b226d5a3ca83fa, type: 2}
 --- !u!4 &1906044331
 Transform:
   m_ObjectHideFlags: 0
