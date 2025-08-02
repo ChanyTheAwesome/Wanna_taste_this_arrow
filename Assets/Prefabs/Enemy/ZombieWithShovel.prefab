@@ -158,8 +158,10 @@ MonoBehaviour:
   WeaponPrefab: {fileID: 3801632503471262595, guid: d368c2250834e8a4a88abd230b024c22,
     type: 3}
   ProjectileManager: {fileID: 0}
+  hpSlider: {fileID: 0}
   IsCharging: 0
   GotChargeWeapon: 0
+  LatestDirection: {x: 0, y: 0, z: 0}
   target: {fileID: 0}
   followRange: 15
 --- !u!114 &-7946074386575038095
@@ -267,7 +269,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 61a696070ae534b469b226d5a3ca83fa, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

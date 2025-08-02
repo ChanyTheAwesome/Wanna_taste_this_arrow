@@ -25,7 +25,8 @@ public class PlayerController : BaseController
     protected override void Awake()
     {
         base.Awake();
-        //PlayerManager.Instance.PlayerController = this;
+        PlayerManager.Instance.PlayerController = this;
+        PlayerManager.Instance.SetCharacter();  // 캐릭터 외형 변경
         //PlayerManager.Instance.nowAnim = this.GetComponentInChildren<Animator>();
     }
 
