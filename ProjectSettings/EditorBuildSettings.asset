@@ -6,27 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Main/MainTitle.unity
-    guid: b8f46a943524995409fe500d124975c8
-  - enabled: 1
-    path: Assets/Scenes/Main/ForestStage.unity
-    guid: 40eb3ad1822e7024b8575bc09ac23e2b
-  - enabled: 1
-    path: Assets/Scenes/Main/ForestBossStage.unity
-    guid: 5b59802bb6303324f89819e1ee212b76
-  - enabled: 1
-    path: Assets/Scenes/Main/CaveStage.unity
-    guid: fe2a342cc9c2e2c458b25605f7f4f67f
-  - enabled: 1
-    path: Assets/Scenes/Main/CaveBossStage.unity
-    guid: c4c2e14badbe8a74194c8ab2979a4a25
-  - enabled: 1
-    path: Assets/Scenes/DungeonTestScene.unity
-    guid: ccad976fe1081be45806a0b0f307059f
-  - enabled: 1
-    path: Assets/Scenes/ManagerTestScene.unity
-    guid: 581a68259c81ba34d956e2b637bf1566
-  - enabled: 1
     path: Assets/Scenes/ManagerTestScene/MainTitleTest.unity
     guid: 03540143eca91ca42ac42e6306f584b3
   - enabled: 1
@@ -40,11 +19,17 @@ EditorBuildSettings:
     guid: 167fb8c60967fa54388b9d8001e11edf
   - enabled: 1
     path: Assets/Scenes/ManagerTestScene/CaveBossStageTest.unity
-    guid: aee3b2fb401b27d419e65c11f7f355e6
+    guid: 3bb319bf5e529d8458a860010095bd5e
   - enabled: 1
     path: Assets/Scenes/ManagerTestScene/CastleStartStageTest.unity
     guid: 8e9262772a54e8c4d95d83f8174da21d
   - enabled: 1
-    path: Assets/Scenes/ManagerTestScene/CastleLateStageTest.unity
-    guid: eef7cd715eebd4e42a157043ce6444e9
+    path: Assets/Scenes/ManagerTestScene/CastleBridgeStageTest.unity
+    guid: 818cdc35a99aed24ea42940a5314b030
+  - enabled: 1
+    path: Assets/Scenes/ManagerTestScene/CastleStageTest.unity
+    guid: 51435d753b575a941958a5d7706043fc
+  - enabled: 1
+    path: Assets/Scenes/ManagerTestScene/CastleBossStageTest.unity
+    guid: d2806206dabc24948abf3dccbeb41111
   m_configObjects: {}
