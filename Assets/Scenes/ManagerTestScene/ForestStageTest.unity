@@ -23459,8 +23459,6 @@ MonoBehaviour:
   secondCharacterIndex: {fileID: 1545905247}
   thirdCharacterIndex: {fileID: 1007024853}
   fourthCharacterIndex: {fileID: 454446266}
-  stageClearTxt: {fileID: 0}
-  dungeonClearTxt: {fileID: 0}
   clearButton: {fileID: 1526303407}
   gameOverButton: {fileID: 654169079}
 --- !u!222 &605075272
@@ -29904,8 +29902,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   exitDungeonButton: {fileID: 1088322881}
   dummyGameOverImage: {fileID: 667362467}
-  clearStageScore: {fileID: 0}
-  levelUpScore: {fileID: 0}
+  clearStageScore: {fileID: 926388214}
+  levelUpScore: {fileID: 2073355862}
 --- !u!1 &1844306138
 GameObject:
   m_ObjectHideFlags: 0

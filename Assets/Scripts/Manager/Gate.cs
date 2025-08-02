@@ -14,7 +14,14 @@ public class Gate : MonoBehaviour
 
     public void OpenGate()
     {
-        closedGate.gameObject.SetActive(!DungeonManager.Instance.IsClear);
-        openedGate.gameObject.SetActive(DungeonManager.Instance.IsClear);
+        if(DungeonManager.Instance.CurrentDungeonID == 2)
+        {
+            closedGate.gameObject.SetActive(!DungeonManager.Instance.IsClear);
+        }
+        else
+        {
+            closedGate.gameObject.SetActive(!DungeonManager.Instance.IsClear);
+            openedGate.gameObject.SetActive(DungeonManager.Instance.IsClear);
+        }   
     }
 }
