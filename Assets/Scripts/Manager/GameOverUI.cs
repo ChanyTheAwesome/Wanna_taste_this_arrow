@@ -32,4 +32,6 @@ public class GameOverUI : BaseUI
         Time.timeScale = 1;
         DungeonManager.Instance.ExitDungeon();
     }
+
+    //레벨업이랑 스테이지 클리어 갯수 업데이트 하는 함수 필요//레벨업이랑 스테이지 클리어 갯수 업데이트 하는 함수 필요
 }
