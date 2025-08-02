@@ -25,7 +25,9 @@ public class HomeUI : BaseUI
     private List<Button> _otherButtons = new(); // 메뉴 열었을 때 비활성화시킬 버튼 리스트
 
     private void Awake()
-    {  
+    {
+        //UIManager.Instance.HomeUI = this;
+
         // 버튼 클릭 메서드 연결
         _menuButton.onClick.AddListener(OnClickMenuButton);
         _menuCloseButton.onClick.AddListener(OnClickCloseMenuButton);
