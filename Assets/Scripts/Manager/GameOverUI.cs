@@ -13,6 +13,7 @@ public class GameOverUI : BaseUI
         UIManager.Instance.GameOverUI = this;
         exitDungeonButton.onClick.AddListener(OnClickExitDungeonButton);
         dummyGameOverImage.gameObject.SetActive(false);
+        exitDungeonButton.gameObject.SetActive(false);
     }
 
     protected override UIState GetUIState()
