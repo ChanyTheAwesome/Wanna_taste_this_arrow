@@ -14,6 +14,8 @@ public class PlayerManager : MonoBehaviour
 
     public PlayerController PlayerController { get { return _playerController; } set { _playerController = value; } }
 
+    private PlayerAbilityController _abilityController;
+    public PlayerAbilityController AbilityController { get { return _abilityController; } set { _abilityController = value; } }
     //private int selectedIndex = 0;
 
     [SerializeField] private Sprite[] characterSprites;
@@ -43,8 +45,17 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            GetEXP(30);
+        }
+    }
+
     public void GetEXP(int exp) // °æÇèÄ¡ È¹µæ Àû Á×À» ¶§ ½ÇÇàÇÏ±â
     {
+        Debug.Log("PlayerManager: GetExp");
         Exp += exp;
         LevelUpCheck();
     }
@@ -53,8 +64,14 @@ public class PlayerManager : MonoBehaviour
     {
         if(Exp >= RequiredExp)
         {
+            Debug.Log("PlayerManager: LevelCheck");
             Exp -= RequiredExp;
             Level++;
+
+            if (_abilityController == null) Debug.Log("asdfasdf");
+
+            AbilityData randomAbilities = _abilityController.GetRandomAbility(1);
+
         }
     }
 
@@ -79,6 +96,8 @@ public class PlayerManager : MonoBehaviour
         GameObject player = Instantiate(characterPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         PlayerController playerController = player.GetComponent<PlayerController>();
         _playerController = playerController;
+        _abilityController = _playerController.GetComponent<PlayerAbilityController>();
+
         //if (!DungeonManager.Instance.IsFirstStage)
         //{
         //    SetCharacter();
