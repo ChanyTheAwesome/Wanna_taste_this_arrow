@@ -16,6 +16,7 @@ public class GameUI : BaseUI
 
     //테스트용
     [SerializeField] private Button clearButton;
+    [SerializeField] private Button gameOverButton;
     private bool _isMenuOn = false;
     //테스트용
     // 메뉴 버튼 눌렀을 때
@@ -23,13 +24,19 @@ public class GameUI : BaseUI
     private void Awake()
     {
         //Init();
+        UIManager.Instance.GameUI = this;
+
         exitDungeonButton.onClick.AddListener(OnClickExitDungeonButton);
         closeMenuButton.onClick.AddListener(OnClickCloseMenuButton);
-        clearButton.onClick.AddListener(OnClickClearStage);
         firstCharacterIndex.onClick.AddListener(OnClickFirstButton);
         secondCharacterIndex.onClick.AddListener(OnClickSecondButton);
         thirdCharacterIndex.onClick.AddListener(OnClickThirdButton);
         fourthCharacterIndex.onClick.AddListener(OnClickFourthButton);
+
+        //테스트용
+        clearButton.onClick.AddListener(OnClickClearStage);
+        gameOverButton.onClick.AddListener(OnClickGameOverStage);
+        //테스트용
     }
 
     private void Start()
@@ -166,5 +173,11 @@ public class GameUI : BaseUI
         Debug.Log("클리어 누름");
         DungeonManager.Instance.ClearStage();
         DungeonManager.Instance.gate.OpenGate();
+    }
+
+    public void OnClickGameOverStage()  // 테스트용 메서드
+    {
+        Debug.Log("게임오버 누름");
+        DungeonManager.Instance.GameOver();
     }
 }
