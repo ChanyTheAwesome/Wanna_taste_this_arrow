@@ -107,7 +107,7 @@ public class BaseController : MonoBehaviour
     {
         float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; //각도 구하기, 뒤의 것은 라디안 값에서 우리가 잘 아는 각도로 변환해주는 것.
         isLeft = Mathf.Abs(rotZ) > 90;
-
+        characterRenderer.flipX = isLeft;
 
         if (weaponPivot != null)
         {

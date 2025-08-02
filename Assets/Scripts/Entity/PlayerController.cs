@@ -4,7 +4,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-//using UnityEngine.InputSystem;
 
 public class PlayerController : BaseController
 {
@@ -52,9 +51,7 @@ public class PlayerController : BaseController
 
         if(Input.GetMouseButtonDown(0))
         {
-            ReflectShot();
-            PenetrationShot();
-            Ricochet();
+            AttackPowerUp();
         }
 
         OnMove();
@@ -80,11 +77,9 @@ public class PlayerController : BaseController
         movementDirection = new Vector2(horizontal, vertical).normalized;
         animationhandler.Move(movementDirection);
         // 멈춰 있을 때 공격한다.
-        if (!_isDebug)
-        {
-            if (movementDirection.x == 0 && movementDirection.y == 0) isAttacking = _target != null;
-            else isAttacking = false;
-        }
+
+        if (movementDirection.x == 0 && movementDirection.y == 0) isAttacking = _target != null;
+        else isAttacking = false;
     }
 
     void OnLook()
@@ -156,11 +151,6 @@ public class PlayerController : BaseController
         if (hpSlider != null) hpSlider.fillAmount = _currentHp / _maxHp;
     }
 
-    void ChangeHealthBarAmount(float amount)
-    {
-        //hpSlider.fillAmount
-    }
-
     // 감지 범위 그리기 - 나중에 지워도 되는 부분
     private void OnDrawGizmosSelected()
     {
@@ -173,6 +163,7 @@ public class PlayerController : BaseController
     {
         if (statHandler == null) return;
         statHandler.Health += 20;
+        _maxHp = statHandler.Health;
     }
 
     // 이동 속도 증가
@@ -208,7 +199,7 @@ public class PlayerController : BaseController
     {
         if (weaponHandler == null) return;
         RangeWeaponHandler weapon = weaponHandler.GetComponent<RangeWeaponHandler>();
-        weapon.NumberofProjectilesPerShot = 10;
+        weapon.NumberofProjectilesPerShot = 3;
         weapon.MultipleProjectileAngle = 30f;
     }
 
@@ -244,6 +235,8 @@ public class PlayerController : BaseController
     // 회복?
     public void RecoveryHp()
     {
-
+        _currentHp += 30;
+        if(_maxHp > _currentHp) return;
+        else _currentHp = _maxHp;
     }
 }
