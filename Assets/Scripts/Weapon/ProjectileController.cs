@@ -116,6 +116,8 @@ public class ProjectileController : MonoBehaviour
         {
             explosionRange.gameObject.SetActive(false);
         }
+        if(DungeonManager.Instance.CurrentDungeonID == 2)   // 동굴 던전이면
+            this.GetComponentInChildren<SpriteRenderer>().material = DungeonManager.Instance.CaveMaterial;  // Material 속성 변경
 
         _isReady = true;//�غ� �ƴ�.
     }
@@ -146,6 +148,9 @@ public class ProjectileController : MonoBehaviour
         {
             explosionRange.gameObject.SetActive(false);
         }
+
+        if (DungeonManager.Instance.CurrentDungeonID == 2)   // 동굴 던전이면
+            this.GetComponentInChildren<SpriteRenderer>().material = DungeonManager.Instance.CaveMaterial;  // Material 속성 변경
 
         _isReady = true;//�غ� �ƴ�.
     }
