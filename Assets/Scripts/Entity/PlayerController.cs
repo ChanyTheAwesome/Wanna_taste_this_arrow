@@ -24,14 +24,19 @@ public class PlayerController : BaseController
     protected override void Awake()
     {
         base.Awake();
-        PlayerManager.Instance.PlayerController = this;
+        //PlayerManager.Instance._playerController = this;    //테스트로 _playerController, 끝나면 PlayerController로 바꿔야함
+        
+        //PlayerManager.Instance.nowAnim = this.GetComponentInChildren<Animator>();
+    }
+
+    private void Start()
+    {
         PlayerManager.Instance.SetCharacter();  // 캐릭터 외형 변경
-        if(DungeonManager.Instance.CurrentDungeonID == 2)
+        if (DungeonManager.Instance.CurrentDungeonID == 2)
         {
             Debug.Log("머티리얼 설정 시도는 함");
             this.GetComponentInChildren<SpriteRenderer>().material = DungeonManager.Instance.CaveMaterial;
         }
-        //PlayerManager.Instance.nowAnim = this.GetComponentInChildren<Animator>();
     }
 
     public void Init(GameManager gameManager)

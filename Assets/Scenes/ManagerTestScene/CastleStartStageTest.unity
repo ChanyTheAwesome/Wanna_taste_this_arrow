@@ -154,7 +154,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 592377818}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!81 &3411281
 AudioListener:
@@ -28078,7 +28078,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &592377811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28149,8 +28149,10 @@ MonoBehaviour:
   WeaponPrefab: {fileID: 9031818409637953494, guid: e893839a59bb65148948f29c48252869,
     type: 3}
   ProjectileManager: {fileID: 0}
+  hpSlider: {fileID: 0}
   IsCharging: 0
   GotChargeWeapon: 0
+  LatestDirection: {x: 0, y: 0, z: 0}
   findRadius: 5
   enemyLayer:
     serializedVersion: 2
@@ -28158,7 +28160,6 @@ MonoBehaviour:
   levelLayer:
     serializedVersion: 2
     m_Bits: 0
-  hpSlider: {fileID: 463330140}
 --- !u!61 &592377816
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -28244,7 +28245,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3411280}
   - {fileID: 1844306141}
   - {fileID: 98244207}
   - {fileID: 1432739731}
@@ -28981,6 +28981,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e868abf6e3c619e42a213c8ff9834256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gate: {fileID: 0}
+  caveMaterial: {fileID: 0}
 --- !u!4 &977466885
 Transform:
   m_ObjectHideFlags: 0
@@ -32691,6 +32693,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a9ddd8c1d5f67f4c95a52a9225c43ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterPrefab: {fileID: 0}
+  _playerController: {fileID: 0}
+  characterSprites: []
+  characterAnimators: []
 --- !u!4 &1896514376
 Transform:
   m_ObjectHideFlags: 0
@@ -32805,10 +32811,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18a0e13acf503354895057e663b0f5a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _menuButton: {fileID: 1300642249}
-  _exitDungeonButton: {fileID: 1009387261}
-  _closeMenuButton: {fileID: 215270698}
-  _menuImage: {fileID: 569896670}
+  exitDungeonButton: {fileID: 0}
+  closeMenuButton: {fileID: 0}
+  menuImage: {fileID: 0}
+  characterSelectUI: {fileID: 0}
+  firstCharacterIndex: {fileID: 0}
+  secondCharacterIndex: {fileID: 0}
+  thirdCharacterIndex: {fileID: 0}
+  fourthCharacterIndex: {fileID: 0}
+  clearButton: {fileID: 0}
+  gameOverButton: {fileID: 0}
 --- !u!4 &2086739171 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4246114518386259320, guid: 1b8bb0e8f9a0ef8409e2595025276a1c,
@@ -32829,3 +32841,4 @@ SceneRoots:
   - {fileID: 977466885}
   - {fileID: 673411224}
   - {fileID: 616883642}
+  - {fileID: 3411280}
