@@ -6,7 +6,8 @@ public enum UIState // UI 상태 enum, 홈, 게임중, 게임종료 등으로 나눌 예정 < 필�
 {
     Home,
     Game,
-    GameOver
+    GameOver,
+    Clear
 }
 
 public class UIManager : MonoBehaviour
@@ -24,6 +25,9 @@ public class UIManager : MonoBehaviour
 
     GameOverUI _gameOverUI;
     public GameOverUI GameOverUI { get { return _gameOverUI; } set{ _gameOverUI = value; } }
+
+    ClearUI _clearUI;
+    public ClearUI ClearUI { get { return _clearUI; } set { _clearUI = value; } }
 
     private void Awake()
     {
@@ -60,6 +64,12 @@ public class UIManager : MonoBehaviour
         //_gameUI.SetGame();
         // 일시정지나 메뉴 UI 띄우기
         ChangeState(UIState.Game);
+    }
+
+    public void SetClear()
+    {
+        _clearUI.SetClearUI();
+        ChangeState(UIState.Clear);
     }
 
     public void SetGameOver()   // 게임 오버시 UI 설정

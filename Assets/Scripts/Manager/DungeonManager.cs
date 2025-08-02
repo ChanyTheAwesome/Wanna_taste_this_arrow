@@ -119,7 +119,7 @@ public class DungeonManager : MonoBehaviour
         Debug.Log("스테이지 클리어");  // 테스트용
         _isClear = true;
         //_gate.OpenGate();
-        UIManager.Instance.SetClearStage();
+        UIManager.Instance.SetClear();
     }
 
     public void GameOver()  // 게임오버시 실행할 것들
