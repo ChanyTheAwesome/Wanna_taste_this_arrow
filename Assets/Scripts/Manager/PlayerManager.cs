@@ -8,9 +8,9 @@ public class PlayerManager : MonoBehaviour
 
     public static PlayerManager Instance => instance;
 
-    //[SerializeField] private GameObject[] _characterPrefabs;
+    [SerializeField] private GameObject characterPrefab;
 
-    private PlayerController _playerController;
+    public PlayerController _playerController;  // 테스트용으로  public 끝나면 private
 
     public PlayerController PlayerController { get { return _playerController; } set { _playerController = value; } }
 
@@ -70,14 +70,18 @@ public class PlayerManager : MonoBehaviour
     {
         Debug.Log(_selectedIndex);
         _playerController.GetComponentInChildren<SpriteRenderer>().sprite = characterSprites[_selectedIndex];
-        //AnimatorOverrideController animatorOverrideController = new();
-        //animatorOverrideController.runtimeAnimatorController = characterAnimators[_selectedIndex];
-        //animatorOverrideController["Idle"] = idleAnimationClips[_selectedIndex];
-        //animatorOverrideController["Move"] = moveAnimationClips[_selectedIndex];
-        //animatorOverrideController["Damage"] = damageAnimationClips[_selectedIndex];
-        //nowAnim.runtimeAnimatorController = animatorOverrideController;
-        //_playerController.GetComponentInChildren<Animator>(). = animatorOverrideController;
-        //nowAnim.runtimeAnimatorController = characterAnimators[_selectedIndex];
         _playerController.GetComponentInChildren<Animator>().runtimeAnimatorController = characterAnimators[_selectedIndex];
+    }
+
+    public void InitPlayer()
+    {
+        Debug.Log("플레이어 생성 시도");
+        GameObject player = Instantiate(characterPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        _playerController = playerController;
+        //if (!DungeonManager.Instance.IsFirstStage)
+        //{
+        //    SetCharacter();
+        //}
     }
 }
