@@ -83,32 +83,23 @@ public class PlayerManager : MonoBehaviour
 
     public void SetCharacter()
     {
-        Debug.Log(_selectedIndex + "번 캐릭터로 변경");    // 테스트용
         _playerController.GetComponentInChildren<SpriteRenderer>().sprite = characterSprites[_selectedIndex];
         _playerController.GetComponentInChildren<Animator>().runtimeAnimatorController = characterAnimators[_selectedIndex];
     }
 
     public void InitPlayer()
     {
-        Debug.Log("플레이어 생성 시도");    // 테스트용
         GameObject player;
         if(GameManager.Instance.player == null)
         {
-            Debug.Log("기본 플레이어 생성");
             player = Instantiate(characterPrefab, new Vector3(0, 0, 0), Quaternion.identity);
             GameManager.Instance.player = player;
             DontDestroyOnLoad(player);
         }
         else
         {
-            Debug.Log("게임매니저 플레이어 생성");
             player = GameManager.Instance.player;
             GameManager.Instance.player.transform.position = new Vector3(0, 0, 0);
-            /*player = Instantiate(GameManager.Instance.player, new Vector3(0, 0, 0), Quaternion.identity);
-            player.GetComponent<ResourceController>().CurrentHealth = GameManager.Instance.player.GetComponent<ResourceController>().CurrentHealth; // 기존 플레이어의 체력 복사
-            player.GetComponent<StatHandler>().Health = GameManager.Instance.player.GetComponent<StatHandler>().Health; // 기존 플레이어의 체력 복사
-            Destroy(GameManager.Instance.player); // 기존 플레이어 제거
-            GameManager.Instance.player = player; // 게임매니저 플레이어 갱신*/
         }
         
         //PlayerController playerController = player.GetComponent<PlayerController>();
@@ -120,12 +111,10 @@ public class PlayerManager : MonoBehaviour
 
         if(GameManager.Instance.StageCount > 1)
         {
-            Debug.Log("첫 스테이지 아님 제발");  // 테스트용
             _playerController.NextStageEntryInitailize();
         }
         else
         {
-            Debug.Log("첫 스테이지 제발"); // 테스트용
             _playerController.FirstStageAbilityInit();
         }
         FindObjectOfType<ResourceController>()?.LoadCurrentHealth();

@@ -25058,9 +25058,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefabs:
+  - {fileID: 2853647024904942873, guid: b730028f485cf08488d0832bc7ba207a, type: 3}
   - {fileID: 6889387185781039892, guid: d09f522865fc0164c90cd6f4ec22228a, type: 3}
   - {fileID: 6943936793994393366, guid: bcac92f9f1522aa448fe3ddc2230a0c7, type: 3}
-  - {fileID: 2853647024904942873, guid: b730028f485cf08488d0832bc7ba207a, type: 3}
   - {fileID: 7573886762302142023, guid: b6058bb8651b9f4468e7cdb4edde1e3a, type: 3}
   spawnAreas:
   - serializedVersion: 2

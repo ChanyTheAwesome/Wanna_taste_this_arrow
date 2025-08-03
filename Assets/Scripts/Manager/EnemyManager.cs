@@ -25,7 +25,6 @@ public class EnemyManager : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("에너미 매니저 스타트");   // 테스트용
         //StartCoroutine("SpawnMonster", DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].EnemyCount);
         StartCoroutine(SpawnMonster(DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].EnemyCount));
     }
@@ -33,7 +32,6 @@ public class EnemyManager : MonoBehaviour
     public IEnumerator SpawnMonster(int enemyCount)  // 일반 몬스터 생성
     {
         yield return new WaitUntil(() => PlayerInit.isSetPlayer);
-        Debug.Log("몬스터 생성");    // 테스트용
         for(int i = 0; i < enemyCount; i++)
         {
             SpawnRandomMonster();
@@ -47,7 +45,6 @@ public class EnemyManager : MonoBehaviour
 
     public bool CheckEnemyExist()   // Enemy 레이어를 가진 오브젝트가 존재하는지 체크, 없으면 false 있으면 true
     {
-        Debug.Log(_activeEnemies.Count.ToString()); // 테스트용
         if (_activeEnemies.Count == 0) return false;
         else return true;
     }
