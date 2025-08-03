@@ -53,13 +53,11 @@ public class GameUI : BaseUI
     {
         if (DungeonManager.Instance.IsFirstStage)
         {
-            Debug.Log("true");
             SetCharacterSelect();
             DungeonManager.Instance.IsFirstStage = false;
         }
         else
         {
-            Debug.Log("false");
             SetGame();
             PlayerManager.Instance.SetCharacter();  // 캐릭터 외형 변경
         }
@@ -165,12 +163,8 @@ public class GameUI : BaseUI
         menuImage.gameObject.SetActive(false);
         abillitySelectUI.SetActive(false);
         achievementImage.gameObject.SetActive(false);
-        Debug.Log("버튼 활성화");
-        Debug.Log(AchievementManager.Instance.GetAchievementClear()[0]);
         secondCharacterIndex.interactable = AchievementManager.Instance.GetAchievementClear()[0];
-        Debug.Log(AchievementManager.Instance.GetAchievementClear()[1]);
         thirdCharacterIndex.interactable = AchievementManager.Instance.GetAchievementClear()[1];
-        Debug.Log(AchievementManager.Instance.GetAchievementClear()[2]);
         fourthCharacterIndex.interactable = AchievementManager.Instance.GetAchievementClear()[2];
     }
 

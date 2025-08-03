@@ -80,8 +80,6 @@ public class PlayerController : BaseController
         OnLook();
         // АјАн 
         FindNearestEnemy();
-
-        Debug.Log(statHandler.Health);
     }
 
     public override void Death()

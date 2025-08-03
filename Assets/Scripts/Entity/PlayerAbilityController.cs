@@ -24,7 +24,6 @@ public class PlayerAbilityController : MonoBehaviour
 
     private void AddAbility(string name, string description, int maxLevel)
     {
-        Debug.Log("addAbility");
         AbilityData data = new AbilityData(name, description, maxLevel);
         _abilityList.Add(data);
         _abilityDict.Add(name, data);

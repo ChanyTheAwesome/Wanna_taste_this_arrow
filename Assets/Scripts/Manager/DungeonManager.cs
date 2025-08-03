@@ -75,26 +75,22 @@ public class DungeonManager : MonoBehaviour
         // 에너미 있는지 확인
         if (_enemyManager.CheckEnemyExist()) // 적이 남아있다면
         {
-            Debug.Log("클리어 안됨");    // 테스트용
             return;
         }
         else    // 적이 없다면
         {
-            Debug.Log("클리어");   // 테스트용
             ClearStage();
         }   
     }
 
     public void StartDungeon()  // 던전 시작시 실행할 것들
     {
-        Debug.Log($"{CurrentDungeonID} 던전 입장");   // 테스트용
         _isFirstStage = true;
         StartStage();
     }
 
     public void StartStage()    // 스테이지 시작시 실행할 것들
     {
-        Debug.Log("스테이지 시작");   // 테스트용
         _isClear = false;
         // 몬스터 스탯 올리기
         //if (!_isFirstStage)  // 첫 스테이지가 아니라면 = 첫 스테이지는 기본 체력만 가지기
@@ -124,7 +120,6 @@ public class DungeonManager : MonoBehaviour
 
     public void ClearStage()    // 스테이지 클리어시 실행할 것들
     {
-        Debug.Log("스테이지 클리어");  // 테스트용
         _isClear = true;
         gate.OpenGate();
         AchievementManager.Instance.OnStageClear(GameManager.Instance.StageCount);
