@@ -102,6 +102,7 @@ public class EnemyManager : MonoBehaviour
     public void RemoveEnemyOnDeath(EnemyController enemy)   // _activeEnemies 리스트에서 enemy 없애기, 몬스터 죽는 시점에 실행하기
     {
         _activeEnemies.Remove(enemy);
+        DungeonManager.Instance.CheckClearStage();
         //if (/*enemySpawnComplite && */_activeEnemies.Count == 0)
             //gameManager.EndOfWave();
             // 적이 없다면 클리어 세팅하기

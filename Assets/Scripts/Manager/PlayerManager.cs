@@ -18,6 +18,7 @@ public class PlayerManager : MonoBehaviour
     public PlayerAbilityController AbilityController { get { return _abilityController; } set { _abilityController = value; } }
     //private int selectedIndex = 0;
     [SerializeField] private AbilitySelectUI abilitySelectUI;
+    public AbilitySelectUI AbilitySelectUI { get { return abilitySelectUI; } set { abilitySelectUI = value; } }
     [SerializeField] private Sprite[] characterSprites;
     [SerializeField] private RuntimeAnimatorController[] characterAnimators;
     //[SerializeField] private AnimationClip[] idleAnimationClips;
@@ -90,11 +91,26 @@ public class PlayerManager : MonoBehaviour
     public void InitPlayer()
     {
         Debug.Log("플레이어 생성 시도");    // 테스트용
-        GameObject player = Instantiate(characterPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        PlayerController playerController = player.GetComponent<PlayerController>();
-        _playerController = playerController;
-        _abilityController = _playerController.GetComponent<PlayerAbilityController>();
-        abilitySelectUI.gameObject.SetActive(false);
+        GameObject player;
+        if(GameManager.Instance.player == null)
+        {
+            Debug.Log("기본 플레이어 생성");
+            player = Instantiate(characterPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        }
+        else
+        {
+            Debug.Log("게임매니저 플레이어 생성");
+            player = Instantiate(GameManager.Instance.player, new Vector3(0, 0, 0), Quaternion.identity);
+        }
+        
+        //PlayerController playerController = player.GetComponent<PlayerController>();
+        //PlayerController playerController = GameManager.Instance.player.GetComponent<PlayerController>();
+        //_playerController = playerController;
+        _playerController = player.GetComponent<PlayerController>();
+        //_abilityController = _playerController.GetComponent<PlayerAbilityController>();
+        _abilityController = player.GetComponent<PlayerAbilityController>();
+
+        //abilitySelectUI.gameObject.SetActive(false);
         //if (!DungeonManager.Instance.IsFirstStage)
         //{
         //    SetCharacter();
