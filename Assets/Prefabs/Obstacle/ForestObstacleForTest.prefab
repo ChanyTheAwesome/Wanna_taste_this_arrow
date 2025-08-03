@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 3548810852564109384}
   - component: {fileID: 3946835225769077115}
   - component: {fileID: 2846885309146973800}
-  - component: {fileID: 5495663163581954704}
+  - component: {fileID: 8475100911549434268}
   m_Layer: 7
-  m_Name: ForestObstacle
+  m_Name: ForestObstacleForTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: 100
---- !u!114 &5495663163581954704
+--- !u!114 &8475100911549434268
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
