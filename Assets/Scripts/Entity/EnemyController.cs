@@ -78,7 +78,10 @@ public class EnemyController : BaseController
     public override void Death()
     {
         base.Death();
-        PlayerManager.Instance.GetEXP(Random.Range(8, 11)); // 적 죽을 때 8에서 10사이의 경험치 얻음
+        if (!DungeonManager.Instance.CheckBossStage())
+        {
+            PlayerManager.Instance.GetEXP(Random.Range(8, 11)); // 적 죽을 때 8에서 10사이의 경험치 얻음
+        }
         Debug.Log(PlayerManager.Instance.Exp);
         enemyManager.RemoveEnemyOnDeath(this);
     }

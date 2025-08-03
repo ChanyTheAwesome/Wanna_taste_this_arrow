@@ -83,7 +83,6 @@ public class UIManager : MonoBehaviour
     public void SetAchievement(string name, string description)
     {
         Debug.Log("SetAchievement");
-        //_gameUI.SetAchievementUI(name, description);
         StartCoroutine(_gameUI.SetAchievementUI(name, description));
     }
 
