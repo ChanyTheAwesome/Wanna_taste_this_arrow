@@ -14,7 +14,7 @@ public class GameOverUI : BaseUI
         UIManager.Instance.GameOverUI = this;
         exitDungeonButton.onClick.AddListener(OnClickExitDungeonButton);
         gameOverImage.gameObject.SetActive(false);
-        exitDungeonButton.gameObject.SetActive(false);
+        //exitDungeonButton.gameObject.SetActive(false);
     }
 
     protected override UIState GetUIState()
@@ -26,7 +26,7 @@ public class GameOverUI : BaseUI
     {
         StopGame(); // 시간 정지
         gameOverImage.gameObject.SetActive(true);    // 이미지 활성화
-        exitDungeonButton.gameObject.SetActive(true);   // 버튼 활성화
+        //exitDungeonButton.gameObject.SetActive(true);   // 버튼 활성화
         clearStageScore.text = GameManager.Instance.StageCount.ToString();
         levelUpScore.text = PlayerManager.Instance.Level.ToString();
     }

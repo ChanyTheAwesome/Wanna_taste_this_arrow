@@ -8,12 +8,21 @@ public class GameUI : BaseUI
     [SerializeField] private Button exitDungeonButton; // 던전 나가기 버튼
     [SerializeField] private Button closeMenuButton;  // UI 닫기 버튼
     [SerializeField] private Image menuImage; // 메뉴 눌렀을 때 띄울 UI 이미지
+
+    // 캐릭터 외형 선택 UI
     [SerializeField] private GameObject characterSelectUI;
     [SerializeField] private Button firstCharacterIndex;
     [SerializeField] private Button secondCharacterIndex;
     [SerializeField] private Button thirdCharacterIndex;
     [SerializeField] private Button fourthCharacterIndex;
+
+    // 능력 선택 UI
     [SerializeField] private GameObject abillitySelectUI;
+
+    // 도전 과제 클리어 UI
+    [SerializeField] private Image achievementImage;
+    [SerializeField] private Text achievementTitle;
+    [SerializeField] private Text achievementDescription;
 
     //테스트용
     [SerializeField] private Button clearButton;
@@ -155,6 +164,7 @@ public class GameUI : BaseUI
         characterSelectUI.SetActive(true);
         menuImage.gameObject.SetActive(false);
         abillitySelectUI.SetActive(false);
+        achievementImage.gameObject.SetActive(false);
         Debug.Log("버튼 활성화");
         Debug.Log(AchievementManager.Instance.GetAchievementClear()[0]);
         secondCharacterIndex.interactable = AchievementManager.Instance.GetAchievementClear()[0];
@@ -170,12 +180,22 @@ public class GameUI : BaseUI
         menuImage.gameObject.SetActive(false);
         characterSelectUI.SetActive(false);
         abillitySelectUI.SetActive(false);
+        achievementImage.gameObject.SetActive(false);
     }
 
     public void SetMenu()
     {
         menuImage.gameObject.SetActive(true);
         characterSelectUI.SetActive(false);
+    }
+
+    public IEnumerator SetAchievementUI(string name, string description)
+    {
+        achievementImage.gameObject.SetActive(true);
+        achievementTitle.text = name;
+        achievementDescription.text = description;
+        yield return new WaitForSeconds(3);
+        achievementImage.gameObject.SetActive(false);
     }
 
     public void OnClickClearStage()    // 테스트용 메서드

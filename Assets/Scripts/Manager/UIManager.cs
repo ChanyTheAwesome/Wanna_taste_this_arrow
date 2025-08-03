@@ -80,6 +80,12 @@ public class UIManager : MonoBehaviour
         ChangeState(UIState.GameOver);
     }
 
+    public void SetAchievement(string name, string description)
+    {
+        Debug.Log("SetAchievement");
+        _gameUI.SetAchievementUI(name, description);
+    }
+
     public void SetClearStage() // 스테이지 클리어 시 UI 설정
     {
         // 스테이지 클리어했다는 문구라도 띄우기

@@ -53,12 +53,15 @@ public class AchievementManager : MonoBehaviour
 
     public void OnStageClear(int stageNumber)   // 스테이지 클리어시 호출하기
     {
+        Debug.Log("과제 달성 호출");
         foreach(var achievement in AchievementDict.Values)
         {
             if (achievement.StageGoalNumber == stageNumber && !achievement.IsCleared)
             {
                 achievement.IsCleared = true;
                 SaveAchievementsToJson();
+                UIManager.Instance.SetAchievement(achievement.AchievementName, achievement.Description);
+                Debug.Log("과제 달성!");
             }
         }
     }
