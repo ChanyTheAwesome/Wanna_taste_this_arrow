@@ -8,13 +8,15 @@ public class BossDirection : MonoBehaviour
     [SerializeField]
     private float pivotPosY;
     private GameObject player;
-    private const string playerName = "Farmer0";
+    private const string playerName = "Player";
     private StatHandler playerStatHandler;
     [SerializeField]
     private Camera directionCamera;
     private FollowCamera followCamera;
     [SerializeField]
     private GameObject bossDirect;
+    [SerializeField]
+    private GameObject bossCollision;
     private GameObject target;
     private bool isDirecting = false;
     public GameObject test;
@@ -29,6 +31,7 @@ public class BossDirection : MonoBehaviour
         playerStatHandler = player.GetComponent<StatHandler>();
         followCamera = directionCamera.GetComponent<FollowCamera>();
         target = GameObject.Find("Boss(Clone)");
+        bossCollision = GameObject.Find("BossCollision");
         if (player == null) Debug.LogError("플레이어 없음");
         if (playerStatHandler == null) Debug.LogError("스탯핸들러 안 붙었다 이녀석아");
         if (bossDirect == null) Debug.LogError("bossDirect 오브젝트가 안 붙었다 이녀석아");
@@ -56,6 +59,7 @@ public class BossDirection : MonoBehaviour
         yield return new WaitForSeconds(4f); // 기다림
         playerStatHandler.Speed = 3f;
         followCamera.target = player.transform;
+        bossCollision.SetActive(false);
         yield return new WaitForSeconds(6f); // 기다림
         GetComponent<BossDirection>().enabled = false;
     }
