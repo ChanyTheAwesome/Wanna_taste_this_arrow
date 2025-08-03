@@ -51,7 +51,7 @@ public class PlayerController : BaseController
         }
 
         _maxHp = statHandler.Health;
-        _currentHp = _maxHp;
+        _currentHp = resource.CurrentHealth;
         moveSpeed = statHandler.Speed;
         projectileSpeed = weaponHandler.Speed;
         delay = weaponHandler.Delay;
@@ -69,26 +69,18 @@ public class PlayerController : BaseController
     [SerializeField] private LayerMask levelLayer;
     
     private GameObject _target;                      // 공격할 타겟
-    private bool _isDebug;
-
-   
 
     protected override void HandleAction()
     {
         _currentHp = resource.CurrentHealth;
         UpdateHpBar();
-
-        if(Input.GetMouseButtonDown(0))
-        {
-            AttackPowerUp();
-        }
-
         OnMove();
         // 장애물에 안걸리는 에너미 찾아서 그쪽 방향으로 바라보기
-        FindNearestEnemy();
         OnLook();
-        // 공격
-        // 디버그용 발사체 발사
+        // 공격 
+        FindNearestEnemy();
+
+        Debug.Log(statHandler.Health);
     }
 
     public override void Death()
@@ -106,11 +98,6 @@ public class PlayerController : BaseController
         movementDirection = new Vector2(horizontal, vertical).normalized;
         animationhandler.Move(movementDirection);
         // 멈춰 있을 때 공격한다.
-
-        if(Input.GetMouseButtonDown(0)) { 
-            moveSpeed = 15f;
-            MoveSpeedUp();
-        }
 
         if (movementDirection.x == 0 && movementDirection.y == 0) isAttacking = _target != null;
         else isAttacking = false;
