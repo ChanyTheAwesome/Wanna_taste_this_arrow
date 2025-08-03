@@ -128,6 +128,7 @@ public class PlayerManager : MonoBehaviour
             Debug.Log("첫 스테이지 제발"); // 테스트용
             _playerController.FirstStageAbilityInit();
         }
+        FindObjectOfType<ResourceController>()?.LoadCurrentHealth();
         //abilitySelectUI.gameObject.SetActive(false);
         //if (!DungeonManager.Instance.IsFirstStage)
         //{

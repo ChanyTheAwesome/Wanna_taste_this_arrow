@@ -155,6 +155,13 @@ public class GameUI : BaseUI
         characterSelectUI.SetActive(true);
         menuImage.gameObject.SetActive(false);
         abillitySelectUI.SetActive(false);
+        Debug.Log("버튼 활성화");
+        Debug.Log(AchievementManager.Instance.GetAchievementClear()[0]);
+        secondCharacterIndex.interactable = AchievementManager.Instance.GetAchievementClear()[0];
+        Debug.Log(AchievementManager.Instance.GetAchievementClear()[1]);
+        thirdCharacterIndex.interactable = AchievementManager.Instance.GetAchievementClear()[1];
+        Debug.Log(AchievementManager.Instance.GetAchievementClear()[2]);
+        fourthCharacterIndex.interactable = AchievementManager.Instance.GetAchievementClear()[2];
     }
 
     public void SetGame()   // 게임중 UI 설정
