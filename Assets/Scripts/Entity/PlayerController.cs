@@ -24,6 +24,11 @@ public class PlayerController : BaseController
     protected override void Awake()
     {
         base.Awake();
+        if(GameManager.Instance.player == null)
+        {
+            GameManager.Instance.player = this.gameObject;
+        }
+
         //PlayerManager.Instance._playerController = this;    //테스트로 _playerController, 끝나면 PlayerController로 바꿔야함
         
         //PlayerManager.Instance.nowAnim = this.GetComponentInChildren<Animator>();

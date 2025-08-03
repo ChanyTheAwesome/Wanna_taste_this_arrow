@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
 
     public UIState CurrentState { get { return _currentState; } set { _currentState = value; } }
 
+    public GameObject player;
+
     private void Awake()
     {
         if(instance == null)

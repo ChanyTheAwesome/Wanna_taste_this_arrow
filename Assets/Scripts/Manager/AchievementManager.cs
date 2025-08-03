@@ -51,7 +51,7 @@ public class AchievementManager : MonoBehaviour
         return JsonConvert.DeserializeObject<List<T>>(json);
     }
 
-    public void OnStageClear(int stageNumber)
+    public void OnStageClear(int stageNumber)   // 스테이지 클리어시 호출하기
     {
         foreach(var achievement in AchievementDict.Values)
         {
@@ -62,7 +62,7 @@ public class AchievementManager : MonoBehaviour
             }
         }
     }
-    public bool[] GetAchievementClear()
+    public bool[] GetAchievementClear() // 도전과제 깼는지 안깼는지를 가져오는 친구, 배열만 가져오는 역할
     {
         bool[] achievementClear = new bool[AchievementDict.Count];
         int index = 0;
