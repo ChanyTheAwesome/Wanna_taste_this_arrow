@@ -251,7 +251,7 @@ public class PlayerController : BaseController
     {
         if (weaponHandler == null) return;
         RangeWeaponHandler weapon = weaponHandler.GetComponent<RangeWeaponHandler>();
-        weapon.NumberofProjectilesPerShot = 3;
+        weapon.NumberofProjectilesPerShot += 1;
         weapon.MultipleProjectileAngle = 30f;
     }
 

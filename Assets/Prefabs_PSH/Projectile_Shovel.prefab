@@ -85,6 +85,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256
+  _reflect: 0
   MaxRicochetCount: 2
   _isExplosive: 0
   explosionRange: {fileID: 0}

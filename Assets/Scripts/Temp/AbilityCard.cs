@@ -19,7 +19,9 @@ public class AbilityCard : MonoBehaviour
     {
         _name.text = data._abilityName.ToString();
         _description.text = data._description.ToString();
-        _currentLv.text = data._currentLevel.ToString();
+
+        if(data._currentLevel == 0) _currentLv.text = "New!";
+        else _currentLv.text = data._currentLevel.ToString();
 
         _abilityName = data._abilityName;
         _playerController = controller;

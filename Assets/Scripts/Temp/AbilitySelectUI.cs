@@ -16,11 +16,16 @@ public class AbilitySelectUI : MonoBehaviour
         Time.timeScale = 0f;
         playerController = controller;
 
-        foreach (AbilityData ability in abilities)
+        Vector3 basePos = selectPos.position;
+        basePos.x += 200;
+        for (int i = 0; i < abilities.Count; i++)
         {
+            Vector3 newPos = basePos;
+            newPos.x -= 200f * i;
             GameObject select = Instantiate(selectPrefab, selectPos);
+            select.transform.position = newPos;
             AbilityCard card = select.GetComponent<AbilityCard>();
-            card.SetInfo(ability, playerController, this);
+            card.SetInfo(abilities[i], playerController, this);
         }
     }
 

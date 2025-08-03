@@ -1,16 +1,15 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAbilityController : MonoBehaviour
 {
-    private List<AbilityData> _abilityList;
+    private List<AbilityData> _abilityList = new List<AbilityData>();
     private Dictionary<string, AbilityData> _abilityDict = new Dictionary<string, AbilityData>();
 
     private void Awake()
     {
-        AddAbility("와~", "체력이 20만큼 회복 됩니다.");
+        AddAbility("와~", "체력이 20만큼 회복 됩니다.", 0);
         AddAbility("와!!!", "최대 체력이 20만큼 증가합니다.", 5);
         AddAbility("나비처럼 날기", "더 빨리 움직입니다.", 5);
         AddAbility("급하다 급해", "더 빨리 공격합니다.", 5);
@@ -25,6 +24,7 @@ public class PlayerAbilityController : MonoBehaviour
 
     private void AddAbility(string name, string description, int maxLevel)
     {
+        Debug.Log("addAbility");
         AbilityData data = new AbilityData(name, description, maxLevel);
         _abilityList.Add(data);
         _abilityDict.Add(name, data);
