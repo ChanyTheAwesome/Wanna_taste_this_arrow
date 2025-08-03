@@ -80,7 +80,7 @@ public class PlayerController : BaseController
 
         if(Input.GetMouseButtonDown(0))
         {
-            AttackPowerUp();
+            //AttackPowerUp();
         }
 
         OnMove();
@@ -107,10 +107,10 @@ public class PlayerController : BaseController
         animationhandler.Move(movementDirection);
         // ∏ÿ√Á ¿÷¿ª ∂ß ∞¯∞›«—¥Ÿ.
 
-        if(Input.GetMouseButtonDown(0)) { 
-            moveSpeed = 15f;
-            MoveSpeedUp();
-        }
+        //if(Input.GetMouseButtonDown(0)) { 
+        //    moveSpeed = 15f;
+        //    MoveSpeedUp();
+        //}
 
         if (movementDirection.x == 0 && movementDirection.y == 0) isAttacking = _target != null;
         else isAttacking = false;
@@ -237,7 +237,7 @@ public class PlayerController : BaseController
     public void MaxHpUp()
     {
         if (statHandler == null) return;
-        statHandler.Health += 20;
+        statHandler.Health += 200;
         _maxHp = statHandler.Health;
     }
 
@@ -245,7 +245,7 @@ public class PlayerController : BaseController
     public void MoveSpeedUp()
     {
         if (statHandler == null) return;
-        moveSpeed += 1f;
+        moveSpeed += 10f;
         statHandler.Speed = moveSpeed;
     }
 
@@ -253,7 +253,7 @@ public class PlayerController : BaseController
     public void AttackSpeedUp()
     {
         if (weaponHandler == null) return;
-        delay -= 0.1f;
+        delay -= 0.8f;
         weaponHandler.Delay = delay;
     }
 
@@ -261,7 +261,7 @@ public class PlayerController : BaseController
     public void ProjectileSpeedUp()
     {
         if (weaponHandler == null) return;
-        projectileSpeed += 1f;
+        projectileSpeed += 10f;
         weaponHandler.Speed = projectileSpeed;
     }
 
@@ -269,7 +269,7 @@ public class PlayerController : BaseController
     public void AttackPowerUp()
     {
         if (weaponHandler == null) return;
-        power += 1f;
+        power += 10f;
         weaponHandler.Power = power;
     }
 

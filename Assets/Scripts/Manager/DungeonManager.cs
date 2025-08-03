@@ -127,6 +127,7 @@ public class DungeonManager : MonoBehaviour
         Debug.Log("스테이지 클리어");  // 테스트용
         _isClear = true;
         gate.OpenGate();
+        AchievementManager.Instance.OnStageClear(GameManager.Instance.StageCount);
         UIManager.Instance.SetClear();
     }
 
