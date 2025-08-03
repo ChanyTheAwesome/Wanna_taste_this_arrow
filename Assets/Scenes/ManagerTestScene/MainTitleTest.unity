@@ -1124,6 +1124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterPrefab: {fileID: 476199492728199968, guid: fc52083eff1e1ee43abecae3a8ac93f5,
     type: 3}
+  _playerController: {fileID: 0}
   characterSprites:
   - {fileID: 978012912, guid: 99a24620d31e5ce4e823c32d11e17c2c, type: 3}
   - {fileID: -150523396, guid: 0c187a32c5bde4747be8d00770b07403, type: 3}
