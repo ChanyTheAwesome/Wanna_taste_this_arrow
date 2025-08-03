@@ -22979,7 +22979,7 @@ GameObject:
   m_Component:
   - component: {fileID: 512954026}
   - component: {fileID: 512954025}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Obstacles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23007,7 +23007,7 @@ MonoBehaviour:
   minX: -7.6
   yMultiplier: 0.5
   xMultiplier: 0.8
-  ObjCount: 100
+  ObjCount: 50
   StageCount: 1
 --- !u!4 &512954026
 Transform:

@@ -16,14 +16,22 @@ public class NextStageArea : MonoBehaviour   // 스테이지 다 깨고 게이트로 이동 �
             {
                 Debug.Log("이동 시도"); // 테스트용
                 // 현재 스테이지가 던전의 최대 스테이지보다 작다면 다음 스테이지 이동
-                if(GameManager.Instance.StageCount < DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].MaxStageCount)
-                {
-                    DungeonManager.Instance.StartStage();
-                }
+                //if(GameManager.Instance.StageCount < DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].MaxStageCount)
+                //{
+                //    DungeonManager.Instance.StartStage();
+                //}
                 // 마지막 스테이지면 던전 나가기
-                else
+                //else
+                //{
+                //    DungeonManager.Instance.ExitDungeon();
+                //}
+                if (DungeonManager.Instance.CheckBossStage())   // 보스 스테이지면 던전 나가기
                 {
                     DungeonManager.Instance.ExitDungeon();
+                }
+                else    // 일반 스테이지면 스테이지 실행
+                {
+                    DungeonManager.Instance.StartStage();
                 }
             }
         }

@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
     public static GameManager Instance => instance;
 
-    private EnemyManager _enemyManager;
+    //private EnemyManager _enemyManager;
 
 //#region 캐릭터 선택 만들기 임시 구역
 //    private PlayerController _playerController;
@@ -45,16 +45,14 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        _enemyManager = FindObjectOfType<EnemyManager>();
+        //_enemyManager = FindObjectOfType<EnemyManager>();
         //_playerController = FindObjectOfType<PlayerController>();
         //DungeonManager.Instance.CurrentDungeonID = 1;
-
-        CurrentState = UIState.Home;
     }
     private void Start()
     {
         //SetPlayer();
-        DungeonManager.Instance.CurrentDungeonID = 1;
+        StartGame();
     }
 
     private void Update()
@@ -64,7 +62,8 @@ public class GameManager : MonoBehaviour
 
     public void StartGame() // 처음에 게임 실행했을 때 실행할 것들, 스테이지나 던전 시작 아님, 최초 1회만 실행됨 다시 돌아와도 실행안됨
     {
-        
+        CurrentState = UIState.Home;
+        DungeonManager.Instance.CurrentDungeonID = 1;
     }
 
     //public void UpStageCount()  // 테스트용
