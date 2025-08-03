@@ -4,7 +4,7 @@
     "AchievementName": "1 스테이지 클리어!",
     "Description": "1 스테이지를 클리어했습니다.",
     "StageGoalNumber": 1,
-    "IsCleared": false
+    "IsCleared": true
   },
   {
     "ID": 2,

@@ -83,7 +83,8 @@ public class UIManager : MonoBehaviour
     public void SetAchievement(string name, string description)
     {
         Debug.Log("SetAchievement");
-        _gameUI.SetAchievementUI(name, description);
+        //_gameUI.SetAchievementUI(name, description);
+        StartCoroutine(_gameUI.SetAchievementUI(name, description));
     }
 
     public void SetClearStage() // 스테이지 클리어 시 UI 설정
