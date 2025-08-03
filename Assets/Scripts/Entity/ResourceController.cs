@@ -10,10 +10,11 @@ public class ResourceController : MonoBehaviour
     private BaseController _baseController;
     private StatHandler _statHandler;
     private AnimationHandler _animationHandler;
+    private PlayerController _playerController;
 
     private float _timeSinceLastChange = float.MaxValue;
 
-    public float CurrentHealth { get; private set; }
+    public float CurrentHealth { get; set; }
     public float Maxhealth => _statHandler.Health;
 
     public AudioClip damageClip;
@@ -25,6 +26,7 @@ public class ResourceController : MonoBehaviour
         _baseController = GetComponent<BaseController>();
         _statHandler = GetComponent<StatHandler>();
         _animationHandler = GetComponent<AnimationHandler>();
+        _playerController = GetComponent<PlayerController>();
     }
 
     private void Start()
@@ -84,5 +86,19 @@ public class ResourceController : MonoBehaviour
     public void RemoveHealthChangeEvent(Action<float, float> action)
     {
         OnChangeHealth -= action;//OnChangeHealth액션에 이벤트를 제거한다.
+    }
+
+    public void SaveCurrentHealth()
+    {
+        PlayerPrefs.SetFloat("PlayerCurrentHealth", CurrentHealth);
+        PlayerPrefs.Save();
+    }
+
+    public void LoadCurrentHealth()
+    {
+        if (PlayerPrefs.HasKey("PlayerCurrentHealth"))
+        {
+            CurrentHealth = PlayerPrefs.GetFloat("PlayerCurrentHealth");
+        }
     }
 }
