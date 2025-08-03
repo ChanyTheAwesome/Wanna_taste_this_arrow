@@ -154,7 +154,6 @@ public class ProjectileController : MonoBehaviour
 
     private void DestroyProjectile(Vector3 position, bool createFx)
     {
-        Debug.Log(_isExplosive);
         if (_isExplosive)
         {
             ExplosiveProjectileControl(rangeWeaponHandler);
