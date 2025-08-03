@@ -34,7 +34,7 @@ public class PlayerController : BaseController
         PlayerManager.Instance.SetCharacter();  // 캐릭터 외형 변경
         if (DungeonManager.Instance.CurrentDungeonID == 2)
         {
-            Debug.Log("머티리얼 설정 시도는 함");
+            Debug.Log("머티리얼 설정 시도는 함"); // 테스트용
             this.GetComponentInChildren<SpriteRenderer>().material = DungeonManager.Instance.CaveMaterial;
         }
     }

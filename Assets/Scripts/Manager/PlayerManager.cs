@@ -68,14 +68,14 @@ public class PlayerManager : MonoBehaviour
 
     public void SetCharacter()
     {
-        Debug.Log(_selectedIndex + "번 캐릭터로 변경");
+        Debug.Log(_selectedIndex + "번 캐릭터로 변경");    // 테스트용
         _playerController.GetComponentInChildren<SpriteRenderer>().sprite = characterSprites[_selectedIndex];
         _playerController.GetComponentInChildren<Animator>().runtimeAnimatorController = characterAnimators[_selectedIndex];
     }
 
     public void InitPlayer()
     {
-        Debug.Log("플레이어 생성 시도");
+        Debug.Log("플레이어 생성 시도");    // 테스트용
         GameObject player = Instantiate(characterPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         PlayerController playerController = player.GetComponent<PlayerController>();
         _playerController = playerController;

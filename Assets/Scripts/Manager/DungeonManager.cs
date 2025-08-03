@@ -104,13 +104,21 @@ public class DungeonManager : MonoBehaviour
         GameManager.Instance.StageCount++;
         //UIManager.Instance.SetGame();   // 어차피 씬을 로드하는 식으로 넘어가면 UI는 초기화 될거임 씬 불러오고 설정해야될듯
         //_isFirstStage = false;
-        if(GameManager.Instance.StageCount < DungeonDict[CurrentDungeonID].MaxStageCount)   // 마지막 스테이지가 아니면 일반 씬 불러오기
-        {
-            SceneController.Instance.LoadDungeonScene();
-        }
-        else    // 마지막 스테이지면 보스 씬 불러오기
+        //if(GameManager.Instance.StageCount < DungeonDict[CurrentDungeonID].MaxStageCount)   // 마지막 스테이지가 아니면 일반 씬 불러오기
+        //{
+        //    SceneController.Instance.LoadDungeonScene();
+        //}
+        //else    // 마지막 스테이지면 보스 씬 불러오기
+        //{
+        //    SceneController.Instance.LoadBossScene();
+        //}
+        if (CheckBossStage())   // 보스 스테이지면 보스 씬 불러오기
         {
             SceneController.Instance.LoadBossScene();
+        }
+        else    // 일반 스테이지면 일반 씬 불러오기
+        {
+            SceneController.Instance.LoadDungeonScene();
         }
     }
 
@@ -139,8 +147,18 @@ public class DungeonManager : MonoBehaviour
         // 플레이어 외형 초기화하기
         PlayerManager.Instance.SelectedIndex = 0;
         PlayerManager.Instance.SetCharacter();
+        UIManager.Instance.SetHome();
         // 홈 화면 불러오기
         SceneController.Instance.LoadMainScene();
+    }
+
+    public bool CheckBossStage(int num = 0)    // 마지막 보스 스테이지면 true, 아니면 false, num 매개변수로 어느 시점에서 계산할 건지 조절
+    {
+        if (GameManager.Instance.StageCount == (DungeonDict[CurrentDungeonID].MaxStageCount + num))
+        {
+            return true;
+        }
+        else return false;
     }
 
     public void ChangeStat()    // 테스트용 메서드
