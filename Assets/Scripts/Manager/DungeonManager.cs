@@ -150,6 +150,7 @@ public class DungeonManager : MonoBehaviour
         PlayerManager.Instance.SetCharacter();
         UIManager.Instance.SetHome();
         // 홈 화면 불러오기
+        Destroy(GameManager.Instance.player);
         SceneController.Instance.LoadMainScene();
     }
 
