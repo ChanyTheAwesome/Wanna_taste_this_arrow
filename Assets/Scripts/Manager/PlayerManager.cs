@@ -83,7 +83,7 @@ public class PlayerManager : MonoBehaviour
 
     public void SetCharacter()
     {
-        Debug.Log(_selectedIndex);
+        Debug.Log(_selectedIndex + "번 캐릭터로 변경");
         _playerController.GetComponentInChildren<SpriteRenderer>().sprite = characterSprites[_selectedIndex];
         _playerController.GetComponentInChildren<Animator>().runtimeAnimatorController = characterAnimators[_selectedIndex];
     }

@@ -13,7 +13,7 @@ public class EnemyManager : MonoBehaviour
 
     //private bool _enemySpawnComplete;
 
-    [SerializeField] private PlayerController _playerController;
+    public static PlayerController _playerController;
 
     private void Awake()
     {
@@ -25,11 +25,15 @@ public class EnemyManager : MonoBehaviour
 
     private void Start()
     {
-        SpawnMonster(DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].EnemyCount);
+        Debug.Log("에너미 매니저 스타트");
+        //StartCoroutine("SpawnMonster", DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].EnemyCount);
+        StartCoroutine(SpawnMonster(DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].EnemyCount));
     }
 
-    public void SpawnMonster(int enemyCount)  // 일반 몬스터 생성
+    public IEnumerator SpawnMonster(int enemyCount)  // 일반 몬스터 생성
     {
+        yield return new WaitUntil(() => PlayerInit.isSetPlayer);
+        Debug.Log("몬스터 생성");
         for(int i = 0; i < enemyCount; i++)
         {
             SpawnRandomMonster();

@@ -4,26 +4,16 @@ using UnityEngine;
 
 public class PlayerInit : MonoBehaviour
 {
-    private static PlayerInit instance;
-    public static PlayerInit Instance => instance;
-
     [SerializeField] private FollowCamera followCamera;
 
-    public bool isSetPlayer = false;
+    public static bool isSetPlayer = false;
 
     private void Start()
     {
-        if(instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
+        Debug.Log("플레이어 생성");
         PlayerManager.Instance.InitPlayer();
         followCamera.target = PlayerManager.Instance.PlayerController.transform;
+        EnemyManager._playerController = PlayerManager.Instance.PlayerController;
         isSetPlayer = true;
     }
 }
