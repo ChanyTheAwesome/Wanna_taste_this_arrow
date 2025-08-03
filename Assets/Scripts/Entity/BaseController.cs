@@ -47,6 +47,7 @@ public class BaseController : MonoBehaviour
         animationhandler = GetComponent<AnimationHandler>();
         statHandler = GetComponent<StatHandler>();
         resource = GetComponent<ResourceController>();
+        ProjectileManager = ProjectileManager.Instance;
 
         if(WeaponPrefab != null)
         {

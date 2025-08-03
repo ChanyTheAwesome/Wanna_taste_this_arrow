@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5749972431096171540}
   - component: {fileID: 2445934859260163821}
   - component: {fileID: 3646248375140343743}
-  m_Layer: 20
+  m_Layer: 7
   m_Name: CaveObstacle03
   m_TagString: Untagged
   m_Icon: {fileID: 0}

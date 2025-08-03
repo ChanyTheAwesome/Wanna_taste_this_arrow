@@ -69,6 +69,7 @@ public class ProjectileController : MonoBehaviour
             }
             else
             {
+                Debug.Log("발사체 충돌");
                 DestroyProjectile(collision.ClosestPoint(transform.position) - _direction * 0.2f, fxOnDestroy);
             }
         }
@@ -157,6 +158,7 @@ public class ProjectileController : MonoBehaviour
 
     private void DestroyProjectile(Vector3 position, bool createFx)
     {
+        Debug.Log("Destroy");
         if (_isExplosive)
         {
             ExplosiveProjectileControl(rangeWeaponHandler);
@@ -167,8 +169,9 @@ public class ProjectileController : MonoBehaviour
         {
             _projectileManager.CreateImpactParticlesAtPosition(position, rangeWeaponHandler);//projeectileManager�� ��ƼŬ ���� �޼���� ������.
         }
-
+        Debug.Log("파괴 직전");
         Destroy(this.gameObject);
+        Debug.Log("파괴 후");
     }
     private void PlayerHitByProjectile(Collider2D collision)
     {
