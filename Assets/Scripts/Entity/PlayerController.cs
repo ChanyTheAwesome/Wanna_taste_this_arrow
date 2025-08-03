@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class PlayerController : BaseController
 {
-    // 미쳐버리겠다.
     // 플레이어는 이동과 공격을 함
     // 이동 중에는 공격 x, 이동을 멈추면 공격을 함
     // 이동 중에 키로 flipX 조작, 멈추고 공격할 때는 적을 찾아서 회전을 함
@@ -33,6 +32,14 @@ public class PlayerController : BaseController
         
         //PlayerManager.Instance.nowAnim = this.GetComponentInChildren<Animator>();
     }
+    private static int _maxHp;
+    private static float _currentHp;
+    private static int _numberOfPojectiles = 1;
+    private static bool _reverse = false;
+    private static float moveSpeed;
+    private static float projectileSpeed;
+    private static float delay;
+    private static float power;
 
     private void Start()
     {
@@ -42,6 +49,13 @@ public class PlayerController : BaseController
             Debug.Log("머티리얼 설정 시도는 함"); // 테스트용
             this.GetComponentInChildren<SpriteRenderer>().material = DungeonManager.Instance.CaveMaterial;
         }
+
+        _maxHp = statHandler.Health;
+        _currentHp = _maxHp;
+        moveSpeed = statHandler.Speed;
+        projectileSpeed = weaponHandler.Speed;
+        delay = weaponHandler.Delay;
+        power = weaponHandler.Power;
     }
 
     public void Init(GameManager gameManager)
@@ -57,10 +71,7 @@ public class PlayerController : BaseController
     private GameObject _target;                      // 공격할 타겟
     private bool _isDebug;
 
-    private int _maxHp = 100;
-    private float _currentHp;
-    private static int _numberOfPojectiles = 1;
-    private static bool _reverse = false;
+   
 
     protected override void HandleAction()
     {
@@ -95,6 +106,11 @@ public class PlayerController : BaseController
         movementDirection = new Vector2(horizontal, vertical).normalized;
         animationhandler.Move(movementDirection);
         // 멈춰 있을 때 공격한다.
+
+        if(Input.GetMouseButtonDown(0)) { 
+            moveSpeed = 15f;
+            MoveSpeedUp();
+        }
 
         if (movementDirection.x == 0 && movementDirection.y == 0) isAttacking = _target != null;
         else isAttacking = false;
@@ -229,28 +245,32 @@ public class PlayerController : BaseController
     public void MoveSpeedUp()
     {
         if (statHandler == null) return;
-        statHandler.Speed += 1f;
+        moveSpeed += 1f;
+        statHandler.Speed = moveSpeed;
     }
 
     // 공격 속도
     public void AttackSpeedUp()
     {
         if (weaponHandler == null) return;
-        weaponHandler.Delay -= 0.15f;
+        delay -= 0.1f;
+        weaponHandler.Delay = delay;
     }
 
     // 발사체 속도 증가
     public void ProjectileSpeedUp()
     {
         if (weaponHandler == null) return;
-        weaponHandler.Speed += 1f;
+        projectileSpeed += 1f;
+        weaponHandler.Speed = projectileSpeed;
     }
 
     // 공격력 증가
     public void AttackPowerUp()
     {
         if (weaponHandler == null) return;
-        weaponHandler.Power += 2f;
+        power += 1f;
+        weaponHandler.Power = power;
     }
 
     // 한번에 세개
@@ -303,13 +323,15 @@ public class PlayerController : BaseController
 
     public void NextStageEntryInitailize()
     {
-        if (weaponHandler == null) return;
-
         RangeWeaponHandler weapon = weaponHandler.GetComponent<RangeWeaponHandler>();
         weapon.NumberofProjectilesPerShot = _numberOfPojectiles;
         weapon.MultipleProjectileAngle = 30f;
         weapon.Reverse = _reverse;
 
+        statHandler.Speed = moveSpeed;
+        weaponHandler.Speed = projectileSpeed;
+        weaponHandler.Delay = delay;
+        weaponHandler.Power = power;
     }
 
     public void FirstStageAbilityInit()
@@ -320,5 +342,12 @@ public class PlayerController : BaseController
         weapon.MultipleProjectileAngle = 0f;
         _reverse = false;
         weapon.Reverse = _reverse;
+
+        _maxHp = statHandler.Health;
+        _currentHp = _maxHp;
+        moveSpeed = statHandler.Speed;
+        projectileSpeed = weaponHandler.Speed;
+        delay = weaponHandler.Delay;
+        power = weaponHandler.Power;
     }
 }
