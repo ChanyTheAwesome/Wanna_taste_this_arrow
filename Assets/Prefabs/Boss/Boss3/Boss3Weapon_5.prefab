@@ -93,7 +93,7 @@ MonoBehaviour:
   _weaponRenderer: {fileID: 108517140480331533}
   projectileSpawnPosition: {fileID: 5242473276049844922}
   projectileSpawnBackPosition: {fileID: 0}
-  bulletIndex: 2
+  bulletIndex: 3
   bulletSize: 1
   duration: 10
   spread: 10
