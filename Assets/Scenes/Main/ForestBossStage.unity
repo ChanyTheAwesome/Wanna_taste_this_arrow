@@ -391,12 +391,18 @@ MonoBehaviour:
   weaponPivot: {fileID: 1563069380}
   WeaponPrefab: {fileID: 9031818409637953494, guid: e893839a59bb65148948f29c48252869,
     type: 3}
-  projectileManager: {fileID: 0}
+  ProjectileManager: {fileID: 0}
+  hpSlider: {fileID: 0}
+  IsCharging: 0
+  GotChargeWeapon: 0
+  LatestDirection: {x: 0, y: 0, z: 0}
   findRadius: 5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256
-  hpSlider: {fileID: 1115611890}
+  levelLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!61 &248262312
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -567,6 +573,7 @@ GameObject:
   - component: {fileID: 362031738}
   - component: {fileID: 362031740}
   - component: {fileID: 362031739}
+  - component: {fileID: 362031741}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -32330,6 +32337,22 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &362031741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362031737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &363999216
 GameObject:
   m_ObjectHideFlags: 0
@@ -34208,6 +34231,85 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!1001 &916368859
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2160300774696884129, guid: 93f8c4b088ae04a40a8362e62b0ca46d,
+        type: 3}
+      propertyPath: m_Name
+      value: NavigationSurface
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160300774696884129, guid: 93f8c4b088ae04a40a8362e62b0ca46d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6683357192120911970, guid: 93f8c4b088ae04a40a8362e62b0ca46d,
+        type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 646bb906350d616429833ba7e91aa5ed,
+        type: 2}
+    - target: {fileID: 6969168976073959144, guid: 93f8c4b088ae04a40a8362e62b0ca46d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6969168976073959144, guid: 93f8c4b088ae04a40a8362e62b0ca46d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6969168976073959144, guid: 93f8c4b088ae04a40a8362e62b0ca46d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6969168976073959144, guid: 93f8c4b088ae04a40a8362e62b0ca46d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6969168976073959144, guid: 93f8c4b088ae04a40a8362e62b0ca46d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6969168976073959144, guid: 93f8c4b088ae04a40a8362e62b0ca46d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6969168976073959144, guid: 93f8c4b088ae04a40a8362e62b0ca46d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6969168976073959144, guid: 93f8c4b088ae04a40a8362e62b0ca46d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6969168976073959144, guid: 93f8c4b088ae04a40a8362e62b0ca46d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6969168976073959144, guid: 93f8c4b088ae04a40a8362e62b0ca46d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 93f8c4b088ae04a40a8362e62b0ca46d, type: 3}
 --- !u!1 &1036021862
 GameObject:
   m_ObjectHideFlags: 0
@@ -34272,12 +34374,18 @@ MonoBehaviour:
   weaponPivot: {fileID: 1626249513}
   WeaponPrefab: {fileID: 9031818409637953494, guid: e893839a59bb65148948f29c48252869,
     type: 3}
-  projectileManager: {fileID: 0}
+  ProjectileManager: {fileID: 0}
+  hpSlider: {fileID: 0}
+  IsCharging: 0
+  GotChargeWeapon: 0
+  LatestDirection: {x: 0, y: 0, z: 0}
   findRadius: 5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 0
-  hpSlider: {fileID: 0}
+  levelLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!61 &1036021866
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -34482,6 +34590,7 @@ GameObject:
   - component: {fileID: 1244333578}
   - component: {fileID: 1244333577}
   - component: {fileID: 1244333576}
+  - component: {fileID: 1244333579}
   m_Layer: 0
   m_Name: Collision
   m_TagString: Untagged
@@ -36067,6 +36176,22 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1244333579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244333574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1360002480
 GameObject:
   m_ObjectHideFlags: 0
@@ -40278,3 +40403,4 @@ SceneRoots:
   - {fileID: 1036021868}
   - {fileID: 343417655}
   - {fileID: 248262314}
+  - {fileID: 916368859}
