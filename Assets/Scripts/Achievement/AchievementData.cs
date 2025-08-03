@@ -7,8 +7,6 @@ public class AchievementData
     public int ID { get; set; }
     public string AchievementName { get; set; }
     public string Description { get; set; }
-    public string AchievementType { get; set; }
-    public IAchievable Achievable { get; set; }
-    public bool IsAchieved =>Achievable.IsAchieved;
+    public int StageGoalNumber { get; set; }
     public bool IsCleared { get; set; }
 }
