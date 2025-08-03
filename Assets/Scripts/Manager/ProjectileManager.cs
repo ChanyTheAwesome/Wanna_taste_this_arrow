@@ -23,7 +23,16 @@ public class ProjectileManager : MonoBehaviour
     public bool Ricochet { set { _ricochet = value; } }
     private void Awake()
     {
-        instance = this;
+        if(instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        //instance = this;
     }
 
     public void ShootBullet(RangeWeaponHandler rangeWeaponHandler, Vector2 startPosition, Vector2 direction)

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterSelectUI : MonoBehaviour
+public class CharacterSelectUI : MonoBehaviour  // 아래 코드 다른 곳으로 이동함, 삭제해도 무방할듯
 {
     //GameManager gameManager = GameManager.Instance;
     //[SerializeField] private GameObject _CharacterSelectUI;

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4548328726964725508}
   - component: {fileID: 1957600137312142944}
-  m_Layer: 20
+  m_Layer: 7
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 4549047422348728884}
   - component: {fileID: 5682187435517910175}
   - component: {fileID: 5555850332972792540}
-  m_Layer: 20
+  m_Layer: 7
   m_Name: CaveObstacle01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

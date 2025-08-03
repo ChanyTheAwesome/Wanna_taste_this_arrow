@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1091022943047146841}
   - component: {fileID: 3119155474898043703}
-  m_Layer: 20
+  m_Layer: 7
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4610763351098449637}
   - component: {fileID: 3009568452990283346}
-  m_Layer: 20
+  m_Layer: 7
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 8444118153048335861}
   - component: {fileID: 4689086474808542301}
   - component: {fileID: 2120742615917435513}
-  m_Layer: 20
+  m_Layer: 7
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -318,7 +318,7 @@ GameObject:
   - component: {fileID: 3827565921903779127}
   - component: {fileID: 1095163909702265675}
   - component: {fileID: 4939345861970966503}
-  m_Layer: 20
+  m_Layer: 7
   m_Name: CaveObstacle02
   m_TagString: Untagged
   m_Icon: {fileID: 0}

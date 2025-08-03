@@ -25,7 +25,7 @@ public class EnemyManager : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("에너미 매니저 스타트");
+        Debug.Log("에너미 매니저 스타트");   // 테스트용
         //StartCoroutine("SpawnMonster", DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].EnemyCount);
         StartCoroutine(SpawnMonster(DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].EnemyCount));
     }
@@ -33,7 +33,7 @@ public class EnemyManager : MonoBehaviour
     public IEnumerator SpawnMonster(int enemyCount)  // 일반 몬스터 생성
     {
         yield return new WaitUntil(() => PlayerInit.isSetPlayer);
-        Debug.Log("몬스터 생성");
+        Debug.Log("몬스터 생성");    // 테스트용
         for(int i = 0; i < enemyCount; i++)
         {
             SpawnRandomMonster();
@@ -72,9 +72,9 @@ public class EnemyManager : MonoBehaviour
         EnemyController enemyController = spawnEnemy.GetComponent<EnemyController>();
         enemyController.Init(this, _playerController.transform); // 에너미컨트롤러의 타겟을 플레이어로 지정하는 코드, 나중에 게임매니저에 플레이어 객체 만들면 다시 넣기
 
-        if (!DungeonManager.Instance.IsFirstStage && GameManager.Instance.StageCount != DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].MaxStageCount) //마지막스테이지 인지
+        if (!DungeonManager.Instance.IsFirstStage && !DungeonManager.Instance.CheckBossStage()) // 첫 스테이지, 마지막 보스 스테이지가 아니라면
         {
-            for(int i = 0; i < GameManager.Instance.StageCount - 1; i++)
+            for(int i = 0; i < GameManager.Instance.StageCount - 1; i++)    // 스테이지 카운트만큼 스탯 늘리기
             {
                 enemyController.SetEnemyHealth(DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].IncreaseStat);
             }
