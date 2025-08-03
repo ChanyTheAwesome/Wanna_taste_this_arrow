@@ -50,8 +50,8 @@ public class PlayerController : BaseController
             this.GetComponentInChildren<SpriteRenderer>().material = DungeonManager.Instance.CaveMaterial;
         }
 
-        _maxHp = statHandler.Health;
-        _currentHp = resource.CurrentHealth;
+        _maxHp = 100;
+        _currentHp = _maxHp;
         moveSpeed = statHandler.Speed;
         projectileSpeed = weaponHandler.Speed;
         delay = weaponHandler.Delay;
@@ -73,6 +73,10 @@ public class PlayerController : BaseController
     protected override void HandleAction()
     {
         _currentHp = resource.CurrentHealth;
+        if(Input.GetMouseButtonDown(0))
+        {
+            resource.CurrentHealth -= 10f;
+        }
         UpdateHpBar();
         OnMove();
         // 장애물에 안걸리는 에너미 찾아서 그쪽 방향으로 바라보기
