@@ -59,6 +59,8 @@ public class PlayerController : BaseController
 
     private int _maxHp = 100;
     private float _currentHp;
+    private static int _numberOfPojectiles = 1;
+    private static bool _reverse = false;
 
     protected override void HandleAction()
     {
@@ -255,8 +257,9 @@ public class PlayerController : BaseController
     public void TripleShot()
     {
         if (weaponHandler == null) return;
+        _numberOfPojectiles++;
         RangeWeaponHandler weapon = weaponHandler.GetComponent<RangeWeaponHandler>();
-        weapon.NumberofProjectilesPerShot += 1;
+        weapon.NumberofProjectilesPerShot = _numberOfPojectiles;
         weapon.MultipleProjectileAngle = 30f;
     }
 
@@ -279,8 +282,9 @@ public class PlayerController : BaseController
     public void BackShot()
     {
         if (weaponHandler == null) return;
+        _reverse = true;
         RangeWeaponHandler weapon = weaponHandler.GetComponent<RangeWeaponHandler>();
-        weapon.Reverse = true;
+        weapon.Reverse = _reverse;
     }
 
     // µµÅº
@@ -295,5 +299,26 @@ public class PlayerController : BaseController
         _currentHp += 20;
         if(_maxHp > _currentHp) return;
         else _currentHp = _maxHp;
+    }
+
+    public void NextStageEntryInitailize()
+    {
+        if (weaponHandler == null) return;
+
+        RangeWeaponHandler weapon = weaponHandler.GetComponent<RangeWeaponHandler>();
+        weapon.NumberofProjectilesPerShot = _numberOfPojectiles;
+        weapon.MultipleProjectileAngle = 30f;
+        weapon.Reverse = _reverse;
+
+    }
+
+    public void FirstStageAbilityInit()
+    {
+        _numberOfPojectiles = 1;
+        RangeWeaponHandler weapon = weaponHandler.GetComponent<RangeWeaponHandler>();
+        weapon.NumberofProjectilesPerShot = _numberOfPojectiles;
+        weapon.MultipleProjectileAngle = 0f;
+        _reverse = false;
+        weapon.Reverse = _reverse;
     }
 }

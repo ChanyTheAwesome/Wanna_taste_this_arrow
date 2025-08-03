@@ -102,12 +102,14 @@ public class PlayerManager : MonoBehaviour
             Debug.Log("게임매니저 플레이어 생성");
             player = Instantiate(GameManager.Instance.player, new Vector3(0, 0, 0), Quaternion.identity);
         }
+        
         //PlayerController playerController = player.GetComponent<PlayerController>();
         //PlayerController playerController = GameManager.Instance.player.GetComponent<PlayerController>();
         //_playerController = playerController;
         _playerController = player.GetComponent<PlayerController>();
         //_abilityController = _playerController.GetComponent<PlayerAbilityController>();
         _abilityController = player.GetComponent<PlayerAbilityController>();
+
         //abilitySelectUI.gameObject.SetActive(false);
         //if (!DungeonManager.Instance.IsFirstStage)
         //{
