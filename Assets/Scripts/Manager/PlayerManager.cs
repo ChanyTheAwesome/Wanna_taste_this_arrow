@@ -96,11 +96,15 @@ public class PlayerManager : MonoBehaviour
         {
             Debug.Log("기본 플레이어 생성");
             player = Instantiate(characterPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            GameManager.Instance.player = player;
         }
         else
         {
             Debug.Log("게임매니저 플레이어 생성");
             player = Instantiate(GameManager.Instance.player, new Vector3(0, 0, 0), Quaternion.identity);
+            player.GetComponent<ResourceController>().CurrentHealth = GameManager.Instance.player.GetComponent<ResourceController>().CurrentHealth; // 플레이어 체력 초기화
+            player.GetComponent<StatHandler>().Health = GameManager.Instance.player.GetComponent<StatHandler>().Health; // 플레이어 체력 초기화
+            GameManager.Instance.player = player; // 게임매니저 플레이어 갱신
         }
         
         //PlayerController playerController = player.GetComponent<PlayerController>();
