@@ -68,9 +68,7 @@ public class PlayerManager : MonoBehaviour
             Exp -= RequiredExp;
             Level++;
 
-            if (_abilityController == null) Debug.Log("asdfasdf");
-
-            AbilityData randomAbilities = _abilityController.GetRandomAbility(1);
+            List<AbilityData> randomAbilities = _abilityController.GetRandomAbility(3);
 
         }
     }

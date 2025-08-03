@@ -11,7 +11,7 @@ public class PlayerInit : MonoBehaviour
 
     public bool isSetPlayer = false;
 
-    private void Awake()
+    private void Start()
     {
         if(instance == null)
         {

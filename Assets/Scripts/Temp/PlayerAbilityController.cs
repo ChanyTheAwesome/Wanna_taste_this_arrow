@@ -36,40 +36,40 @@ public class PlayerAbilityController : MonoBehaviour
         _abilityDict.Add(name, data);
     }
 
-    //public List<AbilityData> GetRandomAbility(int count)
-    //{
-    //    List<AbilityData> available = new List<AbilityData>();
-
-    //    foreach (AbilityData ability in _abilityList)
-    //    {
-    //        if (ability.maxLevel == 0) available.Add(ability);
-
-    //        if (ability.currentLevel < ability.maxLevel)
-    //        {
-    //            available.Add(ability);
-    //        }
-    //    }
-
-    //    List<AbilityData> result = new List<AbilityData>();
-    //    while (result.Count < count && available.Count > 0)
-    //    {
-    //        int index = Random.Range(0, available.Count);
-    //        result.Add(available[index]);
-    //        available.RemoveAt(index);
-    //    }
-
-    //    return result;
-    //}
-
-    public AbilityData GetRandomAbility(int count)
+    public List<AbilityData> GetRandomAbility(int count)
     {
-        AbilityData result;
+        List<AbilityData> available = new List<AbilityData>();
 
-            int index = Random.Range(0, _abilityList.Count);
-            result = _abilityList[index];
+        foreach (AbilityData ability in _abilityList)
+        {
+            if (ability._maxLevel == 0) available.Add(ability);
+
+            if (ability._currentLevel < ability._maxLevel)
+            {
+                available.Add(ability);
+            }
+        }
+
+        List<AbilityData> result = new List<AbilityData>();
+        while (result.Count < count && available.Count > 0)
+        {
+            int index = Random.Range(0, available.Count);
+            result.Add(available[index]);
+            available.RemoveAt(index);
+        }
 
         return result;
     }
+
+    //public AbilityData GetRandomAbility(int count)
+    //{
+    //    AbilityData result;
+
+    //        int index = Random.Range(0, _abilityList.Count);
+    //        result = _abilityList[index];
+
+    //    return result;
+    //}
 
     public AbilityData GetAbilityData(string abilityName)
     {
@@ -83,10 +83,10 @@ public class PlayerAbilityController : MonoBehaviour
         if(_abilityDict.ContainsKey(abilityName))
         {
             AbilityData ability = _abilityDict[abilityName];
-            if(ability.currentLevel < ability.maxLevel)
+            if(ability._currentLevel < ability._maxLevel)
             {
-                ability.currentLevel++;
-                Debug.Log($"{ability.abilityName} -> Lv. {ability.currentLevel}");
+                ability._currentLevel++;
+                Debug.Log($"{ability._abilityName} -> Lv. {ability._currentLevel}");
             }
         }
     }

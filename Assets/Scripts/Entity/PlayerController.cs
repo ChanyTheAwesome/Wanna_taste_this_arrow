@@ -169,6 +169,47 @@ public class PlayerController : BaseController
         Gizmos.DrawWireSphere(transform.position, findRadius);
     }
 
+    public void ApplyAbility(string abilityName)
+    {
+        switch (abilityName)
+        {
+            case "와~":
+                RecoveryHp();
+                break;
+            case "와!!!":
+                MaxHpUp();
+                break;
+            case "나비처럼 날기":
+                MoveSpeedUp();
+                break;
+            case "급하다 급해":
+                AttackSpeedUp();
+                break;
+            case "삽 부스트":
+                ProjectileSpeedUp();
+                break;
+            case "벌처럼 쏘기":
+                AttackPowerUp();
+                break;
+            case "쌉":
+                TripleShot();
+                break;
+            case "샵":
+                PenetrationShot();
+                break;
+            case "벽 반삽":
+                ReflectShot();
+                break;
+            case "후방주의":
+                BackShot();
+                break;
+            case "왜 이러시는 건데요":
+                Ricochet();
+                break;
+        }
+    }
+
+
     // 최대 체력 증가
     public void MaxHpUp()
     {
@@ -246,7 +287,7 @@ public class PlayerController : BaseController
     // 회복?
     public void RecoveryHp()
     {
-        _currentHp += 30;
+        _currentHp += 20;
         if(_maxHp > _currentHp) return;
         else _currentHp = _maxHp;
     }

@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class AbilityData : MonoBehaviour
 {
-    public string abilityName;
-    public string description;
-    public int currentLevel;
-    public int maxLevel;
+    public string _abilityName;
+    public string _description;
+    public int _currentLevel;
+    public int _maxLevel;
 
     public AbilityData(string abilityName, string description, int maxLevel)
     {
-        this.abilityName = abilityName;
-        this.description = description;
-        this.currentLevel = 0;
-        this.maxLevel = maxLevel;
+        _abilityName = abilityName;
+        _description = description;
+        _currentLevel = 0;
+        _maxLevel = maxLevel;
     }
     public AbilityData(string abilityName, string description)
     {
-        this.abilityName = abilityName;
-        this.description = description;
-        this.currentLevel = 0;
-        this.maxLevel = 0;
+        _abilityName = abilityName;
+        _description = description;
+        _currentLevel = 0;
+        _maxLevel = 0;
     }
 }
