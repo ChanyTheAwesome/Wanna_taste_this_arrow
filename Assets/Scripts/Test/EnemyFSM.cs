@@ -12,6 +12,7 @@ public class EnemyFSM : MonoBehaviour
     public bool _isCloseToPlayer;
     private void Start()
     {
+        target = GameManager.Instance.player; // 플레이어를 타겟으로 설정
         _isCloseToPlayer = false;
         navMeshAgent = GetComponent<NavMeshAgent>();
 
