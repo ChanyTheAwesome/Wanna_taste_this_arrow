@@ -90,6 +90,7 @@ public class PlayerController : BaseController
     public override void Death()
     {
         base.Death();
+        DungeonManager.Instance.GameOver();
         //gameManager.GameOver();
     }
 
