@@ -73,10 +73,7 @@ public class PlayerController : BaseController
     protected override void HandleAction()
     {
         _currentHp = resource.CurrentHealth;
-        if(Input.GetMouseButtonDown(0))
-        {
-            resource.CurrentHealth -= 10f;
-        }
+
         UpdateHpBar();
         OnMove();
         // 장애물에 안걸리는 에너미 찾아서 그쪽 방향으로 바라보기
