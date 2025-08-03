@@ -4712,6 +4712,7 @@ GameObject:
   - component: {fileID: 5859061223331390574}
   - component: {fileID: 5144882155366424608}
   - component: {fileID: 3370622492408668188}
+  - component: {fileID: 7130094723272309082}
   m_Layer: 0
   m_Name: CastleBurnObstacle01
   m_TagString: Untagged
@@ -9502,6 +9503,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   obstacleDamage: -10
+--- !u!114 &7130094723272309082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4620898881436342811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &5092180884012578470
 GameObject:
   m_ObjectHideFlags: 0
