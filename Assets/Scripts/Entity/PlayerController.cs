@@ -224,7 +224,7 @@ public class PlayerController : BaseController
     public void MaxHpUp()
     {
         if (statHandler == null) return;
-        statHandler.Health += 20;
+        statHandler.Health += 200;
         _maxHp = statHandler.Health;
     }
 
@@ -232,7 +232,7 @@ public class PlayerController : BaseController
     public void MoveSpeedUp()
     {
         if (statHandler == null) return;
-        moveSpeed += 1f;
+        moveSpeed += 10f;
         statHandler.Speed = moveSpeed;
     }
 
@@ -240,7 +240,7 @@ public class PlayerController : BaseController
     public void AttackSpeedUp()
     {
         if (weaponHandler == null) return;
-        delay -= 0.1f;
+        delay -= 0.8f;
         weaponHandler.Delay = delay;
     }
 
@@ -248,7 +248,7 @@ public class PlayerController : BaseController
     public void ProjectileSpeedUp()
     {
         if (weaponHandler == null) return;
-        projectileSpeed += 1f;
+        projectileSpeed += 10f;
         weaponHandler.Speed = projectileSpeed;
     }
 
@@ -256,7 +256,7 @@ public class PlayerController : BaseController
     public void AttackPowerUp()
     {
         if (weaponHandler == null) return;
-        power += 1f;
+        power += 10f;
         weaponHandler.Power = power;
     }
 

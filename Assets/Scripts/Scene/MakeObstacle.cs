@@ -8,6 +8,7 @@ public class MakeObstacle : MonoBehaviour
 {
     public GameObject Obstacles;
     public GameObject Obstacle;
+    [SerializeField] private NavigationSurfaceScript NavigationSurface;
 
     [SerializeField]
     private float maxY = 22f;
@@ -31,6 +32,7 @@ public class MakeObstacle : MonoBehaviour
         {
             SpawnObstacle();
         }
+        NavigationSurface.gameObject.SetActive(true);
     }
 
     public void SpawnObstacle() //
