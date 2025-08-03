@@ -13,6 +13,7 @@ public class GameUI : BaseUI
     [SerializeField] private Button secondCharacterIndex;
     [SerializeField] private Button thirdCharacterIndex;
     [SerializeField] private Button fourthCharacterIndex;
+    [SerializeField] private GameObject abillitySelectUI;
 
     //테스트용
     [SerializeField] private Button clearButton;
@@ -153,6 +154,7 @@ public class GameUI : BaseUI
         StopGame();
         characterSelectUI.SetActive(true);
         menuImage.gameObject.SetActive(false);
+        abillitySelectUI.SetActive(false);
     }
 
     public void SetGame()   // 게임중 UI 설정
@@ -160,6 +162,7 @@ public class GameUI : BaseUI
         // 메뉴 UI 띄우기
         menuImage.gameObject.SetActive(false);
         characterSelectUI.SetActive(false);
+        abillitySelectUI.SetActive(false);
     }
 
     public void SetMenu()
@@ -179,5 +182,10 @@ public class GameUI : BaseUI
     {
         Debug.Log("게임오버 누름");
         DungeonManager.Instance.GameOver();
+    }
+
+    public void OnClickGetExp()    // 테스트용
+    {
+        PlayerManager.Instance.GetEXP(50);
     }
 }

@@ -18,6 +18,7 @@ public class PlayerManager : MonoBehaviour
     public PlayerAbilityController AbilityController { get { return _abilityController; } set { _abilityController = value; } }
     //private int selectedIndex = 0;
     [SerializeField] private AbilitySelectUI abilitySelectUI;
+    public AbilitySelectUI AbilitySelectUI { get { return abilitySelectUI; } set { abilitySelectUI = value; } }
     [SerializeField] private Sprite[] characterSprites;
     [SerializeField] private RuntimeAnimatorController[] characterAnimators;
     //[SerializeField] private AnimationClip[] idleAnimationClips;
@@ -94,7 +95,7 @@ public class PlayerManager : MonoBehaviour
         PlayerController playerController = player.GetComponent<PlayerController>();
         _playerController = playerController;
         _abilityController = _playerController.GetComponent<PlayerAbilityController>();
-        abilitySelectUI.gameObject.SetActive(false);
+        //abilitySelectUI.gameObject.SetActive(false);
         //if (!DungeonManager.Instance.IsFirstStage)
         //{
         //    SetCharacter();

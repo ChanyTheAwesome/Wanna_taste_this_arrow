@@ -10,6 +10,11 @@ public class AbilitySelectUI : MonoBehaviour
 
     private PlayerController playerController;
 
+    private void Awake()
+    {
+        PlayerManager.Instance.AbilitySelectUI = this;
+    }
+
     public void ShowSelect(List<AbilityData> abilities, PlayerController controller)
     {
         gameObject.SetActive(true);
