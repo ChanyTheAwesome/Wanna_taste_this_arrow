@@ -99,7 +99,7 @@ MonoBehaviour:
   spread: 10
   numberofProjectilesPerShot: 20
   multipleProjectileAngle: 50
-  projectileColor: {r: 1, g: 1, b: 1, a: 1}
+  projectileColor: {r: 0.30573422, g: 0.5849056, b: 0.26762193, a: 1}
 --- !u!1 &7991317747512541419
 GameObject:
   m_ObjectHideFlags: 0
