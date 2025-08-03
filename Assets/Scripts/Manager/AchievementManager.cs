@@ -26,19 +26,11 @@ public class AchievementManager : MonoBehaviour
         LoadAchievement();
     }
 
-    private void Start()
-    {
-        foreach(var achievement in AchievementDict)
-        {
-            Debug.Log($"Achievement ID: {achievement.Key}, IsCleared: {achievement.Value.IsCleared}");
-            Debug.Log($"Achievement Name: {achievement.Value.AchievementName}, Description: {achievement.Value.Description}, StageGoalNumber: {achievement.Value.StageGoalNumber}");
-        }
-    }
     private void LoadAchievement()
     {
         if(!File.Exists(achievementPath))
         {
-            Debug.Log("No");
+            Debug.LogError("Achievement data file not found at:" + achievementPath);
         }
         else
         {
@@ -58,12 +50,12 @@ public class AchievementManager : MonoBehaviour
         string json = File.ReadAllText(path);
         return JsonConvert.DeserializeObject<List<T>>(json);
     }
-    public void OnAchievementUnlocked(int achievementID)
+
+    public void OnStageClear(int stageNumber)
     {
-        if (AchievementDict.ContainsKey(achievementID))
+        foreach(var achievement in AchievementDict.Values)
         {
-            AchievementData achievement = AchievementDict[achievementID];
-            if (!achievement.IsCleared)
+            if (achievement.StageGoalNumber == stageNumber && !achievement.IsCleared)
             {
                 achievement.IsCleared = true;
                 SaveAchievementsToJson();
