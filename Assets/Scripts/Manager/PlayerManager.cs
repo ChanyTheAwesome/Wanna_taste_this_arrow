@@ -110,6 +110,16 @@ public class PlayerManager : MonoBehaviour
         //_abilityController = _playerController.GetComponent<PlayerAbilityController>();
         _abilityController = player.GetComponent<PlayerAbilityController>();
 
+        if(GameManager.Instance.StageCount > 1)
+        {
+            Debug.Log("첫 스테이지 아님 제발");  // 테스트용
+            _playerController.NextStageEntryInitailize();
+        }
+        else
+        {
+            Debug.Log("첫 스테이지 제발"); // 테스트용
+            _playerController.FirstStageAbilityInit();
+        }
         //abilitySelectUI.gameObject.SetActive(false);
         //if (!DungeonManager.Instance.IsFirstStage)
         //{
