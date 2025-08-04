@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class BossController : BaseController
 {
-    //private EnemyManager enemyManager;
-    [SerializeField] private Transform target; // EnemyManager 제작 후 [SerializeField] 빼야됨
+    [SerializeField] private Transform target;
+
     [SerializeField] private float followRange = 15.0f;
     [SerializeField] private WeaponHandler[] weaponHandlers; // 여러 개의 무기를 가질 수 있음
     private int weaponIndex = 0; // 현재 무기의 인덱스
@@ -29,9 +29,8 @@ public class BossController : BaseController
         statHandler.Health = (int)Mathf.Ceil(statHandler.Health * multiplier);
     }
 
-    public void Init(/*EnemyManager enemyManager,*/Transform target)
+    public void Init(Transform target)
     {
-        //this.enemyManager = enemyManager;
         this.target = target; //타겟은 다른 코드에서 정해줬음, 얘는 플레이어가 타겟
     }
     protected override void Update()
@@ -124,8 +123,6 @@ public class BossController : BaseController
     }
     public override void Death()
     {
-        /*base.Death();
-        enemyManager.RemoveEnemyOnDeath(this);*/
         Destroy(this.gameObject);
         DungeonManager.Instance.CheckClearStage();
     }

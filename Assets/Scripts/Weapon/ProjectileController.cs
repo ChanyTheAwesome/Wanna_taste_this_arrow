@@ -45,23 +45,23 @@ public class ProjectileController : MonoBehaviour
 
     private void Update()
     {
-        if (!_isReady) return;//�غ���� ������ update�� ���� �ʴ´�.
+        if (!_isReady) return;
 
         _currentDuration += Time.deltaTime;
 
         if (_currentDuration > rangeWeaponHandler.Duration)
         {
-            DestroyProjectile(transform.position, false);//�ִ� ��Ÿ� ����. �ִ� ��Ÿ��� �Ѿ�� �ı��Ѵ�.
+            DestroyProjectile(transform.position, false);
         }
         if (!_explosionStart)
         {
-            _rigidbody.velocity = _direction * rangeWeaponHandler.Speed;//�׷��� �ʴٸ� ��� ������ ����� ������ �ӵ��� ���ư���.
+            _rigidbody.velocity = _direction * rangeWeaponHandler.Speed;
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)//���� �¾Ҵ�!
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (levelCollisionLayer.value == (levelCollisionLayer.value | (1 << collision.gameObject.layer)))//Level���̾�� Level-Grid-Collision�� �پ��ִ�.
+        if (levelCollisionLayer.value == (levelCollisionLayer.value | (1 << collision.gameObject.layer)))
         {
             if (_reflect)
             {
@@ -83,13 +83,13 @@ public class ProjectileController : MonoBehaviour
             }
             if (!_penetrate && !_ricochet)
             {
-                DestroyProjectile(collision.ClosestPoint(transform.position), fxOnDestroy);//���� ����ü �ı�
+                DestroyProjectile(collision.ClosestPoint(transform.position), fxOnDestroy);
             }
         }
     }
 
     public void Init(Vector2 direction, RangeWeaponHandler weaponHandler, ProjectileManager projectileManager)
-    {//�� Init�� ProjectileManager���� �Ѿ��� ���� �� ȣ��ȴ�.
+    {
 
         this._projectileManager = projectileManager;
         rangeWeaponHandler = weaponHandler;
@@ -100,15 +100,6 @@ public class ProjectileController : MonoBehaviour
 
         transform.right = this._direction;
 
-        //if (direction.x < 0)
-        //{
-        //    _pivot.localRotation = Quaternion.Euler(180, 0, 0);//������ �����̶�� 180�� Ʋ���ְ�
-        //}
-        //else
-        //{
-        //    _pivot.localRotation = Quaternion.Euler(0, 0, 0);//�ƴ϶�� �״�� �д�.
-        //}
-
         if (_isExplosive)
         {
             explosionRange.gameObject.SetActive(false);
@@ -116,11 +107,11 @@ public class ProjectileController : MonoBehaviour
         if(DungeonManager.Instance.CurrentDungeonID == 2)   // 동굴 던전이면
             this.GetComponentInChildren<SpriteRenderer>().material = DungeonManager.Instance.CaveMaterial;  // Material 속성 변경
 
-        _isReady = true;//�غ� �ƴ�.
+        _isReady = true;
     }
 
     public void Init(Vector2 direction, RangeWeaponHandler weaponHandler, ProjectileManager projectileManager, bool reflect, bool penetarte, bool recochet)
-    {//�� Init�� ProjectileManager���� �Ѿ��� ���� �� ȣ��ȴ�.
+    {
 
         this._projectileManager = projectileManager;
         rangeWeaponHandler = weaponHandler;
@@ -132,14 +123,6 @@ public class ProjectileController : MonoBehaviour
         _reflect = reflect;
         _penetrate = penetarte;
         _ricochet = recochet;
-        //if (direction.x < 0)
-        //{
-        //    _pivot.localRotation = Quaternion.Euler(180, 0, 0);//������ �����̶�� 180�� Ʋ���ְ�
-        //}
-        //else
-        //{
-        //    _pivot.localRotation = Quaternion.Euler(0, 0, 0);//�ƴ϶�� �״�� �д�.
-        //}
 
         if (_isExplosive)
         {
@@ -149,7 +132,7 @@ public class ProjectileController : MonoBehaviour
         if (DungeonManager.Instance.CurrentDungeonID == 2)   // 동굴 던전이면
             this.GetComponentInChildren<SpriteRenderer>().material = DungeonManager.Instance.CaveMaterial;  // Material 속성 변경
 
-        _isReady = true;//�غ� �ƴ�.
+        _isReady = true;
     }
 
     private void DestroyProjectile(Vector3 position, bool createFx)
@@ -162,7 +145,7 @@ public class ProjectileController : MonoBehaviour
 
         if (createFx)
         {
-            _projectileManager.CreateImpactParticlesAtPosition(position, rangeWeaponHandler);//projeectileManager�� ��ƼŬ ���� �޼���� ������.
+            _projectileManager.CreateImpactParticlesAtPosition(position, rangeWeaponHandler);
         }
         Destroy(this.gameObject);
     }
@@ -172,13 +155,13 @@ public class ProjectileController : MonoBehaviour
 
         if (resourceController != null)
         {
-            resourceController.ChangeHealth(-rangeWeaponHandler.Power);//������ �Ŀ���ŭ ü���� ���
-            if (rangeWeaponHandler.IsOnKnockback)//�˹��� �Ǵ� ������
+            resourceController.ChangeHealth(-rangeWeaponHandler.Power);
+            if (rangeWeaponHandler.IsOnKnockback)
             {
                 BaseController controller = collision.GetComponent<BaseController>();
                 if (controller != null)
                 {
-                    controller.ApplyKnockback(transform, rangeWeaponHandler.KnockbackPower, rangeWeaponHandler.KnockbackTime);//�˹��� �ش�.
+                    controller.ApplyKnockback(transform, rangeWeaponHandler.KnockbackPower, rangeWeaponHandler.KnockbackTime);
                 }
             }
         }

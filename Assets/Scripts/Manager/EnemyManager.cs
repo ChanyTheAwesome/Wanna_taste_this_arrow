@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    //[SerializeField] private LayerMask enemyLayerMask;  // Enemy 존재여부 확인용 레이어
     [SerializeField] private List<GameObject> enemyPrefabs; // 보스몬스터 리스트 추가
     [SerializeField] List<Rect> spawnAreas;
     [SerializeField] private Color gizmoColor = new Color(1, 0, 0, 0.3f);
 
     private List<EnemyController> _activeEnemies = new List<EnemyController>();
     private BossController _bossController;
-
-    //private bool _enemySpawnComplete;
 
     public static PlayerController _playerController;
 
@@ -26,7 +23,6 @@ public class EnemyManager : MonoBehaviour
 
     private void Start()
     {
-        //StartCoroutine("SpawnMonster", DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].EnemyCount);
         if(!DungeonManager.Instance.CheckBossStage())   // 보스 스테이지가 아니면
             StartCoroutine(SpawnMonster(DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].EnemyCount));
         else    // 보스 스테이지면
@@ -56,15 +52,9 @@ public class EnemyManager : MonoBehaviour
 
         Vector2 spawnPosition = new Vector2(spawnAreas[0].position.x, spawnAreas[0].position.y);
 
-        //GameObject spawnBoss = Instantiate(bossPrefab, new Vector3(spawnPosition.x, spawnPosition.y), Quaternion.identity);
         GameObject spawnBoss = Instantiate(bossPrefab, new Vector3(spawnPosition.x, spawnPosition.y), new Quaternion(0, 0, 0, 0));
         BossController bossController = spawnBoss.GetComponent<BossController>();
         bossController.Init(_playerController.transform);
-
-        //if(bossController != null)
-        //{
-        //    _bossController = bossController;
-        //}
     }
 
     public bool CheckEnemyExist()   // Enemy 레이어를 가진 오브젝트가 존재하는지 체크, 없으면 false 있으면 true
@@ -124,9 +114,5 @@ public class EnemyManager : MonoBehaviour
     {
         _activeEnemies.Remove(enemy);
         DungeonManager.Instance.CheckClearStage();
-        //if (/*enemySpawnComplite && */_activeEnemies.Count == 0)
-            //gameManager.EndOfWave();
-            // 적이 없다면 클리어 세팅하기
-
     }
 }

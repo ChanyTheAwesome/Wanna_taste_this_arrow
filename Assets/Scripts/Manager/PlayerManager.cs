@@ -10,22 +10,18 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] private GameObject characterPrefab;
 
-    public PlayerController _playerController;  // 테스트용으로  public 끝나면 private
+    private PlayerController _playerController;
 
     public PlayerController PlayerController { get { return _playerController; } set { _playerController = value; } }
 
     private PlayerAbilityController _abilityController;
     public PlayerAbilityController AbilityController { get { return _abilityController; } set { _abilityController = value; } }
-    //private int selectedIndex = 0;
+
     [SerializeField] private AbilitySelectUI abilitySelectUI;
     public AbilitySelectUI AbilitySelectUI { get { return abilitySelectUI; } set { abilitySelectUI = value; } }
     [SerializeField] private Sprite[] characterSprites;
     [SerializeField] private RuntimeAnimatorController[] characterAnimators;
-    //[SerializeField] private AnimationClip[] idleAnimationClips;
-    //[SerializeField] private AnimationClip[] moveAnimationClips;
-    //[SerializeField] private AnimationClip[] damageAnimationClips;
 
-    //public Animator nowAnim;
     private int _selectedIndex;
     public int SelectedIndex { get { return _selectedIndex; } set { _selectedIndex = value; } }
 
@@ -73,12 +69,10 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public void ResetPlayer()    // 레벨, 경험치, 능력 초기화, 던전에서 나갈 때 실행하기
+    public void ResetPlayer()    // 레벨, 경험치 초기화, 던전에서 나갈 때 실행하기
     {
         Level = 1;
         Exp = 0;
-        // 능력 초기화
-        // 능력 초기화는 능력이 어떻게 적용되는지에 따라 맞춰서 설정
     }
 
     public void SetCharacter()
@@ -102,11 +96,8 @@ public class PlayerManager : MonoBehaviour
             GameManager.Instance.player.transform.position = new Vector3(0, 0, 0);
         }
         
-        //PlayerController playerController = player.GetComponent<PlayerController>();
-        //PlayerController playerController = GameManager.Instance.player.GetComponent<PlayerController>();
-        //_playerController = playerController;
         _playerController = player.GetComponent<PlayerController>();
-        //_abilityController = _playerController.GetComponent<PlayerAbilityController>();
+
         _abilityController = player.GetComponent<PlayerAbilityController>();
 
         if(GameManager.Instance.StageCount > 1)
@@ -118,10 +109,5 @@ public class PlayerManager : MonoBehaviour
             _playerController.FirstStageAbilityInit();
         }
         FindObjectOfType<ResourceController>()?.LoadCurrentHealth();
-        //abilitySelectUI.gameObject.SetActive(false);
-        //if (!DungeonManager.Instance.IsFirstStage)
-        //{
-        //    SetCharacter();
-        //}
     }
 }

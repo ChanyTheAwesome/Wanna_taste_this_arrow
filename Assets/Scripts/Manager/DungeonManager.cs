@@ -37,19 +37,14 @@ public class DungeonManager : MonoBehaviour
     [SerializeField] private Material caveMaterial;
     public Material CaveMaterial { get { return caveMaterial; } }
 
-    //Suggestion
-
     public Dictionary<int, Dungeon> DungeonDict = new Dictionary<int, Dungeon>();
     
     private void AddDungeonDict()   // 테스트용으로 스테이지 3개로 설정, 이후에 다시 변경 필요
     {
-        DungeonDict.Add(1, new Dungeon(1, "잠자는 숲속의 좀비^^", 2, 6, 3, 1.05f));
-        DungeonDict.Add(2, new Dungeon(2, "번호따고 싶은 석상^^", 2, 6, 3, 1.05f));
-        DungeonDict.Add(3, new Dungeon(3, "야 묘비 삽 넣을게^^", 2, 6, 3, 1.05f));
+        DungeonDict.Add(1, new Dungeon(1, "잠자는 숲속의 좀비^^", 10, 6, 3, 1.05f));
+        DungeonDict.Add(2, new Dungeon(2, "번호따고 싶은 석상^^", 10, 6, 3, 1.05f));
+        DungeonDict.Add(3, new Dungeon(3, "야 묘비 삽 넣을게^^", 10, 6, 3, 1.05f));
     }
-     
-    //Or try to use Json/newtonJson to read json data.
-     
 
     private void Awake()
     {
@@ -96,22 +91,7 @@ public class DungeonManager : MonoBehaviour
     public void StartStage()    // 스테이지 시작시 실행할 것들
     {
         _isClear = false;
-        // 몬스터 스탯 올리기
-        //if (!_isFirstStage)  // 첫 스테이지가 아니라면 = 첫 스테이지는 기본 체력만 가지기
-        //{
-        //    _enemyController.SetEnemyHealth(DungeonDict[_currentDungeonID].IncreaseStat);   // ID로 던전 찾아서 그 던전의 IncreaseStat값 가져와서 SetEnemyHealth 실행하기
-        //}
         GameManager.Instance.StageCount++;
-        //UIManager.Instance.SetGame();   // 어차피 씬을 로드하는 식으로 넘어가면 UI는 초기화 될거임 씬 불러오고 설정해야될듯
-        //_isFirstStage = false;
-        //if(GameManager.Instance.StageCount < DungeonDict[CurrentDungeonID].MaxStageCount)   // 마지막 스테이지가 아니면 일반 씬 불러오기
-        //{
-        //    SceneController.Instance.LoadDungeonScene();
-        //}
-        //else    // 마지막 스테이지면 보스 씬 불러오기
-        //{
-        //    SceneController.Instance.LoadBossScene();
-        //}
         if (CheckBossStage())   // 보스 스테이지면 보스 씬 불러오기
         {
             SceneController.Instance.LoadBossScene();
@@ -167,13 +147,5 @@ public class DungeonManager : MonoBehaviour
             return true;
         }
         else return false;
-    }
-
-    public void ChangeStat()    // 테스트용 메서드
-    {
-        //_currentDungeonID = 1;//Meaning?
-        //_enemyController.SetEnemyHealth(DungeonList.Find(d => d.ID == _currentDungeonID).IncreaseStat);
-        _enemyController.SetEnemyHealth(DungeonDict[_currentDungeonID].IncreaseStat);
-        //_currentDungeonID = 0;
     }
 }

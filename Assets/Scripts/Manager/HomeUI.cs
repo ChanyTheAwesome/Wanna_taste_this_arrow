@@ -12,22 +12,14 @@ public class HomeUI : BaseUI
     [SerializeField] private Button _startButton;
     [SerializeField] private Button _exitGameButton;
 
-    //테스트용
-    [SerializeField] private Button _bossButton;
-    //테스트용
-
     [SerializeField] private Text _currentDungeonNameText;
     [SerializeField] List<Image> _dungeonImages;
     [SerializeField] private Image _menuImage;
-    //[SerializeField] private Slider _bgmVolumeSlider;
-    //[SerializeField] private Slider _sfxVolumeSlider;
 
     private List<Button> _otherButtons = new(); // 메뉴 열었을 때 비활성화시킬 버튼 리스트
 
     private void Awake()
     {
-        //UIManager.Instance.HomeUI = this;
-
         // 버튼 클릭 메서드 연결
         _menuButton.onClick.AddListener(OnClickMenuButton);
         _menuCloseButton.onClick.AddListener(OnClickCloseMenuButton);
@@ -36,26 +28,13 @@ public class HomeUI : BaseUI
         _startButton.onClick.AddListener(OnClickStartButton);
         _exitGameButton.onClick.AddListener(OnClickExitGameButton);
 
-        //테스트용
-        _bossButton.onClick.AddListener(StartBoss);
-        //테스트용
-
         AddOtherButtons();
     }
     private void Start()
     {
-        //_currentDungeonIDText.text = DungeonManager.Instance.CurrentDungeonID.ToString();
         _currentDungeonNameText.text = DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].Name;
         SetDungeonImageActive();
     }
-    //public override void Init(/*UIManager uiManager*/)
-    //{
-    //    //base.Init(uiManager);
-
-    //    _shiftLeftButton.onClick.AddListener(OnClickShiftLeftButton);
-    //    _shiftRightButton.onClick.AddListener(OnClickShiftRightButton);
-    //    _enterDungeonButton.onClick.AddListener(OnClickEnterDungeonButton);
-    //}
 
     public void OnClickMenuButton()
     {
@@ -75,7 +54,6 @@ public class HomeUI : BaseUI
         {
             DungeonManager.Instance.CurrentDungeonID--;
             // 던전 이미지나 이름도 바꾸기
-            //_currentDungeonNameText.text = DungeonManager.Instance.CurrentDungeonID.ToString();
             _currentDungeonNameText.text = DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].Name;
             SetDungeonImageActive();
         }
@@ -88,7 +66,6 @@ public class HomeUI : BaseUI
         {
             DungeonManager.Instance.CurrentDungeonID++;
             // 던전 이미지나 이름도 바꾸기
-            //_currentDungeonNameText.text = DungeonManager.Instance.CurrentDungeonID.ToString();
             _currentDungeonNameText.text = DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].Name;
             SetDungeonImageActive();
         }

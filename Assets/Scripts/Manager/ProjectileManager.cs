@@ -32,7 +32,6 @@ public class ProjectileManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        //instance = this;
     }
 
     public void ShootBullet(RangeWeaponHandler rangeWeaponHandler, Vector2 startPosition, Vector2 direction)
@@ -47,7 +46,6 @@ public class ProjectileManager : MonoBehaviour
             projectileController.Init(direction, rangeWeaponHandler, this, _reflect, _penetrate, _ricochet);//방향과, 원거리 무기 핸들러와, 매니저를 보내준다.
             return;
         }
-        //if (_reverse)
 
         else projectileController.Init(direction, rangeWeaponHandler, this);
     }
