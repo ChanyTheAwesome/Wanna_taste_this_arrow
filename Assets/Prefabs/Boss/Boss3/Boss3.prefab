@@ -187,7 +187,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3028369015268906107}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -309,7 +309,7 @@ MonoBehaviour:
   target: {fileID: 0}
   followRange: 15
   weaponHandlers:
-  - {fileID: 4740706890977349068, guid: a2331915e3e86aa4a94dfdc133b302d0, type: 3}
+  - {fileID: 5892012202193687075, guid: 58539ce3b53f49d4ca1cdbbf69282728, type: 3}
   - {fileID: 7381205794140364299, guid: 7b52dfc86e0833148aae0b6e4b8e1ef3, type: 3}
   - {fileID: 3961944708786836832, guid: 04ce772b539faf94e98c7f9fc5723896, type: 3}
   - {fileID: 5055590116853996156, guid: 8c527758274daf94d823f77ce051d11f, type: 3}
