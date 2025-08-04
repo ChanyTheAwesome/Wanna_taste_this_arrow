@@ -1934,7 +1934,8 @@ MonoBehaviour:
   soundEffectPitchVariance: 0
   musicVolume: 0
   musicClip: {fileID: 0}
-  soundSourcePrefab: {fileID: 0}
+  soundSourcePrefab: {fileID: 8204168283304040676, guid: b1e96b98e9585b64187e84e61c6de1a2,
+    type: 3}
 --- !u!4 &1076229721
 Transform:
   m_ObjectHideFlags: 0

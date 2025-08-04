@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 527141869383926710}
   - component: {fileID: 6040968261439375319}
   - component: {fileID: 1951440807705762100}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1355455939587582442}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 5353151556128066041}
   - component: {fileID: 8823600932897806039}
   - component: {fileID: 1606620060498937695}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Boss1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f85e27f8618014c89d1f689d50af18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 200
   speed: 0
 --- !u!114 &5794209183322415759
 MonoBehaviour:
@@ -306,7 +306,7 @@ MonoBehaviour:
   weaponPivot: {fileID: 1355455939587582442}
   WeaponPrefab: {fileID: 0}
   ProjectileManager: {fileID: 0}
-  weaponHandler: {fileID: 0}
+  hpSlider: {fileID: 0}
   IsCharging: 0
   GotChargeWeapon: 0
   LatestDirection: {x: 0, y: 0, z: 0}

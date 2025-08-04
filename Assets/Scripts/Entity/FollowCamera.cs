@@ -11,6 +11,7 @@ public class FollowCamera : MonoBehaviour
 
     void Update()
     {
+        if (target == null) return;
         _currentPos = transform.position;
         Vector3 targetPos = target.position;
 
