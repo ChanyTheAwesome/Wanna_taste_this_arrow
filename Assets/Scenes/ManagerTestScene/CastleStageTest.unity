@@ -83170,7 +83170,7 @@ GameObject:
   - component: {fileID: 1244333577}
   - component: {fileID: 1244333576}
   - component: {fileID: 1244333579}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
