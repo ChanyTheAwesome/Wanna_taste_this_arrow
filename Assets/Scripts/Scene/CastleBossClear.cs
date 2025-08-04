@@ -31,7 +31,7 @@ public class CastleBossClear : MonoBehaviour
     
     void Update()
     {
-        if (_enemyManager.CheckEnemyExist())
+        if (!DungeonManager.Instance.IsClear)
         {
             return;
         }
