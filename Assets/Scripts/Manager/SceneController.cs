@@ -15,11 +15,12 @@ public class SceneController : MonoBehaviour
     private const string SECOND_DUNGEON_SCENE_NAME = "CaveStageTest";
     private const string SECOND_BOSS_SCENE_NAME = "CaveBossStageTest";
     private const string THIRD_DUNGEON_START_SCENE_NAME = "CastleStartStageTest";
-    private const string THIRD_DUNGEON_BRIDGE_SCENE_NAME = "CastleLateStageTest";
+    private const string THIRD_DUNGEON_BRIDGE_SCENE_NAME = "CastleBridgeStageTest";
     private const string THIRD_DUNGEON_CASTLE_SCENE_NAME = "CastleStageTest";
     private const string THIRD_BOSS_SCENE_NAME = "CastleBossStageTest";
 
-    private int _thirdDungeonStageCount = 5;    // 세번째 던전 전반부, 후반부 나누는 스테이지 수
+    // 테스트용으로 2로 설정, 원래는 5로 해야됨
+    private int _thirdDungeonStageCount = 2;    // 세번째 던전 전반부, 후반부 나누는 스테이지 수
 
     private void Awake()
     {
