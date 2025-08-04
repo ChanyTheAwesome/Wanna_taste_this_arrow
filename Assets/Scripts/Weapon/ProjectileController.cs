@@ -100,14 +100,14 @@ public class ProjectileController : MonoBehaviour
 
         transform.right = this._direction;
 
-        if (direction.x < 0)
-        {
-            _pivot.localRotation = Quaternion.Euler(180, 0, 0);//������ �����̶�� 180�� Ʋ���ְ�
-        }
-        else
-        {
-            _pivot.localRotation = Quaternion.Euler(0, 0, 0);//�ƴ϶�� �״�� �д�.
-        }
+        //if (direction.x < 0)
+        //{
+        //    _pivot.localRotation = Quaternion.Euler(180, 0, 0);//������ �����̶�� 180�� Ʋ���ְ�
+        //}
+        //else
+        //{
+        //    _pivot.localRotation = Quaternion.Euler(0, 0, 0);//�ƴ϶�� �״�� �д�.
+        //}
 
         if (_isExplosive)
         {
@@ -132,14 +132,14 @@ public class ProjectileController : MonoBehaviour
         _reflect = reflect;
         _penetrate = penetarte;
         _ricochet = recochet;
-        if (direction.x < 0)
-        {
-            _pivot.localRotation = Quaternion.Euler(180, 0, 0);//������ �����̶�� 180�� Ʋ���ְ�
-        }
-        else
-        {
-            _pivot.localRotation = Quaternion.Euler(0, 0, 0);//�ƴ϶�� �״�� �д�.
-        }
+        //if (direction.x < 0)
+        //{
+        //    _pivot.localRotation = Quaternion.Euler(180, 0, 0);//������ �����̶�� 180�� Ʋ���ְ�
+        //}
+        //else
+        //{
+        //    _pivot.localRotation = Quaternion.Euler(0, 0, 0);//�ƴ϶�� �״�� �д�.
+        //}
 
         if (_isExplosive)
         {
