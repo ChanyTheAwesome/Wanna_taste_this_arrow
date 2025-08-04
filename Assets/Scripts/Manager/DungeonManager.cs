@@ -122,7 +122,7 @@ public class DungeonManager : MonoBehaviour
     {
         _isClear = true;
         gate.OpenGate();
-        AchievementManager.Instance.OnStageClear(GameManager.Instance.StageCount);
+        AchievementManager.Instance.OnDungeonClear(GameManager.Instance.StageCount);
         UIManager.Instance.SetClear();
     }
 
