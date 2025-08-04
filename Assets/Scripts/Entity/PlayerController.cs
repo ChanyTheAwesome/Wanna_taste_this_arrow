@@ -32,7 +32,7 @@ public class PlayerController : BaseController
         
         //PlayerManager.Instance.nowAnim = this.GetComponentInChildren<Animator>();
     }
-    private static int _maxHp;
+    private static float _maxHp;
     private static float _currentHp;
     private static int _numberOfPojectiles = 1;
     private static bool _reverse = false;
@@ -72,6 +72,7 @@ public class PlayerController : BaseController
 
     protected override void HandleAction()
     {
+        _maxHp = resource.Maxhealth;
         _currentHp = resource.CurrentHealth;
 
         UpdateHpBar();
@@ -303,9 +304,9 @@ public class PlayerController : BaseController
     // È¸º¹?
     public void RecoveryHp()
     {
-        _currentHp += 20;
-        if(_maxHp > _currentHp) return;
-        else _currentHp = _maxHp;
+        resource.CurrentHealth += 20;
+        if(resource.Maxhealth > resource.CurrentHealth) return;
+        else resource.CurrentHealth = resource.Maxhealth;
     }
 
     public void NextStageEntryInitailize()
