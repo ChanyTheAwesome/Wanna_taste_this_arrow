@@ -56,7 +56,8 @@ public class EnemyManager : MonoBehaviour
 
         Vector2 spawnPosition = new Vector2(spawnAreas[0].position.x, spawnAreas[0].position.y);
 
-        GameObject spawnBoss = Instantiate(bossPrefab, new Vector3(spawnPosition.x, spawnPosition.y), Quaternion.identity);
+        //GameObject spawnBoss = Instantiate(bossPrefab, new Vector3(spawnPosition.x, spawnPosition.y), Quaternion.identity);
+        GameObject spawnBoss = Instantiate(bossPrefab, new Vector3(spawnPosition.x, spawnPosition.y), new Quaternion(0, 0, 0, 0));
         BossController bossController = spawnBoss.GetComponent<BossController>();
         bossController.Init(_playerController.transform);
 

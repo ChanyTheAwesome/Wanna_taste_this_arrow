@@ -52,10 +52,10 @@ public class PlayerController : BaseController
 
         _maxHp = 100;
         _currentHp = _maxHp;
-        moveSpeed = statHandler.Speed;
+        moveSpeed = statHandler.Speed + 10; // 테스트용
         projectileSpeed = weaponHandler.Speed;
         delay = weaponHandler.Delay;
-        power = weaponHandler.Power;
+        power = weaponHandler.Power + 1000; // 테스트용
     }
 
     public void Init(GameManager gameManager)
