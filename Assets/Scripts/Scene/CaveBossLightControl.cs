@@ -19,9 +19,9 @@ public class CaveBossLightControl : MonoBehaviour
     private int alleyObstacleRowLength;
     private int hallObstacleRowLength;
 
-    void Awake()
+    void Start()
     {
-        GameObject playerObject = GameObject.Find("Player");
+        GameObject playerObject = GameObject.Find("Player(Clone)");
         if (playerObject != null)
         {
             player = playerObject;

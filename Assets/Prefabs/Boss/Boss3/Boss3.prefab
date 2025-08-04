@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 16163881982227923}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 9060721782151624834}
   - component: {fileID: 5932650874360103533}
   - component: {fileID: 3072613058002992693}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,7 +153,7 @@ GameObject:
   - component: {fileID: 6017438445534857184}
   - component: {fileID: 4413063320157099749}
   - component: {fileID: 1433923158376896856}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Boss3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f85e27f8618014c89d1f689d50af18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 200
   speed: 0.2
 --- !u!114 &5387318013335572280
 MonoBehaviour:
@@ -301,7 +301,7 @@ MonoBehaviour:
   weaponPivot: {fileID: 16163881982227923}
   WeaponPrefab: {fileID: 0}
   ProjectileManager: {fileID: 0}
-  weaponHandler: {fileID: 0}
+  hpSlider: {fileID: 0}
   IsCharging: 0
   GotChargeWeapon: 0
   LatestDirection: {x: 0, y: 0, z: 0}
@@ -324,6 +324,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1455434372200129543}
     m_Modifications:
+    - target: {fileID: 788753568369843749, guid: 3a22596ec031c1d4995e165ce3396445,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2236935760251227238, guid: 3a22596ec031c1d4995e165ce3396445,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -384,10 +389,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3635364630470394074, guid: 3a22596ec031c1d4995e165ce3396445,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5434521193499564894, guid: 3a22596ec031c1d4995e165ce3396445,
         type: 3}
       propertyPath: m_Name
       value: Burn
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434521193499564894, guid: 3a22596ec031c1d4995e165ce3396445,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5674264148081929935, guid: 3a22596ec031c1d4995e165ce3396445,
         type: 3}

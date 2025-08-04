@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6957780251247471842}
   - component: {fileID: 7124158646756855409}
   - component: {fileID: 3417658070236933787}
-  m_Layer: 20
+  m_Layer: 8
   m_Name: MainSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,9 +123,8 @@ GameObject:
   - component: {fileID: 1205940040763046627}
   - component: {fileID: 7881754654136982760}
   - component: {fileID: 8835621621767359225}
-  - component: {fileID: 6510474862808750519}
   - component: {fileID: 2550097095536403921}
-  m_Layer: 20
+  m_Layer: 8
   m_Name: Boss2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,7 +299,7 @@ MonoBehaviour:
   weaponPivot: {fileID: 8056052439931514518}
   WeaponPrefab: {fileID: 0}
   ProjectileManager: {fileID: 0}
-  weaponHandler: {fileID: 0}
+  hpSlider: {fileID: 0}
   IsCharging: 0
   GotChargeWeapon: 0
   LatestDirection: {x: 0, y: 0, z: 0}
@@ -362,21 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f85e27f8618014c89d1f689d50af18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
-  speed: 0
---- !u!114 &6510474862808750519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 777546872113589596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19f85e27f8618014c89d1f689d50af18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 10
+  health: 200
   speed: 0
 --- !u!50 &2550097095536403921
 Rigidbody2D:
@@ -415,7 +400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2121329194253316916}
   - component: {fileID: 4111362664964759091}
-  m_Layer: 20
+  m_Layer: 8
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -509,7 +494,7 @@ GameObject:
   m_Component:
   - component: {fileID: 334583170006403966}
   - component: {fileID: 177010586416383931}
-  m_Layer: 20
+  m_Layer: 8
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -592,7 +577,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8056052439931514518}
-  m_Layer: 20
+  m_Layer: 8
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -631,6 +616,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF Props - Gravestone 02
+      objectReference: {fileID: 0}
+    - target: {fileID: 2055102311959635369, guid: 6242b925f1d3e0d44a183102cd3d4c26,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2055102311959635375, guid: 6242b925f1d3e0d44a183102cd3d4c26,
         type: 3}
@@ -692,6 +682,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2055102312182832482, guid: 6242b925f1d3e0d44a183102cd3d4c26,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -720,6 +715,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF Props - Gravestone 02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2055102311959635369, guid: 6242b925f1d3e0d44a183102cd3d4c26,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2055102311959635375, guid: 6242b925f1d3e0d44a183102cd3d4c26,
         type: 3}
@@ -780,6 +780,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2055102312182832482, guid: 6242b925f1d3e0d44a183102cd3d4c26,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
