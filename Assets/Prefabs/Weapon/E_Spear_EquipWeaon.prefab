@@ -162,7 +162,9 @@ MonoBehaviour:
   isOnKnockback: 0
   knockbackPower: 0
   knockbackTime: 0
-  attackSoundClip: {fileID: 0}
+  attackSoundClip: {fileID: 8300000, guid: a58e438b7cfa445498120af0e6169082, type: 3}
+  _animator: {fileID: 0}
+  _weaponRenderer: {fileID: 0}
   spriteRenderer: {fileID: 0}
   CollideBoxSize: {x: 2, y: 0.5}
   isCharge: 0
