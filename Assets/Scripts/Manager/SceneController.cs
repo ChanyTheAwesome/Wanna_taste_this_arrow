@@ -20,7 +20,7 @@ public class SceneController : MonoBehaviour
     private const string THIRD_BOSS_SCENE_NAME = "CastleBossStageTest";
 
     // 테스트용으로 2로 설정, 원래는 5로 해야됨
-    private int _thirdDungeonStageCount = 0;    // 세번째 던전 전반부, 후반부 나누는 스테이지 수
+    private int _thirdDungeonStageCount = 2;    // 세번째 던전 전반부, 후반부 나누는 스테이지 수
 
     private void Awake()
     {
