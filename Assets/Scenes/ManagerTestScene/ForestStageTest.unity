@@ -23383,7 +23383,8 @@ MonoBehaviour:
   achievementImage: {fileID: 679565369}
   achievementTitle: {fileID: 976222021}
   achievementDescription: {fileID: 158690890}
-  clearButton: {fileID: 1526303407}
+  getExpButton: {fileID: 924096675}
+  stageClearButton: {fileID: 1526303407}
   gameOverButton: {fileID: 654169079}
 --- !u!222 &605075272
 CanvasRenderer:

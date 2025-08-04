@@ -26,6 +26,12 @@ public class GameUI : BaseUI
 
     private bool _isMenuOn = false;
 
+    //테스트용
+    [SerializeField] private Button getExpButton;
+    [SerializeField] private Button stageClearButton;
+    [SerializeField] private Button gameOverButton;
+    //테스트용
+
     private void Awake()
     {
         UIManager.Instance.GameUI = this;
@@ -36,6 +42,12 @@ public class GameUI : BaseUI
         secondCharacterIndex.onClick.AddListener(OnClickSecondButton);
         thirdCharacterIndex.onClick.AddListener(OnClickThirdButton);
         fourthCharacterIndex.onClick.AddListener(OnClickFourthButton);
+
+        //테스트용
+        getExpButton.onClick.AddListener(OnClickGetExp);
+        stageClearButton.onClick.AddListener(OnClickClearStage);
+        gameOverButton.onClick.AddListener(OnClickGameOverStage);
+        //테스트용
     }
 
     private void Start()
@@ -176,5 +188,21 @@ public class GameUI : BaseUI
         achievementDescription.text = description;
         yield return new WaitForSeconds(3);
         achievementImage.gameObject.SetActive(false);
+    }
+
+    public void OnClickGetExp()    // 테스트용 메서드
+    {
+        PlayerManager.Instance.GetEXP(50);
+    }
+
+    public void OnClickClearStage()    // 테스트용 메서드
+    {
+        DungeonManager.Instance.ClearStage();
+        DungeonManager.Instance.gate.OpenGate();
+    }
+
+    public void OnClickGameOverStage()  // 테스트용 메서드
+    {
+        DungeonManager.Instance.GameOver();
     }
 }
