@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum UIState // UI 상태 enum, 홈, 게임중, 게임종료 등으로 나눌 예정 < 필요한가 모르겠음
+public enum UIState // UI 상태
 {
     Home,
     Game,
@@ -14,8 +14,6 @@ public class UIManager : MonoBehaviour
 {
     private static UIManager instance;
     public static UIManager Instance {  get { return instance; } }
-
-    //public UIState currentState;
 
     HomeUI _homeUI;
     public HomeUI HomeUI { get { return _homeUI; } set { _homeUI = value; } }
@@ -40,13 +38,6 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        //_homeUI = GetComponentInChildren<HomeUI>(true);
-        //_homeUI.Init(/*this*/);
-        //_gameUI = GetComponentInChildren<GameUI>(true);
-        //_gameUI.Init(/*this*/);
-        //_gameOverUI = GetComponentInChildren<GameOverUI>(true);
-        //_gameOverUI.Init(/*this*/);
     }
 
     private void Start()
@@ -61,8 +52,6 @@ public class UIManager : MonoBehaviour
 
     public void SetGame()   // 게임중 UI 설정
     {
-        //_gameUI.SetGame();
-        // 일시정지나 메뉴 UI 띄우기
         ChangeState(UIState.Game);
     }
 
@@ -84,20 +73,11 @@ public class UIManager : MonoBehaviour
 
     public void SetAchievement(string name, string description)
     {
-        Debug.Log("SetAchievement");
         StartCoroutine(_gameUI.SetAchievementUI(name, description));
-    }
-
-    public void SetClearStage() // 스테이지 클리어 시 UI 설정
-    {
-        // 스테이지 클리어했다는 문구라도 띄우기
     }
 
     public void ChangeState(UIState state)
     {
         GameManager.Instance.CurrentState = state;
-        //_homeUI.SetActive(GameManager.Instance.CurrentState);
-        //_gameUI.SetActive(GameManager.Instance.CurrentState);
-        //_gameOverUI.SetActive(GameManager.Instance.CurrentState);
     }
 }

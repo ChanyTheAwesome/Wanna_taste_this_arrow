@@ -8,23 +8,10 @@ public class NextStageArea : MonoBehaviour   // 스테이지 다 깨고 게이트로 이동 �
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("충돌");    // 테스트용
         if (DungeonManager.Instance.IsClear) // 클리어 했는지 확인
         {
-            Debug.Log("클리어는 됨");    // 테스트용
             if ((levelCollisionLayer.value & (1 << collision.gameObject.layer)) != 0)   // 충돌체가 플레이어인지 확인
             {
-                Debug.Log("이동 시도"); // 테스트용
-                // 현재 스테이지가 던전의 최대 스테이지보다 작다면 다음 스테이지 이동
-                //if(GameManager.Instance.StageCount < DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].MaxStageCount)
-                //{
-                //    DungeonManager.Instance.StartStage();
-                //}
-                // 마지막 스테이지면 던전 나가기
-                //else
-                //{
-                //    DungeonManager.Instance.ExitDungeon();
-                //}
                 if (DungeonManager.Instance.CheckBossStage())   // 보스 스테이지면 던전 나가기
                 {
                     DungeonManager.Instance.ExitDungeon();

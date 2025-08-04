@@ -46,16 +46,15 @@ public class PlayerController : BaseController
         PlayerManager.Instance.SetCharacter();  // 캐릭터 외형 변경
         if (DungeonManager.Instance.CurrentDungeonID == 2)
         {
-            Debug.Log("머티리얼 설정 시도는 함"); // 테스트용
             this.GetComponentInChildren<SpriteRenderer>().material = DungeonManager.Instance.CaveMaterial;
         }
 
         _maxHp = 100;
         _currentHp = _maxHp;
-        moveSpeed = statHandler.Speed + 10; // 테스트용
+        moveSpeed = statHandler.Speed;
         projectileSpeed = weaponHandler.Speed;
         delay = weaponHandler.Delay;
-        power = weaponHandler.Power + 1000; // 테스트용
+        power = weaponHandler.Power;
     }
 
     public void Init(GameManager gameManager)
@@ -86,7 +85,6 @@ public class PlayerController : BaseController
     {
         base.Death();
         DungeonManager.Instance.GameOver();
-        //gameManager.GameOver();
     }
 
     void OnMove()
@@ -224,7 +222,7 @@ public class PlayerController : BaseController
     public void MaxHpUp()
     {
         if (statHandler == null) return;
-        statHandler.Health += 200;
+        statHandler.Health += 20;
         _maxHp = statHandler.Health;
     }
 
@@ -232,7 +230,7 @@ public class PlayerController : BaseController
     public void MoveSpeedUp()
     {
         if (statHandler == null) return;
-        moveSpeed += 10f;
+        moveSpeed += 1f;
         statHandler.Speed = moveSpeed;
     }
 
@@ -240,7 +238,7 @@ public class PlayerController : BaseController
     public void AttackSpeedUp()
     {
         if (weaponHandler == null) return;
-        delay -= 0.8f;
+        delay -= 0.1f;
         weaponHandler.Delay = delay;
     }
 
@@ -248,7 +246,7 @@ public class PlayerController : BaseController
     public void ProjectileSpeedUp()
     {
         if (weaponHandler == null) return;
-        projectileSpeed += 10f;
+        projectileSpeed += 1f;
         weaponHandler.Speed = projectileSpeed;
     }
 
@@ -256,7 +254,7 @@ public class PlayerController : BaseController
     public void AttackPowerUp()
     {
         if (weaponHandler == null) return;
-        power += 10f;
+        power += 1f;
         weaponHandler.Power = power;
     }
 

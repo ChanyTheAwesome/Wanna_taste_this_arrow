@@ -10,7 +10,7 @@ public class TutorialUI : MonoBehaviour
     [SerializeField] private Button thirdButton;
     [SerializeField] private Image firstPage;
     [SerializeField] private Image secondPage;
-    // Start is called before the first frame update
+
     void Start()
     {
         firstPage.gameObject.SetActive(false);

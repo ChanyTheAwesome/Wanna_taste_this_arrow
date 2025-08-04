@@ -24,16 +24,10 @@ public class GameUI : BaseUI
     [SerializeField] private Text achievementTitle;
     [SerializeField] private Text achievementDescription;
 
-    //테스트용
-    [SerializeField] private Button clearButton;
-    [SerializeField] private Button gameOverButton;
     private bool _isMenuOn = false;
-    //테스트용
-    // 메뉴 버튼 눌렀을 때
 
     private void Awake()
     {
-        //Init();
         UIManager.Instance.GameUI = this;
 
         exitDungeonButton.onClick.AddListener(OnClickExitDungeonButton);
@@ -42,11 +36,6 @@ public class GameUI : BaseUI
         secondCharacterIndex.onClick.AddListener(OnClickSecondButton);
         thirdCharacterIndex.onClick.AddListener(OnClickThirdButton);
         fourthCharacterIndex.onClick.AddListener(OnClickFourthButton);
-
-        //테스트용
-        clearButton.onClick.AddListener(OnClickClearStage);
-        gameOverButton.onClick.AddListener(OnClickGameOverStage);
-        //테스트용
     }
 
     private void Start()
@@ -58,7 +47,6 @@ public class GameUI : BaseUI
         }
         else
         {
-            Debug.Log("UI 세팅");
             SetGame();
             PlayerManager.Instance.SetCharacter();  // 캐릭터 외형 변경
         }
@@ -71,13 +59,6 @@ public class GameUI : BaseUI
             CheckMenu();
         }
     }
-
-    //public override void Init()
-    //{
-    //    _menuButton.onClick.AddListener(OnClickMenuButton);
-    //    _exitDungeonButton.onClick.AddListener(OnClickExitDungeon);
-    //    _closeUIButton.onClick.AddListener(OnClickExitUI);
-    //}
 
     protected override UIState GetUIState()
     {
@@ -105,12 +86,6 @@ public class GameUI : BaseUI
         // 홈 씬 불러오기
         DungeonManager.Instance.ExitDungeon();
     }
-
-    //public void OnClickOption() // 옵션 버튼 클릭
-    //{
-    //    StopGame();
-    //    // 옵션 UI 띄우기
-    //}
 
     public void OnClickCloseMenuButton() // UI 닫기 버튼 클릭
     {
@@ -182,11 +157,9 @@ public class GameUI : BaseUI
     public void SetGame()   // 게임중 UI 설정
     {
         // 메뉴 UI 띄우기
-        Debug.Log("SetGame");
         menuImage.gameObject.SetActive(false);
         characterSelectUI.SetActive(false);
         abilitySelectUI.SetActive(false);
-        Debug.Log("도전과제 꺼야되는데");
         achievementImage.gameObject.SetActive(false);
     }
 
@@ -203,23 +176,5 @@ public class GameUI : BaseUI
         achievementDescription.text = description;
         yield return new WaitForSeconds(3);
         achievementImage.gameObject.SetActive(false);
-    }
-
-    public void OnClickClearStage()    // 테스트용 메서드
-    {
-        Debug.Log("클리어 누름");
-        DungeonManager.Instance.ClearStage();
-        DungeonManager.Instance.gate.OpenGate();
-    }
-
-    public void OnClickGameOverStage()  // 테스트용 메서드
-    {
-        Debug.Log("게임오버 누름");
-        DungeonManager.Instance.GameOver();
-    }
-
-    public void OnClickGetExp()    // 테스트용
-    {
-        PlayerManager.Instance.GetEXP(50);
     }
 }

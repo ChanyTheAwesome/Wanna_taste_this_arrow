@@ -60,16 +60,6 @@ public class PlayerAbilityController : MonoBehaviour
         return result;
     }
 
-    //public AbilityData GetRandomAbility(int count)
-    //{
-    //    AbilityData result;
-
-    //        int index = Random.Range(0, _abilityList.Count);
-    //        result = _abilityList[index];
-
-    //    return result;
-    //}
-
     public AbilityData GetAbilityData(string abilityName)
     {
         if(_abilityDict.ContainsKey(abilityName)) return _abilityDict[abilityName];
