@@ -88049,7 +88049,7 @@ MonoBehaviour:
   secondCharacterIndex: {fileID: 2034319567}
   thirdCharacterIndex: {fileID: 559124960}
   fourthCharacterIndex: {fileID: 610487458}
-  abillitySelectUI: {fileID: 566979021}
+  abilitySelectUI: {fileID: 566979021}
   achievementImage: {fileID: 1770023136}
   achievementTitle: {fileID: 949222202}
   achievementDescription: {fileID: 24553036}

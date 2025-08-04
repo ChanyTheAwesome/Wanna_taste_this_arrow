@@ -75,6 +75,8 @@ public class UIManager : MonoBehaviour
     public void SetGameOver()   // 게임 오버시 UI 설정
     {
         // 일시정지 후 게임오버 UI 띄우기
+        _gameUI.SetActiveGameUI(false);
+        _clearUI.SetActiveClearUI(false);
         _gameOverUI.SetGameOverUI();
         // 실패했다는 UI 출력(진행결과 등 포함?, 홈으로 돌아가기 버튼)
         ChangeState(UIState.GameOver);

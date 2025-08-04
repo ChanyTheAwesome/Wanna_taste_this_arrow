@@ -35240,7 +35240,7 @@ MonoBehaviour:
   secondCharacterIndex: {fileID: 2093536695}
   thirdCharacterIndex: {fileID: 830141396}
   fourthCharacterIndex: {fileID: 111755369}
-  abillitySelectUI: {fileID: 75442361}
+  abilitySelectUI: {fileID: 75442361}
   achievementImage: {fileID: 444732180}
   achievementTitle: {fileID: 248171695}
   achievementDescription: {fileID: 374709076}

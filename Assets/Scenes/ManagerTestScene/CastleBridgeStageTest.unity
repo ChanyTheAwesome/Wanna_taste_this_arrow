@@ -33318,7 +33318,7 @@ MonoBehaviour:
   secondCharacterIndex: {fileID: 753563264}
   thirdCharacterIndex: {fileID: 1491976009}
   fourthCharacterIndex: {fileID: 1625157858}
-  abillitySelectUI: {fileID: 309040236}
+  abilitySelectUI: {fileID: 309040236}
   achievementImage: {fileID: 218806475}
   achievementTitle: {fileID: 801163351}
   achievementDescription: {fileID: 1800997879}
@@ -33883,9 +33883,9 @@ RectTransform:
   m_Children:
   - {fileID: 247404237}
   - {fileID: 1812470343}
-  - {fileID: 309040235}
   - {fileID: 1014189290}
   - {fileID: 886863334}
+  - {fileID: 309040235}
   - {fileID: 973810228}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

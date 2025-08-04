@@ -17,7 +17,7 @@ public class GameUI : BaseUI
     [SerializeField] private Button fourthCharacterIndex;
 
     // 능력 선택 UI
-    [SerializeField] private GameObject abillitySelectUI;
+    [SerializeField] private GameObject abilitySelectUI;
 
     // 도전 과제 클리어 UI
     [SerializeField] private Image achievementImage;
@@ -89,6 +89,14 @@ public class GameUI : BaseUI
         _isMenuOn = true;
         StopGame(); // 게임 정지
         SetMenu();  // 메뉴창 띄우기
+    }
+
+    public void SetActiveGameUI(bool b)
+    {
+        menuImage.gameObject.SetActive(b);
+        characterSelectUI.SetActive(b);
+        abilitySelectUI.SetActive(b);
+        achievementImage.gameObject.SetActive(b);
     }
 
     public void OnClickExitDungeonButton()
@@ -164,7 +172,7 @@ public class GameUI : BaseUI
         StopGame();
         characterSelectUI.SetActive(true);
         menuImage.gameObject.SetActive(false);
-        abillitySelectUI.SetActive(false);
+        abilitySelectUI.SetActive(false);
         achievementImage.gameObject.SetActive(false);
         secondCharacterIndex.interactable = AchievementManager.Instance.GetAchievementClear()[0];
         thirdCharacterIndex.interactable = AchievementManager.Instance.GetAchievementClear()[1];
@@ -177,7 +185,7 @@ public class GameUI : BaseUI
         Debug.Log("SetGame");
         menuImage.gameObject.SetActive(false);
         characterSelectUI.SetActive(false);
-        abillitySelectUI.SetActive(false);
+        abilitySelectUI.SetActive(false);
         Debug.Log("도전과제 꺼야되는데");
         achievementImage.gameObject.SetActive(false);
     }

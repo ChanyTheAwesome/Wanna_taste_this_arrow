@@ -27,6 +27,12 @@ public class ClearUI : BaseUI
         }
     }
 
+    public void SetActiveClearUI(bool b)
+    {
+        stageClearTxt.gameObject.SetActive(b);
+        dungeonClearTxt.gameObject.SetActive(b);
+    }
+
     protected override UIState GetUIState()
     {
         return UIState.Clear;

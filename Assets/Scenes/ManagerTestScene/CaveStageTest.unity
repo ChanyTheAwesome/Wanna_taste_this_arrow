@@ -332,7 +332,7 @@ MonoBehaviour:
   secondCharacterIndex: {fileID: 1986007889}
   thirdCharacterIndex: {fileID: 534041331}
   fourthCharacterIndex: {fileID: 1813799103}
-  abillitySelectUI: {fileID: 688786824}
+  abilitySelectUI: {fileID: 688786824}
   achievementImage: {fileID: 1085309308}
   achievementTitle: {fileID: 902657455}
   achievementDescription: {fileID: 654919099}
@@ -25937,7 +25937,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ad7324c46c08c0489f08d30e9eeb4d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StageCount: 10
   directionalLight: {fileID: 0}
 --- !u!1 &2062464252
 GameObject:
