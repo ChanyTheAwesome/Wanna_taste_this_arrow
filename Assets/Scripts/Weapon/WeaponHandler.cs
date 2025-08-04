@@ -64,10 +64,10 @@ public class WeaponHandler : MonoBehaviour
     {
         AttackAnimation();//애니메이션을 호출하고
 
-        /*if(attackSoundClip != null)
+        if (attackSoundClip != null)
         {
-            SoundManager.PlayClip(attackSoundClip);//소리를 출력한다.
-        }*/
+            SoundManager.PlayClip(attackSoundClip);
+        }
     }
 
     public void AttackAnimation()

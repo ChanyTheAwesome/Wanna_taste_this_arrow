@@ -143,11 +143,13 @@ MonoBehaviour:
   WeaponPrefab: {fileID: 4740706890977349068, guid: a2331915e3e86aa4a94dfdc133b302d0,
     type: 3}
   ProjectileManager: {fileID: 0}
+  hpSlider: {fileID: 0}
   IsCharging: 0
   GotChargeWeapon: 0
   LatestDirection: {x: 0, y: 0, z: 0}
   target: {fileID: 0}
   followRange: 15
+  deadSoundClip: {fileID: 8300000, guid: 291608b8d286e2a4580ff36324455ce2, type: 3}
 --- !u!114 &4842303479092965760
 MonoBehaviour:
   m_ObjectHideFlags: 0
