@@ -18,6 +18,6 @@
     "AchievementName": "3 던전 클리어!",
     "Description": "3 던전을 클리어했습니다.",
     "DungeonGoalNumber": 3,
-    "IsCleared": false
+    "IsCleared": true
   }
 ]
