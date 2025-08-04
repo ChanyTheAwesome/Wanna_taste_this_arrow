@@ -79151,7 +79151,7 @@ GameObject:
   - component: {fileID: 500800059}
   - component: {fileID: 500800058}
   - component: {fileID: 500800061}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AlleyCollision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80469,7 +80469,6 @@ MonoBehaviour:
   directionCamera: {fileID: 3411282}
   bossDirect: {fileID: 1731739996}
   bossCollision: {fileID: 1583355809}
-  test: {fileID: 3688016249616336536, guid: e777eda281a10b440aa8019894513926, type: 3}
 --- !u!4 &773025487
 Transform:
   m_ObjectHideFlags: 0
@@ -81286,7 +81285,7 @@ GameObject:
   - component: {fileID: 1244333577}
   - component: {fileID: 1244333576}
   - component: {fileID: 1244333579}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86216,7 +86215,7 @@ GameObject:
   - component: {fileID: 1583355813}
   - component: {fileID: 1583355812}
   - component: {fileID: 1583355811}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BossCollision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
