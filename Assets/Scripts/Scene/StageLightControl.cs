@@ -5,7 +5,7 @@ using UnityEngine.Experimental.GlobalIllumination;
 
 public class StageLightControl : MonoBehaviour
 {
-    public int StageCount = 1;
+    private int stageCount;
 
     [SerializeField]
     private Light directionalLight;
@@ -19,8 +19,10 @@ public class StageLightControl : MonoBehaviour
         }
         directionalLight = GameObject.Find("DirectionalLight").GetComponent<Light>();
 
-        directionalLight.intensity = 0.4f - StageCount * 0.04f;
-        playerLight.range = 30f - StageCount * 1f;
-        playerLight.intensity = 2f - StageCount * 0.15f;
+        stageCount = GameManager.Instance.StageCount;
+
+        directionalLight.intensity = 0.4f - stageCount * 0.04f;
+        playerLight.range = 30f - stageCount * 1f;
+        playerLight.intensity = 2f - stageCount * 0.15f;
     }
 }
