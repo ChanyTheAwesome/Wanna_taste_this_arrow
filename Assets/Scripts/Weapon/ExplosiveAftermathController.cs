@@ -27,7 +27,7 @@ public class ExplosiveAftermathController : MonoBehaviour
             ResourceController resourceController = collision.GetComponent<ResourceController>();
             if(resourceController != null)
             {
-                resourceController.ChangeHealth(_power);
+                resourceController.ChangeHealth(-_power);
             }
         }
     }
