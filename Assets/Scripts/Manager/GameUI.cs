@@ -116,10 +116,12 @@ public class GameUI : BaseUI
         if (!_isMenuOn)
         {
             OpenMenu();
+            _isMenuOn = true;
         }
         else if (_isMenuOn)
         {
             OnClickCloseMenuButton();
+            _isMenuOn= false;
         }
     }
 
