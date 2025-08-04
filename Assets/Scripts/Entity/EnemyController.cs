@@ -9,6 +9,8 @@ public class EnemyController : BaseController
     [SerializeField] private Transform target; // EnemyManager 제작 후 [SerializeField] 빼야됨
     [SerializeField] private float followRange = 15.0f;
 
+    public AudioClip deadSoundClip;
+
     public void SetEnemyHealth(float multiplier)//적의 체력을 재설정한다.
     {
         statHandler.Health = (int)Mathf.Ceil(statHandler.Health * multiplier);
@@ -78,6 +80,8 @@ public class EnemyController : BaseController
     public override void Death()
     {
         base.Death();
+        if(deadSoundClip != null) SoundManager.PlayClip(deadSoundClip);
+
         if (!DungeonManager.Instance.CheckBossStage())
         {
             PlayerManager.Instance.GetEXP(Random.Range(8, 11)); // 적 죽을 때 8에서 10사이의 경험치 얻음

@@ -122,5 +122,7 @@ public class BossController : BaseController
     {
         /*base.Death();
         enemyManager.RemoveEnemyOnDeath(this);*/
+        Destroy(this.gameObject);
+        DungeonManager.Instance.CheckClearStage();
     }
 }

@@ -10,6 +10,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private Color gizmoColor = new Color(1, 0, 0, 0.3f);
 
     private List<EnemyController> _activeEnemies = new List<EnemyController>();
+    private BossController _bossController;
 
     //private bool _enemySpawnComplete;
 
@@ -26,7 +27,12 @@ public class EnemyManager : MonoBehaviour
     private void Start()
     {
         //StartCoroutine("SpawnMonster", DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].EnemyCount);
-        StartCoroutine(SpawnMonster(DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].EnemyCount));
+        if(!DungeonManager.Instance.CheckBossStage())   // 보스 스테이지가 아니면
+            StartCoroutine(SpawnMonster(DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].EnemyCount));
+        else    // 보스 스테이지면
+        {
+            SpawnBossMonster();
+        }
     }
 
     public IEnumerator SpawnMonster(int enemyCount)  // 일반 몬스터 생성
@@ -40,7 +46,24 @@ public class EnemyManager : MonoBehaviour
 
     public void SpawnBossMonster()  // 보스 몬스터 생성
     {
+        if (enemyPrefabs.Count == 0 || spawnAreas.Count == 0)
+        {
+            Debug.LogWarning("Enemy Prefabs 또는 Spawn Areas가 설정되지 않았습니다.");
+            return;
+        }
 
+        GameObject bossPrefab = enemyPrefabs[0];
+
+        Vector2 spawnPosition = new Vector2(spawnAreas[0].position.x, spawnAreas[0].position.y);
+
+        GameObject spawnBoss = Instantiate(bossPrefab, new Vector3(spawnPosition.x, spawnPosition.y), Quaternion.identity);
+        BossController bossController = spawnBoss.GetComponent<BossController>();
+        bossController.Init(_playerController.transform);
+
+        //if(bossController != null)
+        //{
+        //    _bossController = bossController;
+        //}
     }
 
     public bool CheckEnemyExist()   // Enemy 레이어를 가진 오브젝트가 존재하는지 체크, 없으면 false 있으면 true

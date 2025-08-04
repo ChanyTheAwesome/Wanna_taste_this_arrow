@@ -25,10 +25,12 @@ public class Gate : MonoBehaviour
         //}
         if(closedGate != null)
         {
+            Debug.Log("´ÝÈù ¹® ¾ø¾Ú");
             closedGate.gameObject.SetActive(!DungeonManager.Instance.IsClear);
         }
         if(openedGate != null)
         {
+            Debug.Log("¹® ¿­±â");
             openedGate.gameObject.SetActive(DungeonManager.Instance.IsClear);
         }
     }

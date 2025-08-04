@@ -301,6 +301,7 @@ MonoBehaviour:
   LatestDirection: {x: 0, y: 0, z: 0}
   target: {fileID: 0}
   followRange: 15
+  deadSoundClip: {fileID: 8300000, guid: 291608b8d286e2a4580ff36324455ce2, type: 3}
 --- !u!114 &6527693497018001769
 MonoBehaviour:
   m_ObjectHideFlags: 0
