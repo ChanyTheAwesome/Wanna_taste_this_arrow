@@ -13,35 +13,37 @@ public class CastleBossClear : MonoBehaviour
 
     void Start()
     {
-        GameObject alleyObj = GameObject.Find("Alley");
+        DungeonManager.Instance.CastleBossClear = this;
+
+        //GameObject alleyObj = GameObject.Find("Alley");
         GameObject alleyCollisionObj = GameObject.Find("AlleyCollision");
 
-        if(alleyObj == null)
-        {
-            Debug.Log("길목 없음");
-        }
+        //if(alleyObj == null)
+        //{
+        //    Debug.Log("길목 없음");
+        //}
         if(alleyCollisionObj == null)
         {
             Debug.Log("길목 충돌 없음");
         }
 
-        alley = alleyObj;
+        //alley = alleyObj;
         alleyCollision = alleyCollisionObj;
     }
     
     void Update()
     {
-        if (!DungeonManager.Instance.IsClear)
-        {
-            return;
-        }
-        else
-        {
-            SetActiveAlley();
-        }
+        //if (!DungeonManager.Instance.IsClear)
+        //{
+        //    return;
+        //}
+        //else
+        //{
+        //    SetActiveAlley();
+        //}
     }
 
-    void SetActiveAlley()
+    public void SetActiveAlley()
     {
         alley.SetActive(true);
         alleyCollision.SetActive(false);
