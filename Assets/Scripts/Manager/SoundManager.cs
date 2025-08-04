@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
@@ -13,15 +14,23 @@ public class SoundManager : MonoBehaviour
     private AudioSource musicAudioSource;
     public AudioClip musicClip;
 
-    public SoundSource soundSourcePrefab;
+    public GameObject soundSourcePrefab;
 
     private void Awake()
     {
-        instance = this;
-        DontDestroyOnLoad(gameObject);
-        musicAudioSource = GetComponent<AudioSource>();
+        if(instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else Destroy(gameObject);
+            musicAudioSource = GetComponent<AudioSource>();
         musicAudioSource.volume = musicVolume;
         musicAudioSource.loop = true;
+
+        musicClip = Resources.Load("01 - Barren Lands_Loop") as AudioClip;
+        soundSourcePrefab = Resources.Load("Prefabs/SoundSource") as GameObject;
+        Debug.Log(soundSourcePrefab);
     }
 
     private void Start()
@@ -37,7 +46,7 @@ public class SoundManager : MonoBehaviour
     }
     public static void PlayClip(AudioClip clip)
     {
-        SoundSource obj = Instantiate(instance.soundSourcePrefab);
+        GameObject obj = Instantiate(instance.soundSourcePrefab);
         SoundSource soundSource = obj.GetComponent<SoundSource>();
         soundSource.Play(clip, instance.soundEffectVolume, instance.soundEffectPitchVariance);
     }
