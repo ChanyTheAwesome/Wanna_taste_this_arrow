@@ -41,7 +41,7 @@ public class DungeonManager : MonoBehaviour
     {
         DungeonDict.Add(1, new Dungeon(1, "잠자는 숲속의 좀비^^", 2, 6, 3, 1.05f));
         DungeonDict.Add(2, new Dungeon(2, "번호따고 싶은 석상^^", 2, 6, 3, 1.05f));
-        DungeonDict.Add(3, new Dungeon(3, "야 묘비 삽 넣을게^^", 4, 6, 3, 1.05f));
+        DungeonDict.Add(3, new Dungeon(3, "야 묘비 삽 넣을게^^", 2, 6, 3, 1.05f));
     }
      
     //Or try to use Json/newtonJson to read json data.

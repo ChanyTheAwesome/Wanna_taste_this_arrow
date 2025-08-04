@@ -1132,7 +1132,7 @@ MonoBehaviour:
   Obstacles: {fileID: 346427637}
   Obstacle: {fileID: 5434521193499564894, guid: 3a22596ec031c1d4995e165ce3396445,
     type: 3}
-  NavigationSurface: {fileID: 0}
+  NavigationSurface: {fileID: 1433826719}
   maxY: 12
   minY: -45
   maxX: -11
@@ -1156,7 +1156,7 @@ MonoBehaviour:
   Obstacles: {fileID: 346427637}
   Obstacle: {fileID: 7882985099405916462, guid: 1b8bb0e8f9a0ef8409e2595025276a1c,
     type: 3}
-  NavigationSurface: {fileID: 0}
+  NavigationSurface: {fileID: 1433826719}
   maxY: 12
   minY: -45
   maxX: 18

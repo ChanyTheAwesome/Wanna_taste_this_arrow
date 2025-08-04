@@ -28389,7 +28389,7 @@ MonoBehaviour:
   Obstacles: {fileID: 498956688}
   Obstacle: {fileID: 7882985099405916462, guid: 1b8bb0e8f9a0ef8409e2595025276a1c,
     type: 3}
-  NavigationSurface: {fileID: 0}
+  NavigationSurface: {fileID: 1054530874}
   maxY: 36.49
   minY: 30.4
   maxX: 15.49
@@ -28413,7 +28413,7 @@ MonoBehaviour:
   Obstacles: {fileID: 498956688}
   Obstacle: {fileID: 7882985099405916462, guid: 1b8bb0e8f9a0ef8409e2595025276a1c,
     type: 3}
-  NavigationSurface: {fileID: 0}
+  NavigationSurface: {fileID: 1054530874}
   maxY: 2.31
   minY: -18.13
   maxX: -7.86
@@ -28437,7 +28437,7 @@ MonoBehaviour:
   Obstacles: {fileID: 498956688}
   Obstacle: {fileID: 5434521193499564894, guid: 3a22596ec031c1d4995e165ce3396445,
     type: 3}
-  NavigationSurface: {fileID: 0}
+  NavigationSurface: {fileID: 1054530874}
   maxY: 1.8
   minY: -18.3
   maxX: 21.88
@@ -28662,8 +28662,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f7521116d91a5e44aaa53758370b6df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  closedGate: {fileID: 142754129}
-  openedGate: {fileID: 1999722826}
+  closedGate: {fileID: 1999722826}
+  openedGate: {fileID: 142754129}
 --- !u!1 &619162890
 GameObject:
   m_ObjectHideFlags: 0
