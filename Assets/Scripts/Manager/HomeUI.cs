@@ -15,6 +15,7 @@ public class HomeUI : BaseUI
     [SerializeField] private Text _currentDungeonNameText;
     [SerializeField] List<Image> _dungeonImages;
     [SerializeField] private Image _menuImage;
+    [SerializeField] private GameObject _menuImageObj;
 
     private List<Button> _otherButtons = new(); // 메뉴 열었을 때 비활성화시킬 버튼 리스트
 
@@ -34,6 +35,7 @@ public class HomeUI : BaseUI
     {
         _currentDungeonNameText.text = DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].Name;
         SetDungeonImageActive();
+        _menuImageObj.SetActive(false);
     }
 
     public void OnClickMenuButton()
