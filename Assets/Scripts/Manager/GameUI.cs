@@ -58,6 +58,7 @@ public class GameUI : BaseUI
         }
         else
         {
+            Debug.Log("UI 세팅");
             SetGame();
             PlayerManager.Instance.SetCharacter();  // 캐릭터 외형 변경
         }
@@ -171,9 +172,11 @@ public class GameUI : BaseUI
     public void SetGame()   // 게임중 UI 설정
     {
         // 메뉴 UI 띄우기
+        Debug.Log("SetGame");
         menuImage.gameObject.SetActive(false);
         characterSelectUI.SetActive(false);
         abillitySelectUI.SetActive(false);
+        Debug.Log("도전과제 꺼야되는데");
         achievementImage.gameObject.SetActive(false);
     }
 
