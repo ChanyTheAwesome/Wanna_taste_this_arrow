@@ -62,10 +62,14 @@ public class BossController : BaseController
         {
             timeSincelastAttack = 0.0f;
             Attack();
-            if(weaponIndex != 0)
+            if(weaponHandler is MeleeWeaponHandler meleeweapon)
             {
-                ChangeWeapon();
+                if(meleeweapon.IsCharge)
+                {
+                    return;
+                }
             }
+            ChangeWeapon();
         }
     }
     protected override void Rotate(Vector2 direction)

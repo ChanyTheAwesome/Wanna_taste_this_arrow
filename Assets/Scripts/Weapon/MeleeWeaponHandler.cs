@@ -11,6 +11,7 @@ public class MeleeWeaponHandler : WeaponHandler
 
     [Header("Fields for Charge Attack")]
     [SerializeField] private bool isCharge;
+    public bool IsCharge => isCharge;
     [SerializeField] private GameObject ChargeCollider;
     protected override void Start()
     {
