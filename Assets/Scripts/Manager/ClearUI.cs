@@ -19,11 +19,11 @@ public class ClearUI : BaseUI
     {
         if (GameManager.Instance.StageCount == DungeonManager.Instance.DungeonDict[DungeonManager.Instance.CurrentDungeonID].MaxStageCount)
         {
-            stageClearTxt.gameObject.SetActive(true);
+            dungeonClearTxt.gameObject.SetActive(true);
         }
         else
         {
-            dungeonClearTxt.gameObject.SetActive(true);
+            stageClearTxt.gameObject.SetActive(true);
         }
     }
 
