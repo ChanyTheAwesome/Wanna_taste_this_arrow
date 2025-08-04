@@ -54,6 +54,7 @@ public class AchievementManager : MonoBehaviour
     public void OnDungeonClear(int dungeonNumber)   // 스테이지 클리어시 호출하기
     {
         Debug.Log("과제 달성 호출");
+        Debug.Log(DungeonManager.Instance.CurrentDungeonID);
         foreach(var achievement in AchievementDict.Values)
         {
             if (achievement.DungeonGoalNumber == dungeonNumber && !achievement.IsCleared)

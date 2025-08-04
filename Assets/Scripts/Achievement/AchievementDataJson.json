@@ -1,23 +1,23 @@
 [
   {
     "ID": 1,
-    "AchievementName": "1 스테이지 클리어!",
-    "Description": "1 스테이지를 클리어했습니다.",
-    "StageGoalNumber": 1,
+    "AchievementName": "1 던전 클리어!",
+    "Description": "1 던전을 클리어했습니다.",
+    "DungeonGoalNumber": 1,
     "IsCleared": true
   },
   {
     "ID": 2,
-    "AchievementName": "2 스테이지 클리어!",
-    "Description": "2 스테이지를 클리어했습니다.",
-    "StageGoalNumber": 2,
-    "IsCleared": true
+    "AchievementName": "2 던전 클리어!",
+    "Description": "2 던전을 클리어했습니다.",
+    "DungeonGoalNumber": 2,
+    "IsCleared": false
   },
   {
     "ID": 3,
-    "AchievementName": "3 스테이지 클리어!",
-    "Description": "3 스테이지를 클리어했습니다.",
-    "StageGoalNumber": 3,
+    "AchievementName": "3 던전 클리어!",
+    "Description": "3 던전을 클리어했습니다.",
+    "DungeonGoalNumber": 3,
     "IsCleared": false
   }
 ]
