@@ -63,7 +63,7 @@ MonoBehaviour:
   projectileSpawnPosition: {fileID: 780729174318371468}
   projectileSpawnBackPosition: {fileID: 0}
   bulletIndex: 2
-  bulletSize: 5
+  bulletSize: 4
   duration: 100
   spread: 1
   numberofProjectilesPerShot: 1

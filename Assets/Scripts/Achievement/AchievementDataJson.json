@@ -11,7 +11,7 @@
     "AchievementName": "2 던전 클리어!",
     "Description": "2 던전을 클리어했습니다.",
     "DungeonGoalNumber": 2,
-    "IsCleared": false
+    "IsCleared": true
   },
   {
     "ID": 3,
