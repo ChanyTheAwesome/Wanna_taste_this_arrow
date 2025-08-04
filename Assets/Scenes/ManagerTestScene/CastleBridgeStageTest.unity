@@ -846,7 +846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exitDungeonButton: {fileID: 293457778}
-  gameOverImage: {fileID: 0}
+  gameOverImage: {fileID: 81089238}
   clearStageScore: {fileID: 1893364833}
   levelUpScore: {fileID: 1809282529}
 --- !u!1 &287116136

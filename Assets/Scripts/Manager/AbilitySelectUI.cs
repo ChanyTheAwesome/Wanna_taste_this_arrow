@@ -22,11 +22,11 @@ public class AbilitySelectUI : MonoBehaviour
         playerController = controller;
 
         Vector3 basePos = selectPos.position;
-        basePos.x += 200;
+        basePos.x += 450;
         for (int i = 0; i < abilities.Count; i++)
         {
             Vector3 newPos = basePos;
-            newPos.x -= 200f * i;
+            newPos.x -= 450f * i;
             GameObject select = Instantiate(selectPrefab, selectPos);
             select.transform.position = newPos;
             AbilityCard card = select.GetComponent<AbilityCard>();
