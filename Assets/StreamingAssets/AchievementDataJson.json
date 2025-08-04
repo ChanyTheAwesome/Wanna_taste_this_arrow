@@ -4,20 +4,20 @@
     "AchievementName": "1 던전 클리어!",
     "Description": "1 던전을 클리어했습니다.",
     "DungeonGoalNumber": 1,
-    "IsCleared": true
+    "IsCleared": false
   },
   {
     "ID": 2,
     "AchievementName": "2 던전 클리어!",
     "Description": "2 던전을 클리어했습니다.",
     "DungeonGoalNumber": 2,
-    "IsCleared": true
+    "IsCleared": false
   },
   {
     "ID": 3,
     "AchievementName": "3 던전 클리어!",
     "Description": "3 던전을 클리어했습니다.",
     "DungeonGoalNumber": 3,
-    "IsCleared": true
+    "IsCleared": false
   }
 ]

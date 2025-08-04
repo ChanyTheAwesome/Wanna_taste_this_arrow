@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class AchievementManager : MonoBehaviour
 {
-    private string achievementPath = Path.Combine(Application.dataPath + "/Scripts/Achievement/", "AchievementDataJson.json");
-
+    private string achievementPath = Path.Combine(Application.streamingAssetsPath, "AchievementDataJson.json");
+    private string achivementPersistentPath;
     private static AchievementManager instance;
     public static AchievementManager Instance { get { return instance; } }
 
@@ -24,19 +24,35 @@ public class AchievementManager : MonoBehaviour
             Destroy(gameObject);
         }
         LoadAchievement();
+        achivementPersistentPath = Path.Combine(Application.persistentDataPath, "AchievementDataJson.json");
+        Debug.Log("Achievement Persistent Path: " + achivementPersistentPath);
     }
 
     private void LoadAchievement()
     {
-        if(!File.Exists(achievementPath))
+        if (!File.Exists(achivementPersistentPath))
         {
-            Debug.LogError("Achievement data file not found at:" + achievementPath);
+            if (!File.Exists(achievementPath))
+            {
+                Debug.LogError("Achievement data file not found at:" + achievementPath);
+            }
+            else
+            {
+                List<AchievementData> achievementDataList = LoadJsonData<AchievementData>(achievementPath);
+                foreach (AchievementData data in achievementDataList)
+                {
+                    if (!AchievementDict.ContainsKey(data.ID))
+                    {
+                        AchievementDict.Add(data.ID, data);
+                    }
+                }
+            }
         }
         else
         {
-            
-            List<AchievementData> achievementDataList = LoadJsonData<AchievementData>(achievementPath);
-            foreach(AchievementData data in achievementDataList)
+            Debug.Log("Persistent data file found, loading from persistent path.");
+            List<AchievementData> achievementDataList = LoadJsonData<AchievementData>(achivementPersistentPath);
+            foreach (AchievementData data in achievementDataList)
             {
                 if (!AchievementDict.ContainsKey(data.ID))
                 {
@@ -83,6 +99,6 @@ public class AchievementManager : MonoBehaviour
 
         string json = JsonConvert.SerializeObject(achievementList, Formatting.Indented);
 
-        File.WriteAllText(achievementPath, json);
+        File.WriteAllText(achivementPersistentPath, json);
     }
 }
