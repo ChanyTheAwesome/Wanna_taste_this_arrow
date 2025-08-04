@@ -36,7 +36,7 @@ public class PlayerController : BaseController
     private static float _currentHp;
     private static int _numberOfPojectiles = 1;
     private static bool _reverse = false;
-    private static float moveSpeed;
+    public static float moveSpeed;
     private static float projectileSpeed;
     private static float delay;
     private static float power;

@@ -80469,7 +80469,6 @@ MonoBehaviour:
   directionCamera: {fileID: 3411282}
   bossDirect: {fileID: 1731739996}
   bossCollision: {fileID: 1583355809}
-  test: {fileID: 3688016249616336536, guid: e777eda281a10b440aa8019894513926, type: 3}
 --- !u!4 &773025487
 Transform:
   m_ObjectHideFlags: 0
@@ -88149,7 +88148,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1823814193
 MonoBehaviour:
   m_ObjectHideFlags: 0

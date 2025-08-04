@@ -59,7 +59,7 @@ public class BossDirection : MonoBehaviour
         followCamera.target = target.transform;
         bossDirect.SetActive(true);
         yield return new WaitForSeconds(4f); // 기다림
-        playerStatHandler.Speed = 3f;
+        playerStatHandler.Speed = PlayerController.moveSpeed;
         followCamera.target = player.transform;
         bossCollision.SetActive(false);
         yield return new WaitForSeconds(6f); // 기다림
