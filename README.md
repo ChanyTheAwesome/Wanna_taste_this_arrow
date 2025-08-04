@@ -33,6 +33,6 @@
 
 ## 와이어프레임
 
-![image.png](attachment:6caf3b45-a3ea-41ff-8730-1b0267b12a63:image.png)
+<img width="1410" height="491" alt="image (1)" src="https://github.com/user-attachments/assets/48331323-7dc7-42ef-9999-4ffc7b8eaed9" />
 
 ## Trouble Shooting
