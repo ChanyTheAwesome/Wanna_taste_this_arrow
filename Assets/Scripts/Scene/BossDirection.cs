@@ -30,7 +30,6 @@ public class BossDirection : MonoBehaviour
         player = playerObject;
         playerStatHandler = player.GetComponent<StatHandler>();
         followCamera = directionCamera.GetComponent<FollowCamera>();
-        target = GameObject.Find("Boss3(Clone)");
         bossCollision = GameObject.Find("BossCollision");
         //if (player == null) Debug.LogError("플레이어 없음");
         //if (playerStatHandler == null) Debug.LogError("스탯핸들러 안 붙었다 이녀석아");
@@ -51,11 +50,12 @@ public class BossDirection : MonoBehaviour
     }
     IEnumerator BossDirecting()
     {
-        isDirecting = true;
 
+        target = GameObject.Find("Boss3(Clone)");
+        isDirecting = true;
         playerStatHandler.Speed = 0;
-        if(followCamera == null)
-        Debug.Log("sdfsdfsdf");
+        if(followCamera == null) Debug.Log("sdfsdfsdf");
+        if (target == null) Debug.Log("target null");
         followCamera.target = target.transform;
         bossDirect.SetActive(true);
         yield return new WaitForSeconds(4f); // 기다림
