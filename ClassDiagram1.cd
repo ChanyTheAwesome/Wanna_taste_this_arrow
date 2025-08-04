@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AchievementData">
+    <Position X="60" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQkgAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Achievement\AchievementData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AbilityCard">
+    <Position X="47.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAgAAAAAEAAABAAACAAAABAAAAAAEAAAAQAA=</HashCode>
+      <FileName>Assets\Scripts\Entity\AbilityCard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AbilityData">
+    <Position X="47.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAEAAAAAAAAAAAAAAAAAAAEAAgAAAA=</HashCode>
+      <FileName>Assets\Scripts\Entity\AbilityData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AnimationHandler">
+    <Position X="67" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAIACAAIABAAAAAAAAEABAAAAAAAkAAAAACAAAEEA=</HashCode>
+      <FileName>Assets\Scripts\Entity\AnimationHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BaseController">
+    <Position X="41.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEQQBKEEEikAACAIBCAgAAAgEIAAAACgQAIAACEACEQ=</HashCode>
+      <FileName>Assets\Scripts\Entity\BaseController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BossController">
+    <Position X="39.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAQCAgAAAAwAAAAAJAAgAAAAUAACAAAgAAACAACIAEA=</HashCode>
+      <FileName>Assets\Scripts\Entity\BossController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyController">
+    <Position X="41.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAQAAAABJAAgAAAAUAACAAAgAAACAAAAAAE=</HashCode>
+      <FileName>Assets\Scripts\Entity\EnemyController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FollowCamera">
+    <Position X="49.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAIAAAAAAAAACAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Assets\Scripts\Entity\FollowCamera.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerAbilityController">
+    <Position X="47.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAgAEAAAAAAAAAAQAAAAAAQQAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Entity\PlayerAbilityController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerController">
+    <Position X="43.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CEUAACAAEiIAERAAcAwgAAgAQAGAEAQghAACiYAAJEI=</HashCode>
+      <FileName>Assets\Scripts\Entity\PlayerController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ResourceController">
+    <Position X="68.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AESAACAIACAEAAAEBBAAAAQgAAAAAAAgQAUAIAAAEEA=</HashCode>
+      <FileName>Assets\Scripts\Entity\ResourceController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatHandler">
+    <Position X="68.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAg=</HashCode>
+      <FileName>Assets\Scripts\Entity\StatHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AbilitySelectUI">
+    <Position X="47.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAEAAAAAEAAIAAAAAAAABAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Manager\AbilitySelectUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AchievementManager">
+    <Position X="60" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAIECAAAIBAAAAAQAAAAAgAEEA=</HashCode>
+      <FileName>Assets\Scripts\Manager\AchievementManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BaseUI">
+    <Position X="29.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAQAEAAAAAAAAAAAAAACAIAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\BaseUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClearUI">
+    <Position X="28.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAAAAAIAAAAAAQAAAAEFA=</HashCode>
+      <FileName>Assets\Scripts\Manager\ClearUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dungeon">
+    <Position X="51" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAgAAAAAAAAAQABAAAACAgAAAAAAAAAAI=</HashCode>
+      <FileName>Assets\Scripts\Manager\Dungeon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DungeonManager">
+    <Position X="51" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAACAAAAAQCBEAAIgQBABpBgwACIQQACAAgBAEg=</HashCode>
+      <FileName>Assets\Scripts\Manager\DungeonManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyManager">
+    <Position X="56.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAACIAAAAEAABAAAIAADEAIEAAAAAAAIAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Manager\EnemyManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameManager">
+    <Position X="53" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAACACAgAgBAAAABQAAAAAAAAFA=</HashCode>
+      <FileName>Assets\Scripts\Manager\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameOverUI">
+    <Position X="31" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEBAABAAAQAAAAgAAAAAAAEABAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Manager\GameOverUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameUI">
+    <Position X="33.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAwAAAAVBCCEAUEBABCAiEUCAAAAAAIEAgQAAAAAgEE=</HashCode>
+      <FileName>Assets\Scripts\Manager\GameUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Gate">
+    <Position X="53" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAACAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Manager\Gate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HomeUI">
+    <Position X="26.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACCQggABCCAIAAAAQsAKCACAACAAAAAAAEAACAAAEI=</HashCode>
+      <FileName>Assets\Scripts\Manager\HomeUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NextStageArea">
+    <Position X="53" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\NextStageArea.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerInit">
+    <Position X="49.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAIAAAAAAAAAIAAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\PlayerInit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerManager">
+    <Position X="49.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAMAYCABAAEAAAAQABEAAFCAAABQIAAAACFAEA=</HashCode>
+      <FileName>Assets\Scripts\Manager\PlayerManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectileManager">
+    <Position X="54.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAKAAAAAAABAEAEAAgABAgBAAAQAQAACAAAEAMA=</HashCode>
+      <FileName>Assets\Scripts\Manager\ProjectileManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SceneController">
+    <Position X="61.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIBFABEAAAACAAAACAAAABAAAQAQAAQCAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Manager\SceneController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SoundManager">
+    <Position X="65.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAjAAAAAAAAAAAAAAAABAAAAQgAAAACAACEE=</HashCode>
+      <FileName>Assets\Scripts\Manager\SoundManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SoundSource">
+    <Position X="65.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAgAAgAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\SoundSource.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TutorialUI">
+    <Position X="58.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAACEAAEAAAAAQAAAAEABAEAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\TutorialUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UIManager">
+    <Position X="58.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kAQgAAIAACAABAAFCAAAAAEAAQBAAAAAQAAgAEAAAUA=</HashCode>
+      <FileName>Assets\Scripts\Manager\UIManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BaseDepthSorter">
+    <Position X="44.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAQEA=</HashCode>
+      <FileName>Assets\Scripts\Scene\BaseDepthSorter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BossDirection">
+    <Position X="63.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>JAQAAAAAECAAAAAAIAEAAAAAAAAAAICBAAJAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Scene\BossDirection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CastleBossClear">
+    <Position X="63.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAACAAAAABAAAAAAAAAAAAAAAAAAAAAAAgAgA=</HashCode>
+      <FileName>Assets\Scripts\Scene\CastleBossClear.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CaveBossLightControl">
+    <Position X="63.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAAAAACAACAAASAAAAAAABAAAABABACCAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Scene\CaveBossLightControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DynamicDepthSorter">
+    <Position X="45.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Scene\DynamicDepthSorter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlameObstacle">
+    <Position X="63.5" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAABAAAAAAAAIAA=</HashCode>
+      <FileName>Assets\Scripts\Scene\FlameObstacle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MakeObstacle">
+    <Position X="63.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AjAMAAAAICAAAAAAAAAAAAAAAgAAAAAAAEAAQDCAAAA=</HashCode>
+      <FileName>Assets\Scripts\Scene\MakeObstacle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MaterialControl">
+    <Position X="63.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAECAAACAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Scene\MaterialControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StageLightControl">
+    <Position X="63.5" Y="21" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAACAAAAAAAAAAAACAAAAAAAAAE=</HashCode>
+      <FileName>Assets\Scripts\Scene\StageLightControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StaticDepthSorter">
+    <Position X="43.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Scene\StaticDepthSorter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyFSM">
+    <Position X="56.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAACAACAAgAAAIAAAAAAAAEIAAAAAAAAGAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Test\EnemyFSM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NavigationSurfaceScript">
+    <Position X="56.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Test\NavigationSurface.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChargeAttackController">
+    <Position X="37.25" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAQEAAAAAQACQCAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Weapon\ChargeAttackController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ExplosiveAftermathController">
+    <Position X="60.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAQGAAAAAAAAACAAIAAAA=</HashCode>
+      <FileName>Assets\Scripts\Weapon\ExplosiveAftermathController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeleeWeaponHandler">
+    <Position X="37.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAACAAECAAAAAAAAAAEIAAAAAAIQAAAAAAACA=</HashCode>
+      <FileName>Assets\Scripts\Weapon\MeleeWeaponHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectileController">
+    <Position X="54.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBABAkAAYAAJBYAgkEAAAAAWAADAEAAA4KECAECFI=</HashCode>
+      <FileName>Assets\Scripts\Weapon\ProjectileController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RangeWeaponHandler">
+    <Position X="35" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAwAAAIAACACCAAAAAwAAAAEAIAADIQAAAKCABAGACA=</HashCode>
+      <FileName>Assets\Scripts\Weapon\RangeWeaponHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeaponHandler">
+    <Position X="36" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABSAQAQYAJAAAAAgBEMEIAQABJgAABAIAAkA=</HashCode>
+      <FileName>Assets\Scripts\Weapon\WeaponHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityEngine.MonoBehaviour" Collapsed="true">
+    <Position X="52" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Enum Name="UIState">
+    <Position X="58.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\UIManager.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>
