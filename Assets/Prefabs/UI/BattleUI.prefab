@@ -4782,6 +4782,9 @@ MonoBehaviour:
   achievementImage: {fileID: 2740131987727394854}
   achievementTitle: {fileID: 638918298803016090}
   achievementDescription: {fileID: 4198359513265583182}
+  getExpButton: {fileID: 8266652053436021883}
+  stageClearButton: {fileID: 6829360222012730604}
+  gameOverButton: {fileID: 4638468195655336456}
 --- !u!1 &8460016345225900676
 GameObject:
   m_ObjectHideFlags: 0
