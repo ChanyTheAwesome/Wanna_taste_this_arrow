@@ -336,5 +336,8 @@ public class PlayerController : BaseController
         projectileSpeed = weaponHandler.Speed;
         delay = weaponHandler.Delay;
         power = weaponHandler.Power;
+        ProjectileManager.Instance.Reflect = false;
+        ProjectileManager.Instance.Penetrate = false;
+        ProjectileManager.Instance.Ricochet = false;
     }
 }
