@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/ManagerTestScene/ShovelTitleTest.unity
+    guid: 62eae908a8be08f4d84516c3ebb23435
+  - enabled: 1
     path: Assets/Scenes/ManagerTestScene/MainTitleTest.unity
     guid: 03540143eca91ca42ac42e6306f584b3
   - enabled: 1
