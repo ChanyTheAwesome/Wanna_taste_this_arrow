@@ -36,6 +36,7 @@ public class BossController : BaseController
     protected override void Update()
     {
         base.Update();
+        transform.rotation = Quaternion.Euler(0f, 0f, 0f); // 회전값을 초기화하여 회전하지 않도록 함
     }
 
     protected float DistanceToTarget()
