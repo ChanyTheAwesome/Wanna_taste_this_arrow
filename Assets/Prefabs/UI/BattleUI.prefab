@@ -4785,6 +4785,7 @@ MonoBehaviour:
   getExpButton: {fileID: 8266652053436021883}
   stageClearButton: {fileID: 6829360222012730604}
   gameOverButton: {fileID: 4638468195655336456}
+  gameOverUI: {fileID: 4854403480939281764}
 --- !u!1 &8460016345225900676
 GameObject:
   m_ObjectHideFlags: 0

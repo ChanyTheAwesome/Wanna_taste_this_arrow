@@ -90,6 +90,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb22e7f45c6271b438ba290bb5f3364f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelCollisionLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &7466693704960304423
 GameObject:
   m_ObjectHideFlags: 0

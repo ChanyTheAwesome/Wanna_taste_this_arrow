@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GameOverUI : BaseUI
 {
     [SerializeField] private Button exitDungeonButton; // 던전 나가기 버튼
-    [SerializeField] private Image gameOverImage;   // 게임오버시에 띄울 UI 이미지
+    [SerializeField] public Image gameOverImage;   // 게임오버시에 띄울 UI 이미지
     [SerializeField] private Text clearStageScore;
     [SerializeField] private Text levelUpScore;
     private void Awake()
