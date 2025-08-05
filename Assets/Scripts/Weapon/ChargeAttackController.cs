@@ -10,6 +10,7 @@ public class ChargeAttackController : MonoBehaviour
 {
     BaseController _baseController;
     MeleeWeaponHandler _weaponHandler;
+    [SerializeField] private LayerMask levelCollisionLayer;
     private LayerMask _target;
     public void Init(BaseController controller, MeleeWeaponHandler melee)
     {
@@ -24,7 +25,7 @@ public class ChargeAttackController : MonoBehaviour
         {
             StartCoroutine(StruckToPlayer(collision));
         }
-        else 
+        else if (levelCollisionLayer.value == (levelCollisionLayer.value | (1 << collision.gameObject.layer)))
         {
             StartCoroutine(StruckToNotPlayer());
         }
