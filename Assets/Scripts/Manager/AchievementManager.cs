@@ -23,9 +23,8 @@ public class AchievementManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        LoadAchievement();
         achivementPersistentPath = Path.Combine(Application.persistentDataPath, "AchievementDataJson.json");
-        Debug.Log("Achievement Persistent Path: " + achivementPersistentPath);
+        LoadAchievement();
     }
 
     private void LoadAchievement()
@@ -50,7 +49,6 @@ public class AchievementManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Persistent data file found, loading from persistent path.");
             List<AchievementData> achievementDataList = LoadJsonData<AchievementData>(achivementPersistentPath);
             foreach (AchievementData data in achievementDataList)
             {
@@ -69,7 +67,6 @@ public class AchievementManager : MonoBehaviour
 
     public void OnDungeonClear(int dungeonNumber)   // 스테이지 클리어시 호출하기
     {
-        Debug.Log("과제 달성 호출");
         Debug.Log(DungeonManager.Instance.CurrentDungeonID);
         foreach(var achievement in AchievementDict.Values)
         {
@@ -78,7 +75,6 @@ public class AchievementManager : MonoBehaviour
                 achievement.IsCleared = true;
                 SaveAchievementsToJson();
                 UIManager.Instance.SetAchievement(achievement.AchievementName, achievement.Description);
-                Debug.Log("과제 달성!");
             }
         }
     }
