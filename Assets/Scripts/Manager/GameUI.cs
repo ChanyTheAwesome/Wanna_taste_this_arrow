@@ -32,6 +32,14 @@ public class GameUI : BaseUI
     [SerializeField] private Button gameOverButton;
     //테스트용
 
+    //수정중
+    [SerializeField] private GameOverUI gameOverUI;
+
+    private bool isActiveGameOverUI;
+    private bool isActiveCharacterSelectUI;
+    private bool isActiveAbilitySelectUI;
+    //수정중
+
     private void Awake()
     {
         UIManager.Instance.GameUI = this;
@@ -79,6 +87,9 @@ public class GameUI : BaseUI
 
     public void OpenMenu()   // 메뉴 버튼 클릭
     {
+        isActiveGameOverUI = gameOverUI.gameOverImage.gameObject.activeSelf;
+        isActiveCharacterSelectUI = characterSelectUI.activeSelf;
+        isActiveAbilitySelectUI = abilitySelectUI.activeSelf;
         _isMenuOn = true;
         StopGame(); // 게임 정지
         SetMenu();  // 메뉴창 띄우기
@@ -103,7 +114,13 @@ public class GameUI : BaseUI
     {
         // UI 비활성화
         SetGame();
-        ResumeGame();
+        if(isActiveGameOverUI || isActiveCharacterSelectUI || isActiveAbilitySelectUI)
+        {
+            gameOverUI.gameOverImage.gameObject.SetActive(isActiveGameOverUI);
+            characterSelectUI.SetActive(isActiveCharacterSelectUI);
+            abilitySelectUI.SetActive(isActiveAbilitySelectUI);
+        }
+        else ResumeGame();
     }
 
     public void CheckMenu()
@@ -179,6 +196,8 @@ public class GameUI : BaseUI
     {
         menuImage.gameObject.SetActive(true);
         characterSelectUI.SetActive(false);
+        abilitySelectUI.SetActive(false);
+        gameOverUI.gameOverImage.gameObject.SetActive(false);
     }
 
     public IEnumerator SetAchievementUI(string name, string description)
